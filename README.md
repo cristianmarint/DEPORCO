@@ -21,7 +21,7 @@ Claro que si, recomendaciones y sugerencias son recibidas por medio de Github Is
 
 # ¿Como puedo probarlo?
 
-La manera mas rapida de hacerlo es atravez de la demo que mantenemos en [demo](http://deportes.mipropia.com/?i=1)
+La manera mas rapida de hacerlo es atravez de la demo que mantenemos en [demo](http://deportes.mipropia.com/?i=1) basado en la branch master
 
 > **ProTip:** usuario **demo@gmail.com** y contraseña **123** suerte.
 
