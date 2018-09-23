@@ -23,7 +23,10 @@
       $fila = mysqli_fetch_array($result);
      
       //password_verify compara el hash anterior guardado en la base de datos con la contraseña ingresada
-      if($num_row == "1" && password_verify($pass, $fila['pass']) ){
+      if(password_verify($pass, $fila['pass']) ){
+
+      // para pruebas sin login cifrado usar:   if($num_row == "1"){ asi no compara el hash con la contraseña ingresada
+        // if($num_row == "1"){
         $mensaje           = "Bienvenido'";
         $data['validacion']= 'admin';
         $data['mensaje']     = $mensaje;
