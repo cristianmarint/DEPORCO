@@ -1,1 +1,1 @@
-# ProyectoTorneosCotecnova
+# Proyecto Torneos Cotecnova
