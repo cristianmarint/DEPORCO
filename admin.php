@@ -152,7 +152,7 @@
             <li class="active"><a href="admin.php"> <i class="icon-home"></i>Inicio </a></li>
             <li><a class="links" id="link_institution"> <i class="icon-pencil-case"></i>Institucion (es)</a></li>
             <li><a class="links"> <i class="icon-new-file"></i>Equipo (s)</a></li>
-            <li><a class="links"> <i class="icon-new-file"></i>Jugador (s)</a></li>
+            <li><a class="links" id="link_jugador"> <i class="icon-new-file"></i>Jugador (s)</a></li>
             <li><a class="links"> <i class="icon-new-file"></i>Temporada</a></li>
             <li><a class="links"> <i class="icon-new-file"></i>Categoria</a></li>
             <li><a class="links"> <i class="icon-new-file"></i>Torneo</a></li>
