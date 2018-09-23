@@ -29,7 +29,7 @@ $(document).on("click", "#Login", function () {
       }else{
         swal({
           title: jsondata.mensaje,
-          timer: 3000,
+          timer: 5000,
           type: "error",
           showConfirmButton: false
         });
