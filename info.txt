@@ -6,7 +6,7 @@ https://blog.endeos.com/demo/sweetalert/index.html
 
 
 
-cambio de contraseña - falta cifrarla
+(HECHO) cambio de contraseña - falta cifrarla
 
 crear modal para el boton de opciones - entorno
 
