@@ -5,7 +5,7 @@ Hola! El presente proyecto es actualmente desarrollado por  **Edwin Lopez** y **
 
 # ¿Qué es?
 
- **Deportes COTECNOVA** es una plataforma para el manejo y almacenamiento de torneos deportivos al dia de hoy solo de futbol, simultaneamente se desarrolla soporte para otros deportes como balonces,voleibol y tennis. 
+ **Deportes COTECNOVA** es una plataforma para el manejo y almacenamiento de torneos deportivos al dia de hoy solo de futbol, simultaneamente se desarrolla soporte para otros deportes como balonces,voleibol y tenis. 
 
 ## ¿Puedo usar el codigo?
 
