@@ -1,11 +1,11 @@
-# La Plataforma Torneo COTECNOVA!
+# Plataforma Deportes COTECNOVA!
 
 Hola! El presente proyecto es actualmente desarrollado por  **Edwin Lopez** y **Cristian Marin** como parte de nuestro proceso de aprendizaje con diferentes herramientas.
 
 
 # ¿Qué es?
 
- **Torneo COTECNOVA** es una plataforma para el manejo y almacenamiento de torneos deportivos, actualmente se desarrolla soporte para otros deportes como balonces,voleibol y tennis. 
+ **Deportes COTECNOVA** es una plataforma para el manejo y almacenamiento de torneos deportivos al dia de hoy solo de futbol, simultaneamente se desarrolla soporte para otros deportes como balonces,voleibol y tennis. 
 
 ## ¿Puedo usar el codigo?
 
