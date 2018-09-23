@@ -20,20 +20,25 @@
 
       //fila es un vector que almacena toda la informacion de la consulta
       $fila = mysqli_fetch_array($result);
-
-   
+      
+      // $hash = $fila['pass'];
+      
       // echo "Informacion de usuario:  \n";
-      // print_r($fila);
+      print_r($fila);
+      
+      echo "Pass: ".$pass."\n";
+      echo "Hash: ".$fila['pass']."\n";
+      
 
-        // if( password_verify($pass, $fila['pass']) ){
-        //   echo '¡La contraseña es válida!';
-        // } else {
-        //     echo 'La contraseña no es válida.';
-        // }
-  
-      // if($num_row == "1" && password_verify($pass, $fila['pass']) ){
-      if($num_row == "1" && strcmp($pass, $fila['pass'] ) === 0 ){
-      // if($num_row == "1"){
+        if( password_verify($pass, $fila['pass']) ){
+          echo "¡La contraseña es válida! \n";
+        } else {
+            echo "La contraseña no es válida. \n";
+        }
+ 
+      // if($num_row == "1" && password_verify($pass, $hash) ){
+      // if($num_row == "1" && strcmp($pass, $fila['pass'] ) === 0 ){
+      if($num_row == "1"){
         $mensaje           = "Bienvenido'";
         $data['validacion']= 'admin';
         $data['mensaje']     = $mensaje;
