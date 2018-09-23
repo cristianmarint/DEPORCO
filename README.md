@@ -19,3 +19,9 @@ La base de datos la reservamos por motivos de seguridad.
 
 Claro que si, recomendaciones y sugerencias son recibidas por medio de Github Issues y Pull Requests.
 
+# ¿Como puedo probarlo?
+
+La manera mas rapida de hacerlo es atravez de la demo que mantenemos en [demo](http://deportes.mipropia.com/?i=1)
+
+> **ProTip:** usuario **demo@gmail.com** y contraseña **123** suerte.
+
