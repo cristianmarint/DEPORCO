@@ -190,7 +190,7 @@
                   <div class="container-fluid">
                     <div class="row bg-white has-shadow">
                       <p>
-                        Algo de información
+                        Bienvenido <?php echo $_SESSION["USUARIO_NOMBRE"]; ?> actualmente cuenta con permisos de <?php echo $_SESSION["USUARIO_PRIVILEGIO"]; ?>
                       </p>
                     </div>
                   </div>
