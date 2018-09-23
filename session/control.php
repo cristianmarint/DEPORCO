@@ -19,11 +19,11 @@
       //sacamos el numero de filas de result
       $num_row = mysqli_num_rows($result);
       
-      //fila es un vector que almacena toda la informacion de la consulta
-      $fila = mysqli_fetch_array($result);
+      //arreglo  almacena toda la informacion de la consulta
+      $arreglo = mysqli_fetch_array($result);
      
       //password_verify compara el hash anterior guardado en la base de datos con la contraseña ingresada
-      if(password_verify($pass, $fila['pass']) ){
+      if(password_verify($pass, $arreglo['pass']) ){
 
       // para pruebas sin login cifrado usar:   if($num_row == "1"){ asi no compara el hash con la contraseña ingresada
         // if($num_row == "1"){
@@ -31,10 +31,11 @@
         $data['validacion']= 'admin';
         $data['mensaje']     = $mensaje;
         session_start();
+        $_SESSION['HORALOGIN']=time();
         $_SESSION["AUTENTICA"] = "SI";
-        $_SESSION["USUARIO_NOMBRE"] = $fila['nombre']." ".$fila['apellido'];
-        $_SESSION["USUARIO_ID"] = $fila['id_usuario'];
-        $_SESSION["USUARIO_PRIVILEGIO"] = $fila['privilegio'];
+        $_SESSION["USUARIO_NOMBRE"] = $arreglo['nombre']." ".$arreglo['apellido'];
+        $_SESSION["USUARIO_ID"] = $arreglo['id_usuario'];
+        $_SESSION["USUARIO_PRIVILEGIO"] = $arreglo['privilegio'];
       }else{
         $mensaje = "El usuario o Clave son incorrectos";
         $data['validacion'] = 'fail';
