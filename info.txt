@@ -7,6 +7,8 @@ https://blog.endeos.com/demo/sweetalert/index.html
 
 
 (HECHO) cambio de contraseña - falta cifrarla
+  (REVISAR) tiempo de session
+
 
 crear modal para el boton de opciones - entorno
 
