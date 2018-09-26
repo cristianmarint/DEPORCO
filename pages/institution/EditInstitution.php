@@ -91,7 +91,7 @@
    </form>
  </div>
  <div class="modal-footer">
-   <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+   <button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrar">Cerrar</button>
    <button type="button" class="btn btn-primary" name="SaveEditInstituttion" id="SaveEditInstituttion">Guardar</button>
  </div>
 
@@ -123,7 +123,7 @@
      }).done(function(data){
        if(data.result == 'ok'){
          swal(" ","Cambios guardados con exito con exito", "success");
-
+         $('#cerrar').click();
          // recarga
          // $("#page-wrapper").load('pages/institution/institution.php');
        }else{

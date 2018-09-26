@@ -25,16 +25,20 @@ $(document).on("click", "#Login", function () {
           type: "success",
           showConfirmButton: false
         });
-        location.href = 'admin.php';
+        setInterval( function () {
+          location.href = 'admin.php';
+        }, 1500 );
       }else{
         swal({
           title: jsondata.mensaje,
-          timer: 5000,
+          timer: 3000,
           type: "error",
           showConfirmButton: false
         });
 
-        location.href = 'index.php';
+        setInterval( function () {
+          location.href = 'index.php';
+        }, 2000 );
       }
     },"json");
 
