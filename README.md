@@ -1,6 +1,6 @@
 # Plataforma Deportes COTECNOVA!
 
-Hola! El presente proyecto es actualmente desarrollado por  **Edwin Lopez** y **Cristian Marin** como parte de nuestro proceso de aprendizaje con diferentes herramientas.
+Hola! El presente proyecto es actualmente desarrollado por  @edwinlopez12 **Edwin Lopez** y **Cristian Marin** como parte de nuestro proceso de aprendizaje con diferentes herramientas.
 
 
 # ¿Qué es?
@@ -27,3 +27,6 @@ La manera mas rapida de hacerlo es atravez de la demo que mantenemos en [demo](h
 
 ![hola ramdon](https://media.giphy.com/media/Lny6Rw04nsOOc/giphy.gif)
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExNzA0MTEyMjldfQ==
+-->
