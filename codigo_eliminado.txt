@@ -1,5 +1,0 @@
-estado en view institucion
-<div class="form-group-material">
-  <input id="InstitucionViewEstado" type="text" name="InstitucionViewEstado" value="<?php if($row['estado'] == 1){echo "Activo";}else{echo "Inactivo";} ?>" class="input-material" readonly>
-  <label for="InstitucionViewEstado" class="label-material">Estado</label>
-</div>
