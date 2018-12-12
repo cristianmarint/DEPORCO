@@ -39,6 +39,6 @@ class CreateInstitutoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instituton');
+        Schema::dropIfExists('institutos');
     }
 }
