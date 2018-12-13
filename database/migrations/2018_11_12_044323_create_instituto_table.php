@@ -19,7 +19,7 @@ class CreateInstitutoTable extends Migration
             $table->string('nit', 20);
             $table->string('codigo_dane', 50);
             $table->string('nombre_institucion', 150);
-            $table->string('logo',150)->default('img/default.png');
+            $table->string('logo',150)->default('img/institutos/default.png');
             $table->unsignedInteger('id_municipio');
             $table->tinyInteger('estado')->default(1);
             $table->enum('tipo_educacion', ['publico', 'privado']);
@@ -39,6 +39,6 @@ class CreateInstitutoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instituton');
+        Schema::dropIfExists('institutos');
     }
 }

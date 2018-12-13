@@ -18,7 +18,7 @@ class CreateEquipoTable extends Migration
             $table->increments('id_equipo');
             $table->unsignedInteger('id_instituto');
             $table->string('nombre_equipo', 150);
-            $table->string('logo', 80)->default('img/default.png');
+            $table->string('logo', 80)->default('img/equipos/default.png');
             $table->string('colores_uniforme', 30);
             $table->tinyInteger('estado')->default(1);
             $table->timestamps();
@@ -35,6 +35,6 @@ class CreateEquipoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipo');
+        Schema::dropIfExists('equipos');
     }
 }
