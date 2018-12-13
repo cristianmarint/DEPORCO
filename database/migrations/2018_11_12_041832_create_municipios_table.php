@@ -32,11 +32,6 @@ class CreateMunicipiosTable extends Migration
      */
     public function down()
     {
-        Schema::table('municipios', function($table)
-        {
-            $table->drop('municipios_id_departamento_foreign');
-            $table->drop('id_departamento');
-        });
         Schema::dropIfExists('municipios');
     }
 }
