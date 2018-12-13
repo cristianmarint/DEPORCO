@@ -15,7 +15,7 @@ class CreateSexoTable extends Migration
     {
         Schema::create('sexo', function (Blueprint $table) {
             $table->engine='InnoDB';
-            $table->increments('id');
+            $table->increments('id_sexo');
             $table->string('tipo',10);
         });
     }

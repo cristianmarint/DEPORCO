@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             'inscripcion',
             'telefono',
             'sangre',
-            'sexo'
+            'sexo',
+            'eps'
         ]);
 
         //Ejecucion de los Seeders:
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TelefonoTableSeeder::class);
         $this->call(SangreTableSeeder::class);
         $this->call(SexoTableSeeder::class);
+        $this->call(EpsTableSeeder::class);
     }
 
     public function truncateTables(array $tables)

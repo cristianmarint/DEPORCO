@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTelefonoTable extends Migration
+class CreateEpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateTelefonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('telefono', function (Blueprint $table) {
+        Schema::create('eps', function (Blueprint $table) {
             $table->engine='InnoDB';
-            $table->increments('id_telefono');
-            $table->string('telefono',26);
-            $table->enum('tipo',['Celular','Fijo']);
+            $table->increments('id_eps');
+            $table->string('nit',12);
+            $table->string('nombre',60);
+            $table->string('administradora',150);
+            $table->enum('tipo',['ARL','AFP','EPS','PARAFISCAL']);
+            $table->string('codigo',10);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -30,6 +32,6 @@ class CreateTelefonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telefono');
+        Schema::dropIfExists('eps');
     }
 }
