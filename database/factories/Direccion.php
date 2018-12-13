@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Direccion::class, function (Faker $faker) {
 
     return [
-        'calle'         => $faker->numerify('##'),
-        'carrera'       => $faker->numerify('##'),
-        'numero'        => $faker->numerify('##-##')
+        'calle'         => $faker->streetName(),
+        'carrera'       => $faker->streetName(),
+        'numero'        => $faker->buildingNumber()
     ];
 });

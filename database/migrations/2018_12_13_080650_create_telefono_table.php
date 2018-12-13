@@ -17,7 +17,7 @@ class CreateTelefonoTable extends Migration
             $table->engine='InnoDB';
             $table->increments('id_telefono');
             $table->string('telefono',26);
-            $table->enum('tipo',['Celular','Fijo']);
+            $table->enum('tipo',['Celular','Fijo'])->nullable($value='Celular');
             $table->timestamps();
         });
 

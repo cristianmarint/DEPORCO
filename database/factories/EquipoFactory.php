@@ -9,7 +9,7 @@ $factory->define(Equipo::class, function (Faker $faker) {
 
     return [
         'id_instituto' => rand(1,3),
-        'nombre_equipo' => $faker->name,
-        'colores_uniforme' => $faker->safeColorName,
+        'nombre_equipo' => $faker->name(),
+        'colores_uniforme' => $faker->safeColorName(),
     ];
 });

@@ -10,9 +10,9 @@ $factory->define(Eps::class, function (Faker $faker) {
     $tipos = ['EPS', 'AFP','ARL','PARAFISCAL'];
 
     return [
-        'nit'       => $faker->numerify('##9######-#'),
-        'nombre'        => $faker->name,
-        'administradora'=> $faker->name,
+        'nit'       => $faker->unixTime(),
+        'nombre'        => $faker->company(),
+        'administradora'=> $faker->companySuffix(),
         'tipo'          => $tipos[rand(0,3)],
         'codigo'        => $faker->bothify('*** - ###')
     ];

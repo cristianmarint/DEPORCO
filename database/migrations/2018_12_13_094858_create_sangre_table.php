@@ -16,7 +16,7 @@ class CreateSangreTable extends Migration
         Schema::create('sangre', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->increments('id_sangre');
-            $table->string('tipo',3);
+            $table->string('tipo',3)->nullable(false);
         });
     }
 

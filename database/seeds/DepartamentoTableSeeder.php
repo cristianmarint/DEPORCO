@@ -13,8 +13,8 @@ class DepartamentoTableSeeder extends Seeder
      */
     public function run()
     {
-//        factory(Departamento::class, 10)->create();
-        DB::table('departamentos')->insert([
+       factory(Departamento::class, 10)->create();
+        /*DB::table('departamentos')->insert([
             'departamento' => 'Valle del cauca',
             'created_at' => now()
         ]);
@@ -27,6 +27,6 @@ class DepartamentoTableSeeder extends Seeder
         DB::table('departamentos')->insert([
             'departamento' => 'Caldas',
             'created_at' => now()
-        ]);
+        ]);*/
     }
 }

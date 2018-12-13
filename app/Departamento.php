@@ -9,6 +9,6 @@ class Departamento extends Model
     protected $table = "departamentos";
 
     protected $fillable = [
-        'id_departamento', 'departamento'
+        'departamento'
     ];
 }
