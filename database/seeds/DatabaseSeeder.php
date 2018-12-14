@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             'datos_basicos',
             'permisos',
             'roles',
-            'roles_permisos'
+            'roles_permisos',
+            'usuarios_permisos'
         ]);
 
         //Ejecucion de los Seeders:
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(Roles_permisosTableSeeder::class);
         $this->call(UsersSeeder::class);
+        $this->call(Usuarios_permisosTableSeeder::class);
     }
 
     public function truncateTables(array $tables)

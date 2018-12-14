@@ -14,7 +14,7 @@ class AddRolIdToUsers extends Migration
     public function up()
     {
         Schema::table('users',function(Blueprint $table){
-           $table->unsignedInteger('rol_id')->after('id');
+           $table->unsignedInteger('rol_id')->nullable()->after('id');
            
            $table->foreign('rol_id')->references('id_rol')->on('roles')
            ->onUpdate('cascade')->onDelete('restrict');
@@ -29,8 +29,7 @@ class AddRolIdToUsers extends Migration
     public function down()
     {
         Schema::table('users',function(Blueprint $table){
-            // $table->dropIndex('rol_id');
-            $table->dropForeign('rol_id');
+            $table->drop('rol_id');
         });
     }
 }
