@@ -17,7 +17,6 @@ class CreateRolesPermisosTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('rol_id')->nullable(false);
             $table->unsignedInteger('permiso_id')->nullable(false);
-            $table->timestamps();
 
 
             $table->foreign('rol_id')->references('id_rol')->on('roles')

@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
             'sexo',
             'eps',
             'direccion',
-            'datos_basicos'
+            'datos_basicos',
+            'permisos',
+            'roles',
+            'roles_permisos'
         ]);
 
         //Ejecucion de los Seeders:
@@ -47,6 +50,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
         $this->call(DatosBasicosTableSeeder::class);
+        $this->call(PermisosTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(Roles_permisosTableSeeder::class);
     }
 
     public function truncateTables(array $tables)

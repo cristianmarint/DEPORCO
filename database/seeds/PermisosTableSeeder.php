@@ -27,5 +27,9 @@ class PermisosTableSeeder extends Seeder
             'permiso' => 'delete',
             'descripcion' => 'Este permiso tolera que el usuario poseedor eliminar informacion/registros',
             ]);
+        DB::table('permisos')->insert([
+            'permiso' => 'estado',
+            'descripcion' => 'Este permiso tolera que el usuario poseedor modifique el estado informacion/registros',
+            ]);
     }
 }
