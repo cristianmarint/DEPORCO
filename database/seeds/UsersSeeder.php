@@ -13,6 +13,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'rol_id'=> 1,
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
@@ -21,6 +22,7 @@ class UsersSeeder extends Seeder
         ]);
         
         DB::table('users')->insert([
+            'rol_id'=> 1,
             'name' => 'Cristian Marin',
             'email' => 'cristianmarint@cotecnova.edu.co',
             'password' => bcrypt('123'),
@@ -28,6 +30,7 @@ class UsersSeeder extends Seeder
             'created_at' => now()
         ]);
         DB::table('users')->insert([
+            'rol_id'=> 1,
             'name' => 'Edwin Lopez',
             'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
             'password' => bcrypt('123'),

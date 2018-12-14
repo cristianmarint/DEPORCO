@@ -37,7 +37,6 @@ class DatabaseSeeder extends Seeder
         //Ejecucion de los Seeders:
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
-        $this->call(UsersSeeder::class);
         $this->call(InstitutoSeeder::class);
         $this->call(EquipoSeeder::class);
         $this->call(TemporadaSeeder::class);
@@ -53,6 +52,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermisosTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(Roles_permisosTableSeeder::class);
+        $this->call(UsersSeeder::class);
     }
 
     public function truncateTables(array $tables)
