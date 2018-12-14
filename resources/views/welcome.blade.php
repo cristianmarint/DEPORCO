@@ -72,14 +72,16 @@
                 <a href="{{ url('/admin') }}">Admin</a>
             @else
                 <a href="{{ route('login') }}">Ingresar</a>
-                <a href="{{ route('register') }}">Registrarse</a>
+                {{-- El registro de usuarios deberia ser llevado por administradores --}}
+                {{-- <a href="{{ route('register') }}">Registrarse</a> --}}
             @endauth
         </div>
     @endif
 
     <div class="content">
         <div class="title m-b-md">
-            {{ env('APP_NAME') }}
+            {{-- {{ env('APP_NAME') }} --}}
+            Deportes COTECNOVA
         </div>
     </div>
 </div>
