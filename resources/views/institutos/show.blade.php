@@ -6,8 +6,7 @@
         <!-- Page Header-->
         <header class="page-header">
             <div class="container-fluid">
-                <h2 class="no-margin-bottom">Institucion : {{$instituto->nombre_institucion}}</h2>
-                <img src="{{asset($instituto->logo)}}"  class="img-fluid rounded-circle" width="60vh" style="margin-left: 50%; ">
+                <h2 class="no-margin-bottom">Instituto</h2>
             </div>
         </header>
 
@@ -15,7 +14,7 @@
         <div class="breadcrumb-holder container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('/admin')}}">Inicio</a></li>
-                <li class="breadcrumb-item active"><a href="{{url('/institutos')}}">Instituciones</a></li>
+                <li class="breadcrumb-item active"><a href="{{url('/institutos')}}">Instituto</a></li>
                 <li class="breadcrumb-item">Ver</li>
             </ul>
         </div>
@@ -24,6 +23,12 @@
         <section class="dashboard-counts no-padding-bottom">
             <div class="container-fluid">
                     <div class="bg-white has-shadow">
+                            <header class="page-header">
+                                    <div class="container-fluid">
+                                        <h2 class="no-margin-bottom">{{$instituto->nombre_institucion}}</h2>
+                                        <img src="{{asset($instituto->logo)}}"  class="img-fluid rounded-circle" width="60vh" style="margin-left: 50%; ">
+                                    </div>
+                                </header>
                         <div class="form-group row">
                             <label for="nit" class="form-control-label col-sm-3 ">Nit</label>
                             <div class="col-sm-9">

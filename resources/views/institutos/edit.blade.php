@@ -4,7 +4,7 @@
     <!-- Page Header-->
     <header class="page-header">
         <div class="container-fluid">
-            <h2 class="no-margin-bottom">Institucion</h2>
+            <h2 class="no-margin-bottom">Instituto</h2>
         </div>
     </header>
 
@@ -23,11 +23,16 @@
             <div class="bg-white has-shadow">
                 @if($instituto != null)
                     <?php $bandera = 1; ?>
+
+                    <header class="page-header">
+                        <div class="container-fluid">
+                            <h2 class="no-margin-bottom">{{$instituto->nombre_institucion}}</h2>
+                            <img src="{{asset($instituto->logo)}}"  class="img-fluid rounded-circle" width="60vh" style="margin-left: 50%; ">
+                        </div>
+                    </header>
+                    
                     <!-- Form Elements -->
                     <div class="card">
-                        <div class="card-header d-flex align-items-center">
-                            <h3 class="h4">Editar Institucion</h3>
-                        </div>
                         <div class="card-body">
                             <form action="{{route('institutos.update', $instituto->id_instituto)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                 {{ method_field('PUT') }}
