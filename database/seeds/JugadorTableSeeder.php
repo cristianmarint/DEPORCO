@@ -1,9 +1,9 @@
 <?php
 
-use App\Datos_Basicos;
+use App\Jugador;
 use Illuminate\Database\Seeder;
 
-class DatosBasicosTableSeeder extends Seeder
+class JugadorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class DatosBasicosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Datos_Basicos::class,100)->create();
+        factory(Jugador::class,80)->create();
     }
 }
