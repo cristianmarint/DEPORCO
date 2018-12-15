@@ -16,18 +16,19 @@ class CreateInstitutoTable extends Migration
         Schema::create('institutos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id_instituto');
-            $table->string('nit', 20);
-            $table->string('codigo_dane', 50);
             $table->string('nombre_institucion', 150);
-            $table->string('logo',150)->default('img/institutos/default.png');
-            $table->unsignedInteger('id_municipio');
-            $table->tinyInteger('estado')->default(1);
+            $table->unsignedInteger('usuario_id');
+            $table->unsignedInteger('municipio_id');
             $table->enum('tipo_educacion', ['publico', 'privado']);
-            $table->string('direccion', 80);
-            $table->string('telefono', 20);
+            $table->string('codigo_dane', 50);
+            $table->string('nit', 20);
+            $table->string('logo',150)->default('img/institutos/default.png');
+            $table->tinyInteger('estado')->default(1);
             $table->timestamps();
 
-            $table->foreign('id_municipio')->references('id_municipio')->on('municipios')
+            $table->foreign('usuario_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('municipio_id')->references('id_municipio')->on('municipios')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }

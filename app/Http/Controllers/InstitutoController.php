@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Instituto;
 use App\Departamento;
 use App\Municipio;
+use App\Direccion;
+use App\Telefono;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -104,11 +106,13 @@ class InstitutoController extends Controller
     public function show($id_instituto)
     {
         $instituto = DB::table('institutos')
-            ->join('municipios as a', 'institutos.id_municipio', '=', 'a.id_municipio')
+            ->join('municipios as a', 'institutos.municipio_id', '=', 'a.id_municipio')
             ->join('departamentos as b', 'a.id_departamento', '=', 'b.id_departamento')
+            ->join('direccion', 'direccion.id_direccion', '=', 'direccion_id')
+            ->join('telefono', 'telefono.id_telefono', '=', 'telefono_id')
             ->where('id_instituto', '=', "$id_instituto")
             ->where('estado','=', 1)
-            ->first(['nit', 'codigo_dane', 'nombre_institucion', 'logo', 'direccion', 'telefono', 'tipo_educacion', 'municipio', 'departamento']);
+            ->first(['nit', 'codigo_dane', 'nombre_institucion', 'logo','direccion', 'telefono', 'tipo_educacion', 'municipio', 'departamento']);
 //          dd($instituto);
         return view('institutos.show', compact('instituto'));
 
@@ -124,11 +128,13 @@ class InstitutoController extends Controller
     {
         $instituto = Instituto::where('id_instituto', $id_instituto)->firstOrfail();
         $instituto = DB::table('institutos')
-            ->join('municipios as a', 'institutos.id_municipio', '=', 'a.id_municipio')
-            ->join('departamentos as b', 'a.id_departamento', '=', 'b.id_departamento')
-            ->where('id_instituto', '=', "$id_instituto")
-            ->where('estado','=', 1)
-            ->first(['id_instituto','nit', 'codigo_dane', 'nombre_institucion', 'direccion', 'telefono', 'tipo_educacion', 'institutos.id_municipio', 'a.id_departamento']);
+        ->join('municipios as a', 'institutos.municipio_id', '=', 'a.id_municipio')
+        ->join('departamentos as b', 'a.id_departamento', '=', 'b.id_departamento')
+        ->join('direccion', 'direccion.id_direccion', '=', 'direccion_id')
+        ->join('telefono', 'telefono.id_telefono', '=', 'telefono_id')
+        ->where('id_instituto', '=', "$id_instituto")
+        ->where('estado','=', 1)
+        ->first(['nit', 'codigo_dane', 'nombre_institucion', 'logo', 'direccion', 'telefono', 'tipo_educacion', 'municipio', 'departamento','institutos.id_instituto','b.id_departamento']);
 //        dd($instituto);
         $departamentos = Departamento::all();
         return view('institutos.edit', compact('instituto', 'departamentos'));
