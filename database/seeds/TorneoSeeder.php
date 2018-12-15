@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Torneo;
+use App\User;
 
 class TorneoSeeder extends Seeder
 {
@@ -12,10 +13,12 @@ class TorneoSeeder extends Seeder
      */
     public function run()
     {
+        $cantidadUser    = User::count();
         Torneo::create(array(
            'nombre_torneo' => 'Cotecnova - 1',
             'id_categoria' => 1,
-            'id_temporada' => 1
+            'id_temporada' => 1,
+            'usuario_id'   => rand(1,($cantidadUser)),
         ));
     }
 }

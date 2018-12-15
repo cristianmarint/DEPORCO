@@ -33,7 +33,9 @@ class DatabaseSeeder extends Seeder
             'roles',
             'roles_permisos',
             'usuarios_permisos',
-            'jugador'
+            'jugador',
+            'criterio',
+            'criterio_torneo'
         ]);
 
         //Ejecucion de los Seeders:
@@ -41,7 +43,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MunicipioTableSeeder::class);
         $this->call(TemporadaSeeder::class);
         $this->call(CategoriaSeeder::class);
-        $this->call(TorneoSeeder::class);
         $this->call(TelefonoTableSeeder::class);
         $this->call(SangreTableSeeder::class);
         $this->call(SexoTableSeeder::class);
@@ -56,6 +57,9 @@ class DatabaseSeeder extends Seeder
         $this->call(JugadorTableSeeder::class);
         $this->call(InstitutoSeeder::class);
         $this->call(EquipoSeeder::class);
+        $this->call(TorneoSeeder::class);
+        $this->call(CriterioTableSeeder::class);
+        $this->call(Criterio_torneoTableSeeder::class);
         $this->call(Inscripcion_equipoSeeder::class);
     }
 
