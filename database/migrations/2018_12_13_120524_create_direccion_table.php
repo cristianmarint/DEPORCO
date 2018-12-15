@@ -16,9 +16,7 @@ class CreateDireccionTable extends Migration
         Schema::create('direccion', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->increments('id_direccion');
-            $table->string('calle',30);
-            $table->string('carrera',30);
-            $table->string('numero',5);
+            $table->string('direccion',100);
             $table->timestamps();
         });
     }
