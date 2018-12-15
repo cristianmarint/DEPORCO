@@ -11,5 +11,6 @@ $factory->define(Equipo::class, function (Faker $faker) {
         'id_instituto' => rand(1,3),
         'nombre_equipo' => $faker->name(),
         'colores_uniforme' => $faker->safeColorName(),
+        'logo'               => $faker->imageUrl(),
     ];
 });
