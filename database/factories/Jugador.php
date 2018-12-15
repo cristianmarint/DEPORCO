@@ -15,7 +15,7 @@ $factory->define(Jugador::class, function (Faker $faker) {
     $cantidadTelefono  = Telefono::count();
 
     return [
-        'usuario_id'                 => rand(1,($cantidadUser-1)),//-1 ya que el ultimo usuario es el tronco :v
+        'usuario_id'                 => rand(1,($cantidadUser)),
         'datos_basicos_id'           => rand(1,$cantidadDatos_Basicos),
         'telefono_acudiente_id'      => rand(1,$cantidadTelefono),
         'nombre_completo_acudiente'  => $faker->name(),
