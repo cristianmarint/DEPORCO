@@ -19,7 +19,7 @@ class CreateTorneoTable extends Migration
             $table->string('nombre_torneo',150);
             $table->unsignedInteger('id_categoria');
             $table->unsignedInteger('id_temporada');
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
 
             $table->foreign('id_categoria')->references('id_categoria')->on('categoria')

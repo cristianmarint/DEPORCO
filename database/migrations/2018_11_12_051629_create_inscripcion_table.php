@@ -18,7 +18,7 @@ class CreateInscripcionTable extends Migration
             $table->increments('id_inscripcion');
             $table->unsignedInteger('id_equipo');
             $table->unsignedInteger('id_torneo');
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
 
             $table->foreign('id_equipo')->references('id_equipo')->on('equipos')

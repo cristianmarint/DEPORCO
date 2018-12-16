@@ -23,7 +23,7 @@ class CreateInstitutoTable extends Migration
             $table->string('codigo_dane', 50);
             $table->string('nit', 20);
             $table->string('logo',150)->default('img/institutos/default.png');
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
 
             $table->foreign('usuario_id')->references('id')->on('users')

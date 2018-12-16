@@ -18,7 +18,7 @@ class CreateCategoriaTable extends Migration
             $table->increments('id_categoria');
             $table->string('categoria', 50);
             $table->string('descripcion', 150);
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
         });
     }

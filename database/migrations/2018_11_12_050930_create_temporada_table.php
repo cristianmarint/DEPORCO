@@ -18,7 +18,7 @@ class CreateTemporadaTable extends Migration
             $table->increments('id_temporada');
             $table->string('numero_temporada', 20);
             $table->string('descripcion', 150);
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->timestamps();

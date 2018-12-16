@@ -20,7 +20,7 @@ class CreateEquipoTable extends Migration
             $table->string('nombre_equipo', 150);
             $table->string('logo', 80)->default('img/equipos/default.png');
             $table->string('colores_uniforme', 30);
-            $table->tinyInteger('estado')->default(1);
+            $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
 
             $table->foreign('id_instituto')->references('id_instituto')->on('institutos')
