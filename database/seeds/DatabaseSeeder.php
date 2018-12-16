@@ -35,7 +35,9 @@ class DatabaseSeeder extends Seeder
             'usuarios_permisos',
             'jugador',
             'criterio',
-            'criterio_torneo'
+            'criterio_torneo',
+            'calendario_avance',
+            'calendario',
         ]);
 
         //Ejecucion de los Seeders:
@@ -61,6 +63,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CriterioTableSeeder::class);
         $this->call(Criterio_torneoTableSeeder::class);
         $this->call(Inscripcion_equipoSeeder::class);
+        $this->call(Calendario_avanceTableSeeder::class);
+        $this->call(CalendarioTableSeeder::class);
     }
 
     public function truncateTables(array $tables)
