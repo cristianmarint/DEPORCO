@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('welcome');
