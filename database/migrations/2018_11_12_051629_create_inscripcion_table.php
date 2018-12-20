@@ -16,14 +16,15 @@ class CreateInscripcionTable extends Migration
         Schema::create('inscripcion', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->increments('id_inscripcion');
-            $table->unsignedInteger('id_equipo');
-            $table->unsignedInteger('id_torneo');
+            $table->unsignedInteger('equipo_id');
+            $table->unsignedInteger('torneo_id');
+            $table->Integer('puntos')->nullable(false)->default(0);
             $table->boolean('estado')->nullable(false)->default(true);
             $table->timestamps();
 
-            $table->foreign('id_equipo')->references('id_equipo')->on('equipos')
+            $table->foreign('equipo_id')->references('id_equipo')->on('equipos')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_torneo')->references('id_torneo')->on('torneo')
+            $table->foreign('torneo_id')->references('id_torneo')->on('torneo')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
