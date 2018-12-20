@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
             'criterio_torneo',
             'calendario_avance',
             'calendario',
+            'arbitro_puesto',
+            'arbitro',
         ]);
 
         //Ejecucion de los Seeders:
@@ -65,6 +67,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Inscripcion_equipoSeeder::class);
         $this->call(Calendario_avanceTableSeeder::class);
         $this->call(CalendarioTableSeeder::class);
+        $this->call(Arbitro_puestoTableSeeder::class);
+        $this->call(ArbitroTableSeeder::class);
     }
 
     public function truncateTables(array $tables)
