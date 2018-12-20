@@ -9,5 +9,11 @@ class Temporada extends Model
 {
     protected $table = "temporada";
 
-    protected $fillable = ['id_temporada','numero_temporada', 'descripcion', 'estado', 'fecha_inicio', 'fecha_fin',];
+    protected $fillable = [
+        'id_temporada',
+        'numero_temporada', 
+        'descripcion', 
+        'estado', 
+        'fecha_inicio', 
+        'fecha_fin',];
 }

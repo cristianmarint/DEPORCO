@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             'arbitro_puesto',
             'arbitro',
             'lugar',
+            'enfrentamiento',
         ]);
 
         //Ejecucion de los Seeders:
@@ -65,12 +66,13 @@ class DatabaseSeeder extends Seeder
         $this->call(TorneoSeeder::class);
         $this->call(CriterioTableSeeder::class);
         $this->call(Criterio_torneoTableSeeder::class);
-        $this->call(Inscripcion_equipoSeeder::class);
+        $this->call(InscripcionTableSeeder::class);
         $this->call(Calendario_avanceTableSeeder::class);
         $this->call(CalendarioTableSeeder::class);
         $this->call(Arbitro_puestoTableSeeder::class);
         $this->call(ArbitroTableSeeder::class);
         $this->call(LugarTableSeeder::class);
+        $this->call(EnfrentamientoTableSeeder::class);
     }
 
     public function truncateTables(array $tables)

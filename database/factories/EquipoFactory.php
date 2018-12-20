@@ -12,5 +12,6 @@ $factory->define(Equipo::class, function (Faker $faker) {
         'nombre_equipo' => $faker->name(),
         'colores_uniforme' => $faker->safeColorName(),
         'logo'               => $faker->imageUrl(),
+        // 'logo'               => $faker->imageUrl(400, 370, 'logo')
     ];
 });
