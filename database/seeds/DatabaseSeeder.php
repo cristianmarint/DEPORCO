@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
             'enfrentamiento',
             'enfrentamiento_arbitro',
             'resultado_futbol',
+            'programa',
         ]);
 
         //Ejecucion de los Seeders:
@@ -77,6 +78,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EnfrentamientoTableSeeder::class);
         $this->call(Enfrentamiento_arbitroTableSeeder::class);
         $this->call(Resultado_futbolTableSeeder::class);
+        $this->call(ProgramaTableSeeder::class);
     }
 
     public function truncateTables(array $tables)
