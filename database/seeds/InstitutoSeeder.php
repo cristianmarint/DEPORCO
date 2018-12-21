@@ -12,6 +12,6 @@ class InstitutoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Instituto::class,10)->create();
+        factory(Instituto::class,20)->create();
     }
 }

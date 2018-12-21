@@ -12,6 +12,6 @@ class InscripcionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Inscripcion::class,25)->create();
+        factory(Inscripcion::class,20)->create();
     }
 }
