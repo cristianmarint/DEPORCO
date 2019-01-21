@@ -11,7 +11,6 @@ class Programa extends Model
 
 
     protected $fillable = [
-        'id_programa',
         'programa',
         'descripcion'
     ];

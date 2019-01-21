@@ -11,10 +11,7 @@ class Calendario extends Model
 
 
     protected $fillable = [
-        'id_calendario',
-        'torneo_id', 
-        'avance_id',
         'numero_jornada',
-        'estado'
+        'fecha'
     ];
 }

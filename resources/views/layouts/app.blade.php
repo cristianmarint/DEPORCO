@@ -31,7 +31,8 @@
                         <div class="info d-flex align-items-center">
                             <div class="content">
                                 <div class="logo">
-                                    <h1>{{ env('APP_NAME') }}</h1>
+                                    {{--<h1>{{ env('APP_NAME') }}</h1>--}}
+                                    <h1>Deportes Cotecnova</h1>
                                 </div>
                                 {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>--}}
                             </div>

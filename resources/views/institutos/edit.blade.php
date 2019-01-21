@@ -12,7 +12,7 @@
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('/admin')}}">Inicio</a></li>
-            <li class="breadcrumb-item active"><a href="{{url('/institutos')}}">Instituto</a></li>
+            <li class="breadcrumb-item active"><a href="{{url('instituto')}}">Instituto</a></li>
             <li class="breadcrumb-item">Editar</li>
         </ul>
     </div>

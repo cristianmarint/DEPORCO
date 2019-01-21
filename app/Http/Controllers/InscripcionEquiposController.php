@@ -18,8 +18,8 @@ class InscripcionEquiposController extends Controller
     public function index()
     {
         $inscripciones = DB::table('inscripcion')
-            ->join('equipos as a','inscripcion.id_equipo', '=', 'a.id_equipo')
-            ->join('torneo as b','inscripcion.id_torneo', '=', 'b.id_torneo')
+            ->join('equipos as a','inscripcion.equipo_id', '=', 'a.id_equipo')
+            ->join('torneo as b','inscripcion.torneo_id', '=', 'b.id_torneo')
             ->join('temporada as c', 'b.id_temporada', '=', 'c.id_temporada')
             ->where('inscripcion.estado', '=', 1)
             ->where('a.estado', '=', 1)
@@ -82,7 +82,7 @@ class InscripcionEquiposController extends Controller
 //        }
 
         $equiposInscr = DB::table('inscripcion')
-            ->join('torneo as a', 'inscripcion.id_torneo', '=', 'a.id_torneo')
+            ->join('torneo as a', 'inscripcion.torneo_id', '=', 'a.id_torneo')
             ->where('inscripcion.estado', '=', 1)
             ->where('a.estado', '=', 1)
             ->where('a.id_torneo', '=', $id_torneo)
@@ -145,8 +145,8 @@ class InscripcionEquiposController extends Controller
     public function show($id_inscripcion)
     {
         $inscripcion = DB::table('inscripcion')
-            ->join('equipos as a', 'inscripcion.id_equipo', '=', 'a.id_equipo')
-            ->join('torneo as b', 'inscripcion.id_torneo', '=', 'b.id_torneo')
+            ->join('equipos as a','inscripcion.equipo_id', '=', 'a.id_equipo')
+            ->join('torneo as b','inscripcion.torneo_id', '=', 'b.id_torneo')
             ->where('inscripcion.estado', '=', 1)
             ->where('a.estado', '=', 1)
             ->where('b.estado', '=', 1)
@@ -167,7 +167,7 @@ class InscripcionEquiposController extends Controller
         $inscripcion = DB::table('inscripcion')
             ->where('estado', '=', 1)
             ->where('id_inscripcion', '=', $id_inscripcion)
-            ->first(['id_inscripcion', 'id_equipo', 'id_torneo']);
+            ->first(['id_inscripcion', 'equipo_id', 'torneo_id']);
 
         $torneos = DB::table('torneo')
             ->join('temporada as a', 'torneo.id_temporada', '=', 'a.id_temporada')

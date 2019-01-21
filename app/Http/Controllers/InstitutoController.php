@@ -88,7 +88,7 @@ class InstitutoController extends Controller
         $instituto->codigo_dane = $request->input('codigo_dane');
         $instituto->nombre_institucion = $request->input('nombre_institucion');
         $instituto->logo = $nombre;
-        $instituto->id_municipio = $request->input('municipio');
+        $instituto->municipio_id = $request->input('municipio');
         $instituto->tipo_educacion = $request->input('tipo_educacion');
         $instituto->direccion = $request->input('direccion');
         $instituto->telefono = $request->input('telefono');

@@ -17,9 +17,9 @@ class Torneo_deleteController extends Controller
         $torneos = DB::table('torneo')
             ->join('categoria as a', 'torneo.id_categoria', '=', 'a.id_categoria')
             ->join('temporada as b', 'torneo.id_temporada', '=', 'b.id_temporada')
-            ->where('a.estado', '=', 1)
-            ->where('b.estado', '=', 1)
-            ->where('torneo.estado', '=', 1)
+            ->where('a.estado', '=', 0)
+            ->where('b.estado', '=', 0)
+            ->where('torneo.estado', '=', 0)
             ->get(['id_torneo', 'nombre_torneo', 'categoria', 'numero_temporada']);
 
         return view('torneos.index', compact('torneos'));

@@ -2,13 +2,14 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Departamento extends Model
 {
-    protected $table = "departamentos";
+    protected $table = "departamento";
 
     protected $fillable = [
-        'departamento'
+      'departamento'
     ];
 }

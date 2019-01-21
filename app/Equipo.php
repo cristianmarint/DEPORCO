@@ -1,16 +1,16 @@
 <?php
 
 namespace App;
+
+
 use Illuminate\Database\Eloquent\Model;
 
-
-class Equipo extends Model{
-    protected $table = "equipos";
+class Equipo extends model
+{
+    protected $table = "equipo";
 
     protected $fillable = [
-        'nombre_equipo', 
-        'logo', 
-        'colores_uniforme', 
-        'id_instituto'
+      'nombre',
+      'logo',
     ];
 }

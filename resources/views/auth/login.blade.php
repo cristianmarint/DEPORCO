@@ -50,6 +50,7 @@
                 </button>
             </div>
         </div>
-    </form><br><a href="{{ route('password.request') }}" class="forgot-pass">Olvidaste la contraseña?</a><br><small>No tienes una cuenta? </small><a href="{{route('register')}}" class="signup">Registrarse</a>
+    </form><br><a href="{{ route('password.request') }}" class="forgot-pass">Olvidaste la contraseña?</a><br>
+    {{--<small>No tienes una cuenta? </small><a href="{{route('register')}}" class="signup">Registrarse</a>--}}
 
 @endsection

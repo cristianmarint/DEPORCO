@@ -124,7 +124,7 @@ function limpiarForm(oForm) {
   //
   //
   //   $("#link_institution").on("click", function () {
-  //     $("#page-wrapper").load('pages/institutos/institutos.php');
+  //     $("#page-wrapper").load('pages/instituto/instituto.php');
   //   });
   //
   // });

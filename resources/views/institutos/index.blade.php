@@ -44,7 +44,7 @@
                                 <td>{{$instituto->direccion}}</td>
                                 <td class="{{Request::is('institutos_delete') ? 'd-none': ''}}">
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('institutos.show', $instituto->id_instituto)}}'"><i class="fa fa-eye"></i></button>
+                                        <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('instituto', $instituto->id_instituto)}}'"><i class="fa fa-eye"></i></button>
                                         <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('institutos.edit', $instituto->id_instituto)}}'"><i class='fa fa-edit'></i></button>
 
                                         <form action="{{route('institutos.destroy', $instituto->id_instituto)}}" method="POST">

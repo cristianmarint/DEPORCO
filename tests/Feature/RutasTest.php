@@ -28,7 +28,7 @@ class RutasTest extends TestCase
      */
     public function institution()
     {
-        $this->get('/institutos')
+        $this->get('/instituto')
             ->assertStatus(200);
     }
 }
