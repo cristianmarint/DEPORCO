@@ -1,0 +1,8 @@
+
+composer install
+
+php artisan key:generate 
+
+
+
+https://github.com/fzaninotto/Faker#language-specific-formatters
