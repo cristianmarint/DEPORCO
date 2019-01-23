@@ -13,7 +13,6 @@
 
 Auth::routes();
 
-
 // Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -23,7 +22,7 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>'auth'], function() {
 
-    Route::get('/admin', function() {
+    Route::get('/home', function() {
         return view('index');
     });
 
