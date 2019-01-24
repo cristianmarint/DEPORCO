@@ -143,6 +143,13 @@
 
             <div class="content-inner">
                 <div > <!-- Div de carga de contenido asincrono -->
+                    <!-- Page Header-->
+                    <header class="page-header">
+                        <div class="container-fluid">
+                            <h2 class="no-margin-bottom">@yield('title')</h2>
+                        </div>
+                    </header>
+
                     @yield('content')
                 </div>
 

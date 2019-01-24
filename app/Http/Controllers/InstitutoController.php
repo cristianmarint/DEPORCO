@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Departamento;
 use App\Instituto;
 use App\Municipio;
 use Illuminate\Http\Request;
@@ -26,7 +27,21 @@ class InstitutoController extends Controller
      */
     public function create()
     {
+        $departamentos = Departamento::orderBy('nombre', 'asc')->get();
+        return view('instituto.create', compact('departamentos'));
+    }
 
+    /**
+     * Display the specified resource .
+     *
+     * @param  int  $id_departamento
+     * @return \Illuminate\Http\Response json
+     */
+    public function getMunicipio($id){
+        $municipios = Municipio::where('departamento_id',$id)
+            ->orderBy('nombre', 'asc')
+            ->get();
+        return response()->json($municipios);
     }
 
     /**
@@ -37,7 +52,19 @@ class InstitutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nit' => 'required|min:5|max:20|unique:institutos,nit',
+            'codigo_dane' => 'required|min:5|max:20|unique:institutos,codigo_dane',
+            'nombre' => 'required|min:7|max:150',
+            'logo'   => 'image',
+            'departamento_id' => 'required|integer|not_in:0|exists:departamento,id',
+            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
+            'tipo_educacion' => 'required|integer|not_in:0|exists:tipo_educacion,id',
+            'calle' => 'required|string|min:3|max:50',
+            'carrera' => 'required|string|min:3|max:10',
+            'numero' => 'required|string|min:3|max:5',
+            'telefono' => 'required|integer'
+        ]);
     }
 
     /**
@@ -48,10 +75,8 @@ class InstitutoController extends Controller
      */
     public function show($id)
     {
-
         $instituto = Instituto::findOrFail($id);
         return view('instituto.show', compact('instituto'));
-
     }
 
     /**
@@ -62,7 +87,7 @@ class InstitutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('instituto.edit');
     }
 
     /**

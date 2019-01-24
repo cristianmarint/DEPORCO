@@ -16,9 +16,9 @@ class CreateInstitutoTable extends Migration
         Schema::create('instituto', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('codigo_dane', 15)->unique();
-            $table->string('nit', 10)->unique();
-            $table->string('nombre', 100);
+            $table->string('codigo_dane', 20)->unique();
+            $table->string('nit', 20)->unique();
+            $table->string('nombre', 150);
             $table->string('logo', 250)->default('img/instituto/default.png');
             $table->unsignedInteger('municipio_id');
             $table->unsignedInteger('tipo_educacion_id');

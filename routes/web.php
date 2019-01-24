@@ -28,7 +28,7 @@ Route::group(['middleware'=>'auth'], function() {
 
     // Routes Institution
     Route::resource('/institutos', 'InstitutoController');
-//    Route::get('/instituto/municipios/{id_departamento}', 'InstitutoController@getMunicipio');
+    Route::get('/institutos/municipios/{id}', 'InstitutoController@getMunicipio');
 
     // Routes equipos
 //    Route::resource('/equipos', 'EquipoController');

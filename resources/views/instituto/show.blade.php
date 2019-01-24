@@ -1,12 +1,6 @@
 @extends('layouts.admin')
-@section('title','Ver Institucion')
+@section('title','Instituciones')
 @section('content')
-    <!-- Page Header-->
-    <header class="page-header">
-        <div class="container-fluid">
-            <h2 class="no-margin-bottom">Institucion</h2>
-        </div>
-    </header>
 
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
@@ -59,17 +53,17 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="tipo_educacion" class="col-sm-3 form-control-label">Tipo de Educacion</label>
+                    <label for="direccion" class="form-control-label col-sm-3">Direcci&oacute;n</label>
                     <div class="col-sm-9">
-                        <input id="tipo_educacion" type="text" name="tipo_educacion" class="form-control" value="{{$instituto->tipo_educacion->tipo}}" readonly>
+                        <input id="direccion" type="text" name="direccion" class="form-control" value="Calle {{$instituto->direccion->calle}}, Cra {{$instituto->direccion->carrera}}, #{{$instituto->direccion->numero}}" readonly>
                     </div>
                 </div>
 
 
                 <div class="form-group row">
-                    <label for="direccion" class="form-control-label col-sm-3">Direcci&oacute;n</label>
+                    <label for="tipo_educacion" class="col-sm-3 form-control-label">Tipo de Educacion</label>
                     <div class="col-sm-9">
-                        <input id="direccion" type="text" name="direccion" class="form-control" value="Calle {{$instituto->direccion->calle}}, Cra {{$instituto->direccion->carrera}}, #{{$instituto->direccion->numero}}" readonly>
+                        <input id="tipo_educacion" type="text" name="tipo_educacion" class="form-control" value="{{$instituto->tipo_educacion->tipo}}" readonly>
                     </div>
                 </div>
 

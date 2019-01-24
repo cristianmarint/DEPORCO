@@ -1,12 +1,6 @@
 @extends('layouts.admin')
-@section('title','- Instituciones')
+@section('title', 'Inicio')
 @section('content')
-    <!-- Page Header-->
-    <header class="page-header">
-        <div class="container-fluid">
-            <h2 class="no-margin-bottom">Inicio</h2>
-        </div>
-    </header>
     <!-- Dashboard Counts Section-->
     <section class="dashboard-counts no-padding-bottom">
         <div class="container-fluid">
