@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="bg-white has-shadow">
 
-                <div class="row col-sm-8 col-sm-offset-2">
+                <div class="row col-sm-8 col-sm-offset-2" >
                     <button onclick="window.location=''" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
                 <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
@@ -45,7 +45,7 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location=''"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('institutos.show', $instituto->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location=''"><i class='fa fa-edit'></i></button>
 
                                             <form action="" method="POST">

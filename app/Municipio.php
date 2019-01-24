@@ -10,10 +10,14 @@ class Municipio extends Model
     protected $table = "municipio";
 
     protected $fillable = [
-      'municipio'
+        'nombre'
     ];
 
-    protected function departamentos(){
-        return $this->hasOne('App\Departamento', 'id');
+    protected function departamento(){
+        return $this->belongsTo(Departamento::class);
+    }
+
+    protected function instituto(){
+        return $this->hasMany(Instituto::class);
     }
 }

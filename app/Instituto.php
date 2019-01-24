@@ -4,9 +4,13 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Instituto extends Model
 {
+
+    use SoftDeletes;
+
     protected $table = "instituto";
 
     protected $fillable = [
@@ -17,7 +21,23 @@ class Instituto extends Model
     ];
 
     protected function user(){
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo(User::class);
+    }
+
+    protected function municipio(){
+        return $this->belongsTo(Municipio::class);
+    }
+
+    protected function tipo_educacion(){
+        return $this->belongsTo(TipoEducacion::class);
+    }
+
+    protected function telefono(){
+        return $this->belongsTo(Telefono::class);
+    }
+
+    protected function direccion(){
+        return $this->belongsTo(Direccion::class);
     }
 
 

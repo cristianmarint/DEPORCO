@@ -7,8 +7,12 @@ class Telefono extends Model{
     protected $table = "telefono";
 
     protected $fillable = [
-        'telefono',
+        'numero',
         'tipo'
     ];
+
+    protected function instituto(){
+        return $this->hasOne(Instituto::class);
+    }
 
 }

@@ -10,10 +10,10 @@ class Departamento extends Model
     protected $table = "departamento";
 
     protected $fillable = [
-      'departamento'
+      'nombre'
     ];
 
     protected function municipios(){
-        return $this->hasMany('App\Municipio');
+        return $this->hasMany(Municipio::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Instituto;
+use App\Municipio;
 use Illuminate\Http\Request;
 
 class InstitutoController extends Controller
@@ -47,7 +48,10 @@ class InstitutoController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $instituto = Instituto::findOrFail($id);
+        return view('instituto.show', compact('instituto'));
+
     }
 
     /**

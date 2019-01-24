@@ -12,4 +12,8 @@ class TipoEducacion extends Model
     protected $fillable = [
       'tipo '
     ];
+
+    protected function instituto(){
+        return $this->hasMany(Instituto::class);
+    }
 }

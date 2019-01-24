@@ -47,7 +47,7 @@
                         <!-- Navbar Header-->
                         <div class="navbar-header">
                             <!-- Navbar Brand --><a href="#" class="navbar-brand d-none d-sm-inline-block">
-                                <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong>Cotecnova</strong></div>
+                                <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong> Cotecnova</strong></div>
                                 <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>DC</strong></div></a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                         </div>
@@ -126,17 +126,17 @@
 
                     <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fa fa-university" aria-hidden="true"></i>Institucion (es)</a></li>
 
-                    <li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fa fa-shield" aria-hidden="true"></i>Equipo (s)</a></li>
-                    <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-clock-o" aria-hidden="true"></i>Temporada</a></li>
-                    <li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fa fa-list"></i>Categoria</a></li>
-                    <li class="{{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}}"><a href="{{url('/torneos')}}" class="links"> <i class="fa fa-trophy"></i>Torneo</a></li>
+                    {{--<li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fa fa-shield" aria-hidden="true"></i>Equipo (s)</a></li>--}}
+                    {{--<li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-clock-o" aria-hidden="true"></i>Temporada</a></li>--}}
+                    {{--<li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fa fa-list"></i>Categoria</a></li>--}}
+                    {{--<li class="{{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}}"><a href="{{url('/torneos')}}" class="links"> <i class="fa fa-trophy"></i>Torneo</a></li>--}}
                     {{--<li><a class="links"> <i class="fa fa-globe" aria-hidden="true"></i>Lugar</a></li>--}}
 
-                    <li><a href="#menu_inscripciones" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Inscripcion</a>
-                        <ul id="menu_inscripciones" class="collapse list-unstyled ">
-                            <li><a href="{{url('/inscripciones_equipo')}}" class="links"><i class="fa fa-shield"></i> Equipos</a></li>
-                        </ul>
-                    </li>
+                    {{--<li><a href="#menu_inscripciones" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Inscripcion</a>--}}
+                        {{--<ul id="menu_inscripciones" class="collapse list-unstyled ">--}}
+                            {{--<li><a href="{{url('/inscripciones_equipo')}}" class="links"><i class="fa fa-shield"></i> Equipos</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     {{--<li><a class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>--}}
                 </ul>
             </nav>
@@ -220,7 +220,7 @@
     <script src="{{url('assets/dataTables/jquery.dataTables.min.js')}}"></script>
     <script src="{{url('assets/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    {{--<script src="https://cdn.jsdelivr.net/npm/vue"></script>--}}
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>
