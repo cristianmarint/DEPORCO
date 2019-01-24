@@ -13,5 +13,12 @@ class Instituto extends Model
       'codigo_dane',
       'nit',
       'nombre',
+      'logo'
     ];
+
+    protected function user(){
+        return $this->belongsTo('App\User', 'id');
+    }
+
+
 }

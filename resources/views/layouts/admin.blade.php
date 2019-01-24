@@ -113,24 +113,19 @@
                     <div class="avatar"><img src="{{url('img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
                         <h1 class="h4">
-                            <?php
-                            ?>
-                                {{ Auth::user()->datos_basicos_id}}
-
+                            {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}
                         </h1>
                         <p>
-                            Administrador
-                            <?php
-
-                            ?>
-
+                            {{ Auth::user()->rol->rol }}
                         </p>
                     </div>
                 </div>
                 <!-- Sidebar Navidation Menus--><span class="heading">Menú</span>
                 <ul class="list-unstyled">
-                    <li class="{{Request::is('admin') ? 'active': ''}}"><a href="{{url('/admin')}}"> <i class="fa fa-home"></i>Inicio </a></li>
+                    <li class="{{Request::is('home') ? 'active': ''}}"><a href="{{url('/home')}}"> <i class="fa fa-home"></i>Inicio </a></li>
+
                     <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fa fa-university" aria-hidden="true"></i>Institucion (es)</a></li>
+
                     <li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fa fa-shield" aria-hidden="true"></i>Equipo (s)</a></li>
                     <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-clock-o" aria-hidden="true"></i>Temporada</a></li>
                     <li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fa fa-list"></i>Categoria</a></li>
@@ -143,14 +138,6 @@
                         </ul>
                     </li>
                     {{--<li><a class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>--}}
-                </ul><span class="heading">Eliminados</span>
-                <ul class="list-unstyled">
-                    <li class="{{Request::is('institutos_delete') ? 'active': ''}} {{Request::is('institutos_delete/*') ? 'active': ''}}"> <a href="{{url('/institutos_delete')}}"> <i class="fa fa-university"></i>Institucion (es) </a></li>
-                    <li class="{{Request::is('equipos_delete') ? 'active': ''}} {{Request::is('equipos_delete/*') ? 'active': ''}}"> <a href="{{url('/equipos_delete')}}"> <i class="fa fa-shield"></i>Equipo (s)</a></li>
-                    <li class="{{Request::is('temporadas_delete') ? 'active': ''}} {{Request::is('temporadas_delete/*') ? 'active': ''}}"><a href="{{url('/temporadas_delete')}}" class="links"> <i class="fa fa-clock-o" aria-hidden="true"></i>Temporada</a></li>
-                    <li class="{{Request::is('categorias_delete') ? 'active': ''}} {{Request::is('categorias_delete/*') ? 'active': ''}}"><a href="{{url('/categorias_delete')}}" class="links"> <i class="fa fa-list"></i>Categoria</a></li>
-                    <li class="{{Request::is('torneos_delete') ? 'active': ''}} {{Request::is('torneos_delete/*') ? 'active': ''}}"><a href="{{url('/torneos_delete')}}" class="links"> <i class="fa fa-trophy"></i>Torneo</a></li>
-                    <li class="{{Request::is('inscripciones_equipo_delete') ? 'active': ''}} {{Request::is('inscripciones_equipo_delete/*') ? 'active': ''}}"><a href="{{url('/inscripciones_equipo_delete')}}" class="links"> <i class="fa fa-shield"></i>Inscripcion Equipo (s) </a></li>
                 </ul>
             </nav>
 

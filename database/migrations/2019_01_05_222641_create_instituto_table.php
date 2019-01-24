@@ -19,6 +19,7 @@ class CreateInstitutoTable extends Migration
             $table->string('codigo_dane', 15)->unique();
             $table->string('nit', 10)->unique();
             $table->string('nombre', 100);
+            $table->string('logo', 250)->default('img/instituto/default.png');
             $table->unsignedInteger('municipio_id');
             $table->unsignedInteger('tipo_educacion_id');
             $table->unsignedInteger('telefono_id');

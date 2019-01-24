@@ -69,7 +69,7 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/admin') }}">Admin</a>
+                <a href="{{ url('/home') }}">Admin</a>
             @else
                 <a href="{{ route('login') }}">Ingresar</a>
                 {{-- El registro de usuarios deberia ser llevado por administradores --}}

@@ -28,7 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function datos_basicos(){
+    protected function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
     }
+
+    protected function rol(){
+        return $this->belongsTo(Roles::class);
+    }
+
 }

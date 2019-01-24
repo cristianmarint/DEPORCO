@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','- Institucion')
+@section('title','Instituciones')
 @section('content')
     <!-- Page Header-->
     <header class="page-header">
@@ -11,8 +11,8 @@
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('/admin')}}">Inicio</a></li>
-            <li class="breadcrumb-item active">Instituciones {{Request::is('institutos_delete') ? 'eliminadas': ''}}</li>
+            <li class="breadcrumb-item"><a href="{{url('/home')}}">Inicio</a></li>
+            <li class="breadcrumb-item active">Instituciones</li>
         </ul>
     </div>
 
@@ -21,37 +21,38 @@
         <div class="container-fluid">
             <div class="bg-white has-shadow">
 
-                <div class="row col-sm-8 col-sm-offset-2 {{Request::is('institutos_delete') ? 'd-none': ''}}">
-                    <button onclick="window.location='{{route('institutos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
+                <div class="row col-sm-8 col-sm-offset-2">
+                    <button onclick="window.location=''" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
                 <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
                     <thead >
                         <tr>
                             <th>Codigo dane</th>
+                            <th>Nit</th>
                             <th>Nombre</th>
                             <th>Logo</th>
-                            <th>Dirección</th>
-                            <th class="{{Request::is('institutos_delete') ? 'd-none': ''}}">Acciones</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody >
 
+                    <tbody >
                         @foreach($institutos as $instituto)
                             <tr>
                                 <td>{{$instituto->codigo_dane}}</td>
-                                <td>{{$instituto->nombre_institucion}}</td>
+                                <td>{{$instituto->nit}}</td>
+                                <td>{{$instituto->nombre}}</td>
                                 <td> <img src="{{asset($instituto->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
-                                <td>{{$instituto->direccion}}</td>
-                                <td class="{{Request::is('institutos_delete') ? 'd-none': ''}}">
+                                <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('instituto', $instituto->id_instituto)}}'"><i class="fa fa-eye"></i></button>
-                                        <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('institutos.edit', $instituto->id_instituto)}}'"><i class='fa fa-edit'></i></button>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location=''"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location=''"><i class='fa fa-edit'></i></button>
 
-                                        <form action="{{route('institutos.destroy', $instituto->id_instituto)}}" method="POST">
-                                            {{ method_field('DELETE') }}
-                                            @csrf
-                                            <button onclick="return confirm('Eliminar registro?')" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-                                        </form>
+                                            <form action="" method="POST">
+                                                {{ method_field('DELETE') }}
+                                                @csrf
+                                                <button onclick="return confirm('Eliminar registro?')" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            </form>
                                     </div>
                                 </td>
                             </tr>
@@ -75,5 +76,3 @@
 
     </script>
 @endsection
-
-

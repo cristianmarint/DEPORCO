@@ -13,4 +13,8 @@ class Roles extends Model
         'rol',
         'descripcion'
     ];
+
+    protected function user(){
+        return $this->hasOne(User::class);
+    }
 }

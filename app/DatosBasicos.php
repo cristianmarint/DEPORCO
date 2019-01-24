@@ -18,7 +18,7 @@ class DatosBasicos extends Model
        'email'
     ];
 
-    protected function datos_basicos_to_user(){
+    protected function user(){
         return $this->hasOne(User::class);
     }
 }

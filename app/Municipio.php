@@ -12,4 +12,8 @@ class Municipio extends Model
     protected $fillable = [
       'municipio'
     ];
+
+    protected function departamentos(){
+        return $this->hasOne('App\Departamento', 'id');
+    }
 }
