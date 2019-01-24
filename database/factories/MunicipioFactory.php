@@ -9,7 +9,7 @@ $factory->define(Municipio::class, function (Faker $faker) {
     $countDepartamento = Departamento::count();
 
     return [
-        'municipio' => $faker->name,
+        'nombre' => $faker->name,
         'departamento_id' => rand(1,$countDepartamento)
     ];
 });
