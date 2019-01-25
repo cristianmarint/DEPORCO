@@ -4,7 +4,7 @@
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('/admin')}}">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/home')}}">Inicio</a></li>
             <li class="breadcrumb-item active"><a href="{{url('institutos')}}">Instituciones</a></li>
             <li class="breadcrumb-item">Crear</li>
         </ul>
@@ -26,8 +26,8 @@
                                     <input id="create_nit" type="text" name="nit" class="form-control {{ $errors->has('nit') ? ' is-invalid' : '' }}" value="{{old('nit')}}">
                                     @if ($errors->has('nit'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('nit') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('nit') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -38,8 +38,8 @@
                                     <input id="create_codigo_dane" type="text" name="codigo_dane" class="form-control{{ $errors->has('codigo_dane') ? ' is-invalid' : '' }}" value="{{old('codigo_dane')}}">
                                     @if ($errors->has('codigo_dane'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('codigo_dane') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('codigo_dane') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -50,8 +50,8 @@
                                     <input id="create_nombre" type="text" name="nombre" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" value="{{old('nombre')}}">
                                     @if ($errors->has('nombre'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('nombre') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('nombre') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -63,8 +63,8 @@
                                     <input id="create_logo" type="file" name="logo" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" accept="image/*">
                                     @if ($errors->has('logo'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('logo') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('logo') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -81,8 +81,8 @@
                                     </select>
                                     @if ($errors->has('departamento'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('departamento') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('departamento') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -95,8 +95,8 @@
                                     </select>
                                     @if ($errors->has('municipio'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('municipio') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('municipio') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -106,13 +106,14 @@
                                 <div class="col-sm-9">
                                     <select name="tipo_educacion" id="create_tipo_educacion" class="form-control{{ $errors->has('tipo_educacion') ? ' is-invalid' : '' }}">
                                         <option value="0" >Seleccione un tipo</option>
-                                        <option value="1" >Publico</option>
-                                        <option value="2" >Privado</option>
+                                        @foreach($tiposEducacion as $tipoEducacion)
+                                            <option value="{{$tipoEducacion->id}}">{{$tipoEducacion->tipo}}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('tipo_educacion'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('tipo_educacion') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('tipo_educacion') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>
@@ -124,8 +125,8 @@
                                     <input id="create_calle" type="text" name="calle" class="form-control{{ $errors->has('calle') ? ' is-invalid' : '' }}" value="{{old('calle')}}" placeholder="Calle">
                                     @if ($errors->has('calle'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('calle') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('calle') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
 
@@ -133,8 +134,8 @@
                                     <input id="create_carrera" type="text" name="carrera" class="form-control{{ $errors->has('carrera') ? ' is-invalid' : '' }}" value="{{old('carrera')}}" placeholder="Carrera">
                                     @if ($errors->has('carrera'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('carrera') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('carrera') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
 
@@ -142,7 +143,7 @@
                                     <input id="create_numero" type="text" name="numero" class="form-control{{ $errors->has('numero') ? ' is-invalid' : '' }}" value="{{old('numero')}}" placeholder="Número">
                                     @if ($errors->has('numero'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('numero') }}</strong>
+                                            <strong>{{ $errors->first('numero') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -161,8 +162,8 @@
                                     </select>
                                     @if ($errors->has('tipo_telefono'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('tipo_telefono') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('tipo_telefono') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
 
@@ -170,8 +171,8 @@
                                     <input id="create_telefono" type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{old('telefono')}}" placeholder="Número Telefonico">
                                     @if ($errors->has('telefono'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('telefono') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('telefono') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                             </div>

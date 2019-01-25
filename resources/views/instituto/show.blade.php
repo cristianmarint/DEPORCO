@@ -69,7 +69,12 @@
 
                 <div class="form-group row">
                     <label for="telefono" class="form-control-label col-sm-3">Telefono      </label>
-                    <div class="col-sm-9">
+
+                    <div class="col-sm-3">
+                        <input id="tipo_telefono" type="text" name="tipo_telefono" class="form-control" value="{{$instituto->telefono->tipo}}" readonly>
+                    </div>
+
+                    <div class="col-sm-6">
                         <input id="telefono" type="text" name="telefono" class="form-control" value="{{$instituto->telefono->numero}}" readonly>
                     </div>
                 </div>

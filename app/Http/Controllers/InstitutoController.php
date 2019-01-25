@@ -7,6 +7,7 @@ use App\Direccion;
 use App\Instituto;
 use App\Municipio;
 use App\Telefono;
+use App\TipoEducacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class InstitutoController extends Controller
      */
     public function index()
     {
-        $institutos = Instituto::where('deleted_at', null)->get();
+        $institutos = Instituto::all();
         return view('instituto.index', compact('institutos'));
     }
 
@@ -31,8 +32,9 @@ class InstitutoController extends Controller
      */
     public function create()
     {
+        $tiposEducacion = TipoEducacion::orderBy('tipo', 'asc')->get();
         $departamentos = Departamento::orderBy('nombre', 'asc')->get();
-        return view('instituto.create', compact('departamentos'));
+        return view('instituto.create', compact('departamentos', 'tiposEducacion'));
     }
 
     /**
@@ -72,7 +74,6 @@ class InstitutoController extends Controller
         ]);
 
         DB::transaction(function () use ($data, $request) {
-            $nombreImg = 'img/default.png';
 
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
@@ -84,7 +85,7 @@ class InstitutoController extends Controller
 //                    Enviar error al no guardar
                 }
             } else {
-                $nombreImg = 'img/default.png';
+                $nombreImg = 'img/instituto/default.png';
             }
 
             $telefono = Telefono::create([
@@ -134,7 +135,11 @@ class InstitutoController extends Controller
      */
     public function edit($id)
     {
-        return view('instituto.edit');
+        $tiposTelefono = Telefono::orderBy('tipo', 'asc')->get();
+        $tiposEducacion = TipoEducacion::orderBy('tipo', 'asc')->get();
+        $departamentos = Departamento::orderBy('nombre', 'asc')->get();
+        $instituto = Instituto::findOrFail($id);
+        return view('instituto.edit', compact('instituto', 'departamentos', 'tiposEducacion', 'tiposTelefono'));
     }
 
     /**
@@ -146,7 +151,22 @@ class InstitutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $instituto = Instituto::findOrFail($id);
+
+        $data = $request->validate([
+            'nit' => 'required|min:5|max:20|unique:instituto,nit,'.$instituto->id,
+            'codigo_dane' => 'required|min:5|max:20|unique:instituto,codigo_dane,'.$instituto->id,
+            'nombre' => 'required|min:7|max:150',
+            'logo'   => 'image',
+            'departamento' => 'required|integer|not_in:0|exists:departamento,id',
+            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
+            'tipo_educacion' => 'required|integer|not_in:0|exists:tipo_educacion,id',
+            'calle' => 'required|string|min:3|max:50',
+            'carrera' => 'required|string|min:3|max:10',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
+            'numero' => 'required|string|min:3|max:5',
+            'telefono' => 'required|integer'
+        ]);
     }
 
     /**
