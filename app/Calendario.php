@@ -12,6 +12,9 @@ class Calendario extends Model
 
     protected $fillable = [
         'numero_jornada',
-        'fecha'
+        'fecha',
+        'torneo_id',
+        'avance_id',
+        'user_id'
     ];
 }
