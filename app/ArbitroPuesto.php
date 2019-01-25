@@ -13,5 +13,6 @@ class ArbitroPuesto extends Model
     protected $fillable = [
         'puesto',
         'descripcion',
+        'user_id'
     ];
 }

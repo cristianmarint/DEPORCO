@@ -9,6 +9,6 @@ class Criterio extends Model{
     protected $table = "criterio";
 
     protected $fillable = [
-        'criterio'
+        'descripcion'
     ];
 }

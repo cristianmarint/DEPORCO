@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="bg-white has-shadow">
 
-                <div class="row col-sm-8 col-sm-offset-2" >
+                <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('institutos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
                 <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">

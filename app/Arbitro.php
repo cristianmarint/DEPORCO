@@ -11,6 +11,7 @@ class Arbitro extends Model
 
 
     protected $fillable = [
-
+        'datos_basicos_id',
+        'user_id'
     ];
 }
