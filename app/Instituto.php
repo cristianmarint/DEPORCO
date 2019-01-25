@@ -17,7 +17,12 @@ class Instituto extends Model
       'codigo_dane',
       'nit',
       'nombre',
-      'logo'
+      'logo',
+       'municipio_id',
+        'tipo_educacion_id',
+        'telefono_id',
+        'direccion_id',
+        'user_id'
     ];
 
     protected function user(){
@@ -32,11 +37,11 @@ class Instituto extends Model
         return $this->belongsTo(TipoEducacion::class);
     }
 
-    protected function telefono(){
+    public function telefono(){
         return $this->belongsTo(Telefono::class);
     }
 
-    protected function direccion(){
+    public function direccion(){
         return $this->belongsTo(Direccion::class);
     }
 

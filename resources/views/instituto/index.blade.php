@@ -10,7 +10,7 @@
     </div>
 
     <!-- Dashboard Counts Section-->
-    <section class="dashboard-counts no-padding-bottom">
+    <section class="dashboard-counts">
         <div class="container-fluid">
             <div class="bg-white has-shadow">
 

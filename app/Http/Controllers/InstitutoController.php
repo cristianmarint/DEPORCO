@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Departamento;
+use App\Direccion;
 use App\Instituto;
 use App\Municipio;
+use App\Telefono;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class InstitutoController extends Controller
 {
@@ -34,7 +38,7 @@ class InstitutoController extends Controller
     /**
      * Display the specified resource .
      *
-     * @param  int  $id_departamento
+     * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
     public function getMunicipio($id){
@@ -52,19 +56,62 @@ class InstitutoController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nit' => 'required|min:5|max:20|unique:institutos,nit',
-            'codigo_dane' => 'required|min:5|max:20|unique:institutos,codigo_dane',
+        $data = $request->validate([
+            'nit' => 'required|min:5|max:20|unique:instituto,nit',
+            'codigo_dane' => 'required|min:5|max:20|unique:instituto,codigo_dane',
             'nombre' => 'required|min:7|max:150',
             'logo'   => 'image',
-            'departamento_id' => 'required|integer|not_in:0|exists:departamento,id',
+            'departamento' => 'required|integer|not_in:0|exists:departamento,id',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
             'tipo_educacion' => 'required|integer|not_in:0|exists:tipo_educacion,id',
             'calle' => 'required|string|min:3|max:50',
             'carrera' => 'required|string|min:3|max:10',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'numero' => 'required|string|min:3|max:5',
             'telefono' => 'required|integer'
         ]);
+
+        DB::transaction(function () use ($data, $request) {
+            $nombreImg = 'img/default.png';
+
+            if ($request->hasFile('logo')) {
+                $archivo = $request->file('logo');
+                $nombreImg = 'img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move(public_path() . '/img/instituto', $nombreImg)) {
+                    echo "Guardado";
+                } else {
+                    echo "error al guardar";
+//                    Enviar error al no guardar
+                }
+            } else {
+                $nombreImg = 'img/default.png';
+            }
+
+            $telefono = Telefono::create([
+                'numero' => $data['telefono'],
+                'tipo' => $data['tipo_telefono']
+            ]);
+
+            $direccion = Direccion::create([
+                'calle' => $data['calle'],
+                'carrera' => $data['carrera'],
+                'numero' => $data['numero'],
+            ]);
+
+            Instituto::create([
+                'codigo_dane' => $data['codigo_dane'],
+                'nit' => $data['nit'],
+                'nombre' => $data['nombre'],
+                'logo' => $nombreImg,
+                'municipio_id' => $data['municipio'],
+                'tipo_educacion_id' => $data['tipo_educacion'],
+                'telefono_id' => $telefono->id,
+                'direccion_id' => $direccion->id,
+                'user_id' => Auth::user()->id
+            ]);
+        });
+
+        return redirect(route('institutos.index'));
     }
 
     /**
