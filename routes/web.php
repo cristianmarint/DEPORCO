@@ -29,9 +29,10 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes Institution
     Route::resource('/institutos', 'InstitutoController');
     Route::get('/institutos/municipios/{id}', 'InstitutoController@getMunicipio');
-
+    
     // Routes equipos
-//    Route::resource('/equipos', 'EquipoController');
+    Route::resource('/equipos', 'EquipoController');
+    Route::get('/equipo/{id}', 'EquipoController@getEquipo');
 
     // Routes temporadas
 //    Route::resource('/temporadas', 'TemporadaController');

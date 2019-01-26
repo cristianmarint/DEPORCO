@@ -45,5 +45,8 @@ class Instituto extends Model
         return $this->belongsTo(Direccion::class);
     }
 
+    protected function instituto(){
+        return $this->hasMany(Instituto::class);
+    }
 
 }
