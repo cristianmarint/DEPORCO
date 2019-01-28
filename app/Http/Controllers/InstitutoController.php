@@ -82,7 +82,6 @@ class InstitutoController extends Controller
                     echo "Guardado";
                 } else {
                     echo "error al guardar";
-//                    Enviar error al no guardar
                 }
             } else {
                 $nombreImg = 'img/instituto/default.png';
@@ -110,7 +109,7 @@ class InstitutoController extends Controller
                 'direccion_id' => $direccion->id,
                 'user_id' => Auth::user()->id
             ]);
-        });
+        }, 2);
 
         return redirect(route('institutos.index'));
     }
@@ -167,6 +166,54 @@ class InstitutoController extends Controller
             'numero' => 'required|string|min:3|max:5',
             'telefono' => 'required|integer'
         ]);
+
+        DB::transaction(function () use ($data, $request, $instituto) {
+
+            if($request->hasFile('logo')){
+                $archivo = $request->file('logo');
+                $nombreImg = 'img/instituto/'.time().'-'.$archivo->getClientOriginalName();
+
+                if (file_exists(public_path($instituto->logo))) {
+                    if($instituto->logo != 'img/instituto/default.png'){
+                        unlink(public_path($instituto->logo));
+                    }
+                }
+                if($archivo->move(public_path().'/img/instituto',$nombreImg)){
+                    echo "Guardado";
+                }else{
+                    echo "error al guardar";
+                }
+            }else{
+                $nombreImg = $instituto->logo;
+            }
+            Telefono::find($instituto->telefono_id)
+                ->update([
+                    'numero' => $data['telefono'],
+                    'tipo' => $data['tipo_telefono']
+                ]);
+
+            Direccion::find($instituto->direccion_id)
+                ->update([
+                    'calle' => $data['calle'],
+                    'carrera' => $data['carrera'],
+                    'numero' => $data['numero'],
+                ]);
+
+            Instituto::find($instituto->id)->
+                update([
+                    'codigo_dane' => $data['codigo_dane'],
+                    'nit' => $data['nit'],
+                    'nombre' => $data['nombre'],
+                    'logo' => $nombreImg,
+                    'municipio_id' => $data['municipio'],
+                    'tipo_educacion_id' => $data['tipo_educacion'],
+                    'telefono_id' => $instituto->telefono_id,
+                    'direccion_id' => $instituto->direccion_id,
+                    'user_id' => Auth::user()->id
+                ]);
+        }, 2);
+
+        return redirect(route('institutos.index'));
     }
 
     /**
@@ -175,8 +222,10 @@ class InstitutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
+        Instituto::find($id)->delete();
+        return redirect(route('institutos.index'));
     }
 }

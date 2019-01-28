@@ -40,10 +40,13 @@
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('institutos.show', $instituto->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('institutos.edit', $instituto->id)}}'"><i class='fa fa-edit'></i></button>
-                                            <form action="" method="POST">
+                                            <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+
+
+                                            <form action="{{route('institutos.destroy', $instituto->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button onclick="return confirm('Eliminar registro?')" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                <button type="submit" id="delete_instituto" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </div>
@@ -65,5 +68,38 @@
                 }
             } );
         });
+        
+        function funtion_swal() {
+            swal({
+                    title: "Eliminar Institucion",
+                    text: "Se eliminara informacion importante con respecto a esta",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Eliminar",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false },
+
+                function(isConfirm){
+                    if (isConfirm) {
+                        swal("¡Institucion Eliminada!",
+                            "...",
+                            "success");
+                        setTimeout(function(){
+                            $('.delete_instituto').click();
+                        }, 500);
+                    } else {
+                        // swal("¡Gallina!",
+                        //     "Tu te lo pierdes...",
+                        //     "error");
+                    }
+                });
+
+        }
+
+        // $('#delete').on('click', function () {
+        //     swal(" ","Institucion guardada con exito", "success");
+        // });
     </script>
 @endsection

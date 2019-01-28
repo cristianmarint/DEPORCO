@@ -24,6 +24,13 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="logo" class="form-control-label col-sm-5 ">Logo</label>
+                    <div class="col-sm-6">
+                        <img src="{{asset($instituto->logo)}}" class="rounded-circle" width="250vh">
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="nit" class="form-control-label col-sm-3 ">Nit</label>
                     <div class="col-sm-9">
                         <input id="nit" type="text" name="nit" class="form-control" value="{{$instituto->nit}}" readonly>
