@@ -34,7 +34,6 @@
                                 <td>{{$equipo->instituto->nombre}}</td>
                                 <td>{{$equipo->nombre}}</td>
                                 <td> <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
-                                <td>{{$equipo->color_id}}</td>
                                 <td>{{$equipo->colores->color}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
