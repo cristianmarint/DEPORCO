@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 1,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'superUser@correo.com',
-            'password' => bcrypt('superusuario'),
+            'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
 
@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 2,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'admin@correo.com',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
 
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 3,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'tester@correo.com',
-            'password' => bcrypt('tester'),
+            'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
 
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 1,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'someuser@correo.com',
-            'password' => bcrypt('somepassword'),
+            'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
     }

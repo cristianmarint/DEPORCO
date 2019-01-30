@@ -33,7 +33,7 @@ class Instituto extends Model
         return $this->belongsTo(Municipio::class);
     }
 
-    protected function tipo_educacion(){
+    public function tipo_educacion(){
         return $this->belongsTo(TipoEducacion::class);
     }
 
@@ -45,7 +45,7 @@ class Instituto extends Model
         return $this->belongsTo(Direccion::class);
     }
 
-    protected function instituto(){
+    public function instituto(){
         return $this->hasMany(Instituto::class);
     }
 
