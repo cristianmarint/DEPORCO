@@ -7,7 +7,7 @@ $factory->define(Equipo::class, function (Faker $faker) {
     return [
         'nombre' => $faker->streetName,
         'instituto_id' => \App\Instituto::all()->random()->id,
-        'colores_id' => \App\ColoresUniforme::all()->random()->id,
+        'color_id' => \App\ColoresUniforme::all()->random()->id,
         'user_id' => 2
     ];
 });

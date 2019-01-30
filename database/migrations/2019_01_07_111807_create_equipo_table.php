@@ -19,14 +19,14 @@ class CreateEquipoTable extends Migration
             $table->string('nombre', 60);
             $table->string('logo',150)->default('img/equipo/default.png');
             $table->unsignedInteger('instituto_id');
-            $table->unsignedInteger('colores_id');
+            $table->unsignedInteger('color_id');
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('instituto_id')->references('id')->on('instituto')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('colores_id')->references('id')->on('colores_uniforme')
+            $table->foreign('color_id')->references('id')->on('colores_uniforme')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');
