@@ -29,17 +29,17 @@
 
                     <tbody >
                     
-                        {{-- @foreach($equipos as $equipo)
+                        @foreach($equipos as $equipo)
                             <tr>
-                                <td>{{$equipo->nombre}}</td>
-                                <td>{{$equipo->nit}}</td>
+                                <td>{{$equipo->institucion_id}}</td>
                                 <td>{{$equipo->nombre}}</td>
                                 <td> <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
+                                <td>{{$equipo->ColoresUniforme}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('institutos.show', $instituto->id)}}'"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('institutos.edit', $instituto->id)}}'"><i class='fa fa-edit'></i></button>
+                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
                                             <form action="" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
@@ -49,7 +49,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     
                     </tbody>
                 </table>

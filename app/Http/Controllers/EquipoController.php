@@ -21,7 +21,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $Equipos = Equipo::where('deleted_at', null)->get();
+        $equipos = Equipo::where('deleted_at', null)->get();
         return view('equipo.index', compact('equipos'));
     }
 

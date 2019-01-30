@@ -41,7 +41,7 @@
                 <div class="form-group row">
                     <label for="colores" class="col-sm-3 form-control-label">Colores</label>
                     <div class="col-sm-9">
-                        <input id="colores" type="text" name="colores" class="form-control" value="{{$equipo->ColoresUniforme->color}}" readonly>
+                        <input id="colores" type="text" name="colores" class="form-control" value="{{$equipo->ColoresUniforme}}" readonly>
                     </div>
                 </div>
 
