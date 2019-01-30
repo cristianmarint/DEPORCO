@@ -23,7 +23,7 @@
                             <th>Institución</th>
                             <th>Nombre</th>
                             <th>Logo</th>
-                            <th>Colores</th>
+                            <th>Color</th>
                         </tr>
                     </thead>
 
@@ -31,10 +31,11 @@
                     
                         @foreach($equipos as $equipo)
                             <tr>
-                                <td>{{$equipo->institucion_id}}</td>
+                                <td>{{$equipo->instituto->nombre}}</td>
                                 <td>{{$equipo->nombre}}</td>
                                 <td> <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
-                                <td>{{$equipo->ColoresUniforme}}</td>
+                                <td>{{$equipo->color_id}}</td>
+                                <td>{{$equipo->colores->color}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
