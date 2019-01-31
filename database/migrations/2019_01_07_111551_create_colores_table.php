@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColoresUniformeTable extends Migration
+class CreateColoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateColoresUniformeTable extends Migration
      */
     public function up()
     {
-        Schema::create('colores_uniforme', function (Blueprint $table) {
+        Schema::create('colores', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('color', 60);
@@ -29,6 +29,6 @@ class CreateColoresUniformeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colores_uniforme');
+        Schema::dropIfExists('colores');
     }
 }

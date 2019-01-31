@@ -26,7 +26,7 @@ class CreateEquipoTable extends Migration
 
             $table->foreign('instituto_id')->references('id')->on('instituto')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('colores_id')->references('id')->on('colores_uniforme')
+            $table->foreign('colores_id')->references('id')->on('colores')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');

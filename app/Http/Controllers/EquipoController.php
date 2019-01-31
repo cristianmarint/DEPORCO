@@ -6,7 +6,7 @@ use App\Equipo;
 
 use App\Direccion;
 use App\Instituto;
-use App\ColoresUniforme;
+use App\Colores;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +21,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $Equipos = Equipo::where('deleted_at', null)->get();
+        $equipos = Equipo::all();
         return view('equipo.index', compact('equipos'));
     }
 
@@ -32,8 +32,10 @@ class EquipoController extends Controller
      */
     public function create()
     {
-        $equipos = Equipo::orderBy('nombre', 'asc')->get();
-        return view('equipo.create', compact('equipos'));
+        $institutos = Instituto::orderBy('nombre', 'asc')->get();
+        $colores = Colores::orderBy('color', 'asc')->get();
+
+        return view('equipo.create', compact('institutos','colores'));
     }
 
     /**
@@ -58,18 +60,10 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nit' => 'required|min:5|max:20|unique:instituto,nit',
-            'codigo_dane' => 'required|min:5|max:20|unique:instituto,codigo_dane',
-            'nombre' => 'required|min:7|max:150',
+            'nombre' => 'required|min:3|max:60',
             'logo'   => 'image',
-            'departamento' => 'required|integer|not_in:0|exists:departamento,id',
-            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
-            'tipo_educacion' => 'required|integer|not_in:0|exists:tipo_educacion,id',
-            'calle' => 'required|string|min:3|max:50',
-            'carrera' => 'required|string|min:3|max:10',
-            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'numero' => 'required|string|min:3|max:5',
-            'telefono' => 'required|integer'
+            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
+            'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
 
         DB::transaction(function () use ($data, $request) {
@@ -82,37 +76,22 @@ class EquipoController extends Controller
                     echo "Guardado";
                 } else {
                     echo "error al guardar";
-//                    Enviar error al no guardar
                 }
             } else {
                 $nombreImg = 'img/default.png';
             }
 
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
-
-            Instituto::create([
-                'codigo_dane' => $data['codigo_dane'],
-                'nit' => $data['nit'],
+            Equipo::create([
                 'nombre' => $data['nombre'],
                 'logo' => $nombreImg,
-                'municipio_id' => $data['municipio'],
-                'tipo_educacion_id' => $data['tipo_educacion'],
-                'telefono_id' => $telefono->id,
-                'direccion_id' => $direccion->id,
+                'instituto_id' => $data['instituto'],
+                'colores_id' => $data['colores'],
                 'user_id' => Auth::user()->id
             ]);
         });
 
-        return redirect(route('institutos.index'));
+        return redirect(route('equipos.index'));
     }
 
     /**
@@ -135,7 +114,11 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        return view('equipo.edit');
+        $equipo = Equipo::findOrFail($id);
+        $institutos = Instituto::orderBy('nombre', 'asc')->get();
+        $colores = Colores::orderBy('color', 'asc')->get();
+        return view('equipo.edit',compact('equipo','institutos','colores'));
+        
     }
 
     /**
@@ -147,7 +130,41 @@ class EquipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipo = Equipo::findOrFail($id);
+        $data = $request->validate([
+            'nombre' => 'required|min:3|max:60',
+            'logo'   => 'image',
+            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
+            'colores' => 'required|integer|not_in:0|exists:colores,id'
+        ]);
+
+        DB::transaction(function () use ($data, $request, $equipo) {
+            if($request->hasFile('logo')){
+                $archivo = $request->file('logo');
+                $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
+                if (file_exists(public_path($equipo->logo))) {
+                    if($equipo->logo != 'img/equipo/default.png'){
+                        unlink(public_path($equipo->logo));
+                    }
+                }
+                if($archivo->move(public_path().'/img/equipo',$nombreImg)){
+                    echo "Guardado";
+                }else{
+                    echo "error al guardar";
+                }
+            }else{
+                $nombreImg = $equipo->logo;
+            }
+            Equipo::find($equipo->id)->
+                update([
+                    'nombre' => $data['nombre'],
+                    'logo' => $nombreImg,
+                    'instituto_id' => $data['instituto'],
+                    'colores_id' => $data['colores'],
+                    'user_id' => Auth::user()->id
+                ]);
+        }, 2);
+        return redirect(route('equipos.index'));
     }
 
     /**
@@ -158,6 +175,7 @@ class EquipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Equipo::find($id)->delete();
+        return redirect(route('equipos.index'));
     }
 }

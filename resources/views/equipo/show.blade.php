@@ -17,6 +17,13 @@
             <div class="bg-white has-shadow">
 
                 <div class="form-group row">
+                    <label for="institucion" class="form-control-label col-sm-3">Institución</label>
+                    <div class="col-sm-9">
+                        <input id="institucion" type="text" name="institucion" class="form-control" value="{{$equipo->instituto->nombre}}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="nombre" class="form-control-label col-sm-3 ">Nombre</label>
                     <div class="col-sm-9">
                         <input id="nombre" type="text" name="nombre" class="form-control" value="{{$equipo->nombre}}" readonly>
@@ -27,21 +34,14 @@
                     <label for="nit" class="form-control-label col-sm-3 ">Logo</label>
                     <div class="col-sm-9">
                         <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh">
-                        <img src="{{$equipo->logo}}"  class="img-fluid rounded-circle" width="50vh">
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="institucion" class="form-control-label col-sm-3">Institución</label>
-                    <div class="col-sm-9">
-                        <input id="institucion" type="text" name="institucion" class="form-control" value="{{$equipo->instituto->nombre}}" readonly>
-                    </div>
-                </div>
 
                 <div class="form-group row">
                     <label for="colores" class="col-sm-3 form-control-label">Colores</label>
                     <div class="col-sm-9">
-                        <input id="colores" type="text" name="colores" class="form-control" value="{{$equipo->ColoresUniforme->color}}" readonly>
+                        <input id="colores" type="text" name="colores" class="form-control" value="{{$equipo->colores->color}}" readonly>
                     </div>
                 </div>
 

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'users',
             'tipo_educacion',
             'instituto',
-            'colores_uniforme',
+            'colores',
             'equipo',
             'tarjetas',
             'categoria',
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
         $this->call(InstitutoTableSeeder::class);
-        $this->call(ColoresUniformeTableSeeder::class);
+        $this->call(ColoresTableSeeder::class);
         $this->call(EquipoTableSeeder::class);
         $this->call(TarjetasTableSeeder::class);
         $this->call(CategoriaTableSeeder::class);

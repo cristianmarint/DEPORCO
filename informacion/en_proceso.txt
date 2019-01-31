@@ -1,4 +1,0 @@
-La migracion de enfrentamiento presenta problemas cuando se quiere hacer un rollback o reset,
-
-
-En desarrollo de Equipos CRUD

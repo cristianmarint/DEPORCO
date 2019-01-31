@@ -28,8 +28,8 @@ class Equipo extends model
       return $this->belongsTo(Instituto::class);
     }
 
-    protected function ColoresUniforme(){
-      return $this->belongsTo(ColoresUniforme::class);
-    }
+    public function colores(){
+      return $this->belongsTo(Colores::class);
+  }
 
 }

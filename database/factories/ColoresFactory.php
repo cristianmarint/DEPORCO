@@ -1,9 +1,9 @@
 <?php
 
-use App\ColoresUniforme;
+use App\Colores;
 use Faker\Generator as Faker;
 
-$factory->define(ColoresUniforme::class, function (Faker $faker) {
+$factory->define(Colores::class, function (Faker $faker) {
     return [
         'color' => $faker->colorName
     ];

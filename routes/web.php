@@ -32,7 +32,7 @@ Route::group(['middleware'=>'auth'], function() {
     
     // Routes equipos
     Route::resource('/equipos', 'EquipoController');
-    Route::get('/equipo/{id}', 'EquipoController@getEquipo');
+    Route::get('/equipos/{id}', 'EquipoController@getEquipo');
 
     // Routes temporadas
 //    Route::resource('/temporadas', 'TemporadaController');

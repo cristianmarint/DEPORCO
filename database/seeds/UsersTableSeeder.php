@@ -16,10 +16,10 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 1,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'superUser@correo.com',
-            'password' => bcrypt('superusuario'),
+            'password' => bcrypt('superUser'),
             'remember_token' => str_random(10),
         ));
-
+        
         User::create(array(
             'rol_id' => 2,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'remember_token' => str_random(10),
         ));
-
+        
         User::create(array(
             'rol_id' => 3,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
@@ -40,7 +40,15 @@ class UsersTableSeeder extends Seeder
             'rol_id' => 1,
             'datos_basicos_id' => \App\DatosBasicos::all()->random()->id,
             'email' => 'someuser@correo.com',
-            'password' => bcrypt('somepassword'),
+            'password' => bcrypt('someuser'),
+            'remember_token' => str_random(10),
+        ));
+
+        User::create(array(
+            'rol_id' => 1,
+            'datos_basicos_id' => 1,
+            'email' => 'cristianmarint@cotecnova.edu.co',
+            'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
     }
