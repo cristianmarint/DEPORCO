@@ -35,20 +35,20 @@
                                 <td>{{$lugar->nombre}}</td>
                                 <td>{{$lugar->municipio->nombre}}</td>
                                 <td>Calle {{$lugar->direccion->calle}} Carrera {{$lugar->direccion->carrera}} # {{$lugar->direccion->numero}}</td>
-                                <td>{{$lugar->telefono->numero}}</td>
+                                <td>{{$lugar->telefono->tipo}} {{$lugar->telefono->numero}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $lugar->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
-                                            {{-- <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
-                                            <form action="{{route('lugar.destroy', $lugar->id)}}" method="POST">
+                                            <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
                                                 <button type="submit" id="delete_lugar" style="display: none;"></button>
-                                            </form> --}}
+                                            </form>
                                         </div>
                                     </div>
                                 </td>
@@ -73,8 +73,7 @@
         
         function funtion_swal() {
             swal({
-                    title: "¿Seguro que desea eliminar el equipo?",
-                    // text: "Se eliminara informacion importante con respecto a esta",
+                    title: "¿Seguro que desea eliminar este lugar?",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
@@ -86,13 +85,13 @@
                  },
                 function(isConfirm){
                     if (isConfirm) {
-                        swal("Equipo Eliminado!","procesando cambios","success");
+                        swal("Lugar Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
-                            $('#delete_equipo').click();
+                            $('#delete_lugar').click();
                         }, 500);
                     } else {
-                        swal("Cancelado", "El equipo NO ha sido eliminado", "error");
+                        swal("Cancelado", "El lugar NO ha sido eliminado", "error");
                     }
                 });
         }
