@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lugar;
 
-use App\Departamente;
+use App\Departamento;
 use App\Municipio;
 use App\Direccion;
 use App\Telefono;
@@ -24,7 +24,7 @@ class LugarController extends Controller
     public function index()
     {
         $lugares = Lugar::all();
-        return view('Lugar.index', compact('lugares'));
+        return view('lugar.index', compact('lugares'));
     }
 
     /**
@@ -34,10 +34,8 @@ class LugarController extends Controller
      */
     public function create()
     {
-        // $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        // $colores = Colores::orderBy('color', 'asc')->get();
-
-        // return view('Lugar.create', compact('colores'));
+        $departamentos = Departamento::orderBy('nombre', 'asc')->get();
+        return view('lugar.create', compact('departamentos'));
     }
 
     /**
@@ -46,11 +44,11 @@ class LugarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getEquipo($id){
-        $equipo = Equipo::where('equipo_id',$id)
+    public function getLugar($id){
+        $lugar = Lugar::where('lugar_id',$id)
             ->orderBy('nombre', 'asc')
             ->get();
-        return response()->json($equipo);
+        return response()->json($lugar);
     }
 
     /**
@@ -62,38 +60,37 @@ class LugarController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nombre' => 'required|min:3|max:60',
-            'logo'   => 'image',
-            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
-            'colores' => 'required|integer|not_in:0|exists:colores,id'
+            'nombre' => 'required|min:3|max:50',
+            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
+            'calle' => 'required|string|min:3|max:50',
+            'carrera' => 'required|string|min:3|max:10',
+            'numero' => 'required|string|min:1|max:5',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
+            'telefono' => 'required|integer|min:7'
         ]);
 
         DB::transaction(function () use ($data, $request) {
-            $nombreImg = 'img/default.png';
+            $telefono = Telefono::create([
+                'numero' => $data['telefono'],
+                'tipo' => $data['tipo_telefono']
+            ]);
 
-            if ($request->hasFile('logo')) {
-                $archivo = $request->file('logo');
-                $nombreImg = 'img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/instituto', $nombreImg)) {
-                    echo "Guardado";
-                } else {
-                    echo "error al guardar";
-                }
-            } else {
-                $nombreImg = 'img/default.png';
-            }
+            $direccion = Direccion::create([
+                'calle' => $data['calle'],
+                'carrera' => $data['carrera'],
+                'numero' => $data['numero'],
+            ]);
 
-
-            Equipo::create([
+            Lugar::create([
                 'nombre' => $data['nombre'],
-                'logo' => $nombreImg,
-                'instituto_id' => $data['instituto'],
-                'colores_id' => $data['colores'],
+                'municipio_id' => $data['municipio'],
+                'telefono_id' => $telefono->id,
+                'direccion_id' => $direccion->id,
                 'user_id' => Auth::user()->id
             ]);
         });
 
-        return redirect(route('equipos.index'));
+        return redirect(route('lugares.index'));
     }
 
     /**
@@ -104,8 +101,8 @@ class LugarController extends Controller
      */
     public function show($id)
     {
-        $equipo = Equipo::findOrFail($id);
-        return view('equipo.show', compact('equipo'));
+        $lugar = Lugar::findOrFail($id);
+        return view('lugar.show', compact('lugar'));
     }
 
     /**

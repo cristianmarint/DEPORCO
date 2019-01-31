@@ -14,6 +14,10 @@ class Lugar extends Model
 
     protected $fillable = [
         'nombre',
+        'municipio_id',
+        'telefono_id',
+        'direccion_id',
+        'user_id'
     ];
 
     protected function municipio(){

@@ -9,3 +9,6 @@ mejorar decoracion de pagina de login
 
 
 esta en proceso la view de Lugar
+
+
+**  CUANDO SE BORRA, HACE EL BORRADO DEL PRIMERO DE LA LISTA PERO NO DEL QUE SE SELECCIONA ** (EQUIPOS Y LUGARES)
