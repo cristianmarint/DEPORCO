@@ -21,7 +21,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::where('deleted_at', null)->get();
+        $equipos = Equipo::all();
         return view('equipo.index', compact('equipos'));
     }
 
@@ -116,8 +116,10 @@ class EquipoController extends Controller
     public function edit($id)
     {
         $equipo = Equipo::findOrFail($id);
-        $instituto = Instituto::orderBy('nombre', 'asc')->get();
-        return view('equipo.edit',compact('equipo','instituto'));
+        $institutos = Instituto::orderBy('nombre', 'asc')->get();
+        $colores = Colores::orderBy('color', 'asc')->get();
+        return view('equipo.edit',compact('equipo','institutos','colores'));
+        
     }
 
     /**
@@ -163,7 +165,7 @@ class EquipoController extends Controller
                     'user_id' => Auth::user()->id
                 ]);
         }, 2);
-        return redirect(route('equipo.index'));
+        return redirect(route('equipos.index'));
     }
 
     /**

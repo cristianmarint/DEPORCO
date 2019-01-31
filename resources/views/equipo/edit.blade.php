@@ -17,7 +17,7 @@
             <div class="bg-white has-shadow">
 
 
-                <form action="{{route('equipo.update', $equipo->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{route('equipos.update', $equipo->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                     {{ method_field('PUT') }}
                     @csrf
                     
