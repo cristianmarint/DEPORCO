@@ -42,7 +42,15 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $lugar->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
-                                            <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+
+                                            {{-- <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST"  id="delete_lugar{{ $lugar->id }}">
+                                                    {{ method_field('DELETE') }}
+                                                    @csrf
+                                                    <button onclick="id_clicked({{$lugar->id}});  return funtion_swal()" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            </form> --}}
+
+
+                                            <button onclick="id_clicked({{ $lugar->id }});return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
@@ -70,10 +78,16 @@
                 }
             } );
         });
-        
+        var idclick;
+        function id_clicked(id){
+                console.log("id clickeada => "+id);
+            idclick=id;
+            // document.forms["delete_lugar"].submit();
+        }
         function funtion_swal() {
+            
             swal({
-                    title: "¿Seguro que desea eliminar este lugar?",
+                    title: "¿Seguro que desea eliminar este lugar? "+idclick,
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
@@ -88,7 +102,8 @@
                         swal("Lugar Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
-                            $('#delete_lugar').click();
+                            // $('#delete_lugar').click();
+                            document.forms["delete_lugar"+idclick].submit();    
                         }, 500);
                     } else {
                         swal("Cancelado", "El lugar NO ha sido eliminado", "error");
