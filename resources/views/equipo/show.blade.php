@@ -17,6 +17,13 @@
             <div class="bg-white has-shadow">
 
                 <div class="form-group row">
+                    <label for="institucion" class="form-control-label col-sm-3">Institución</label>
+                    <div class="col-sm-9">
+                        <input id="institucion" type="text" name="institucion" class="form-control" value="{{$equipo->instituto->nombre}}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="nombre" class="form-control-label col-sm-3 ">Nombre</label>
                     <div class="col-sm-9">
                         <input id="nombre" type="text" name="nombre" class="form-control" value="{{$equipo->nombre}}" readonly>
@@ -30,12 +37,6 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="institucion" class="form-control-label col-sm-3">Institución</label>
-                    <div class="col-sm-9">
-                        <input id="institucion" type="text" name="institucion" class="form-control" value="{{$equipo->instituto->nombre}}" readonly>
-                    </div>
-                </div>
 
                 <div class="form-group row">
                     <label for="colores" class="col-sm-3 form-control-label">Colores</label>

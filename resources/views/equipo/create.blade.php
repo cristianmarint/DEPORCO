@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="create_logo" class="col-sm-3 form-control-label">Logo/escudo</label>
+                                <label for="create_logo" class="col-sm-3 form-control-label">Logo</label>
                                 <div class="col-sm-9">
                                     <input id="create_logo" type="file" name="logo" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" accept="image/*">
                                     @if ($errors->has('logo'))
@@ -64,7 +64,7 @@
                             <div class="form-group row">
                                     <label for="create_colores" class="col-sm-3 form-control-label">Color de uniforme</label>
                                     <div class="col-sm-9">
-                                        <select name="colores" id="create_colores" class="form-control{{ $errors->has('institucion') ? ' is-invalid' : '' }}">
+                                        <select name="colores" id="create_colores" class="form-control{{ $errors->has('colores') ? ' is-invalid' : '' }}">
                                             <option value="0" >Seleccione un color</option>
                                             @foreach($colores as $colors)
                                                 <option value="{{$colors->id}}">{{$colors->color}}</option>

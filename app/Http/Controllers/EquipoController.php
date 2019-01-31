@@ -115,7 +115,9 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        return view('equipo.edit');
+        $equipo = Equipo::findOrFail($id);
+        $instituto = Instituto::orderBy('nombre', 'asc')->get();
+        return view('equipo.edit',compact('equipo','instituto'));
     }
 
     /**
@@ -127,7 +129,41 @@ class EquipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipo = Equipo::findOrFail($id);
+        $data = $request->validate([
+            'nombre' => 'required|min:3|max:60',
+            'logo'   => 'image',
+            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
+            'colores' => 'required|integer|not_in:0|exists:colores,id'
+        ]);
+
+        DB::transaction(function () use ($data, $request, $equipo) {
+            if($request->hasFile('logo')){
+                $archivo = $request->file('logo');
+                $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
+                if (file_exists(public_path($equipo->logo))) {
+                    if($equipo->logo != 'img/equipo/default.png'){
+                        unlink(public_path($equipo->logo));
+                    }
+                }
+                if($archivo->move(public_path().'/img/equipo',$nombreImg)){
+                    echo "Guardado";
+                }else{
+                    echo "error al guardar";
+                }
+            }else{
+                $nombreImg = $equipo->logo;
+            }
+            Equipo::find($equipo->id)->
+                update([
+                    'nombre' => $data['nombre'],
+                    'logo' => $nombreImg,
+                    'instituto_id' => $data['instituto'],
+                    'colores_id' => $data['colores'],
+                    'user_id' => Auth::user()->id
+                ]);
+        }, 2);
+        return redirect(route('equipo.index'));
     }
 
     /**

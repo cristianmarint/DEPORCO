@@ -24,6 +24,7 @@
                             <th>Nombre</th>
                             <th>Logo</th>
                             <th>Color</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
