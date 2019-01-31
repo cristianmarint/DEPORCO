@@ -173,7 +173,7 @@
                                                 <strong>{{ $errors->first('telefono') }}</strong>
                                             </span>
                                     @endif
-                                </div>
+S                                </div>
                             </div>
 
                             <div class="form-group row">

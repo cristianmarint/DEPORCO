@@ -34,9 +34,8 @@ class EquipoController extends Controller
     {
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
         $colores = Colores::orderBy('color', 'asc')->get();
-        return view('equipo.create', compact('institutos','colores'));
 
-        // return view('equipo.create', compact('colores'));
+        return view('equipo.create', compact('institutos','colores'));
     }
 
     /**
