@@ -42,10 +42,12 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
 
+                                            <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            
                                             <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button type="submit" id="delete_equipo" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                <button type="submit" id="delete_equipo" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </div>
@@ -68,5 +70,31 @@
                 }
             } );
         });
+        
+        function funtion_swal() {
+            swal({
+                    title: "¿Seguro que desea eliminar el equipo?",
+                    // text: "Se eliminara informacion importante con respecto a esta",
+                    text: "Se eliminara toda la información",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Eliminar",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false 
+                 },
+                function(isConfirm){
+                    if (isConfirm) {
+                        swal("Equipo Eliminado!","procesando cambios","success");
+
+                        setTimeout(function(){
+                            $('#delete_equipo').click();
+                        }, 500);
+                    } else {
+                        swal("Cancelado", "El equipo NO ha sido eliminado", "error");
+                    }
+                });
+        }
     </script>
 @endsection
