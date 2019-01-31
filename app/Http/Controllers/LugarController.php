@@ -113,10 +113,11 @@ class LugarController extends Controller
      */
     public function edit($id)
     {
-        $equipo = Equipo::findOrFail($id);
-        $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        $colores = Colores::orderBy('color', 'asc')->get();
-        return view('equipo.edit',compact('equipo','institutos','colores'));
+        $lugar = Lugar::findOrFail($id);
+        $departamentos = Departamento::orderBy('nombre', 'asc')->get();
+        $telefono = Telefono::orderBy('numero', 'asc')->get();
+
+        return view('lugar.edit',compact('lugar','departamentos','telefono'));
         
     }
 
@@ -129,41 +130,39 @@ class LugarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $equipo = Equipo::findOrFail($id);
+        $lugar = Lugar::findOrFail($id);
         $data = $request->validate([
-            'nombre' => 'required|min:3|max:60',
-            'logo'   => 'image',
-            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
-            'colores' => 'required|integer|not_in:0|exists:colores,id'
+            'nombre' => 'required|min:3|max:50',
+            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
+            'calle' => 'required|string|min:3|max:50',
+            'carrera' => 'required|string|min:3|max:10',
+            'numero' => 'required|string|min:1|max:5',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
+            'telefono' => 'required|integer|min:7'
         ]);
 
-        DB::transaction(function () use ($data, $request, $equipo) {
-            if($request->hasFile('logo')){
-                $archivo = $request->file('logo');
-                $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
-                if (file_exists(public_path($equipo->logo))) {
-                    if($equipo->logo != 'img/equipo/default.png'){
-                        unlink(public_path($equipo->logo));
-                    }
-                }
-                if($archivo->move(public_path().'/img/equipo',$nombreImg)){
-                    echo "Guardado";
-                }else{
-                    echo "error al guardar";
-                }
-            }else{
-                $nombreImg = $equipo->logo;
-            }
-            Equipo::find($equipo->id)->
+        DB::transaction(function () use ($data, $request, $lugar) {
+            $telefono = Telefono::create([
+                'numero' => $data['telefono'],
+                'tipo' => $data['tipo_telefono']
+            ]);
+
+            $direccion = Direccion::create([
+                'calle' => $data['calle'],
+                'carrera' => $data['carrera'],
+                'numero' => $data['numero'],
+            ]);
+
+            Lugar::find($lugar->id)->
                 update([
                     'nombre' => $data['nombre'],
-                    'logo' => $nombreImg,
-                    'instituto_id' => $data['instituto'],
-                    'colores_id' => $data['colores'],
+                    'municipio_id' => $data['municipio'],
+                    'telefono_id' => $telefono->id,
+                    'direccion_id' => $direccion->id,
                     'user_id' => Auth::user()->id
                 ]);
         }, 2);
-        return redirect(route('equipos.index'));
+        return redirect(route('lugares.index'));
     }
 
     /**
