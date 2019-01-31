@@ -22,12 +22,21 @@
                     @csrf
                     
                     <div class="form-group row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4" style="">
+                                <img src="{{asset($equipo->logo)}}"  class="mx-auto d-block" width="50vh">
+                            </div>
+                            <div class="col-sm-4"></div>
+                    </div>  
+
+
+                    <div class="form-group row">
                         <label for="edit_instituto" class="col-sm-3 form-control-label">Institución</label>
                         <div class="col-sm-9">
                             <select name="instituto" id="edit_instituto" class="form-control{{ $errors->has('instituto') ? ' is-invalid' : '' }}">
-                                <option value="0" >Seleccione un departamento</option>
+                                <option value="0" >Seleccione una Institución</option>
                                 @foreach($institutos as $instituto)
-                                    <option value="{{$instituto->id}}">{{$instituto->nombre}}</option>
+                                    <option value="{{$instituto->id}}"     {{$instituto->id == $equipo->instituto_id ? 'selected':''}}>{{ $instituto->nombre }}</option>
                                 @endforeach     
                             </select>
                             @if ($errors->has('instituto'))
@@ -37,6 +46,8 @@
                             @endif
                         </div>
                     </div>
+
+
                     
                     <div class="form-group row">
                         <label for="edit_nombre_equipo" class="form-control-label col-sm-3">Nombre</label>
@@ -70,7 +81,7 @@
                                 <select name="colores" id="edit_colores" class="form-control{{ $errors->has('colores') ? ' is-invalid' : '' }}">
                                     <option value="0" >Seleccione un color</option>
                                     @foreach($colores as $colors)
-                                        <option value="{{$colors->id}}">{{$colors->color}}</option>
+                                        <option value="{{$colors->id}}" {{ $colors->id == $equipo->colores_id ? 'selected':'' }}>{{$colors->color}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('colores'))

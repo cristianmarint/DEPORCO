@@ -1,4 +1,1 @@
-La migracion de enfrentamiento presenta problemas cuando se quiere hacer un rollback o reset,
-
-
-En desarrollo de Equipos CRUD
+Falta hacer la decoracion , swalp al momento de borrar y hacer que borre xd
