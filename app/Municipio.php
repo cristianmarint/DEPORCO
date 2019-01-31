@@ -20,4 +20,8 @@ class Municipio extends Model
     protected function instituto(){
         return $this->hasMany(Instituto::class);
     }
+
+    protected function lugar(){
+        return $this->hasMany(Lugar::class);
+    }
 }
