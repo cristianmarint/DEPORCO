@@ -41,10 +41,11 @@
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
-                                            <form action="" method="POST">
+
+                                            <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button onclick="return confirm('Eliminar registro?')" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                <button type="submit" id="delete_equipo" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             </form>
                                         </div>
                                     </div>
