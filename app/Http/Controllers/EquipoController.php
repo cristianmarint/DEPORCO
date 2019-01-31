@@ -67,18 +67,18 @@ class EquipoController extends Controller
         ]);
 
         DB::transaction(function () use ($data, $request) {
-            $nombreImg = 'img/default.png';
+            $nombreImg = 'img/equipo/default.png';
 
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/instituto', $nombreImg)) {
+                $nombreImg = 'img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move(public_path() . '/img/equipo', $nombreImg)) {
                     echo "Guardado";
                 } else {
                     echo "error al guardar";
                 }
             } else {
-                $nombreImg = 'img/default.png';
+                $nombreImg = 'img/equipo/default.png';
             }
 
 
