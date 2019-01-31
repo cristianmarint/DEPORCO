@@ -76,7 +76,6 @@ class EquipoController extends Controller
                     echo "Guardado";
                 } else {
                     echo "error al guardar";
-//                    Enviar error al no guardar
                 }
             } else {
                 $nombreImg = 'img/default.png';
