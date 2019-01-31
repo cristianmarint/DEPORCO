@@ -6,3 +6,6 @@ al momento de borrar
 
 
 mejorar decoracion de pagina de login
+
+
+esta en proceso la view de Lugar
