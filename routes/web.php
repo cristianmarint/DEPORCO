@@ -38,6 +38,10 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/lugares', 'LugarController');
     Route::get('/lugares/{id}', 'LugarController@getLugar');
 
+    // Routes datos basicos
+    Route::resource('/datosbasicos', 'DatosBasicosController');
+    Route::get('/datosbasicos/{id}', 'DatosBasicosController@getDatosBasicos');
+
     // Routes temporadas
 //    Route::resource('/temporadas', 'TemporadaController');
 
