@@ -40,6 +40,19 @@ class DatosBasicosController extends Controller
     }
 
     /**
+     * Display the specified resource .
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response json
+     */
+    public function getDatosBasicos($id){
+        $datosbasicos = DatosBasicos::where('id',$id)
+            ->orderBy('nombre', 'asc')
+            ->get();
+        return response()->json($datosbasicos);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -58,7 +71,8 @@ class DatosBasicosController extends Controller
      */
     public function show($id)
     {
-        //
+        $datosbasicos = DatosBasicos::findOrFail($id);
+        return view('datosbasicos.show', compact('datosbasicos'));
     }
 
     /**

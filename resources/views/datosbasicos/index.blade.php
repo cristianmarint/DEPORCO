@@ -41,7 +41,7 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $datos->id)}}'"><i class="fa fa-eye"></i></button>
+                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('datosbasicos.show', $datos->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $datos->id)}}'"><i class='fa fa-edit'></i></button>
 
 

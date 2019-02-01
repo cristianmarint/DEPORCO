@@ -42,4 +42,13 @@ class DatosBasicos extends Model
     public function direccion(){
         return $this->belongsTo(Direccion::class);
     }
+    public function tipo_sangre(){
+        return $this->belongsTo(TipoSangre::class);
+    }
+    public function genero(){
+        return $this->belongsTo(Genero::class);
+    }
+    public function eps(){
+        return $this->belongsTo(Eps::class);
+    }
 }
