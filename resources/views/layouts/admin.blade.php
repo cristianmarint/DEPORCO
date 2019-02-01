@@ -46,7 +46,7 @@
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                         <!-- Navbar Header-->
                         <div class="navbar-header">
-                            <!-- Navbar Brand --><a href="#" class="navbar-brand d-none d-sm-inline-block">
+                            <!-- Navbar Brand --><a href="{{url('/home')}}" class="navbar-brand d-none d-sm-inline-block">
                                 <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong> Cotecnova</strong></div>
                                 <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>DC</strong></div></a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -127,6 +127,8 @@
                     <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fa fa-university" aria-hidden="true"></i>Institucion (es)</a></li>
 
                     <li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fa fa-shield" aria-hidden="true"></i>Equipo (s)</a></li>
+                    
+                    <li class="{{Request::is('lugares') ? 'active': ''}} {{Request::is('lugares/*') ? 'active': ''}}"><a href="{{url('/lugares')}}" class="links"> <i class="fa fa-map-marker"></i>Lugar (es)</a></li>
                     
                     {{--<li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-clock-o" aria-hidden="true"></i>Temporada</a></li>--}}
                     {{--<li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fa fa-list"></i>Categoria</a></li>--}}

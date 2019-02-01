@@ -34,6 +34,10 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/equipos', 'EquipoController');
     Route::get('/equipos/{id}', 'EquipoController@getEquipo');
 
+    // Routes equipos
+    Route::resource('/lugares', 'LugarController');
+    Route::get('/lugares/{id}', 'LugarController@getLugar');
+
     // Routes temporadas
 //    Route::resource('/temporadas', 'TemporadaController');
 
