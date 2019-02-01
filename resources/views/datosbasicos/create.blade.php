@@ -22,7 +22,7 @@
                             <div class="form-group row">
                                     <label for="create_foto" class="col-sm-3 form-control-label">Foto</label>
                                     <div class="col-sm-9">
-                                        <input id="create_foto" type="file" name="logo" class="form-control{{ $errors->has('foto') ? ' is-invalid' : '' }}" accept="image/*">
+                                        <input id="create_foto" type="file" name="foto" class="form-control{{ $errors->has('foto') ? ' is-invalid' : '' }}" accept="image/*">
                                         @if ($errors->has('foto'))
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('foto') }}</strong>
@@ -166,7 +166,7 @@
                                                 </span>
                                         @endif
                                     </div>
-                            </div>
+                                </div>
 
                             <div class="form-group row">
                                     <label for="create_email" class="form-control-label col-sm-3">Correo electronico </label>
@@ -174,7 +174,7 @@
                                         <input id="create_email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{old('email')}}" placeholder="Ingrese el correo electronico">
                                         @if ($errors->has('create_email'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('create_email') }}</strong>
+                                            <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                         @endif
                                     </div>

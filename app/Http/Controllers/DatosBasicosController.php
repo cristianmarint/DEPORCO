@@ -66,7 +66,72 @@ class DatosBasicosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'foto'   => 'image',
+            'cedula' => 'required|numeric|not_in:0|unique:datos_basicos,cedula',
+            'primer_nombre' => 'required|min:3|max:60',
+            'segundo_nombre' => 'min:3|max:60',
+            'primer_apellido' => 'required|min:3|max:60',
+            'segundo_apellido' => 'min:3|max:60',
+            'tipo_sangre' => 'required|integer|not_in:0|exists:tipo_sangre,id',
+            'genero' => 'required|integer|not_in:0|exists:genero,id',
+            'eps' => 'required|integer|not_in:0|exists:eps,id',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
+            'telefono' => 'required|numeric|min:7',
+            'email' => 'min:3|max:60|unique:datos_basicos,email',
+            'departamento' => 'required|integer|not_in:0|exists:departamento,id',
+            'municipio' => 'required|integer|not_in:0|exists:municipio,id',
+            'calle' => 'required|string|min:3|max:50',
+            'carrera' => 'required|string|min:3|max:10',
+            'numero' => 'required|string|min:3|max:5',
+        ]);
+
+        DB::transaction(function () use ($data, $request) {
+            $nombreImg = 'img/datosbasicos/default.png';
+
+            if ($request->hasFile('foto')) {
+                $archivo = $request->file('foto');
+                $nombreImg = 'img/datosbasicos/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move(public_path() . '/img/datosbasicos', $nombreImg)) {
+                    echo "Guardado";
+                } else {
+                    echo "error al guardar";
+                }
+            } else {
+                $nombreImg = 'img/datosbasicos/default.png';
+            }
+
+            $telefono = Telefono::create([
+                'numero' => $data['telefono'],
+                'tipo' => $data['tipo_telefono']
+            ]);
+
+            $direccion = Direccion::create([
+                'calle' => $data['calle'],
+                'carrera' => $data['carrera'],
+                'numero' => $data['numero'],
+            ]);
+
+            DatosBasicos::create([
+                'foto'              => $nombreImg,
+                'cedula'            => $data['cedula'],
+                'primer_nombre'     => $data['primer_nombre'],
+                'segundo_nombre'    => $data['segundo_nombre'],
+                'primer_apellido'   => $data['primer_apellido'],
+                'segundo_apellido'  => $data['segundo_apellido'],
+                'tipo_sangre'       => $data['tipo_sangre'],
+                'genero'            => $data['genero'],
+                'eps'               => $data['eps'],
+                'telefono_id'       => $telefono->id,
+                'email'             => $data['email'],
+                'departamento'      => $data['departamento'],
+                'municipio'         => $data['municipio'],
+                'direccion_id'      => $direccion->id,
+                // 'user_id' => Auth::user()->id
+            ]);
+        });
+
+        return redirect(route('datosbasicos.index'));
     }
 
     /**

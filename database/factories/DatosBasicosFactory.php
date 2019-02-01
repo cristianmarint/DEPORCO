@@ -16,6 +16,6 @@ $factory->define(DatosBasicos::class, function (Faker $faker) {
         'genero_id' => \App\Genero::all()->random()->id,
         'direccion_id' => \App\Direccion::all()->random()->id,
         'eps_id' => \App\Eps::all()->random()->id,
-        'email' => $faker->email
+        'email' => $faker->email,
     ];
 });

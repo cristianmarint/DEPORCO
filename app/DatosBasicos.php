@@ -25,7 +25,7 @@ class DatosBasicos extends Model
         'genero_id',
         'direccion_id',
         'eps_id',
-       'email'
+       'email',
     ];
 
     protected function user(){

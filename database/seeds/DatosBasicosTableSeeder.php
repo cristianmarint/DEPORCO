@@ -26,9 +26,9 @@ class DatosBasicosTableSeeder extends Seeder
             'genero_id' => 1,
             'direccion_id' => \App\Direccion::all()->random()->id,
             'eps_id' => \App\Eps::all()->random()->id,
-            'email' => 'cristianmarint@cotecnova.edu.co'
+            'email' => 'cristianmarint@cotecnova.edu.co',
         ));
-
+        
         DatosBasicos::create(array(
             'cedula' => '222111222',
             'foto' => 'http://lorempixel.com/800/800/people/',
@@ -40,9 +40,10 @@ class DatosBasicosTableSeeder extends Seeder
             'genero_id' => 1,
             'direccion_id' => \App\Direccion::all()->random()->id,
             'eps_id' => \App\Eps::all()->random()->id,
-            'email' => 'edwin.lopezb.1297@cotecnova.edu.co'
+            'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
         ));
-
+        
         factory(DatosBasicos::class, 100)->create();
+
     }
 }
