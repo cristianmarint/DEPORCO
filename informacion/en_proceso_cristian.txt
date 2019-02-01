@@ -8,7 +8,7 @@ al momento de borrar
 mejorar decoracion de pagina de login
 
 
-esta en proceso la view de Lugar
+esta en proceso la view de datos basicos
 
 
-**  CUANDO SE BORRA, HACE EL BORRADO DEL PRIMERO DE LA LISTA PERO NO DEL QUE SE SELECCIONA ** (EQUIPOS Y LUGARES)
+** centrar los logos y fotos ** actualmente quedan en la derecha
