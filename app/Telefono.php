@@ -2,8 +2,13 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Telefono extends Model{
+
+class Telefono extends Model
+{
+    use SoftDeletes;
+
     protected $table = "telefono";
 
     protected $fillable = [
@@ -16,6 +21,9 @@ class Telefono extends Model{
     }
     protected function lugar(){
         return $this->hasOne(Lugar::class);
+    }
+    protected function datosbasicos(){
+        return $this->hasOne(DatosBasicos::class);
     }
 
 }
