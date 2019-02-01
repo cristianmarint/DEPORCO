@@ -15,6 +15,13 @@
     <section class="dashboard-counts">
         <div class="container-fluid">
             <div class="bg-white has-shadow">
+                
+                <div class="form-group row">
+                        <label for="nit" class="form-control-label col-sm-3 ">Foto</label>
+                        <div class="col-sm-9">
+                            <img src="{{asset($datosbasicos->foto)}}"  class="img-fluid rounded-circle" width="50vh">
+                        </div>
+                </div>
 
                 <div class="form-group row">
                     <label for="cedula" class="form-control-label col-sm-3 ">Cedula</label>
