@@ -42,12 +42,12 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $lugar->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
-
+                                                                          {{--  captura la informacion de cada row cuando se le da click al boton   --}}
                                             <button onclick="id_clickeado({{ $lugar->id }},'{{ $lugar->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
-                                                @csrf
+                                                @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
                                                 <button type="submit" id="delete_lugar{{ $lugar->id }}" style="display: none;"></button>
                                             </form>
                                         </div>
@@ -75,7 +75,7 @@
         function id_clickeado(id,nombre){
                 console.log("id clickeada => "+id);
             idclick=id;//captura el id a la cual se le dio click
-            nombreclick=nombre;//captura el id a la cual se le dio click
+            nombreclick=nombre;//captura el nombre a la cual se le dio click
         }
         function funtion_swal() {
             
@@ -95,7 +95,7 @@
                         swal("Lugar Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
-                            var idfinal="#delete_lugar"+idclick; 
+                            var idfinal="#delete_lugar"+idclick;//se le agrega el id que fue clickeado
                             $(idfinal).click();
                         }, 500);
                     } else {
