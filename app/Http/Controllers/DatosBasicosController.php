@@ -13,6 +13,8 @@ use App\Eps;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DatosBasicosController extends Controller
 {
@@ -90,6 +92,7 @@ class DatosBasicosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DatosBasicos::find($id)->delete();
+        return redirect(route('datosbasicos.index'));
     }
 }

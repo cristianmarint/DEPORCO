@@ -45,12 +45,12 @@
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $datos->id)}}'"><i class='fa fa-edit'></i></button>
 
 
-                                            <button onclick="id_clickeado({{ $datos->id }},'{{ $datos->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clickeado({{ $datos->id }},'{{ $datos->primer_nombre }} {{ $datos->segundo_nombre }} {{ $datos->primer_apellido }} {{ $datos->segundo_apellido }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
-                                            <form action="{{route('lugares.destroy', $datos->id)}}" method="POST">
+                                            <form action="{{route('datosbasicos.destroy', $datos->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button type="submit" id="delete_lugar{{ $datos->id }}" style="display: none;"></button>
+                                                <button type="submit" id="delete_datos_basicos{{ $datos->id }}" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
         function funtion_swal() {
             
             swal({
-                    title: "¿Seguro que desea eliminar el lugar "+nombreclick+"? ",
+                    title: "¿Seguro que desea eliminar a  "+nombreclick+"? ",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
@@ -93,14 +93,14 @@
                  },
                 function(isConfirm){
                     if (isConfirm) {
-                        swal("Lugar Eliminado!","procesando cambios","success");
+                        swal("Datos Eliminados!","procesando cambios","success");
 
                         setTimeout(function(){
-                            var idfinal="#delete_lugar"+idclick;//se le agrega el id que fue clickeado
+                            var idfinal="#delete_datos_basicos"+idclick;//se le agrega el id que fue clickeado
                             $(idfinal).click();
                         }, 500);
                     } else {
-                        swal("Cancelado", "El lugar NO ha sido eliminado", "error");
+                        swal("Cancelado", "Los datos NO ha sido eliminado", "error");
                     }
                 });
         }
