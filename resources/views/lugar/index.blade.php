@@ -32,7 +32,7 @@
                     
                         @foreach($lugares as $lugar)
                             <tr>
-                                <td>{{$lugar->nombre}}</td>
+                                <td>{{ $lugar->nombre }}</td>
                                 <td>{{$lugar->municipio->nombre}}</td>
                                 <td>Calle {{$lugar->direccion->calle}} Carrera {{$lugar->direccion->carrera}} # {{$lugar->direccion->numero}}</td>
                                 <td>{{$lugar->telefono->tipo}} {{$lugar->telefono->numero}}</td>
@@ -43,19 +43,12 @@
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
 
-                                            {{-- <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST"  id="delete_lugar{{ $lugar->id }}">
-                                                    {{ method_field('DELETE') }}
-                                                    @csrf
-                                                    <button onclick="id_clicked({{$lugar->id}});  return funtion_swal()" type="submit" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-                                            </form> --}}
-
-
-                                            <button onclick="id_clicked({{ $lugar->id }});return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clicked({{ $lugar->id }},{{ $lugar->nombre }});return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button type="submit" id="delete_lugar" style="display: none;"></button>
+                                                <button type="submit" id="delete_lugar{{ $lugar->id }}" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </div>
@@ -78,16 +71,16 @@
                 }
             } );
         });
-        var idclick;
-        function id_clicked(id){
+        var idclick;var nombreclick;
+        function id_clicked(id,nombre){
                 console.log("id clickeada => "+id);
-            idclick=id;
-            // document.forms["delete_lugar"].submit();
+            idclick=id;//captura el id a la cual se le dio click
+            nombreclick=nombre;//captura el id a la cual se le dio click
         }
         function funtion_swal() {
             
             swal({
-                    title: "¿Seguro que desea eliminar este lugar? "+idclick,
+                    title: "¿Seguro que desea eliminar el lugar "+nombrelick+"? ",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
@@ -102,8 +95,8 @@
                         swal("Lugar Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
-                            // $('#delete_lugar').click();
-                            document.forms["delete_lugar"+idclick].submit();    
+                            var idfinal="#delete_lugar"+idclick; 
+                            $(idfinal).click();
                         }, 500);
                     } else {
                         swal("Cancelado", "El lugar NO ha sido eliminado", "error");
