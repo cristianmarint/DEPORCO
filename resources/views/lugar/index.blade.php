@@ -43,7 +43,7 @@
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
 
-                                            <button onclick="id_clicked({{ $lugar->id }},'{{ $lugar->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clickeado({{ $lugar->id }},'{{ $lugar->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
@@ -72,7 +72,7 @@
             } );
         });
         var idclick;var nombreclick;
-        function id_clicked(id,nombre){
+        function id_clickeado(id,nombre){
                 console.log("id clickeada => "+id);
             idclick=id;//captura el id a la cual se le dio click
             nombreclick=nombre;//captura el id a la cual se le dio click

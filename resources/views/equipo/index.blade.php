@@ -42,7 +42,7 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
 
-                                            <button onclick="id_clicked({{ $equipo->id }},'{{ $equipo->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clickeado({{ $equipo->id }},'{{ $equipo->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
@@ -71,7 +71,7 @@
             } );
         });
         var idclick;var nombreclick;
-        function id_clicked(id,nombre){
+        function id_clickeado(id,nombre){
                 console.log("id clickeada => "+id);
             idclick=id;//captura el id a la cual se le dio click
             nombreclick=nombre;//captura el id a la cual se le dio click
