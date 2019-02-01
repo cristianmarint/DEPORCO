@@ -42,12 +42,12 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
 
-                                            <button onclick="return funtion_swal()" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clicked({{ $equipo->id }},'{{ $equipo->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf
-                                                <button type="submit" id="delete_equipo" style="display: none;"></button>
+                                                <button type="submit" id="delete_equipo{{ $equipo->id }}" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </div>
@@ -70,11 +70,16 @@
                 }
             } );
         });
-        
+        var idclick;var nombreclick;
+        function id_clicked(id,nombre){
+                console.log("id clickeada => "+id);
+            idclick=id;//captura el id a la cual se le dio click
+            nombreclick=nombre;//captura el id a la cual se le dio click
+        }
         function funtion_swal() {
+            
             swal({
-                    title: "¿Seguro que desea eliminar el equipo?",
-                    // text: "Se eliminara informacion importante con respecto a esta",
+                    title: "¿Seguro que desea eliminar el equipo "+nombreclick+"? ",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
@@ -86,13 +91,14 @@
                  },
                 function(isConfirm){
                     if (isConfirm) {
-                        swal("Equipo Eliminado!","procesando cambios","success");
+                        swal("Lugar Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
-                            $('#delete_equipo').click();
+                            var idfinal="#delete_equipo"+idclick; 
+                            $(idfinal).click();
                         }, 500);
                     } else {
-                        swal("Cancelado", "El equipo NO ha sido eliminado", "error");
+                        swal("Cancelado", "El lugar NO ha sido eliminado", "error");
                     }
                 });
         }
