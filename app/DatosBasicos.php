@@ -15,6 +15,7 @@ class DatosBasicos extends Model
 
     protected $fillable = [
       'cedula',
+      'foto',
       'primer_nombre',
       'segundo_nombre',
       'primer_apellido',

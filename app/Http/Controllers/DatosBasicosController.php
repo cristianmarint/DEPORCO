@@ -7,6 +7,7 @@ use App\DatosBasicos;
 use App\Telefono;
 use App\TipoSangre;
 use App\Municipio;
+use App\Departamento;
 use App\Genero;
 use App\Direccion;
 use App\Eps;
@@ -36,7 +37,12 @@ class DatosBasicosController extends Controller
      */
     public function create()
     {
-        //
+        $departamentos = Departamento::orderBy('nombre', 'asc')->get();
+        $tiposangres = TipoSangre::orderBy('tipo', 'asc')->get();
+        $generos = Genero::orderBy('id', 'asc')->get();
+        $epss = Eps::orderBy('nombre', 'asc')->get();
+
+        return view('datosbasicos.create', compact('departamentos','tiposangres','generos','epss'));
     }
 
     /**
