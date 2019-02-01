@@ -43,7 +43,7 @@
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
 
 
-                                            <button onclick="id_clicked({{ $lugar->id }},{{ $lugar->nombre }});return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clicked({{ $lugar->id }},'{{ $lugar->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
@@ -80,7 +80,7 @@
         function funtion_swal() {
             
             swal({
-                    title: "¿Seguro que desea eliminar el lugar "+nombrelick+"? ",
+                    title: "¿Seguro que desea eliminar el lugar "+nombreclick+"? ",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,
