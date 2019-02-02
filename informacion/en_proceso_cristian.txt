@@ -12,3 +12,9 @@ esta en proceso la view de datos basicos
 
 
 ** centrar los logos y fotos ** actualmente quedan en la derecha
+
+
+⚠️ PROBLEMAS ⚠️
+
+DatosBasicosController@187 
+    En la funcion update, en email no se verifica que el correo nuevo ya esta en la BD 
