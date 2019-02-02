@@ -24,7 +24,7 @@
                     <div class="form-group row">
                             <label for="foto_actual" class="col-sm-3 form-control-label">Foto actual</label>
                             <div class="col-sm-4" style="">
-                                <img src="{{asset($datosbasicos->foto)}}"  class="mx-auto d-block" width="50vh">
+                                <img src="{{asset($datosbasicos->foto)}}"  class="mx-auto d-block rounded" width="150vh">
                             </div>
                             <div class="col-sm-4"></div>
                     </div> 
@@ -157,15 +157,15 @@
                             <label for="edit_telefono" class="form-control-label col-sm-3">Telefono</label>
     
                             <div class="col-sm-3">
-                                <select id="edit_tipo_telefono" name="tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
+                                <select name="tipo_telefono" id="create_tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
                                     <option value="0" >Seleccione un tipo</option>
                                     <option value="1" >Celular</option>
                                     <option value="2" >Fijo</option>
                                 </select>
                                 @if ($errors->has('tipo_telefono'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('tipo_telefono') }}</strong>
-                                    </span>
+                                            <strong>{{ $errors->first('tipo_telefono') }}</strong>
+                                        </span>
                                 @endif
                             </div>
     
@@ -212,7 +212,7 @@
                             <label for="edit_municipio" class="col-sm-3 form-control-label">Municipio / Ciudad</label>
                             <div class="col-sm-9">
                                 <select name="municipio" id="edit_municipio" class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}">
-                                    {{-- <option value="0" >Seleccione un Municipio / Ciudad</option> --}}
+                                    <option value="0" >Seleccione un Municipio / Ciudad</option>
                                 </select>
                                 @if ($errors->has('municipio'))
                                     <span class="invalid-feedback" role="alert">
@@ -287,11 +287,11 @@
             var modelo_departamento = $('#edit_departamento');
             var departamento = modelo_departamento.val();
             console.log(departamento);
-            // modelo_departamento.change(function(){
+            modelo_departamento.change(function(){
                 modelo_departamento.each(function () {
                     var modelo_municipio = $('#edit_municipio');
-                    // modelo_municipio.empty();
-                    // modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
+                    modelo_municipio.empty();
+                    modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
                     $.ajax({
                         url: "/institutos/municipios/"+departamento,
                         type: 'GET'
@@ -303,7 +303,7 @@
                         console.log('Error');
                     });
                 });
-            // });
+            });
         });
     </script>
 @endsection

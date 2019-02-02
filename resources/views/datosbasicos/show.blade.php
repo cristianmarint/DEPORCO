@@ -19,7 +19,7 @@
                 <div class="form-group row">
                         <label for="nit" class="form-control-label col-sm-3 ">Foto</label>
                         <div class="col-sm-9">
-                            <img src="{{asset($datosbasicos->foto)}}"  class="img-fluid rounded-circle" width="50vh">
+                            <img src="{{asset($datosbasicos->foto)}}"  class="mx-auto d-block rounded" width="150vh">
                         </div>
                 </div>
 

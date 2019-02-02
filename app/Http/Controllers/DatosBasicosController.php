@@ -158,8 +158,10 @@ class DatosBasicosController extends Controller
         $tiposangres = TipoSangre::orderBy('tipo', 'asc')->get();
         $generos = Genero::orderBy('id', 'asc')->get();
         $epss = Eps::orderBy('nombre', 'asc')->get();
+        $telefonos = Telefono::all();
+        // $municipios = Municipio::orderBy('nombre', 'asc')->get();
 
-        return view('datosbasicos.edit', compact('departamentos','datosbasicos','tiposangres','generos','epss'));
+        return view('datosbasicos.edit', compact('departamentos','datosbasicos','telefonos','tiposangres','generos','epss'));
     }
 
     /**
