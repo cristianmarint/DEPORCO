@@ -66,7 +66,7 @@ class LugarController extends Controller
             'carrera' => 'required|string|min:3|max:10',
             'numero' => 'required|string|min:1|max:5',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|integer|min:7'
+            'telefono' => 'required|digits_between:7,13|numeric',
         ]);
 
         DB::transaction(function () use ($data, $request) {

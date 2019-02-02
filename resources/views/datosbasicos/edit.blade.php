@@ -39,8 +39,20 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                    </div>
                      
+                        
+                    <div class="form-group row">
+                        <label for="edit_cedula" class="form-control-label col-sm-3">Cedula</label>
+                        <div class="col-sm-9">
+                            <input id="edit_cedula" type="number" name="cedula" class="form-control{{ $errors->has('cedula') ? ' is-invalid' : '' }}" value="{{$datosbasicos->cedula}}">
+                            @if ($errors->has('cedula'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('cedula') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                         
                     <div class="form-group row">
                         <label for="edit_primer_nombre_datosbasicos" class="form-control-label col-sm-3">Primer nombre</label>
@@ -158,7 +170,7 @@
                             </div>
     
                             <div class="col-sm-6">
-                                <input id="edit_telefono" type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{$datosbasicos->telefono->numero}}">
+                                <input id="edit_telefono" type="number" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{$datosbasicos->telefono->numero}}">
                                 @if ($errors->has('telefono'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('telefono') }}</strong>
@@ -170,7 +182,7 @@
                     <div class="form-group row">
                             <label for="edit_email_datosbasicos" class="form-control-label col-sm-3">Correo electronico / email</label>
                             <div class="col-sm-9">
-                                <input id="edit_email_datosbasicos" type="text" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{$datosbasicos->email}}">
+                                <input id="edit_email_datosbasicos" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{$datosbasicos->email}}">
                                 @if ($errors->has('segundo_apellido'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -200,7 +212,7 @@
                             <label for="edit_municipio" class="col-sm-3 form-control-label">Municipio / Ciudad</label>
                             <div class="col-sm-9">
                                 <select name="municipio" id="edit_municipio" class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}">
-                                    <option value="0" >Seleccione un Municipio / Ciudad</option>
+                                    {{-- <option value="0" >Seleccione un Municipio / Ciudad</option> --}}
                                 </select>
                                 @if ($errors->has('municipio'))
                                     <span class="invalid-feedback" role="alert">
@@ -270,15 +282,16 @@
                 console.log('Error');
             });
         });
+        
         $(document).ready(function(){
             var modelo_departamento = $('#edit_departamento');
-            modelo_departamento.change(function(){
+            var departamento = modelo_departamento.val();
+            console.log(departamento);
+            // modelo_departamento.change(function(){
                 modelo_departamento.each(function () {
-                    var departamento = modelo_departamento.val();
                     var modelo_municipio = $('#edit_municipio');
-                    modelo_municipio.empty();
-                    modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
-                    console.log(departamento);
+                    // modelo_municipio.empty();
+                    // modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
                     $.ajax({
                         url: "/institutos/municipios/"+departamento,
                         type: 'GET'
@@ -290,7 +303,7 @@
                         console.log('Error');
                     });
                 });
-            });
+            // });
         });
     </script>
 @endsection

@@ -67,8 +67,8 @@ class DatosBasicosController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'foto'   => 'image',
-            'cedula' => 'required|max:12|numeric|not_in:0|unique:datos_basicos,cedula',
+            'foto'   => 'image|max:2048|mimes:jpeg,png',
+            'cedula' => 'required|digits_between:9,12|numeric|not_in:0|unique:datos_basicos,cedula',
             'primer_nombre' => 'required|min:3|max:50',
             'segundo_nombre' => 'max:50',
             'primer_apellido' => 'required|min:3|max:50',
@@ -173,19 +173,18 @@ class DatosBasicosController extends Controller
     {
         $datosbasicos = DatosBasicos::findOrFail($id);
         $data = $request->validate([
-            'foto'   => 'image',
-            'cedula' => 'required|max:12|numeric|not_in:0|unique:datos_basicos,cedula',
-            'primer_nombre' => 'required|min:3|max:50',
-            'segundo_nombre' => 'max:50',
+            'foto'   => 'image|max:5000|mimes:jpeg,png',
+            'cedula' => 'required|digits_between:9,12|numeric|not_in:0|unique:datos_basicos,cedula,'.$id,
+            'primer_nombre' => 'required|string|min:3|max:50',
+            'segundo_nombre' => 'string|max:50',
             'primer_apellido' => 'required|min:3|max:50',
-            'segundo_apellido' => 'max:50',
-            'tipo_sangre' => 'required|integer|not_in:0|exists:tipo_sangre,id',
+            'segundo_apellido' => 'string|max:50',
+            'tiposangre' => 'required|integer|not_in:0|exists:tipo_sangre,id',
             'genero' => 'required|integer|not_in:0|exists:genero,id',
             'eps' => 'required|integer|not_in:0|exists:eps,id',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|numeric|min:7',
-            // 'email' => 'min:5|max:191|unique:datos_basicos,email',
-            'email' => 'min:5|max:191',
+            'telefono' => 'required|digits_between:1,12|numeric',
+            'email' => 'min:5|max:191|email|unique:datos_basicos,email,'.$id,
             'departamento' => 'required|integer|not_in:0|exists:departamento,id',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
             'calle' => 'required|string|min:1|max:50',
@@ -194,7 +193,6 @@ class DatosBasicosController extends Controller
         ]);
 
         DB::transaction(function () use ($data, $request, $datosbasicos) {
-            
             if($request->hasFile('foto')){
                 $archivo = $request->file('foto');
                 $nombreImg = 'img/datosbasicos/'.time().'-'.$archivo->getClientOriginalName();
@@ -231,7 +229,7 @@ class DatosBasicosController extends Controller
                     'segundo_nombre'    => $data['segundo_nombre'],
                     'primer_apellido'   => $data['primer_apellido'],
                     'segundo_apellido'  => $data['segundo_apellido'],
-                    'tipo_sangre_id'    => $data['tipo_sangre'],
+                    'tipo_sangre_id'    => $data['tiposangre'],
                     'genero_id'         => $data['genero'],
                     'eps_id'            => $data['eps'],
                     'email'             => $data['email'],

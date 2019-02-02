@@ -14,6 +14,10 @@ esta en proceso la view de datos basicos
 ** centrar los logos y fotos ** actualmente quedan en la derecha
 
 
+reglas de validacion
+https://laravel.com/docs/4.2/validation#rule-confirmed
+
+
 ⚠️ PROBLEMAS ⚠️
 
 DatosBasicosController@187 
