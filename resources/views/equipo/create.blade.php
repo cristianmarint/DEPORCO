@@ -19,19 +19,13 @@
                     <div class="card-body">
                         <form action="{{route('equipos.store')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                             @csrf
-
                             <div class="form-group row">
-                                <label for="create_instituto" class="col-sm-3 form-control-label">Institución</label>
+                                <label for="create_logo" class="col-sm-3 form-control-label">Logo</label>
                                 <div class="col-sm-9">
-                                    <select name="instituto" id="create_instituto" class="form-control{{ $errors->has('instituto') ? ' is-invalid' : '' }}">
-                                        <option value="0" >Seleccione una Institución</option>
-                                        @foreach($institutos as $instituto)
-                                            <option value="{{$instituto->id}}">{{$instituto->nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('instituto'))
+                                    <input id="create_logo" type="file" name="logo" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" accept="image/*">
+                                    @if ($errors->has('logo'))
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('instituto') }}</strong>
+                                                <strong>{{ $errors->first('logo') }}</strong>
                                             </span>
                                     @endif
                                 </div>
@@ -44,18 +38,6 @@
                                     @if ($errors->has('nombre'))
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('nombre') }}</strong>
-                                            </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="create_logo" class="col-sm-3 form-control-label">Logo</label>
-                                <div class="col-sm-9">
-                                    <input id="create_logo" type="file" name="logo" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" accept="image/*">
-                                    @if ($errors->has('logo'))
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('logo') }}</strong>
                                             </span>
                                     @endif
                                 </div>
@@ -77,6 +59,24 @@
                                         @endif
                                     </div>
                             </div>
+                            
+                            <div class="form-group row">
+                                <label for="create_instituto" class="col-sm-3 form-control-label">Institución</label>
+                                <div class="col-sm-9">
+                                    <select name="instituto" id="create_instituto" class="form-control{{ $errors->has('instituto') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione una Institución</option>
+                                        @foreach($institutos as $instituto)
+                                            <option value="{{$instituto->id}}">{{$instituto->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('instituto'))
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('instituto') }}</strong>
+                                            </span>
+                                    @endif
+                                </div>
+                            </div>
+
                         
                             <div class="form-group row">
                                     <div class="col-sm-12 offset-sm-5">
