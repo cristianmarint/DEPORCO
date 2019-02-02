@@ -21,6 +21,7 @@
                     <thead >
                         <tr>
                             <th>Cedula</th>
+                            <th>Foto</th>
                             <th>Nombre completo</th>
                             <th>Telefono</th>
                             <th>Municipio</th>
@@ -34,6 +35,7 @@
                         @foreach($datosbasicos as $datos)
                             <tr>
                                 <td>{{ $datos->cedula }}</td>
+                                <td> <img src="{{asset($datos->foto)}}"  class="img-fluid rounded-circle" width="50vh"></td>
                                 <td>{{ $datos->primer_nombre }} {{ $datos->segundo_nombre }} {{ $datos->primer_apellido }} {{ $datos->segundo_apellido }}</td>
                                 <td>{{ $datos->telefono->tipo}} {{ $datos->telefono->numero}}</td>
                                 <td>{{ $datos->municipio->nombre}}</td>

@@ -144,29 +144,29 @@
 
                             <div class="form-group row">
 
-                                    <label for="create_tipo_telefono" class="col-sm-3 form-control-label">Telefono</label>
-                                    <div class="col-sm-3">
-                                        <select name="tipo_telefono" id="create_tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
-                                            <option value="0" >Seleccione un tipo</option>
-                                            <option value="1" >Celular</option>
-                                            <option value="2" >Fijo</option>
-                                        </select>
-                                        @if ($errors->has('tipo_telefono'))
-                                            <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('tipo_telefono') }}</strong>
-                                                </span>
-                                        @endif
-                                    </div>
-    
-                                    <div class="col-sm-6">
-                                        <input id="create_telefono" type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{old('telefono')}}" placeholder="Número Telefonico">
-                                        @if ($errors->has('telefono'))
-                                            <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('telefono') }}</strong>
-                                                </span>
-                                        @endif
-                                    </div>
+                                <label for="create_tipo_telefono" class="col-sm-3 form-control-label">Telefono</label>
+                                <div class="col-sm-3">
+                                    <select name="tipo_telefono" id="create_tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un tipo</option>
+                                        <option value="1" >Celular</option>
+                                        <option value="2" >Fijo</option>
+                                    </select>
+                                    @if ($errors->has('tipo_telefono'))
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('tipo_telefono') }}</strong>
+                                            </span>
+                                    @endif
                                 </div>
+
+                                <div class="col-sm-6">
+                                    <input id="create_telefono" type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{old('telefono')}}" placeholder="Número Telefonico">
+                                    @if ($errors->has('telefono'))
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('telefono') }}</strong>
+                                            </span>
+                                    @endif
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                     <label for="create_email" class="form-control-label col-sm-3">Correo electronico </label>

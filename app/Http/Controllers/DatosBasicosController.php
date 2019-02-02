@@ -68,22 +68,22 @@ class DatosBasicosController extends Controller
     {
         $data = $request->validate([
             'foto'   => 'image',
-            'cedula' => 'required|numeric|not_in:0|unique:datos_basicos,cedula',
-            'primer_nombre' => 'required|min:3|max:60',
-            'segundo_nombre' => 'min:3|max:60',
-            'primer_apellido' => 'required|min:3|max:60',
-            'segundo_apellido' => 'min:3|max:60',
+            'cedula' => 'required|max:12|numeric|not_in:0|unique:datos_basicos,cedula',
+            'primer_nombre' => 'required|min:3|max:50',
+            'segundo_nombre' => 'max:50',
+            'primer_apellido' => 'required|min:3|max:50',
+            'segundo_apellido' => 'max:50',
             'tipo_sangre' => 'required|integer|not_in:0|exists:tipo_sangre,id',
             'genero' => 'required|integer|not_in:0|exists:genero,id',
             'eps' => 'required|integer|not_in:0|exists:eps,id',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|integer|min:7',
-            'email' => 'min:3|max:60|unique:datos_basicos,email',
+            'telefono' => 'required|numeric|min:7',
+            'email' => 'min:5|max:191|unique:datos_basicos,email',
             'departamento' => 'required|integer|not_in:0|exists:departamento,id',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
-            'calle' => 'required|string|min:3|max:50',
-            'carrera' => 'required|string|min:3|max:10',
-            'numero' => 'required|string|min:3|max:5',
+            'calle' => 'required|string|min:1|max:50',
+            'carrera' => 'required|string|min:1|max:10',
+            'numero' => 'required|string|min:1|max:5',
         ]);
 
         DB::transaction(function () use ($data, $request) {
@@ -125,9 +125,8 @@ class DatosBasicosController extends Controller
                 'email'             => $data['email'],
                 'departamento'      => $data['departamento'],
                 'municipio_id'      => $data['municipio'],
-                'telefono_id'       => $telefono->id,
                 'direccion_id'      => $direccion->id,
-                // 'user_id' => Auth::user()->id
+                'telefono_id'       => $telefono->id,   
             ]);
         });
 

@@ -24,6 +24,7 @@ class DatosBasicos extends Model
         'municipio_id',
         'genero_id',
         'direccion_id',
+        'telefono_id',
         'eps_id',
        'email',
     ];
