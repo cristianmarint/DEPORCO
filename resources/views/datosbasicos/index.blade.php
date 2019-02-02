@@ -44,7 +44,7 @@
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('datosbasicos.show', $datos->id)}}'"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $datos->id)}}'"><i class='fa fa-edit'></i></button>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('datosbasicos.edit', $datos->id)}}'"><i class='fa fa-edit'></i></button>
 
 
                                             <button onclick="id_clickeado({{ $datos->id }},'{{ $datos->primer_nombre }} {{ $datos->segundo_nombre }} {{ $datos->primer_apellido }} {{ $datos->segundo_apellido }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
