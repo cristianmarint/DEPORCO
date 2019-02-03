@@ -83,7 +83,7 @@ class DatosBasicosController extends Controller
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
             'calle' => 'required|string|min:1|max:50',
             'carrera' => 'required|string|min:1|max:10',
-            'numero' => 'required|string|min:1|max:5',
+            'numero' => 'required|string|min:1|max:10',
         ]);
 
         DB::transaction(function () use ($data, $request) {
@@ -191,7 +191,7 @@ class DatosBasicosController extends Controller
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
             'calle' => 'required|string|min:1|max:50',
             'carrera' => 'required|string|min:1|max:10',
-            'numero' => 'required|string|min:1|max:5',
+            'numero' => 'required|string|min:1|max:10',
         ]);
 
         DB::transaction(function () use ($data, $request, $datosbasicos) {
