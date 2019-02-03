@@ -11,8 +11,8 @@ class Telefono extends Model{
         'tipo'
     ];
 
-    protected function instituto(){
-        return $this->hasOne(Instituto::class);
-    }
+//    protected function instituto(){
+//        return $this->hasOne(Instituto::class);
+//    }
 
 }

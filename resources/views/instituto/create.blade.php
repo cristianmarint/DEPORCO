@@ -206,7 +206,6 @@
                     var modelo_municipio = $('#create_municipio');
                     modelo_municipio.empty();
                     modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
-                    console.log(departamento);
                     $.ajax({
                         url: "/institutos/municipios/"+departamento,
                         type: 'GET'

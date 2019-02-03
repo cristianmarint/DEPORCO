@@ -73,45 +73,59 @@ class InstitutoController extends Controller
             'telefono' => 'required|integer'
         ]);
 
-        DB::transaction(function () use ($data, $request) {
+        DB::beginTransaction();
 
+        try{
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
                 $nombreImg = 'img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
                 if ($archivo->move(public_path() . '/img/instituto', $nombreImg)) {
-                    echo "Guardado";
-                } else {
-                    echo "error al guardar";
+                    echo "guardado";
                 }
             } else {
                 $nombreImg = 'img/instituto/default.png';
             }
 
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
+            $telefono = NEW Telefono();
+            $telefono->tipo = $request->input('tipo_telefono');
+            $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
+            $direccion = NEW Direccion();
+            $direccion->calle = $request->input('calle');
+            $direccion->carrera =  $request->input('carrera');
+            $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-            Instituto::create([
-                'codigo_dane' => $data['codigo_dane'],
-                'nit' => $data['nit'],
-                'nombre' => $data['nombre'],
-                'logo' => $nombreImg,
-                'municipio_id' => $data['municipio'],
-                'tipo_educacion_id' => $data['tipo_educacion'],
-                'telefono_id' => $telefono->id,
-                'direccion_id' => $direccion->id,
-                'user_id' => Auth::user()->id
-            ]);
-        }, 2);
+            $instituto = NEW Instituto();
+            $instituto->codigo_dane = $request->input('codigo_dane');
+            $instituto->nit = $request->input('nit');
+            $instituto->nombre = $request->input('nombre');
+            $instituto->logo = $nombreImg;
+            $instituto->municipio_id = $request->input('municipio');
+            $instituto->tipo_educacion_id = $request->input('tipo_educacion');
+            $instituto->telefono_id = $telefono->id;
+            $instituto->direccion_id = $direccion->id;
+            $instituto->user_id = Auth::user()->id;
+            $instituto->save();
+            $success = true;
 
-        return redirect(route('institutos.index'));
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('institutos.index'))->with('success');
+        }else{
+            if (file_exists(public_path($nombreImg))) {
+                if($nombreImg != 'img/instituto/default.png'){
+                    unlink(public_path($nombreImg));
+                }
+            }
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**
@@ -134,7 +148,6 @@ class InstitutoController extends Controller
      */
     public function edit($id)
     {
-        $tiposTelefono = Telefono::orderBy('tipo', 'asc')->get();
         $tiposEducacion = TipoEducacion::orderBy('tipo', 'asc')->get();
         $departamentos = Departamento::orderBy('nombre', 'asc')->get();
         $instituto = Instituto::findOrFail($id);
@@ -167,8 +180,9 @@ class InstitutoController extends Controller
             'telefono' => 'required|integer'
         ]);
 
-        DB::transaction(function () use ($data, $request, $instituto) {
+        DB::beginTransaction();
 
+        try{
             if($request->hasFile('logo')){
                 $archivo = $request->file('logo');
                 $nombreImg = 'img/instituto/'.time().'-'.$archivo->getClientOriginalName();
@@ -186,34 +200,39 @@ class InstitutoController extends Controller
             }else{
                 $nombreImg = $instituto->logo;
             }
-            Telefono::find($instituto->telefono_id)
-                ->update([
-                    'numero' => $data['telefono'],
-                    'tipo' => $data['tipo_telefono']
-                ]);
 
-            Direccion::find($instituto->direccion_id)
-                ->update([
-                    'calle' => $data['calle'],
-                    'carrera' => $data['carrera'],
-                    'numero' => $data['numero'],
-                ]);
+            $telefono = Telefono::findOrFail($instituto->telefono_id);
+            $telefono->tipo = $request->input('tipo_telefono');
+            $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            Instituto::find($instituto->id)->
-                update([
-                    'codigo_dane' => $data['codigo_dane'],
-                    'nit' => $data['nit'],
-                    'nombre' => $data['nombre'],
-                    'logo' => $nombreImg,
-                    'municipio_id' => $data['municipio'],
-                    'tipo_educacion_id' => $data['tipo_educacion'],
-                    'telefono_id' => $instituto->telefono_id,
-                    'direccion_id' => $instituto->direccion_id,
-                    'user_id' => Auth::user()->id
-                ]);
-        }, 2);
+            $direccion = Direccion::findOrFail($instituto->direccion_id);
+            $direccion->calle = $request->input('calle');
+            $direccion->carrera =  $request->input('carrera');
+            $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-        return redirect(route('institutos.index'));
+            $instituto->codigo_dane = $request->input('codigo_dane');
+            $instituto->nit = $request->input('nit');
+            $instituto->nombre = $request->input('nombre');
+            $instituto->logo = $nombreImg;
+            $instituto->municipio_id = $request->input('municipio');
+            $instituto->tipo_educacion_id = $request->input('tipo_educacion');
+            $instituto->user_id = Auth::user()->id;
+            $instituto->save();
+            $success = true;
+
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('institutos.index'))->with('success');
+        }else{
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**

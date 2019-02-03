@@ -158,8 +158,8 @@
                         <div class="col-sm-3">
                             <select id="edit_tipo_telefono" name="tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
                                 <option value="0" >Seleccione un tipo</option>
-                                <option value="1" >Celular</option>
-                                <option value="2" >Fijo</option>
+                                <option value="1" {{$instituto->telefono->tipo == 'Celular' ? 'selected':''}}>Celular</option>
+                                <option value="2" {{$instituto->telefono->tipo == 'Fijo' ? 'selected':''}}>Fijo</option>
                             </select>
                             @if ($errors->has('tipo_telefono'))
                                 <span class="invalid-feedback" role="alert">

@@ -13,7 +13,7 @@ class TipoEducacion extends Model
       'tipo '
     ];
 
-    protected function instituto(){
-        return $this->hasMany(Instituto::class);
-    }
+//    protected function instituto(){
+//        return $this->hasMany(Instituto::class);
+//    }
 }
