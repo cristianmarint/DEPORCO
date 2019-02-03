@@ -18,7 +18,7 @@ class CreateDireccionTable extends Migration
             $table->increments('id');
             $table->string('calle', 50);
             $table->string('carrera', 10);
-            $table->string('numero', 5);
+            $table->string('numero', 10);
             $table->softDeletes();
             $table->timestamps();
         });

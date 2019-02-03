@@ -118,7 +118,7 @@
                                                 <strong>{{ $errors->first('telefono') }}</strong>
                                             </span>
                                     @endif
-S                                </div>
+                                </div>
                             </div>
 
                             <div class="form-group row">

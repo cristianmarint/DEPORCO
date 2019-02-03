@@ -24,4 +24,8 @@ class Municipio extends Model
     protected function lugar(){
         return $this->hasMany(Lugar::class);
     }
+
+    protected function datosbasicos(){
+        return $this->hasMany(DatosBasicos::class);
+    }
 }

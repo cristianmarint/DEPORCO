@@ -66,8 +66,8 @@ class InstitutoController extends Controller
             'tipo_educacion' => 'required|integer|not_in:0|exists:tipo_educacion,id',
             'calle' => 'required|string|min:3|max:50',
             'carrera' => 'required|string|min:3|max:10',
-            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'numero' => 'required|string|min:3|max:5',
+            'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'telefono' => 'required|integer'
         ]);
 

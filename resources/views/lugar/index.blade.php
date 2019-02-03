@@ -73,7 +73,7 @@
         });
         var idclick;var nombreclick;
         function id_clickeado(id,nombre){
-                console.log("id clickeada => "+id);
+                // console.log("id clickeada => "+id);
             idclick=id;//captura el id a la cual se le dio click
             nombreclick=nombre;//captura el nombre a la cual se le dio click
         }

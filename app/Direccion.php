@@ -18,4 +18,7 @@ class Direccion extends Model
     protected function instituto(){
         return $this->hasOne(Instituto::class);
     }
+    protected function datosbasicos(){
+        return $this->hasOne(Datosbasicos::class);
+    }
 }

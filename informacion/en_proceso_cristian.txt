@@ -8,7 +8,17 @@ al momento de borrar
 mejorar decoracion de pagina de login
 
 
-esta en proceso la view de Lugar
+esta en proceso la view de datos basicos
 
 
-**  CUANDO SE BORRA, HACE EL BORRADO DEL PRIMERO DE LA LISTA PERO NO DEL QUE SE SELECCIONA ** (EQUIPOS Y LUGARES)
+** centrar los logos y fotos ** actualmente quedan en la derecha
+
+
+reglas de validacion
+https://laravel.com/docs/4.2/validation#rule-confirmed
+
+
+⚠️ PROBLEMAS ⚠️
+
+DatosBasicosController@187 
+    En la funcion update, en email no se verifica que el correo nuevo ya esta en la BD 

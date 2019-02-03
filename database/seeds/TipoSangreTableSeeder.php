@@ -13,15 +13,28 @@ class TipoSangreTableSeeder extends Seeder
     public function run()
     {
         TipoSangre::create(array(
-            'tipo' => 'A'
+            'tipo' => 'A+'
         ));
-
         TipoSangre::create(array(
-            'tipo' => 'B'
+            'tipo' => 'A-'
         ));
-
         TipoSangre::create(array(
-            'tipo' => 'O'
+            'tipo' => 'B+'
+        ));
+        TipoSangre::create(array(
+            'tipo' => 'B-'
+        ));
+        TipoSangre::create(array(
+            'tipo' => 'AB+'
+        ));
+        TipoSangre::create(array(
+            'tipo' => 'AB-'
+        ));
+        TipoSangre::create(array(
+            'tipo' => 'O+',
+        ));
+        TipoSangre::create(array(
+            'tipo' => 'O-'
         ));
     }
 }

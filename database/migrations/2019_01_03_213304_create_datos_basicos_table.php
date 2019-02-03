@@ -17,6 +17,7 @@ class CreateDatosBasicosTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('cedula', 12);
+            $table->string('foto', 250)->default('img/datosbasicos/default.png');
             $table->unsignedInteger('telefono_id');
             $table->string('primer_nombre',50);
             $table->string('segundo_nombre',50)->nullable(true);
@@ -30,19 +31,19 @@ class CreateDatosBasicosTable extends Migration
             $table->string('email')->nullable(true)->unique();
             $table->softDeletes();
             $table->timestamps();
-
+            
             $table->foreign('telefono_id')->references('id')->on('telefono')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tipo_sangre_id')->references('id')->on('tipo_sangre')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('municipio_id')->references('id')->on('municipio')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('genero_id')->references('id')->on('genero')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('direccion_id')->references('id')->on('direccion')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('eps_id')->references('id')->on('eps')
-                ->onUpdate('cascade')->onDelete('restrict');
+            ->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
