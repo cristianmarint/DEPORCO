@@ -72,22 +72,22 @@ class LugarController extends Controller
         DB::beginTransaction();
         try{
             $telefono = NEW Telefono();
-            $telefono->tipo = $request->input('tipo_telefono');
-            $telefono->numero = $request->input('telefono');
+                $telefono->tipo = $request->input('tipo_telefono');
+                $telefono->numero = $request->input('telefono');
             $telefono->save();
 
             $direccion = NEW Direccion();
-            $direccion->calle = $request->input('calle');
-            $direccion->carrera =  $request->input('carrera');
-            $direccion->numero = $request->input('numero');
+                $direccion->calle = $request->input('calle');
+                $direccion->carrera =  $request->input('carrera');
+                $direccion->numero = $request->input('numero');
             $direccion->save();
 
             $lugar = NEW Lugar();
-            $lugar->nombre = $request->input('nombre');
-            $lugar->municipio_id = $request->input('municipio');
-            $lugar->telefono_id = $telefono->id;
-            $lugar->direccion_id = $direccion->id;
-            $lugar->user_id = Auth::user()->id;
+                $lugar->nombre = $request->input('nombre');
+                $lugar->municipio_id = $request->input('municipio');
+                $lugar->telefono_id = $telefono->id;
+                $lugar->direccion_id = $direccion->id;
+                $lugar->user_id = Auth::user()->id;
             $lugar->save();
 
             $success = true;
@@ -153,14 +153,14 @@ class LugarController extends Controller
         DB::beginTransaction();
         try{
             $telefono = Telefono::findOrFail($lugar->telefono_id);
-            $telefono->tipo = $request->input('tipo_telefono');
-            $telefono->numero = $request->input('telefono');
+                $telefono->tipo = $request->input('tipo_telefono');
+                $telefono->numero = $request->input('telefono');
             $telefono->save();
 
             $direccion = Direccion::findOrFail($lugar->direccion_id);
-            $direccion->calle = $request->input('calle');
-            $direccion->carrera =  $request->input('carrera');
-            $direccion->numero = $request->input('numero');
+                $direccion->calle = $request->input('calle');
+                $direccion->carrera =  $request->input('carrera');
+                $direccion->numero = $request->input('numero');
             $direccion->save();
 
             $lugar->nombre = $request->input('nombre');

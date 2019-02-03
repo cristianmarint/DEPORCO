@@ -109,19 +109,19 @@ class DatosBasicosController extends Controller
             $direccion->save();
 
             $datosbasicos = NEW DatosBasicos();
-            $datosbasicos->foto = $nombreImg;
             $datosbasicos->cedula = $request->input('cedula');
+            $datosbasicos->foto = $nombreImg;
+            $datosbasicos->telefono_id = $telefono->id;
             $datosbasicos->primer_nombre = $request->input('primer_nombre');
             $datosbasicos->segundo_nombre = $request->input('segundo_nombre');
             $datosbasicos->primer_apellido = $request->input('primer_apellido');
             $datosbasicos->segundo_apellido = $request->input('segundo_apellido');
             $datosbasicos->tipo_sangre_id = $request->input('tipo_sangre');
-            $datosbasicos->genero = $request->input('genero');
-            $datosbasicos->eps = $request->input('eps');
-            $datosbasicos->telefono_id = $telefono->id;
-            $datosbasicos->email = $request->input('email');
             $datosbasicos->municipio_id = $request->input('municipio');
+            $datosbasicos->genero_id = $request->input('genero');
             $datosbasicos->direccion_id = $direccion->id;
+            $datosbasicos->eps_id = $request->input('eps');
+            $datosbasicos->email = $request->input('email');
             $datosbasicos->save();
             $success = true;
         } catch (\exception $e){
@@ -168,7 +168,6 @@ class DatosBasicosController extends Controller
         $generos = Genero::orderBy('id', 'asc')->get();
         $epss = Eps::orderBy('nombre', 'asc')->get();
         $telefonos = Telefono::all();
-        // $municipios = Municipio::orderBy('nombre', 'asc')->get();
 
         return view('datosbasicos.edit', compact('departamentos','datosbasicos','telefonos','tiposangres','generos','epss'));
     }
@@ -187,9 +186,9 @@ class DatosBasicosController extends Controller
             'foto'   => 'image|max:5000|mimes:jpeg,png',
             'cedula' => 'required|digits_between:9,12|numeric|not_in:0|unique:datos_basicos,cedula,'.$id,
             'primer_nombre' => 'required|string|min:3|max:50',
-            'segundo_nombre' => 'string|max:50',
+            'segundo_nombre' => 'max:50',
             'primer_apellido' => 'required|min:3|max:50',
-            'segundo_apellido' => 'string|max:50',
+            'segundo_apellido' => 'max:50',
             'tiposangre' => 'required|integer|not_in:0|exists:tipo_sangre,id',
             'genero' => 'required|integer|not_in:0|exists:genero,id',
             'eps' => 'required|integer|not_in:0|exists:eps,id',
@@ -203,54 +202,63 @@ class DatosBasicosController extends Controller
             'numero' => 'required|string|min:1|max:10',
         ]);
 
-        DB::transaction(function () use ($data, $request, $datosbasicos) {
+        DB::beginTransaction();
+        try{
             if($request->hasFile('foto')){
                 $archivo = $request->file('foto');
-                $nombreImg = 'img/datosbasicos/'.time().'-'.$archivo->getClientOriginalName();
-                if (file_exists(public_path($datosbasicos->foto))) {
-                    if($datosbasicos->foto != 'img/datosbasicos/default.png'){
-                        unlink(public_path($datosbasicos->foto));
+                $nombreImg = 'img/datosbasico/'.time().'-'.$archivo->getClientOriginalName();
+                if (file_exists(public_path($datosbasico->foto))) {
+                    if($datosbasico->foto != 'img/datosbasico/default.png'){
+                        unlink(public_path($datosbasico->foto));
                     }
                 }
-                if($archivo->move(public_path().'/img/datosbasicos',$nombreImg)){
+                if($archivo->move(public_path().'/img/datosbasico',$nombreImg)){
                     echo "Guardado";
                 }else{
                     echo "error al guardar";
                 }
             }else{
-                $nombreImg = $datosbasicos->foto;
+                $nombreImg = $datosbasico->foto;
             }
 
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
+            $telefono = Telefono::findOrFail($datosbasico->telefono_id);
+                $telefono->tipo = $request->input('tipo_telefono');
+                $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
+            $direccion = Direccion::findOrFail($datosbasico->direccion_id);
+                $direccion->calle = $request->input('calle');
+                $direccion->carrera =  $request->input('carrera');
+                $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-            DatosBasicos::find($datosbasicos->id)->
-                update([
-                    'foto'              => $nombreImg,
-                    'cedula'            => $data['cedula'],
-                    'primer_nombre'     => $data['primer_nombre'],
-                    'segundo_nombre'    => $data['segundo_nombre'],
-                    'primer_apellido'   => $data['primer_apellido'],
-                    'segundo_apellido'  => $data['segundo_apellido'],
-                    'tipo_sangre_id'    => $data['tiposangre'],
-                    'genero_id'         => $data['genero'],
-                    'eps_id'            => $data['eps'],
-                    'email'             => $data['email'],
-                    'departamento'      => $data['departamento'],
-                    'municipio_id'      => $data['municipio'],
-                    'direccion_id'      => $direccion->id,
-                    'telefono_id'       => $telefono->id,   
-                ]);
-        }, 2);
-        return redirect(route('datosbasicos.index'));
+            $datosbasicos->cedula = $request->input('cedula');
+            $datosbasicos->foto = $nombreImg;
+            $datosbasicos->telefono_id = $telefono->id;
+            $datosbasicos->primer_nombre = $request->input('primer_nombre');
+            $datosbasicos->segundo_nombre = $request->input('segundo_nombre');
+            $datosbasicos->primer_apellido = $request->input('primer_apellido');
+            $datosbasicos->segundo_apellido = $request->input('segundo_apellido');
+            $datosbasicos->tipo_sangre_id = $request->input('tipo_sangre');
+            $datosbasicos->municipio_id = $request->input('municipio');
+            $datosbasicos->genero_id = $request->input('genero');
+            $datosbasicos->direccion_id = $direccion->id;
+            $datosbasicos->eps_id = $request->input('eps');
+            $datosbasicos->email = $request->input('email');
+            // $datosbasicos->user_id = Auth::user()->id;
+            $datosbasicos->save();
+            $success = true;
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('datosbasicos.index'))->with('success');
+        }else{
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**

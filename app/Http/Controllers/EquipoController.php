@@ -80,11 +80,11 @@ class EquipoController extends Controller
             }
 
             $equipo = NEW Equipo();
-            $equipo->nombre = $request->input('nombre');
-            $equipo->logo = $nombreImg;
-            $equipo->instituto_id = $request->input('instituto');
-            $equipo->colores_id = $request->input('colores');
-            $equipo->user_id = Auth::user()->id;
+                $equipo->nombre = $request->input('nombre');
+                $equipo->logo = $nombreImg;
+                $equipo->instituto_id = $request->input('instituto');
+                $equipo->colores_id = $request->input('colores');
+                $equipo->user_id = Auth::user()->id;
             $equipo->save();
             $success = true;
         } catch (\exception $e){
