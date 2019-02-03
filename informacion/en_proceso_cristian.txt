@@ -13,6 +13,10 @@ esta en proceso la view de datos basicos
 
 ** centrar los logos y fotos ** actualmente quedan en la derecha
 
+💡 MEJORAS 💡
+
+Paquete para desarrollo de la interface de administradr con Voyayeur (https://laravelvoyager.com/)
+lo probé pero dio problemas con argunas migraciones y modelos.
 
 reglas de validacion
 https://laravel.com/docs/4.2/validation#rule-confirmed
