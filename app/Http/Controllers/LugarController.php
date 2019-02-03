@@ -69,28 +69,37 @@ class LugarController extends Controller
             'telefono' => 'required|digits_between:7,13|numeric',
         ]);
 
-        DB::transaction(function () use ($data, $request) {
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
+        DB::beginTransaction();
+        try{
+            $telefono = NEW Telefono();
+            $telefono->tipo = $request->input('tipo_telefono');
+            $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
+            $direccion = NEW Direccion();
+            $direccion->calle = $request->input('calle');
+            $direccion->carrera =  $request->input('carrera');
+            $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-            Lugar::create([
-                'nombre' => $data['nombre'],
-                'municipio_id' => $data['municipio'],
-                'telefono_id' => $telefono->id,
-                'direccion_id' => $direccion->id,
-                'user_id' => Auth::user()->id
-            ]);
-        });
+            $lugar = NEW Lugar();
+            $lugar->nombre = $request->input('nombre');
+            $lugar->municipio_id = $request->input('municipio');
+            $lugar->telefono_id = $telefono->id;
+            $lugar->direccion_id = $direccion->id;
+            $lugar->user_id = Auth::user()->id;
+            $lugar->save();
 
-        return redirect(route('lugares.index'));
+            $success = true;
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('lugares.index'))->with('success');
+        }
     }
 
     /**
@@ -138,31 +147,41 @@ class LugarController extends Controller
             'carrera' => 'required|string|min:3|max:10',
             'numero' => 'required|string|min:1|max:10',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|integer|min:7'
+            'telefono' => 'required|digits_between:7,13|numeric',
         ]);
 
-        DB::transaction(function () use ($data, $request, $lugar) {
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
+        DB::beginTransaction();
+        try{
+            $telefono = Telefono::findOrFail($lugar->telefono_id);
+            $telefono->tipo = $request->input('tipo_telefono');
+            $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
+            $direccion = Direccion::findOrFail($lugar->direccion_id);
+            $direccion->calle = $request->input('calle');
+            $direccion->carrera =  $request->input('carrera');
+            $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-            Lugar::find($lugar->id)->
-                update([
-                    'nombre' => $data['nombre'],
-                    'municipio_id' => $data['municipio'],
-                    'telefono_id' => $telefono->id,
-                    'direccion_id' => $direccion->id,
-                    'user_id' => Auth::user()->id
-                ]);
-        }, 2);
-        return redirect(route('lugares.index'));
+            $lugar->nombre = $request->input('nombre');
+            $lugar->municipio_id = $request->input('municipio');
+            $lugar->telefono_id = $telefono->id;
+            $lugar->direccion_id = $direccion->id;
+            $lugar->user_id = Auth::user()->id;
+            $lugar->save();
+            $success = true;
+
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('lugares.index'))->with('success');
+        }else{
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**
