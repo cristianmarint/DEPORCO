@@ -86,51 +86,60 @@ class DatosBasicosController extends Controller
             'numero' => 'required|string|min:1|max:10',
         ]);
 
-        DB::transaction(function () use ($data, $request) {
-            $nombreImg = 'img/datosbasicos/default.png';
-
+        DB::beginTransaction();
+        try{
             if ($request->hasFile('foto')) {
                 $archivo = $request->file('foto');
                 $nombreImg = 'img/datosbasicos/' . time() . '-' . $archivo->getClientOriginalName();
                 if ($archivo->move(public_path() . '/img/datosbasicos', $nombreImg)) {
-                    echo "Guardado";
-                } else {
-                    echo "error al guardar";
+                    echo "guardado";
                 }
             } else {
                 $nombreImg = 'img/datosbasicos/default.png';
             }
+            $telefono = NEW Telefono();
+            $telefono->tipo = $request->input('tipo_telefono');
+            $telefono->numero = $request->input('telefono');
+            $telefono->save();
 
-            $telefono = Telefono::create([
-                'numero' => $data['telefono'],
-                'tipo' => $data['tipo_telefono']
-            ]);
+            $direccion = NEW Direccion();
+            $direccion->calle = $request->input('calle');
+            $direccion->carrera =  $request->input('carrera');
+            $direccion->numero = $request->input('numero');
+            $direccion->save();
 
-            $direccion = Direccion::create([
-                'calle' => $data['calle'],
-                'carrera' => $data['carrera'],
-                'numero' => $data['numero'],
-            ]);
-
-            DatosBasicos::create([
-                'foto'              => $nombreImg,
-                'cedula'            => $data['cedula'],
-                'primer_nombre'     => $data['primer_nombre'],
-                'segundo_nombre'    => $data['segundo_nombre'],
-                'primer_apellido'   => $data['primer_apellido'],
-                'segundo_apellido'  => $data['segundo_apellido'],
-                'tipo_sangre_id'    => $data['tipo_sangre'],
-                'genero_id'         => $data['genero'],
-                'eps_id'            => $data['eps'],
-                'email'             => $data['email'],
-                'departamento'      => $data['departamento'],
-                'municipio_id'      => $data['municipio'],
-                'direccion_id'      => $direccion->id,
-                'telefono_id'       => $telefono->id,   
-            ]);
-        });
-
-        return redirect(route('datosbasicos.index'));
+            $datosbasicos = NEW DatosBasicos();
+            $datosbasicos->foto = $nombreImg;
+            $datosbasicos->cedula = $request->input('cedula');
+            $datosbasicos->primer_nombre = $request->input('primer_nombre');
+            $datosbasicos->segundo_nombre = $request->input('segundo_nombre');
+            $datosbasicos->primer_apellido = $request->input('primer_apellido');
+            $datosbasicos->segundo_apellido = $request->input('segundo_apellido');
+            $datosbasicos->tipo_sangre_id = $request->input('tipo_sangre');
+            $datosbasicos->genero = $request->input('genero');
+            $datosbasicos->eps = $request->input('eps');
+            $datosbasicos->telefono_id = $telefono->id;
+            $datosbasicos->email = $request->input('email');
+            $datosbasicos->municipio_id = $request->input('municipio');
+            $datosbasicos->direccion_id = $direccion->id;
+            $datosbasicos->save();
+            $success = true;
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('datosbasicos.index'))->with('success');
+        }else{
+            if (file_exists(public_path($nombreImg))) {
+                if($nombreImg != 'img/datosbasicos/default.png'){
+                    unlink(public_path($nombreImg));
+                }
+            }
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**
