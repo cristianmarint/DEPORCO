@@ -67,32 +67,43 @@ class EquipoController extends Controller
             'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
 
-        DB::transaction(function () use ($data, $request) {
-            $nombreImg = 'img/equipo/default.png';
-
+        DB::beginTransaction();
+        try{
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
                 $nombreImg = 'img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
                 if ($archivo->move(public_path() . '/img/equipo', $nombreImg)) {
-                    echo "Guardado";
-                } else {
-                    echo "error al guardar";
+                    echo "guardado";
                 }
             } else {
                 $nombreImg = 'img/equipo/default.png';
             }
 
+            $equipo = NEW Equipo();
+            $equipo->nombre = $request->input('nombre');
+            $equipo->logo = $nombreImg;
+            $equipo->instituto_id = $request->input('instituto');
+            $equipo->colores_id = $request->input('colores');
+            $equipo->user_id = Auth::user()->id;
+            $equipo->save();
+            $success = true;
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('equipos.index'))->with('success');
+        }else{
+            if (file_exists(public_path($nombreImg))) {
+                if($nombreImg != 'img/equipo/default.png'){
+                    unlink(public_path($nombreImg));
+                }
+            }
+            return back()->withInput()->with($error, 'error');
+        }
 
-            Equipo::create([
-                'nombre' => $data['nombre'],
-                'logo' => $nombreImg,
-                'instituto_id' => $data['instituto'],
-                'colores_id' => $data['colores'],
-                'user_id' => Auth::user()->id
-            ]);
-        });
-
-        return redirect(route('equipos.index'));
     }
 
     /**
@@ -139,7 +150,8 @@ class EquipoController extends Controller
             'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
 
-        DB::transaction(function () use ($data, $request, $equipo) {
+        DB::beginTransaction();
+        try{
             if($request->hasFile('logo')){
                 $archivo = $request->file('logo');
                 $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
@@ -156,16 +168,25 @@ class EquipoController extends Controller
             }else{
                 $nombreImg = $equipo->logo;
             }
-            Equipo::find($equipo->id)->
-                update([
-                    'nombre' => $data['nombre'],
-                    'logo' => $nombreImg,
-                    'instituto_id' => $data['instituto'],
-                    'colores_id' => $data['colores'],
-                    'user_id' => Auth::user()->id
-                ]);
-        }, 2);
-        return redirect(route('equipos.index'));
+
+            $equipo->nombre = $request->input('nombre');
+            $equipo->logo = $nombreImg;
+            $equipo->instituto_id = $request->input('instituto');
+            $equipo->colores_id = $request->input('colores');
+            $equipo->user_id = Auth::user()->id;
+            $equipo->save();
+            $success = true;
+        } catch (\exception $e){
+            $success = false;
+            $error = $e->getMessage();
+            DB::rollback();
+        }
+        if ($success){
+            DB::commit();
+            return redirect(route('equipos.index'))->with('success');
+        }else{
+            return back()->withInput()->with($error, 'error');
+        }
     }
 
     /**
