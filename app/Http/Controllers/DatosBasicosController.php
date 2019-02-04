@@ -275,5 +275,8 @@ class DatosBasicosController extends Controller
         $datosbasicos->delete();
         $datosbasicos->save();
         return redirect(route('datosbasicos.index'))->with('success');
+
+        // DatosBasicos::find($id)->delete();
+        // return redirect(route('datosbasicos.index'));
     }
 }
