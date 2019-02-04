@@ -51,5 +51,15 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123'),
             'remember_token' => str_random(10),
         ));
+
+        User::create(array(
+            'rol_id' => 1,
+            'datos_basicos_id' => 2,
+            'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
+            'password' => bcrypt('123'),
+            'remember_token' => str_random(10),
+        ));
+
+
     }
 }
