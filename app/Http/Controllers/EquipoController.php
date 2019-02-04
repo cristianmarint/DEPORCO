@@ -197,7 +197,13 @@ class EquipoController extends Controller
      */
     public function destroy($id)
     {
-        Equipo::find($id)->delete();
-        return redirect(route('equipos.index'));
+        $equipo = Equipo::find($id);   
+        $equipo->user_id = Auth::user()->id;
+        $equipo->delete();
+        $equipo->save();
+        return redirect(route('equipos.index'))->with('success');
+
+        // Equipo::find($id)->delete();
+        // return redirect(route('equipos.index'));
     }
 }
