@@ -22,5 +22,6 @@ $factory->define(DatosBasicos::class, function (Faker $faker) {
         'direccion_id' => \App\Direccion::all()->random()->id,
         'eps_id' => \App\Eps::all()->random()->id,
         'email' => $faker->email,
+        // 'user_id' => 2
     ];
 });

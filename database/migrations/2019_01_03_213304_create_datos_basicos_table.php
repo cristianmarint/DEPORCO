@@ -29,6 +29,9 @@ class CreateDatosBasicosTable extends Migration
             $table->unsignedInteger('direccion_id');
             $table->unsignedInteger('eps_id');
             $table->string('email')->nullable(true)->unique();
+            //default null ya que en el momento de ejecutar los seeders, 
+            //UsesTableSeeder pide datos basicos, y si se cambia datos basicos pide a users cuando uno o el otra no contienen datos
+            $table->unsignedInteger('user_id')->nullable(true)->default(NULL);
             $table->softDeletes();
             $table->timestamps();
             
@@ -43,6 +46,8 @@ class CreateDatosBasicosTable extends Migration
             $table->foreign('direccion_id')->references('id')->on('direccion')
             ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('eps_id')->references('id')->on('eps')
+            ->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('restrict');
         });
     }

@@ -122,6 +122,7 @@ class DatosBasicosController extends Controller
             $datosbasicos->direccion_id = $direccion->id;
             $datosbasicos->eps_id = $request->input('eps');
             $datosbasicos->email = $request->input('email');
+            $datosbasicos->user_id = Auth::user()->id;
             $datosbasicos->save();
             $success = true;
         } catch (\exception $e){
@@ -245,7 +246,7 @@ class DatosBasicosController extends Controller
             $datosbasicos->municipio_id = $request->input('municipio');
             $datosbasicos->direccion_id = $direccion->id;
             $datosbasicos->eps_id = $request->input('eps');
-            // $datosbasicos->user_id = Auth::user()->id;
+            $datosbasicos->user_id = Auth::user()->id;
             $datosbasicos->save();
             $success = true;
         } catch (\exception $e){
@@ -269,7 +270,13 @@ class DatosBasicosController extends Controller
      */
     public function destroy($id)
     {
-        DatosBasicos::find($id)->delete();
-        return redirect(route('datosbasicos.index'));
+        $datosbasicos = DatosBasicos::find($id);   
+        $datosbasicos->user_id = Auth::user()->id;
+        $datosbasicos->delete();
+        $datosbasicos->save();
+        return redirect(route('datosbasicos.index'))->with('success');
+
+        // DatosBasicos::find($id)->delete();
+        // return redirect(route('datosbasicos.index'));
     }
 }

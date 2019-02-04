@@ -27,6 +27,7 @@ class DatosBasicosTableSeeder extends Seeder
             'direccion_id' => \App\Direccion::all()->random()->id,
             'eps_id' => \App\Eps::all()->random()->id,
             'email' => 'cristianmarint@cotecnova.edu.co',
+            // 'user_id' => 2
         ));
         
         DatosBasicos::create(array(
@@ -41,9 +42,10 @@ class DatosBasicosTableSeeder extends Seeder
             'direccion_id' => \App\Direccion::all()->random()->id,
             'eps_id' => \App\Eps::all()->random()->id,
             'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
+            // 'user_id' => 2
         ));
         
         factory(DatosBasicos::class, 100)->create();
-
+        
     }
 }
