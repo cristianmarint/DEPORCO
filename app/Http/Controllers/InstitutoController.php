@@ -112,19 +112,21 @@ class InstitutoController extends Controller
 
         } catch (\exception $e){
             $success = false;
-            $error = $e->getMessage();
+            $error_save = $e->getMessage();
             DB::rollback();
         }
         if ($success){
             DB::commit();
-            return redirect(route('institutos.index'))->with('success');
+            session()->flash('create', $instituto->nombre);
+            return redirect(route('institutos.index'));
         }else{
             if (file_exists(public_path($nombreImg))) {
                 if($nombreImg != 'img/instituto/default.png'){
                     unlink(public_path($nombreImg));
                 }
             }
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -229,9 +231,11 @@ class InstitutoController extends Controller
         }
         if ($success){
             DB::commit();
-            return redirect(route('institutos.index'))->with('success');
+            session()->flash('update', $instituto->nombre);
+            return redirect(route('institutos.index'))->with('success', $success);
         }else{
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return back()->withInput();
         }
     }
 
@@ -244,7 +248,7 @@ class InstitutoController extends Controller
 
     public function destroy($id)
     {
-        Instituto::find($id)->delete();
+        Instituto::findOrFail($id)->delete();
         return redirect(route('institutos.index'));
     }
 }

@@ -10,6 +10,14 @@
         </ul>
     </div>
 
+    @if(Session::has('error'))
+        <script>
+            setTimeout(function(){
+                swal("¡Algo ha salido mal!", "Ha habido un error al procesar la peticion, vuelte a intentarlo", "error");
+            }, 500);
+        </script>
+    @endif
+
     <!-- Dashboard Counts Section-->
     <section class="dashboard-counts">
         <div class="container-fluid">
@@ -219,6 +227,7 @@
                 });
             });
         });
+
     </script>
 @endsection
 

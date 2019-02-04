@@ -1,7 +1,8 @@
 loading futbol image 2 :https://dribbble.com/shots/2710239-Football-Loader
   Steve Ridgway -
 
-
+Referencias de swal
+https://blog.endeos.com/demo/sweetalert/index.html
 
 composer install
 
