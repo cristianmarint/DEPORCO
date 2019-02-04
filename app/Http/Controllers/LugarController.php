@@ -192,7 +192,13 @@ class LugarController extends Controller
      */
     public function destroy($id)
     {
-        Lugar::find($id)->delete();
-        return redirect(route('lugares.index'));
+        $lugar = Lugar::find($id);   
+        $lugar->user_id = Auth::user()->id;
+        $lugar->delete();
+        $lugar->save();
+        return redirect(route('lugares.index'))->with('success');
+
+        // Lugar::find($id)->delete();
+        // return redirect(route('lugares.index'));
     }
 }
