@@ -93,12 +93,16 @@ class LugarController extends Controller
             $success = true;
         } catch (\exception $e){
             $success = false;
-            $error = $e->getMessage();
+            $error_save = $e->getMessage();
             DB::rollback();
         }
         if ($success){
             DB::commit();
+            session()->flash('create', $lugar->nombre);
             return redirect(route('lugares.index'))->with('success');
+        }else{
+            session()->flash('error', 'error');
+            return back()->withInput();
         }
     }
 
@@ -178,9 +182,11 @@ class LugarController extends Controller
         }
         if ($success){
             DB::commit();
+            session()->flash('update', $lugar->nombre);
             return redirect(route('lugares.index'))->with('success');
         }else{
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return back()->withInput();
         }
     }
 
