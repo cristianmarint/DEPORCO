@@ -77,7 +77,7 @@ class DatosBasicosController extends Controller
             'genero' => 'required|integer|not_in:0|exists:genero,id',
             'eps' => 'required|integer|not_in:0|exists:eps,id',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|numeric|min:7',
+            'telefono' => 'required|digits_between:7,12|numeric',
             'email' => 'min:5|max:191|unique:datos_basicos,email',
             'departamento' => 'required|integer|not_in:0|exists:departamento,id',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
@@ -127,11 +127,12 @@ class DatosBasicosController extends Controller
             $success = true;
         } catch (\exception $e){
             $success = false;
-            $error = $e->getMessage();
+            $error_save = $e->getMessage();
             DB::rollback();
         }
         if ($success){
             DB::commit();
+            session()->flash('create', $datosbasicos->primer_nombre . " " . $datosbasicos->primer_apellido );
             return redirect(route('datosbasicos.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
@@ -139,7 +140,8 @@ class DatosBasicosController extends Controller
                     unlink(public_path($nombreImg));
                 }
             }
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return redirect()->back()->withInput();
         }
     }
 
@@ -194,7 +196,7 @@ class DatosBasicosController extends Controller
             'genero' => 'required|integer|not_in:0|exists:genero,id',
             'eps' => 'required|integer|not_in:0|exists:eps,id',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|digits_between:1,12|numeric',
+            'telefono' => 'required|digits_between:7,12|numeric',
             'email' => 'min:5|max:191|email|unique:datos_basicos,email,'.$id,
             'departamento' => 'required|integer|not_in:0|exists:departamento,id',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
@@ -256,9 +258,11 @@ class DatosBasicosController extends Controller
         }
         if ($success){
             DB::commit();
+            session()->flash('update', $datosbasicos->primer_nombre . " " . $datosbasicos->primer_apellido );
             return redirect(route('datosbasicos.index'))->with('success');
         }else{
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return back()->withInput();
         }
     }
 
