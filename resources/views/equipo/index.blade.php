@@ -14,6 +14,19 @@
     <section class="dashboard-counts">
         <div class="container-fluid">
             <div class="bg-white has-shadow">
+                    @if(Session::has('create'))
+                    <script>
+                        setTimeout(function(){
+                                function_swal_confirm('{{Session::get('create')}}', 'creado')
+                        }, 500);
+                    </script>
+                @elseif(Session::has('update'))
+                    <script>
+                        setTimeout(function(){
+                            function_swal_confirm('{{Session::get('update')}}', 'editado')
+                        }, 500);
+                    </script>
+                    @endif
                 <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('equipos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
@@ -42,7 +55,7 @@
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
 
-                                            <button onclick="id_clickeado({{ $equipo->id }},'{{ $equipo->nombre }}');return funtion_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                            <button onclick="id_clickeado({{ $equipo->id }},'{{ $equipo->nombre }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
@@ -76,7 +89,7 @@
             idclick=id;//captura el id a la cual se le dio click
             nombreclick=nombre;//captura el id a la cual se le dio click
         }
-        function funtion_swal() {
+        function function_swal() {
             
             swal({
                     title: "¿Seguro que desea eliminar el equipo "+nombreclick+"? ",
@@ -98,9 +111,13 @@
                             $(idfinal).click();
                         }, 500);
                     } else {
-                        swal("Cancelado", "El lugar NO ha sido eliminado", "error");
+                        swal("Cancelado", "El equipo NO ha sido eliminado", "error");
                     }
                 });
+        }
+
+        function function_swal_confirm(text, type) {
+            swal("Informacion almacenada", "El equipo "+text+" ha sido "+type+" correctamente", "success");
         }
     </script>
 @endsection

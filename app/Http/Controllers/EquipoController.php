@@ -94,6 +94,7 @@ class EquipoController extends Controller
         }
         if ($success){
             DB::commit();
+            session()->flash('create', $equipo->nombre);
             return redirect(route('equipos.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
@@ -101,7 +102,8 @@ class EquipoController extends Controller
                     unlink(public_path($nombreImg));
                 }
             }
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return redirect()->back()->withInput();
         }
 
     }
@@ -183,9 +185,11 @@ class EquipoController extends Controller
         }
         if ($success){
             DB::commit();
+            session()->flash('update', $equipo->nombre);
             return redirect(route('equipos.index'))->with('success');
         }else{
-            return back()->withInput()->with($error, 'error');
+            session()->flash('error', 'error');
+            return back()->withInput();
         }
     }
 
