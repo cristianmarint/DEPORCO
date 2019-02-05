@@ -13,3 +13,5 @@ https://laravel.com/docs/4.2/validation#rule-confirmed
 
 ⚠️ PROBLEMAS ⚠️
 
+organizar los modelos dentro de app/models
+

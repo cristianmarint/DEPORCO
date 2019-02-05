@@ -34,8 +34,6 @@ class EquipoController extends Controller
     {
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
         $colores = Colores::orderBy('color', 'asc')->get();
-        // linea de prueba en merge
-
         return view('equipo.create', compact('institutos','colores'));
     }
 
