@@ -12,6 +12,6 @@ class EnfrentamientoArbitroTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(EnfrentamientoArbitro::class, 15);
+        factory(EnfrentamientoArbitro::class, 15)->create();
     }
 }
