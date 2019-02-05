@@ -26,10 +26,10 @@
     <link rel="icon" type="image/png" href="{{url('img/favicon/cotecnova.png')}}">
 </head>
 <body>
-    <!-- LOADER -->
-    <!--    <div id="preloader">-->
-    <!--       <img class="preloader" src="../img/Loading-Page/football_loader.gif" alt="">-->
-    <!--    </div>-->
+    {{-- <!-- LOADER --> --}}
+    {{-- <div id="preloader">
+           <img class="preloader" src="{{ url('img/Loading-Page/football_loader.gif') }}" alt="">
+    </div> --}}
 
     <div class="page">
         <!-- Main Navbar-->
