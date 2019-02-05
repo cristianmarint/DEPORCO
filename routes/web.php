@@ -22,9 +22,8 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>'auth'], function() {
 
-    Route::get('/home', function() {
-        return view('index');
-    });
+    //retorna la view index desde el controlador
+    Route::resource('/home', 'HomeController');
 
     // Routes Institution
     Route::resource('/institutos', 'InstitutoController');
