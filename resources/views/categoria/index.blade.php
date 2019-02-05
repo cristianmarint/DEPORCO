@@ -36,6 +36,7 @@
                     <thead >
                         <tr>
                             <th>Descripción</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
