@@ -41,6 +41,7 @@ class HomeController extends Controller
         // SELECT arbitro_id,count(id) from enfrentamiento_arbitro group by arbitro_id;
 
         $numero_partidos = DB::statement("SELECT arbitro_id,count(id) AS numero from enfrentamiento_arbitro group by arbitro_id;");
+        
         return view('home', compact('enfrentamientos','numero_partidos'));
     }
 }
