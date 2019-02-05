@@ -45,7 +45,8 @@
                                 <tr>
                                     <td> <img src="{{asset($enfrentamiento->arbitro->datos_basicos->foto)}}"  class="img-fluid rounded-circle" width="50vh"> </td>
                                     <td>{{ $enfrentamiento->arbitro->datos_basicos->primer_nombre }} {{ $enfrentamiento->arbitro->datos_basicos->primer_apellido }}</td>
-                                    <td>{{ $numero_partidos->numero }}</td>
+                                    {{-- {{ $numero_partidos->numero }} --}}
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
