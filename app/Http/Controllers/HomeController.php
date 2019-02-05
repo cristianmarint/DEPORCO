@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Arbitro;
+use App\EnfrentamientoArbitro;
 
 
 
@@ -31,7 +31,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $arbitros = Arbitro::all();
-        return view('home', compact('arbitros'));
+        $enfrentamientos = EnfrentamientoArbitro::all()
+                            ->unique('arbitro_id')
+                            
+                            
+                            // ->orderBy('createdAt', 'desc')
+                            // ->count('arbitro_id')
+                            ;
+        // SELECT arbitro_id,count(id) from enfrentamiento_arbitro group by arbitro_id;
+
+        $numero_partidos = DB::statement("SELECT arbitro_id,count(id) AS numero from enfrentamiento_arbitro group by arbitro_id;");
+        return view('home', compact('enfrentamientos','numero_partidos'));
     }
 }

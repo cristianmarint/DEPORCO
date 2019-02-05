@@ -20,27 +20,31 @@ class DatosBasicos extends Model
       'segundo_nombre',
       'primer_apellido',
       'segundo_apellido',
-        'tipo_sangre_id',
-        'municipio_id',
-        'genero_id',
-        'direccion_id',
-        'telefono_id',
-        'eps_id',
-       'email',
+      'tipo_sangre_id',
+      'municipio_id',
+      'genero_id',
+      'direccion_id',
+      'telefono_id',
+      'eps_id',
+      'email',
     ];
 
     protected function user(){
         return $this->hasOne(User::class);
     }
 
+    protected function arbitro(){
+        return $this->hasOne(Arbitro::class);
+    }
+
     public function telefono(){
         return $this->belongsTo(Telefono::class);
     }
-
+    
     public function municipio(){
         return $this->belongsTo(Municipio::class);
     }
-
+    
     public function direccion(){
         return $this->belongsTo(Direccion::class);
     }

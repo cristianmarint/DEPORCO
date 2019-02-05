@@ -21,4 +21,8 @@ class Arbitro extends Model
     protected function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
     }
+
+    protected function enfretamiento_arbitro(){
+        return $this->hasOne(EnfrentamientoArbitro::class);
+    }
 }

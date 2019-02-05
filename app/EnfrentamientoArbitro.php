@@ -1,9 +1,13 @@
 <?php
 
 namespace App;
-use Illuminate\Database\Eloquent\Model;
 
-class EnfrentamientoArbitro extends Model{
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class EnfrentamientoArbitro extends Model
+{
+    use SoftDeletes;
 
     protected $table = "enfrentamiento_arbitro";
 
@@ -13,4 +17,8 @@ class EnfrentamientoArbitro extends Model{
         'enfrentamiento_id',
         'user_id'
     ];
+
+    protected function arbitro(){
+        return $this->belongsTo(Arbitro::class);
+    }
 }
