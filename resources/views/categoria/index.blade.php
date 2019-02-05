@@ -107,7 +107,7 @@
                             $(idfinal).click();
                         }, 500);
                     } else {
-                        swal("Cancelado", "La categoria NO ha sido eliminado", "error");
+                        swal("Cancelado", "La categoria NO ha sido eliminada", "error");
                     }
                 });
         }
