@@ -44,13 +44,14 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes categorias
     Route::resource('/categorias', 'CategoriaController');
     Route::get('/categorias/{id}', 'CategoriaController@getCategoria');
+    
+    // Routes torneo
+    Route::resource('/torneos', 'TorneoController');
+    Route::get('/torneos/{id}', 'TorneoController@getTorneo');
 
     // Routes temporadas
 //    Route::resource('/temporadas', 'TemporadaController');
 
-
-//    // Routes torneo
-//    Route::resource('/torneos', 'TorneoController');
 
     // Routes inscripciones_equipo equipo
 //    Route::resource('/inscripciones_equipo', 'InscripcionEquiposController');
