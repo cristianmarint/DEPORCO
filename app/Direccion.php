@@ -15,7 +15,7 @@ class Direccion extends Model
       'numero'
     ];
 
-//    protected function instituto(){
-//        return $this->hasOne(Instituto::class);
-//    }
+    protected function instituto(){
+        return $this->hasOne(Instituto::class);
+    }
 }
