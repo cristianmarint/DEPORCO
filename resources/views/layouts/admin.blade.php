@@ -46,7 +46,7 @@
                     <div class="navbar-holder d-flex align-items-center justify-content-between">
                         <!-- Navbar Header-->
                         <div class="navbar-header">
-                            <!-- Navbar Brand --><a href="{{url('/home')}}" class="navbar-brand d-none d-sm-inline-block">
+                            <!-- Navbar Brand --><a href="{{url('/')}}" class="navbar-brand d-none d-sm-inline-block">
                                 <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong> Cotecnova</strong></div>
                                 <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>DC</strong></div></a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
