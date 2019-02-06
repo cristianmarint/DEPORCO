@@ -37,6 +37,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Categoria</th>
+                            <th>Temporada</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@
                             <tr>
                                 <td>{{ $torneo->nombre }}</td>
                                 <td>{{ $torneo->categoria->descripcion }}</td>
+                                <td>{{ $torneo->temporada->descripcion }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <div class="btn-group" role="group">
