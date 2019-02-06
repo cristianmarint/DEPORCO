@@ -9,5 +9,8 @@ composer install
 php artisan key:generate 
 
 
+interesante =
+https://laravel.io/forum/04-15-2014-session-flash-message
+
 
 https://github.com/fzaninotto/Faker#language-specific-formatters
