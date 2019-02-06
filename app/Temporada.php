@@ -4,9 +4,13 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Temporada extends Model
 {
+    use SoftDeletes;
+
     protected $table = "temporada";
 
     protected $fillable = [
@@ -14,4 +18,8 @@ class Temporada extends Model
       'fecha_inicio',
       'fecha_fin'
     ];
+
+    public function torneo(){
+      return $this->hasMany(Torneo::class);
+  }
 }
