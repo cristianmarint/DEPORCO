@@ -24,6 +24,13 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="logo" class="form-control-label col-sm-5 ">Logo</label>
+                    <div class="col-sm-6">
+                        <img src="{{asset($instituto->logo)}}" class="rounded-circle" width="250vh">
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="nit" class="form-control-label col-sm-3 ">Nit</label>
                     <div class="col-sm-9">
                         <input id="nit" type="text" name="nit" class="form-control" value="{{$instituto->nit}}" readonly>
@@ -69,7 +76,12 @@
 
                 <div class="form-group row">
                     <label for="telefono" class="form-control-label col-sm-3">Telefono      </label>
-                    <div class="col-sm-9">
+
+                    <div class="col-sm-3">
+                        <input id="tipo_telefono" type="text" name="tipo_telefono" class="form-control" value="{{$instituto->telefono->tipo}}" readonly>
+                    </div>
+
+                    <div class="col-sm-6">
                         <input id="telefono" type="text" name="telefono" class="form-control" value="{{$instituto->telefono->numero}}" readonly>
                     </div>
                 </div>
