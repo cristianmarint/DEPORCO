@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: edwin
- * Date: 9/01/2019
- * Time: 11:51 AM
- */
 
 namespace App;
 
@@ -22,4 +16,8 @@ class Categoria extends Model
     protected $fillable = [
         'descripcion'
     ];
+
+    public function torneo(){
+        return $this->hasMany(Torneo::class);
+    }
 }
