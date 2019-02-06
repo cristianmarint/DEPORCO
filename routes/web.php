@@ -48,9 +48,10 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes torneo
     Route::resource('/torneos', 'TorneoController');
     Route::get('/torneos/{id}', 'TorneoController@getTorneo');
-
+    
     // Routes temporadas
-//    Route::resource('/temporadas', 'TemporadaController');
+    Route::resource('/temporadas', 'TemporadaController');
+    Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
 
 
     // Routes inscripciones_equipo equipo
