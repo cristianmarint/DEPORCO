@@ -1,6 +1,6 @@
 <?php
 
-use App\Criterio;
+use App\Models\Criterio;
 use Illuminate\Database\Seeder;
 
 class CriterioTableSeeder extends Seeder

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\DatosBasicos;
+use App\Models\DatosBasicos;
 
-use App\Telefono;
-use App\TipoSangre;
-use App\Municipio;
-use App\Departamento;
-use App\Genero;
-use App\Direccion;
-use App\Eps;
+use App\Models\Telefono;
+use App\Models\TipoSangre;
+use App\Models\Municipio;
+use App\Models\Departamento;
+use App\Models\Genero;
+use App\Models\Direccion;
+use App\Models\Eps;
 
 
 use Illuminate\Http\Request;

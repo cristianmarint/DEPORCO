@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Equipo;
+use App\Models\Equipo;
 
-use App\Direccion;
-use App\Instituto;
-use App\Colores;
+use App\Models\Direccion;
+use App\Models\Instituto;
+use App\Models\Colores;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
