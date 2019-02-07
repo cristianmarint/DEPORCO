@@ -25,6 +25,8 @@ Route::group(['middleware'=>'auth'], function() {
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
 
+    Route::post('/changePassword/{id}', 'ChangePasswordController@update');
+
     // Routes Institution
     Route::resource('/institutos', 'InstitutoController');
     Route::get('/institutos/municipios/{id}', 'InstitutoController@getMunicipio');
