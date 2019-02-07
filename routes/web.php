@@ -59,6 +59,12 @@ Route::group(['middleware'=>'auth'], function() {
 //    Route::get('/inscripciones_equipo/torneo/{id_torneo}', 'InscripcionEquiposController@getEquipo');
 
 
+
+
+
+
+
+
 //    Routes for data delete
 //    Route::resource('/institutos_delete', 'Instituto_deleteController');
 //    Route::resource('/equipos_delete', 'Equipo_deleteController');
