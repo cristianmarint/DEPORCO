@@ -10,6 +10,9 @@ lo probé pero dio problemas con argunas migraciones y modelos.
 reglas de validacion
 https://laravel.com/docs/4.2/validation#rule-confirmed
 
+posible free hosting 
+https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
+
 
 *********
 
