@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torneo;
+use App\Torneo;
 
-use App\Models\Categoria;
-use App\Models\Temporada;
+use App\Categoria;
+use App\Temporada;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

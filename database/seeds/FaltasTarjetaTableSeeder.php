@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\FaltasTarjeta;
+use App\FaltasTarjeta;
 use Illuminate\Database\Seeder;
 
 class FaltasTarjetaTableSeeder extends Seeder

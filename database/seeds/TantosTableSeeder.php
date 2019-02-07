@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Tantos;
+use App\Tantos;
 use Illuminate\Database\Seeder;
 
 class TantosTableSeeder extends Seeder

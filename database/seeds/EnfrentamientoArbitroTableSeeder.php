@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\EnfrentamientoArbitro;
+use App\EnfrentamientoArbitro;
 use Illuminate\Database\Seeder;
 
 class EnfrentamientoArbitroTableSeeder extends Seeder

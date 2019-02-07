@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Eps;
+use App\Eps;
 use Illuminate\Database\Seeder;
 
 class EpsTableSeeder extends Seeder

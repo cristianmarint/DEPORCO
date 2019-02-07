@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Colores;
+use App\Colores;
 use Illuminate\Database\Seeder;
 
 class ColoresTableSeeder extends Seeder

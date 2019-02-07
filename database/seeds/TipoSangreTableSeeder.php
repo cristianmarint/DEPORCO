@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\TipoSangre;
+use App\TipoSangre;
 use Illuminate\Database\Seeder;
 
 class TipoSangreTableSeeder extends Seeder

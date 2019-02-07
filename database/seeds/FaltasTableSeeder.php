@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Faltas;
+use App\Faltas;
 use Illuminate\Database\Seeder;
 
 class FaltasTableSeeder extends Seeder

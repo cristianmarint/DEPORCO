@@ -11,19 +11,6 @@ reglas de validacion
 https://laravel.com/docs/4.2/validation#rule-confirmed
 
 
-*********
-
-- Para los capitanes de cada equipo
-    https://dribbble.com/shots/4596031-Transition-from-sign-up-to-dashboard
-
-
-- Plantilla para welcome
-    http://preview.themeforest.net/item/escobars-sport-team-clubs-wordpress-theme/full_screen_preview/20896758
-
-    *free* https://colorlib.com/wp/template/aerobicsfit/
-    *free* https://colorlib.com/wp/template/crossfits/
-
-
 ⚠️ PROBLEMAS ⚠️
 
 organizar los modelos dentro de app/models

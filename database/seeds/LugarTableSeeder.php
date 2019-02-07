@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Lugar;
+use App\Lugar;
 use Illuminate\Database\Seeder;
 
 class LugarTableSeeder extends Seeder

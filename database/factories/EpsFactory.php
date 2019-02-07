@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Eps;
+use App\Eps;
 use Faker\Generator as Faker;
 
 $factory->define(Eps::class, function (Faker $faker) {

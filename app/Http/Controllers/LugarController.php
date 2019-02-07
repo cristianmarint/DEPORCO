@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lugar;
+use App\Lugar;
 
-use App\Models\Departamento;
-use App\Models\Municipio;
-use App\Models\Direccion;
-use App\Models\elefono;
+use App\Departamento;
+use App\Municipio;
+use App\Direccion;
+use App\Telefono;
 
 
 use Illuminate\Http\Request;

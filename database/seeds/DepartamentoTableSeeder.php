@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Departamento;
+use App\Departamento;
 use Illuminate\Database\Seeder;
 
 class DepartamentoTableSeeder extends Seeder

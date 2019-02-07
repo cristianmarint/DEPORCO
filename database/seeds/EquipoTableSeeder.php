@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Equipo;
+use App\Equipo;
 use Illuminate\Database\Seeder;
 
 class EquipoTableSeeder extends Seeder

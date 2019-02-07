@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Temporada;
+use App\Temporada;
 use Illuminate\Database\Seeder;
 
 class TemporadaTableSeeder extends Seeder

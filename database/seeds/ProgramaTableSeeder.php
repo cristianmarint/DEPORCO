@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Programa;
+use App\Programa;
 use Illuminate\Database\Seeder;
 
 class ProgramaTableSeeder extends Seeder

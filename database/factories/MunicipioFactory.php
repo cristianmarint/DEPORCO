@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Municipio;
-use App\Models\Departamento;
+use App\Municipio;
+use App\Departamento;
 use Faker\Generator as Faker;
 
 $factory->define(Municipio::class, function (Faker $faker) {

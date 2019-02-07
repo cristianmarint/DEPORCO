@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Torneo;
+use App\Torneo;
 use Illuminate\Database\Seeder;
 
 class TorneoTableSedeer extends Seeder
@@ -14,22 +14,22 @@ class TorneoTableSedeer extends Seeder
     {
         Torneo::create(array(
             'nombre' => 'Torneo uno',
-            'temporada_id' => \App\Models\Temporada::all()->random()->id,
-            'categoria_id' => \App\Models\Categoria::all()->random()->id,
+            'temporada_id' => \App\Temporada::all()->random()->id,
+            'categoria_id' => \App\Categoria::all()->random()->id,
             'user_id' => 3
         ));
 
         Torneo::create(array(
             'nombre' => 'Torneo dos',
-            'temporada_id' => \App\Models\Temporada::all()->random()->id,
-            'categoria_id' => \App\Models\Categoria::all()->random()->id,
+            'temporada_id' => \App\Temporada::all()->random()->id,
+            'categoria_id' => \App\Categoria::all()->random()->id,
             'user_id' => 2
         ));
 
         Torneo::create(array(
             'nombre' => 'Torneo Tres',
-            'temporada_id' => \App\Models\Temporada::all()->random()->id,
-            'categoria_id' => \App\Models\Categoria::all()->random()->id,
+            'temporada_id' => \App\Temporada::all()->random()->id,
+            'categoria_id' => \App\Categoria::all()->random()->id,
             'user_id' => 1
         ));
     }

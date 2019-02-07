@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Instituto;
+use App\Instituto;
 use Illuminate\Database\Seeder;
 
 class InstitutoTableSeeder extends Seeder

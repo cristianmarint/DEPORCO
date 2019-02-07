@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Calendario;
+use App\Calendario;
 use Illuminate\Database\Seeder;
 
 class CalendarioTableSeeder extends Seeder

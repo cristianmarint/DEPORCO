@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\TipoEducacion;
+use App\TipoEducacion;
 use Illuminate\Database\Seeder;
 
 class TipoEducacionTableSeeder extends Seeder

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Telefono;
+use App\Telefono;
 use Illuminate\Database\Seeder;
 
 class TelefonoTableSeeder extends Seeder

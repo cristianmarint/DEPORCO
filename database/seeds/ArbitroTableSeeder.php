@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Arbitro;
+use App\Arbitro;
 use Illuminate\Database\Seeder;
 
 class ArbitroTableSeeder extends Seeder
