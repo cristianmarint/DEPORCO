@@ -1,6 +1,6 @@
 <?php
 
-use App\Direccion;
+use App\Models\Direccion;
 use Faker\Generator as Faker;
 
 $factory->define(Direccion::class, function (Faker $faker) {

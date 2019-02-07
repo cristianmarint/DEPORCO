@@ -1,6 +1,6 @@
 <?php
 
-use App\Genero;
+use App\Models\Genero;
 use Illuminate\Database\Seeder;
 
 class GeneroTableSeeder extends Seeder

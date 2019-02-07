@@ -41,7 +41,7 @@
                         </thead>
     
                         <tbody >
-                            @foreach($enfrentamientos as $enfrentamiento)
+                            {{-- @foreach($enfrentamientos as $enfrentamiento)
                                 <tr>
                                     <td> <img src="{{asset($enfrentamiento->arbitro->datos_basicos->foto)}}"  class="img-fluid rounded-circle" width="50vh"> </td>
                                     <td>{{ $enfrentamiento->arbitro->datos_basicos->primer_nombre }} {{ $enfrentamiento->arbitro->datos_basicos->primer_apellido }}</td>
@@ -54,7 +54,7 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>

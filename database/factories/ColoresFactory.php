@@ -1,6 +1,6 @@
 <?php
 
-use App\Colores;
+use App\Models\Colores;
 use Faker\Generator as Faker;
 
 $factory->define(Colores::class, function (Faker $faker) {
