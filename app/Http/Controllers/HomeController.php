@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\EnfrentamientoArbitro;
+// use App\Models\EnfrentamientoArbitro;
 
 
 
@@ -31,15 +31,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $enfrentamientos = EnfrentamientoArbitro::all()
-                            ->unique('arbitro_id')
+        // $enfrentamientos = EnfrentamientoArbitro::all()
+        //                     ->unique('arbitro_id')
                             
                             
-                            // ->orderBy('createdAt', 'desc')
-                            // ->count('arbitro_id')
-                            ;
+        //                     // ->orderBy('createdAt', 'desc')
+        //                     // ->count('arbitro_id')
+        //                     ;
         // SELECT arbitro_id,count(id) from enfrentamiento_arbitro group by arbitro_id;
         
-        return view('home', compact('enfrentamientos'));
+        return view('home');
     }
 }

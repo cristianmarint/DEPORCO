@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Temporada;
+use App\Models\Temporada;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

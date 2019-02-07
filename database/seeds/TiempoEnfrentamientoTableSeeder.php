@@ -1,6 +1,6 @@
 <?php
 
-use App\TiempoEnfrentamiento;
+use App\Models\TiempoEnfrentamiento;
 use Illuminate\Database\Seeder;
 
 class TiempoEnfrentamientoTableSeeder extends Seeder

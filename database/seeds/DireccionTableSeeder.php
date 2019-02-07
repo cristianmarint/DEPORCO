@@ -1,6 +1,6 @@
 <?php
 
-use App\Direccion;
+use App\Models\Direccion;
 use Illuminate\Database\Seeder;
 
 class DireccionTableSeeder extends Seeder

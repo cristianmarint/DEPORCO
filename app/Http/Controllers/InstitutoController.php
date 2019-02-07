@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Departamento;
-use App\Direccion;
-use App\Instituto;
-use App\Municipio;
-use App\Telefono;
-use App\TipoEducacion;
+use App\Models\Departamento;
+use App\Models\Direccion;
+use App\Models\Instituto;
+use App\Models\Municipio;
+use App\Models\Telefono;
+use App\Models\TipoEducacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

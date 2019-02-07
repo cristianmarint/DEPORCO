@@ -1,6 +1,6 @@
 <?php
 
-use App\Estadisticas;
+use App\Models\Estadisticas;
 use Illuminate\Database\Seeder;
 
 class EstadisticasTableSeeder extends Seeder
