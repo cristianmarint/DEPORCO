@@ -17,9 +17,9 @@
             <div class="bg-white has-shadow">
 
                 <div class="form-group row">
-                    <label for="cedula" class="form-control-label col-sm-3 ">Descripcion</label>
+                    <label for="descripcion" class="form-control-label col-sm-3 ">Descripcion</label>
                     <div class="col-sm-9">
-                        <input id="cedula" type="text" name="cedula" class="form-control" value="{{ $categorias->descripcion }}" readonly>
+                        <input id="descripcion" type="text" name="descripcion" class="form-control" value="{{ $categorias->descripcion }}" readonly>
                     </div>
                 </div>
 
