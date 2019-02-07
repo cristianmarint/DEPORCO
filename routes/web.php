@@ -26,6 +26,8 @@ Route::group(['middleware'=>'auth'], function() {
         return view('index');
     });
 
+    Route::post('/changePassword/{id}', 'ChangePasswordController@update');
+
     // Routes Institution
     Route::resource('/institutos', 'InstitutoController');
     Route::get('/institutos/municipios/{id}', 'InstitutoController@getMunicipio');

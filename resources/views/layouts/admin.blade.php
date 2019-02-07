@@ -84,7 +84,7 @@
                                     <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item" ><i class="fa fa-user fa-fw"></i> Cambiar contraseña</a>
+                                    <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item"><i class="fa fa-user fa-fw"></i> Cambiar contraseña</a>
                                     <a href="#" id="link_config" class="dropdown-item links"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
                                     {{--<a href="#" class="dropdown-item"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesi&oacute;n</a>--}}
 
@@ -172,31 +172,44 @@
 
             <!-- Modal password-->
             <div class="modal fade" id="ChangePasswordModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Cambio de contraseña</h5>
+                            <h5 class="modal-title">Cambio de contraseña</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form target="" method="post" name="ChangePassword" id="ChangePassword">
-                                <input type="hidden" name="id_user" id="id_user" value="<?php #echo $_SESSION["USUARIO_ID"]; ?>" >
-                                <div class="form-group-material">
-                                    <input id="ChangePassword1" type="password" name="ChangePassword1" required class="input-material">
-                                    <label for="ChangePassword1" class="label-material">Nueva contraseña</label>
+                            <form action="" method="POST" class="form-horizontal">
+
+                                <input type="hidden" value="{{Auth::user()->id}}" id="id">
+
+                                <div class="form-group row">
+                                    <label for="nueva_clave" class="form-control-label col-sm-3">Nueva Contraseña</label>
+                                    <div class="col-sm-9">
+                                        <input id="nueva_clave" type="password" name="nueva_clave" class="form-control">
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong id="nueva_clave_error"> error </strong>
+                                            </span>
+                                    </div>
                                 </div>
-                                <div class="form-group-material">
-                                    <input id="ChangePassword2" type="password" name="ChangePassword2" required class="input-material">
-                                    <label for="ChangePassword2" class="label-material">Repita la contraseña </label>
+
+                                <div class="form-group row">
+                                    <label for="confirmar_clave" class="form-control-label col-sm-3 ">Confirme la Contraseña</label>
+                                    <div class="col-sm-9">
+                                        <input id="confirmar_clave" type="password" name="confirmar_clave" class="form-control">
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong id="confirmar_clave_error"></strong>
+                                            </span>
+                                    </div>
                                 </div>
+                                <button type="reset" style="display:none;" id="ChangePasswordClearForm"></button>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="reset" style="display:none;" id="ChangePasswordClearForm"></button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="ChangePasswordClose">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="SaveChangePassword">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="savePassword">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -204,10 +217,26 @@
 
 
             <!-- Modal container -->
-            <div class="modal fade" id="ModalContainer" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content" id="ContentModal">
-
+                        <div class="modal-header">
+                            {{--nombre asincrono--}}
+                            <h5 class="modal-title" id="ModalLabel">@yield('modal_title')</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{--form asincrono--}}
+                            @yield('modal_body')
+                        </div>
+                        <div class="modal-footer">
+                            {{--<button type="reset" class="btn btn-info" id="ClearForm"></button>--}}
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            {{--boton con id dinamico--}}
+                            <button type="button" class="btn btn-primary" id="@yield('buton_name_save')">Guardar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,6 +261,91 @@
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>
 
+
+    <script>
+        $('#ChangePasswordModal').on('show.bs.modal', function () {
+            setTimeout(function(){
+                $('#update_password').focus();
+            }, 500);
+        });
+
+        $('#closeModal').on("click", function () {
+            $('#ChangePasswordClearForm').click();
+            var nueva_clave = $('#nueva_clave');
+            var confirmar_clave = $('#confirmar_clave');
+            if($(nueva_clave).hasClass('is-invalid') || $(confirmar_clave).hasClass('is-invalid')){
+                $(nueva_clave).removeClass('is-invalid'); $(confirmar_clave).removeClass('is-invalid');
+            }
+        });
+
+       $('#savePassword').on('click', function () {
+            var id = $('#id').val();
+            var nueva_clave = $('#nueva_clave').val();
+            var confirmar_clave= $('#confirmar_clave').val();
+
+           $.ajax({
+               url:"/changePassword/"+id,
+               method:"POST",
+               dataType: 'json',
+               data:{
+                   "_token": "{{ csrf_token() }}",
+                   "id" : id,
+                   "nueva_clave": nueva_clave,
+                   "confirmar_clave" : confirmar_clave
+               }, beforeSend: function () {
+                   timeSleep(" ", "Procensando cambios...", "warning", 500);
+               },
+               error:function(msj){
+
+                   // console.log(msj.responseJSON.errors);
+                   timeSleep("Campos vacios o invalidos", "Corrige o completa el formulario", "info", 1000);
+
+                   $.each(msj.responseJSON.errors, function(key, value){ //array de errores
+                       var inputfinal = "#"+key;
+                       $(inputfinal).addClass('is-invalid');
+                       var errorfinal = "#"+key+"_error";
+                       $(errorfinal).text(value);
+                       // console.log(key+ " - " + value);
+                   });
+               },
+           }).done(function(data){
+               // console.log(data);
+               if(data.result == 'success'){
+                   setTimeout(function(){
+                       swal({
+                               title: " ",
+                               text: "Cambios guardados con exito con exito",
+                               type: "success",
+                               confirmButtonText: "OK",
+                               closeOnConfirm: true },
+                           function(){
+                               $('#ChangePasswordClearForm').click();
+                               $('#ChangePasswordModal').modal('hide');
+                           });
+                   }, 1000);
+
+               }else{
+                   setTimeout(function(){
+                       swal({
+                               title: " ",
+                               text: "Algo ha salido mal, prueba nuevamente",
+                               type: "error",
+                               confirmButtonText: "OK",
+                               closeOnConfirm: true },
+                           function(){
+                               $('#ChangePasswordClearForm').click();
+                           });
+                   }, 1000);
+               }
+           });
+       });
+
+       function timeSleep(title, text, type, time) {
+           setTimeout(function(){
+                swal(title,text,type);
+           }, time);
+       }
+    </script>
     @yield('scripts')
 </body>
 </html>
