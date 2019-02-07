@@ -1,6 +1,6 @@
 <?php
 
-use App\Resultado;
+use App\Models\Resultado;
 use Illuminate\Database\Seeder;
 
 class ResultadoTableSeeder extends Seeder

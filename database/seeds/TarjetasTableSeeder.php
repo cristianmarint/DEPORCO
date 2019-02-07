@@ -1,6 +1,6 @@
 <?php
 
-use App\Tarjetas;
+use App\Models\Tarjetas;
 use Illuminate\Database\Seeder;
 
 class TarjetasTableSeeder extends Seeder

@@ -1,6 +1,6 @@
 <?php
 
-use App\Municipio;
+use App\Models\Municipio;
 use Illuminate\Database\Seeder;
 
 class MunicipioTableSeeder extends Seeder
