@@ -104,7 +104,7 @@
                  },
                 function(isConfirm){
                     if (isConfirm) {
-                        swal("Categoria Eliminada!","procesando cambios","success");
+                        swal("Temporada Eliminada!","procesando cambios","success");
 
                         setTimeout(function(){
                             var idfinal="#delete"+idclick;//se le agrega el id que fue clickeado

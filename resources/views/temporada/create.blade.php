@@ -2,6 +2,12 @@
 @section('title','Temporadas')
 @section('content')
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+
+
 <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
@@ -32,34 +38,45 @@
                             <div class="form-group row">
                                 <label for="create_descripcion" class="form-control-label col-sm-3">Descripcion </label>
                                 <div class="col-sm-9">
-                                    <input id="create_descripcion" type="text" name="descripcion" class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" value="{{old('descripcion')}}" placeholder="Describa la categoria">
+                                    <input id="create_descripcion" type="text" name="descripcion" class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" value="{{old('descripcion')}}" placeholder="Describa la temporada">
                                     @if ($errors->has('descripcion'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('descripcion') }}</strong>
+                                        <strong>La {{ $errors->first('descripcion') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="container">
-                                <div class="row">
-                                    <div class='col-sm-6'>
-                                        <div class="form-group">
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker1').datetimepicker();
-                                        });
-                                    </script>
+                            <div class="form-group row">
+                                <label for="create_inicio" class="form-control-label col-sm-3">Fecha de inicio </label>
+                                <div class="col-sm-9">
+                                    <input id="create_inicio" type="text" name="fecha_inicio" class="date form-control{{ $errors->has('fecha_inicio') ? ' is-invalid' : '' }}" value="{{old('fecha_inicio')}}" placeholder="Ingrese la fecha de inicio">
+                                    @if ($errors->has('fecha_inicio'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>La {{ $errors->first('fecha_inicio') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="create_fin" class="form-control-label col-sm-3">Fecha de fin </label>
+                                <div class="col-sm-9">
+                                    <input id="create_fin" type="text" name="fecha_fin" class="date form-control{{ $errors->has('fecha_fin') ? ' is-invalid' : '' }}" value="{{old('fecha_fin')}}" placeholder="Ingrese la fecha de fin">
+                                    @if ($errors->has('fecha_fin'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>La {{ $errors->first('fecha_fin') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            
+                            <script type="text/javascript">
+                                $('.date').datepicker({  
+                                   format: 'yyyy/mm/dd'
+                                 });  
+                            </script>  
 
                             
                             <div class="form-group row">

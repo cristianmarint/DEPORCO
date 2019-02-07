@@ -17,9 +17,23 @@
             <div class="bg-white has-shadow">
 
                 <div class="form-group row">
-                    <label for="cedula" class="form-control-label col-sm-3 ">Descripcion</label>
+                    <label for="descripcion" class="form-control-label col-sm-3 ">Descripcion</label>
                     <div class="col-sm-9">
-                        <input id="cedula" type="text" name="cedula" class="form-control" value="{{ $categorias->descripcion }}" readonly>
+                        <input id="descripcion" type="text" name="descripcion" class="form-control" value="{{ $temporadas->descripcion }}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fecha_inicio" class="form-control-label col-sm-3 ">fecha de inicio</label>
+                    <div class="col-sm-9">
+                        <input id="fecha_inicio" type="text" name="fecha_inicio" class="form-control" value="{{ $temporadas->fecha_inicio }}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="fecha_fin" class="form-control-label col-sm-3 ">fecha de fin</label>
+                    <div class="col-sm-9">
+                        <input id="fecha_fin" type="text" name="fecha_fin" class="form-control" value="{{ $temporadas->fecha_fin }}" readonly>
                     </div>
                 </div>
 

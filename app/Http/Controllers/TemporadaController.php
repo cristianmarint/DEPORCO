@@ -54,12 +54,16 @@ class TemporadaController extends Controller
     {
         $data = $request->validate([
             'descripcion' => 'required|min:3|max:60|not_in:0|unique:temporada,descripcion',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin'    => 'required|date',
         ]);
 
         DB::beginTransaction();
         try{
             $temporada = NEW Temporada();
             $temporada->descripcion = $request->input('descripcion');
+            $temporada->fecha_inicio = $request->input('fecha_inicio');
+            $temporada->fecha_fin = $request->input('fecha_fin');
             $temporada->save();
             $success = true;
         } catch (\exception $e){
@@ -113,12 +117,16 @@ class TemporadaController extends Controller
     {
         $temporada = Temporada::findOrFail($id);
         $data = $request->validate([
-            'descripcion' => 'required|min:3|max:60|not_in:0|unique:temporada,descripcion',
+            'descripcion' => 'required|min:3|max:60|not_in:0|unique:temporada,descripcion,'.$id,
+            'fecha_inicio' => 'required|date',
+            'fecha_fin'    => 'required|date',
         ]);
 
         DB::beginTransaction();
         try{
             $temporada->descripcion = $request->input('descripcion');
+            $temporada->fecha_inicio = $request->input('fecha_inicio');
+            $temporada->fecha_fin = $request->input('fecha_fin');
             $temporada->save();
             $success = true;
         } catch (\exception $e){
