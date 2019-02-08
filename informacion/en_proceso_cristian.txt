@@ -29,5 +29,5 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
 
 ⚠️ PROBLEMAS ⚠️
 
-organizar los modelos dentro de app/models
+organizar los modelos dentro de app/models ✅
 
