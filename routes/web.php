@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/estadisticas_jugador', function () {
-    Route::resource('/estadisticas_jugador', 'EstadisticasJugadorController');
-    Route::get('/estadisticas_jugador/{id}', 'EstadisticasJugadorController@getJugador');
+Route::get('/estadisticasjugador', function () {
+    Route::resource('/estadisticasjugador', 'EstadisticasJugadorController');
+    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador');
 });
 
 Route::group(['middleware'=>'auth'], function() {

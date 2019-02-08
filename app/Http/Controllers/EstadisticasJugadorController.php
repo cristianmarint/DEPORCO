@@ -16,7 +16,7 @@ class EstadisticasJugadorController extends Controller
      */
     public function index()
     {
-        return view('publico.index');
+        return view('estadisticasjugador.index');
     }
 
     /**
@@ -26,10 +26,10 @@ class EstadisticasJugadorController extends Controller
      * @return \Illuminate\Http\Response json
      */
     public function getJugador($id){
-        $categorias = Categoria::where('id',$id)
-            ->orderBy('descripcion', 'asc')
-            ->get();
-        return response()->json($categorias);
+        // $categorias = Categoria::where('id',$id)
+        //     ->orderBy('descripcion', 'asc')
+        //     ->get();
+        // return response()->json($categorias);
     }
 
     /**
@@ -40,7 +40,7 @@ class EstadisticasJugadorController extends Controller
      */
     public function show($id)
     {
-        $categorias = Categoria::findOrFail($id);
-        return view('categoria.show', compact('categorias'));
+        // $categorias = Categoria::findOrFail($id);
+        // return view('categoria.show', compact('categorias'));
     }
 }
