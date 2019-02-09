@@ -28,7 +28,7 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
 
 
 - Admin panel
-    https://laravel.com/docs/5.7/horizon#installation
+    (Parece ser para los procesos que se ejecutan virtualizador) https://laravel.com/docs/5.7/horizon#installation
 
 
 ⚠️ PROBLEMAS ⚠️
