@@ -27,6 +27,10 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
     *free* https://colorlib.com/wp/template/crossfits/
 
 
+- Admin panel
+    https://laravel.com/docs/5.7/horizon#installation
+
+
 ⚠️ PROBLEMAS ⚠️
 
 organizar los modelos dentro de app/models ✅
