@@ -58,6 +58,8 @@ class DatabaseSeeder extends Seeder
 
         //Ejecucion de los Seeders:
         $this->call(VoyagerDatabaseSeeder::class);
+        // $this->call(VoyagerDummyDatabaseSeeder::class);
+
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
         $this->call(TelefonoTableSeeder::class);
