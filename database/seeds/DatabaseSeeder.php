@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
             'direccion',
             'datos_basicos',
             'users',
-            'permisos',
-            'roles',
-            'roles_permisos',
+            // 'permisos',
+            // 'roles',
+            // 'roles_permisos',
             'tipo_educacion',
             'instituto',
             'colores',
@@ -65,9 +65,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
         $this->call(DatosBasicosTableSeeder::class);
-        $this->call(PermisosTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
-        $this->call(RolesPermisosTableSeeder::class);
+        // $this->call(PermisosTableSeeder::class);
+        // $this->call(RolesTableSeeder::class);
+        // $this->call(RolesPermisosTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
         $this->call(InstitutoTableSeeder::class);
@@ -98,6 +98,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TantosTableSeeder::class);
         $this->call(FaltasTableSeeder::class);
         $this->call(FaltasTarjetaTableSeeder::class);
+        $this->call(VoyagerDatabaseSeeder::class);
     }
 
     public function truncateTables(array $tables)

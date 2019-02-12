@@ -12,54 +12,37 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(array(
-            'rol_id' => 1,
-            'datos_basicos_id' => \App\Models\DatosBasicos::all()->random()->id,
-            'email' => 'superUser@correo.com',
-            'password' => bcrypt('superUser'),
-            'remember_token' => str_random(10),
-        ));
-        
-        User::create(array(
-            'rol_id' => 2,
-            'datos_basicos_id' => \App\Models\DatosBasicos::all()->random()->id,
-            'email' => 'admin@correo.com',
-            'password' => bcrypt('admin'),
-            'remember_token' => str_random(10),
-        ));
-        
-        User::create(array(
-            'rol_id' => 3,
-            'datos_basicos_id' => \App\Models\DatosBasicos::all()->random()->id,
-            'email' => 'tester@correo.com',
-            'password' => bcrypt('tester'),
-            'remember_token' => str_random(10),
-        ));
+        // User::create(array(
+        //     // 'role_id' => 1,
+        //     'datos_basicos_id' => 1,
+        //     'email' => 'cristianmarint@cotecnova.edu.co',
+        //     'password' => bcrypt('123'),
+        //     'remember_token' => str_random(10),
+        // ));
 
-        User::create(array(
-            'rol_id' => 1,
-            'datos_basicos_id' => \App\Models\DatosBasicos::all()->random()->id,
-            'email' => 'someuser@correo.com',
-            'password' => bcrypt('someuser'),
-            'remember_token' => str_random(10),
-        ));
+        // User::create(array(
+        //     // 'role_id' => 1,
+        //     'datos_basicos_id' => 2,
+        //     'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
+        //     'password' => bcrypt('123'),
+        //     'remember_token' => str_random(10),
+        // ));
 
-        User::create(array(
-            'rol_id' => 1,
-            'datos_basicos_id' => 1,
-            'email' => 'cristianmarint@cotecnova.edu.co',
+        DB::table('users')->insert([
+            'role_id' => '1',
+            'datos_basicos_id' => '1',
+            'email' => 'cristianmarint@gmail.com',
+            'avatar' => 'https://dr.savee-cdn.com/things/5/c/335a4b19659d1f744f1917.jpg',
             'password' => bcrypt('123'),
-            'remember_token' => str_random(10),
-        ));
+        ]);
 
-        User::create(array(
-            'rol_id' => 1,
-            'datos_basicos_id' => 2,
+        DB::table('users')->insert([
+            'role_id' => '1',
+            'datos_basicos_id' => '2',
             'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
+            'avatar' => 'https://dr.savee-cdn.com/things/5/a/94a2f75d33623a43766584.jpg',
             'password' => bcrypt('123'),
-            'remember_token' => str_random(10),
-        ));
-
+        ]);
 
     }
 }

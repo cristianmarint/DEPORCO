@@ -75,3 +75,7 @@ Route::group(['middleware'=>'auth'], function() {
 //    Route::resource('/torneos_delete', 'Torneo_deleteController');
 //    Route::resource('/inscripciones_equipo_delete', 'InscripcionEquipos_deleteController');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
