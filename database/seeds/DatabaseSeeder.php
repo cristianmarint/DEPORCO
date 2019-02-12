@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         //Ejecucion de los Seeders:
         $this->call(VoyagerDatabaseSeeder::class);
-        // $this->call(VoyagerDummyDatabaseSeeder::class);
+        // $this->call(VoyagerDummyDatabaseSeeder::class); // Carga la informacion de prueba de Voyager (Sin uso ya qu presenta conflictos y da joda arreglarlos :v )
 
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
