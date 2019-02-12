@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -53,10 +53,11 @@ class DatabaseSeeder extends Seeder
             'estadisticas',
             'tantos',
             'faltas',
-            'faltas_tarjeta'
+            'faltas_tarjeta',
         ]);
 
         //Ejecucion de los Seeders:
+        $this->call(VoyagerDatabaseSeeder::class);
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
         $this->call(TelefonoTableSeeder::class);
@@ -98,7 +99,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TantosTableSeeder::class);
         $this->call(FaltasTableSeeder::class);
         $this->call(FaltasTarjetaTableSeeder::class);
-        $this->call(VoyagerDatabaseSeeder::class);
     }
 
     public function truncateTables(array $tables)
