@@ -8,3 +8,6 @@ Devolver / deshacer un commit
 
     git push (Generamente necesita  utilizar --force para hacer el push)
     
+
+    otra forma
+     -> https://stackoverflow.com/a/23205409/8663044
