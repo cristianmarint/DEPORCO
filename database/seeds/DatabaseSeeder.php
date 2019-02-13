@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,9 +22,6 @@ class DatabaseSeeder extends Seeder
             'direccion',
             'datos_basicos',
             'users',
-            // 'permisos',
-            // 'roles',
-            // 'roles_permisos',
             'tipo_educacion',
             'instituto',
             'colores',
@@ -68,9 +65,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
         $this->call(DatosBasicosTableSeeder::class);
-        // $this->call(PermisosTableSeeder::class);
-        // $this->call(RolesTableSeeder::class);
-        // $this->call(RolesPermisosTableSeeder::class);
+
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
         $this->call(InstitutoTableSeeder::class);
