@@ -35,7 +35,7 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsTo(DatosBasicos::class);
     }
 
-    protected function rol(){
+    public function role(){
         return $this->belongsTo(Roles::class);
     }
 

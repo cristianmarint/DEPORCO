@@ -116,7 +116,7 @@
                             {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}
                         </h1>
                         <p>
-                            {{ Auth::user()->rol->rol }}
+                            {{ Auth::user()->role->display_name }}
                         </p>
                     </div>
                 </div>
