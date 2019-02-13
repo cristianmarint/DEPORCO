@@ -1,0 +1,10 @@
+"1","1","Dashboard",,"_self","voyager-boat",NULL,NULL,"1","2019-02-13 22:10:20","2019-02-13 22:10:20","voyager.dashboard",NULL
+"2","1","Media",,"_self","voyager-images",NULL,NULL,"5","2019-02-13 22:10:20","2019-02-13 22:10:20","voyager.media.index",NULL
+"3","1","Users",,"_self","voyager-person",NULL,NULL,"3","2019-02-13 22:10:20","2019-02-13 22:10:20","voyager.users.index",NULL
+"4","1","Roles",,"_self","voyager-lock",NULL,NULL,"2","2019-02-13 22:10:20","2019-02-13 22:10:20","voyager.roles.index",NULL
+"5","1","Tools",,"_self","voyager-tools",NULL,NULL,"9","2019-02-13 22:10:20","2019-02-13 22:10:20",NULL,NULL
+"6","1","Menu Builder",,"_self","voyager-list",NULL,"5","10","2019-02-13 22:10:21","2019-02-13 22:10:21","voyager.menus.index",NULL
+"7","1","Database",,"_self","voyager-data",NULL,"5","11","2019-02-13 22:10:21","2019-02-13 22:10:21","voyager.database.index",NULL
+"8","1","Compass",,"_self","voyager-compass",NULL,"5","12","2019-02-13 22:10:21","2019-02-13 22:10:21","voyager.compass.index",NULL
+"9","1","BREAD",,"_self","voyager-bread",NULL,"5","13","2019-02-13 22:10:21","2019-02-13 22:10:21","voyager.bread.index",NULL
+"10","1","Settings",,"_self","voyager-settings",NULL,NULL,"14","2019-02-13 22:10:21","2019-02-13 22:10:21","voyager.settings.index",NULL
