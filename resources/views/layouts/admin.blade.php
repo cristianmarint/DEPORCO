@@ -113,7 +113,8 @@
                     <div class="avatar"><img src="{{url('img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
                         <h1 class="h4">
-                            {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}
+                            {{-- {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }} --}}
+                            {{ Auth::user()->name }} 
                         </h1>
                         <p>
                             {{ Auth::user()->role->display_name }}

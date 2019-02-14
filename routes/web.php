@@ -33,7 +33,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/home', 'HomeController');
 
     //Desactiva la ruta de /register.
-    Route::resource('/register', 'Auth\LoginController@showLoginForm');
+    // Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
