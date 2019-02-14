@@ -55,8 +55,7 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(VoyagerDatabaseSeeder::class);
-        $this->call(UsersTableSeeder::class);
-
+        
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
         $this->call(TelefonoTableSeeder::class);
@@ -65,6 +64,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
         $this->call(DatosBasicosTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
         $this->call(InstitutoTableSeeder::class);
         $this->call(ColoresTableSeeder::class);
