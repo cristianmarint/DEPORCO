@@ -1,3 +1,0 @@
-"1","users","users","User","Users","voyager-person","TCG\Voyager\Models\User","TCG\Voyager\Policies\UserPolicy",,,"1","0","2019-02-13 22:10:17","2019-02-13 22:10:17"
-"2","menus","menus","Menu","Menus","voyager-list","TCG\Voyager\Models\Menu",NULL,,,"1","0","2019-02-13 22:10:17","2019-02-13 22:10:17"
-"3","roles","roles","Role","Roles","voyager-lock","TCG\Voyager\Models\Role",NULL,,,"1","0","2019-02-13 22:10:17","2019-02-13 22:10:17"
