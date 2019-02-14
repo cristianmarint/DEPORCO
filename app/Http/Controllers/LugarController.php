@@ -7,7 +7,7 @@ use App\Models\Lugar;
 use App\Models\Departamento;
 use App\Models\Municipio;
 use App\Models\Direccion;
-use App\Models\elefono;
+use App\Models\Telefono;
 
 
 use Illuminate\Http\Request;
