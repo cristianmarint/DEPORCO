@@ -189,13 +189,13 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="POST" class="form-horizontal">
+                            <form action="" method="POST" class="form-horizontal" >
 
                                 <input type="hidden" value="{{Auth::user()->id}}" id="id">
 
                                 <div class="form-group row">
-                                    <label for="nueva_clave" class="form-control-label col-sm-3">Nueva Contraseña</label>
-                                    <div class="col-sm-9">
+                                    <label for="nueva_clave" class="form-control-label col-sm-4">Nueva Contraseña</label>
+                                    <div class="col-sm-8">
                                         <input id="nueva_clave" type="password" name="nueva_clave" class="form-control">
                                             <span class="invalid-feedback" role="alert">
                                                 <strong id="nueva_clave_error"> error </strong>
@@ -204,8 +204,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="confirmar_clave" class="form-control-label col-sm-3 ">Confirme la Contraseña</label>
-                                    <div class="col-sm-9">
+                                    <label for="confirmar_clave" class="form-control-label col-sm-4 ">Confirme la Contraseña</label>
+                                    <div class="col-sm-8">
                                         <input id="confirmar_clave" type="password" name="confirmar_clave" class="form-control">
                                             <span class="invalid-feedback" role="alert">
                                                 <strong id="confirmar_clave_error"></strong>
@@ -264,11 +264,10 @@
     <script src="{{url('assets/dataTables/jquery.dataTables.min.js')}}"></script>
     <script src="{{url('assets/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
-    {{--<script src="https://cdn.jsdelivr.net/npm/vue"></script>--}}
+    {{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>
-
 
     <script>
         $('#ChangePasswordModal').on('show.bs.modal', function () {
