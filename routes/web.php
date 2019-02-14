@@ -26,10 +26,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
+
+    //Desactiva la ruta de /register.
+    Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
@@ -60,24 +64,4 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes temporadas
     Route::resource('/temporadas', 'TemporadaController');
     Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
-
-
-    // Routes inscripciones_equipo equipo
-//    Route::resource('/inscripciones_equipo', 'InscripcionEquiposController');
-//    Route::get('/inscripciones_equipo/torneo/{id_torneo}', 'InscripcionEquiposController@getEquipo');
-
-
-
-
-
-
-
-
-//    Routes for data delete
-//    Route::resource('/institutos_delete', 'Instituto_deleteController');
-//    Route::resource('/equipos_delete', 'Equipo_deleteController');
-//    Route::resource('/temporadas_delete', 'Temporada_deleteController');
-//    Route::resource('/categorias_delete', 'Categoria_deleteController');
-//    Route::resource('/torneos_delete', 'Torneo_deleteController');
-//    Route::resource('/inscripciones_equipo_delete', 'InscripcionEquipos_deleteController');
 });
