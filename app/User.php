@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Models\DatosBasicos;
-use App\Models\Roles;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -44,7 +43,4 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsTo(DatosBasicos::class);
     }
 
-    public function roles(){
-        return $this->belongsTo(Roles::class);
-    }
 }
