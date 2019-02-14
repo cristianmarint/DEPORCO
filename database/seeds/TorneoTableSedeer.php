@@ -16,21 +16,21 @@ class TorneoTableSedeer extends Seeder
             'nombre' => 'Torneo uno',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
-            'user_id' => 3
+            'user_id' => \App\User::all()->random()->id
         ));
 
         Torneo::create(array(
             'nombre' => 'Torneo dos',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
-            'user_id' => 2
+            'user_id' => \App\User::all()->random()->id
         ));
 
         Torneo::create(array(
             'nombre' => 'Torneo Tres',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
-            'user_id' => 1
+            'user_id' => \App\User::all()->random()->id
         ));
     }
 }
