@@ -84,6 +84,15 @@
             Deportes COTECNOVA
         </div>
     </div>
+
+    <div class="col-lg-6 bg-white">
+            <div class="form d-flex align-items-center">
+                <div class="content">
+                   @yield('content')
+                </div>
+            </div>
+    </div>
+
 </div>
 </body>
 </html>

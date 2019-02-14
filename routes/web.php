@@ -20,6 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/estadisticasjugador', function () {
+    Route::resource('/estadisticasjugador', 'EstadisticasJugadorController');
+    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador');
+});
+
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
