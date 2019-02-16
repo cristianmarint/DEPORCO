@@ -10,30 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// ruta controlada por voyager para acceder al login y demas
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
-
-
 Auth::routes();
-
-// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
-// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Desactiva la ruta de /register.
+Auth::routes(['register' => false]);
 
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
 
-    //Desactiva la ruta de /register.
-    Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
@@ -65,3 +55,12 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/temporadas', 'TemporadaController');
     Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
 });
+
+
+// ruta controlada por voyager para acceder al admin/login y demas
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
+// Route::get('/home', 'HomeController@index')->name('home');
