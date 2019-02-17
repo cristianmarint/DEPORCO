@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-17 16:09:33 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-17 16:18:44
+ */
 
 namespace App\Models;
 
