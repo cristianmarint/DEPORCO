@@ -1,9 +1,3 @@
-/*
- * @Author: CristianMarinT 
- * @Date: 2019-02-17 10:12:12 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-17 10:12:12 
- */
 <?php
 
 return [
