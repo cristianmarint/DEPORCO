@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-17 16:04:07 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-17 16:04:07 
+ */
 
 namespace App;
 
@@ -36,8 +42,12 @@ class User extends \TCG\Voyager\Models\User
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $casts = [ 
+        'email_verified_at' => 'datetime', 
+        
+        // permite que se pueden personalizar el perfil 
+        // desde voyager
+        'settings' => 'json' 
     ];
 
     public function datos_basicos(){
