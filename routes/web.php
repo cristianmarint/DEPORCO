@@ -16,14 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Desactiva la ruta de /register.
-Auth::routes(['register' => false]);
-
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
 
+    //Desactiva la ruta de /register.
+    Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
