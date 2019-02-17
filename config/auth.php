@@ -70,6 +70,12 @@ return [
             'model' => App\User::class,
             'table' => 'users',
         ],
+        
+        'roles' => [
+            'driver' => 'database',
+            'model' => App\Models\Roles::class,
+            'table' => 'users',
+        ], 
 
         // 'users' => [
         //     'driver' => 'database',
