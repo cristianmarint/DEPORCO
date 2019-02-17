@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\DatosBasicos;
+use App\Models\Roles;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -39,8 +40,12 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 
-    protected function datos_basicos(){
+    public function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
+    }
+
+    public function roles(){
+        return $this->belongsTo(Roles::class);
     }
 
 }
