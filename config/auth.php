@@ -1,3 +1,9 @@
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-17 10:12:12 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-17 10:12:12 
+ */
 <?php
 
 return [
@@ -66,16 +72,9 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'database',
+            'driver' => 'eloquent',
             'model' => App\User::class,
-            'table' => 'users',
         ],
-        
-        'roles' => [
-            'driver' => 'database',
-            'model' => App\Models\Roles::class,
-            'table' => 'users',
-        ], 
 
         // 'users' => [
         //     'driver' => 'database',
