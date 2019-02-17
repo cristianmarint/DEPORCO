@@ -117,7 +117,7 @@
                             {{ Auth::user()->name }} 
                         </h1>
                         <p>
-                            {{ Auth::user()->role->display_name }}
+                            {{-- {{ Auth::user()->roles->display_name }} --}}
                         </p>
                     </div>
                 </div>
