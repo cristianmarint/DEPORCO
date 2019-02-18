@@ -78,6 +78,8 @@ class LoginController extends Controller
                     $user = User::where('email',$githubUser->getEmail() )->update( ['provider_id'=>$githubUser->getId()] );
                   return redirect($this->redirectTo);
             }
+        }else{
+            return back()->withInput();
         }
 
         // if(!$user){
