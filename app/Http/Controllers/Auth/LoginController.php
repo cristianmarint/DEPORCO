@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 class LoginController extends Controller
@@ -64,20 +66,35 @@ class LoginController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
 
-        $user = User::where('provider_id', $githubUser->getId())->first();
+        // la busqueda se puede hacer por provider_id(github la da) o por otro campo
+        // se hace por email por conveniencia
 
-        if (!$user) {
-            // add user to database
-            $user = User::create([
-                'email' => $githubUser->getEmail(),
-                'name' => $githubUser->getName(),
-                'provider_id' => $githubUser->getId(),
-            ]);
+        // $user = User::where('provider_id', $githubUser->getId())->first();
+        $user = User::where('email', $githubUser->getEmail() )->first();
+
+        if($user){
+            if(Auth::loginUsingId($user->id)){
+                // se le asigna el id de github al provider_id
+                    $user = User::where('email',$githubUser->getEmail() )->update( ['provider_id'=>$githubUser->getId()] );
+                  return redirect($this->redirectTo);
+            }
         }
 
-        // login the user
-        Auth::login($user, true);
+        // if(!$user){
+        //     // si el email no esta registrado
+        //     $user = User::create([
+        //         'email' => $githubUser->getEmail(),
+        //         'name' => $githubUser->getName(),
+        //         'avatar' => $githubUser->getAvatar(),
+        //         'provider_id' => $githubUser->getId(),
+        //     ]);
+        // }
+        
 
-        return redirect($this->redirectTo);
+
+        // login the user
+        // Auth::login($user, true);
+
+        // return redirect($this->redirectTo);
     }
 }
