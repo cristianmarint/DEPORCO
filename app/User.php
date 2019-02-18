@@ -58,4 +58,8 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsTo(Roles::class);
     }
 
+    public function socialAccounts()
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
 }
