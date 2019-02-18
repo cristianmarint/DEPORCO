@@ -30,7 +30,16 @@ class UsersTableSeeder extends Seeder
             'name' => 'Edwin Lopez',
             'email' => 'edwin.lopezb.1297@cotecnova.edu.co',
             'avatar' => 'https://dr.savee-cdn.com/things/5/9/9e4e29fcb5b21e693ba728.jpg',
-            'password' => bcrypt('1234'),
+            'password' => bcrypt('123'),
+        ]);
+
+        DB::table('users')->insert([
+            // 'role_id' => '1',
+            // 'datos_basicos_id' => '1',
+            'name' => 'Marin github',
+            'email' => 'cristianmarin@gmail.com',
+            'avatar' => 'img/datosbasicos/default.png',
+            'password' => bcrypt('123'),
         ]);
     }
 }

@@ -63,3 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 // Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
 // Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
