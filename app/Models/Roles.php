@@ -3,18 +3,18 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:09:33 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-17 16:18:44
+ * @Last Modified time: 2019-02-19 12:53:36
  */
 
 namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Roles extends Model
 {
-    // use SoftDeletes;
+    use SoftDeletes;
 
     protected $table = "roles";
 
