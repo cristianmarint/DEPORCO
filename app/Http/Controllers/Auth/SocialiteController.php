@@ -1,13 +1,17 @@
 <?php
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
+
 use App\SocialAccount;
 use App\User;
-use Illuminate\Auth\Events\Registered as RegisteredEvent;
-use Illuminate\Foundation\Auth\RedirectsUsers;
+
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Auth\Events\Registered as RegisteredEvent;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+
 class SocialiteController extends Controller
 {
     use RedirectsUsers;
@@ -45,14 +49,19 @@ class SocialiteController extends Controller
 
         DB::beginTransaction();
         $user = $this->findOrCreateUser($provider, $providerUser);
-        Auth::login($user, true);
-        // This session variable can help to determine if user is logged-in via socialite
-        session()->put([
-            'auth.social_id' => $providerUser->getId()
-        ]);
-        DB::commit();
-        return $this->authenticated($user)
-            ?: redirect()->intended($this->redirectPath());
+        if($user){
+            Auth::login($user, true);
+            // This session variable can help to determine if user is logged-in via socialite
+            session()->put([
+                'auth.social_id' => $providerUser->getId()
+            ]);
+            DB::commit();
+            return $this->authenticated($user)
+                ?: redirect()->intended($this->redirectPath());
+        }else{
+            Auth::logout();
+            return view('/welcome');
+        }
     }
 
 
@@ -69,21 +78,30 @@ class SocialiteController extends Controller
             'provider_user_id' => $providerUser->getId(),
             'provider' => $providerName
         ]);
+        // returna el user si lo encuentra
+        // de no encontrarlo se returna NULL para ser direccionado.
         if ($social->exists) {
             return $social->user;
+        }else{
+            return $user=NULL;
         }
-        $user = User::firstOrNew([
-            'email' => $providerUser->getEmail()
-        ]);
-        if (!$user->exists) {
-            $user->name = $providerUser->getName();
-            $user->password = bcrypt(str_random(30));
-            $user->save();
-            event(new RegisteredEvent($user));
-        }
-        $social->user()->associate($user);
-        $social->save();
-        return $user;
+
+
+        // Si se quiere crear el user.
+        // se debe returnar el user.
+
+        // $user = User::firstOrNew([
+        //     'email' => $providerUser->getEmail()
+        // ]);
+        // if (!$user->exists) {
+        //     $user->name = $providerUser->getName();
+        //     $user->password = bcrypt(str_random(30));
+        //     $user->save();
+        //     event(new RegisteredEvent($user));
+        // }
+        // $social->user()->associate($user);
+        // $social->save();
+        // return $user;
     }
 
 
