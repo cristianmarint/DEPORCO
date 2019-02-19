@@ -37,8 +37,8 @@ class UsersTableSeeder extends Seeder
             // 'role_id' => '1',
             // 'datos_basicos_id' => '1',
             'name' => 'Marin github',
-            'email' => 'cristianmarin@gmail.com',
-            'avatar' => 'img/datosbasicos/default.png',
+            'email' => 'cristianmarint@gmail.com',
+            'avatar' => 'storage/img/datosbasicos/default.png',
             'password' => bcrypt('123'),
         ]);
     }

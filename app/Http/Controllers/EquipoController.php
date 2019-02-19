@@ -69,12 +69,12 @@ class EquipoController extends Controller
         try{
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/equipo', $nombreImg)) {
+                $nombreImg = 'storage/img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move(public_path() . '/storage/img/equipo', $nombreImg)) {
                     echo "guardado";
                 }
             } else {
-                $nombreImg = 'img/equipo/default.png';
+                $nombreImg = 'storage/img/equipo/default.png';
             }
 
             $equipo = NEW Equipo();
@@ -96,7 +96,7 @@ class EquipoController extends Controller
             return redirect(route('equipos.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
-                if($nombreImg != 'img/equipo/default.png'){
+                if($nombreImg != 'storage/img/equipo/default.png'){
                     unlink(public_path($nombreImg));
                 }
             }
@@ -154,13 +154,13 @@ class EquipoController extends Controller
         try{
             if($request->hasFile('logo')){
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
+                $nombreImg = 'storage/img/equipo/'.time().'-'.$archivo->getClientOriginalName();
                 if (file_exists(public_path($equipo->logo))) {
-                    if($equipo->logo != 'img/equipo/default.png'){
+                    if($equipo->logo != 'storage/img/equipo/default.png'){
                         unlink(public_path($equipo->logo));
                     }
                 }
-                if($archivo->move(public_path().'/img/equipo',$nombreImg)){
+                if($archivo->move(public_path().'/storage/img/equipo',$nombreImg)){
                     echo "Guardado";
                 }else{
                     echo "error al guardar";

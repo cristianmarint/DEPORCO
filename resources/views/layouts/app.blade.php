@@ -19,7 +19,7 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
     <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('img/favicon/cotecnova.png')}}">
+    <link rel="icon" type="image/png" href="{{url('storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     <div class="page login-page">

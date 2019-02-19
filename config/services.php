@@ -40,10 +40,23 @@ return [
         ],
     ],
 
+    /**
+     * Google OAuth
+     * https://console.developers.google.com
+     */
+    'google' => [
+        'client_id' => env('GOOGLE_OAUTH_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_OAUTH_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_OAUTH_REDIRECT'),
+    ],
+    /**
+     * Github OAuth
+     * https://github.com/settings/applications/new
+     */
     'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => env('GITHUB_CALLBACK'),
+        'client_id' => env('GITHUB_OAUTH_CLIENT_ID'),
+        'client_secret' => env('GITHUB_OAUTH_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_OAUTH_REDIRECT'),
     ],
 
 ];
