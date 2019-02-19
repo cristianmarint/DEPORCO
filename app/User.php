@@ -11,13 +11,20 @@ namespace App;
 use App\Models\DatosBasicos;
 use App\Models\Roles;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends \TCG\Voyager\Models\User
 {
+    use SoftDeletes;
+    
     use Notifiable;
+
+    protected $table = "users";
 
     /**
      * The attributes that are mass assignable.
