@@ -6,7 +6,7 @@
     <meta name="robots" content="none" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="admin login">
-    <title>test Admin - {{ Voyager::setting("admin.title") }}</title>
+    <title>Admin - {{ Voyager::setting("admin.title") }}</title>
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
     @if (config('voyager.multilingual.rtl'))
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
@@ -52,10 +52,8 @@
                         <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                         <div class="copy animated fadeIn">
-                            <h1>Administración de Deportes Cotecnova</h1>
-                            <p>Toco acceso por personal no autorizado será penalizado</p>
-                            {{-- <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
-                            <p>{{ Voyager::setting('admin.description', __('voyager::login.welcome')) }}</p> --}}
+                            <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
+                            <p>{{ Voyager::setting('admin.description', __('voyager::login.welcome')) }}</p>
                         </div>
                     </div> <!-- .logo-title-container -->
                 </div>
