@@ -3,13 +3,14 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-17 16:11:14
+ * @Last Modified time: 2019-02-19 16:20:32
  */
 
 namespace App;
 
 use App\Models\DatosBasicos;
 use App\Models\Roles;
+use App\Notifications\CustomResetPasswordNotification;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -57,6 +58,17 @@ class User extends \TCG\Voyager\Models\User
         'settings' => 'json' 
     ];
 
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
+    }
+    
     public function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
     }
