@@ -16,6 +16,8 @@ https://laravel.io/forum/04-15-2014-session-flash-message
 https://github.com/fzaninotto/Faker#language-specific-formatters
 
 
+verificar email = https://appdividend.com/2018/09/11/laravel-5-7-email-verification-tutorial-example/
+
 - limpiar laravel
 
 php artisan optimize
@@ -23,3 +25,27 @@ php artisan cache:clear
 php artisan route:cache
 php artisan view:clear
 php artisan config:cache
+
+
+//Cambios
+nombre tabla de avance a fase // campo avance a nombre
+campo numero_jornada de la tabla calendario a jornada
+
+
+        agregar
+//boton remenber me
+
+//configuraciones
+crear departamentos
+crear municipios
+crear avances
+crear criterios
+crear tarjetas
+
+
+//corregir
+agregar columa criterio a torneos
+
+
+
+

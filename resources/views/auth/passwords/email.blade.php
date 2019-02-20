@@ -29,7 +29,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Restablecer contraseña') }}
                 </button>
-                <a class="btn btn-link" href="{{ route('login') }}">
+                <a class="btn btn-link" href="{{ route('login') }}" style="color: #85b4f2;">
                     {{ __('Login') }}
                 </a>
             </div>
