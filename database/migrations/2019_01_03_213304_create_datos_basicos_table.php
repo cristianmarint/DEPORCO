@@ -1,9 +1,13 @@
 <?php
-
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-20 14:08:37 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-20 14:08:37 
+ */
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateDatosBasicosTable extends Migration
 {
     /**
@@ -17,7 +21,7 @@ class CreateDatosBasicosTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('cedula', 12);
-            $table->string('foto', 250)->default('storage/img/datosbasicos/default.png');
+            $table->string('foto', 250)->default('img/datosbasicos/default.png');
             $table->unsignedInteger('telefono_id');
             $table->string('primer_nombre',50);
             $table->string('segundo_nombre',50)->nullable(true);
@@ -51,7 +55,6 @@ class CreateDatosBasicosTable extends Migration
             ->onUpdate('cascade')->onDelete('restrict');
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Notifications\Notifiable;
+
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -67,6 +69,17 @@ class User extends \TCG\Voyager\Models\User
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomResetPasswordNotification($token));
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        // $this->notify(new App\Notifications\sendEmailVerificationNotification);
+        $this->notify(new Notifications\VerifyEmail);
     }
     
     public function datos_basicos(){
