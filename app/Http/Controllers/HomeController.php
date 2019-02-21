@@ -2,15 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\EnfrentamientoArbitro;
-
-
-
-
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,19 +19,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        // $enfrentamientos = EnfrentamientoArbitro::all()
-        //                     ->unique('arbitro_id')
-                            
-                            
-        //                     // ->orderBy('createdAt', 'desc')
-        //                     // ->count('arbitro_id')
-        //                     ;
-        // SELECT arbitro_id,count(id) from enfrentamiento_arbitro group by arbitro_id;
-        
         return view('home');
     }
 }

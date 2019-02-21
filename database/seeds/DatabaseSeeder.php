@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,7 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+  
         $this->truncateTables([
+            'users',
             'departamento',
             'municipio',
             'telefono',
@@ -21,10 +22,6 @@ class DatabaseSeeder extends Seeder
             'eps',
             'direccion',
             'datos_basicos',
-            'users',
-            'permisos',
-            'roles',
-            'roles_permisos',
             'tipo_educacion',
             'instituto',
             'colores',
@@ -56,7 +53,9 @@ class DatabaseSeeder extends Seeder
             'faltas_tarjeta'
         ]);
 
-        //Ejecucion de los Seeders:
+
+        $this->call(VoyagerDatabaseSeeder::class);
+        
         $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
         $this->call(TelefonoTableSeeder::class);
@@ -65,9 +64,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
         $this->call(DatosBasicosTableSeeder::class);
-        $this->call(PermisosTableSeeder::class);
-        $this->call(RolesTableSeeder::class);
-        $this->call(RolesPermisosTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
         $this->call(InstitutoTableSeeder::class);
@@ -97,17 +93,15 @@ class DatabaseSeeder extends Seeder
         $this->call(EstadisticasTableSeeder::class);
         $this->call(TantosTableSeeder::class);
         $this->call(FaltasTableSeeder::class);
-        $this->call(FaltasTarjetaTableSeeder::class);
+        $this->call(FaltasTarjetaTableSeeder::class);        
     }
 
     public function truncateTables(array $tables)
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-
         foreach ($tables as $table) {
             DB::table($table)->truncate();
         }
-
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }

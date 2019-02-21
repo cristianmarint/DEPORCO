@@ -14,7 +14,7 @@ class AddDatosBasicosIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('datos_basicos_id')->after('id');
+            $table->unsignedInteger('datos_basicos_id')->nullable(true)->after('id');
 
             $table->foreign('datos_basicos_id')->references('id')->on('datos_basicos')
                 ->onUpdate('cascade')->onDelete('restrict');

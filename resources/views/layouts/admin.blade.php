@@ -23,12 +23,12 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
     <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('img/favicon/cotecnova.png')}}">
+    <link rel="icon" type="image/png" href="{{url('storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     {{-- <!-- LOADER --> --}}
     {{-- <div id="preloader">
-           <img class="preloader" src="{{ url('img/Loading-Page/football_loader.gif') }}" alt="">
+           <img class="preloader" src="{{ url('storage/img/Loading-Page/football_loader.gif') }}" alt="">
     </div> --}}
 
     <div class="page">
@@ -110,13 +110,21 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar"><img src="{{url('img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="avatar"><img src="{{url('storage/img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
                         <h1 class="h4">
-                            {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}
+                            {{-- {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }} --}}
+
+                            {{-- DONT JUDGEME --}}
+                            {{-- {{ DB::table('users')
+                                        ->join('datos_basicos','datos_basicos.id','=','users.id')
+                                                ->where('users.id',Auth::user()->id)
+                                                ->select('primer_nombre')->get() }}  --}}
+
+                            {{ Auth::user()->name }} 
                         </h1>
                         <p>
-                            {{ Auth::user()->rol->rol }}
+                            {{ Auth::user()->role->display_name }}
                         </p>
                     </div>
                 </div>

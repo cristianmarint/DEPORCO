@@ -1,9 +1,12 @@
 <?php
-
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-20 14:08:22 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-20 14:08:22 
+ */
 namespace App\Http\Controllers;
-
 use App\Models\DatosBasicos;
-
 use App\Models\Telefono;
 use App\Models\TipoSangre;
 use App\Models\Municipio;
@@ -11,12 +14,9 @@ use App\Models\Departamento;
 use App\Models\Genero;
 use App\Models\Direccion;
 use App\Models\Eps;
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 class DatosBasicosController extends Controller
 {
     /**
@@ -29,7 +29,6 @@ class DatosBasicosController extends Controller
         $datosbasicos = DatosBasicos::all();
         return view('datosbasicos.index',compact('datosbasicos'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,10 +40,8 @@ class DatosBasicosController extends Controller
         $tiposangres = TipoSangre::orderBy('tipo', 'asc')->get();
         $generos = Genero::orderBy('id', 'asc')->get();
         $epss = Eps::orderBy('nombre', 'asc')->get();
-
         return view('datosbasicos.create', compact('departamentos','tiposangres','generos','epss'));
     }
-
     /**
      * Display the specified resource .
      *
@@ -57,7 +54,6 @@ class DatosBasicosController extends Controller
             ->get();
         return response()->json($datosbasicos);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -85,7 +81,6 @@ class DatosBasicosController extends Controller
             'carrera' => 'required|string|min:1|max:10',
             'numero' => 'required|string|min:1|max:10',
         ]);
-
         DB::beginTransaction();
         try{
             if ($request->hasFile('foto')) {
@@ -101,13 +96,11 @@ class DatosBasicosController extends Controller
             $telefono->tipo = $request->input('tipo_telefono');
             $telefono->numero = $request->input('telefono');
             $telefono->save();
-
             $direccion = NEW Direccion();
             $direccion->calle = $request->input('calle');
             $direccion->carrera =  $request->input('carrera');
             $direccion->numero = $request->input('numero');
             $direccion->save();
-
             $datosbasicos = NEW DatosBasicos();
             $datosbasicos->cedula = $request->input('cedula');
             $datosbasicos->foto = $nombreImg;
@@ -144,7 +137,6 @@ class DatosBasicosController extends Controller
             return redirect()->back()->withInput();
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -156,7 +148,6 @@ class DatosBasicosController extends Controller
         $datosbasicos = DatosBasicos::findOrFail($id);
         return view('datosbasicos.show', compact('datosbasicos'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -171,10 +162,8 @@ class DatosBasicosController extends Controller
         $generos = Genero::orderBy('id', 'asc')->get();
         $epss = Eps::orderBy('nombre', 'asc')->get();
         $telefonos = Telefono::all();
-
         return view('datosbasicos.edit', compact('departamentos','datosbasicos','telefonos','tiposangres','generos','epss'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -204,7 +193,6 @@ class DatosBasicosController extends Controller
             'carrera' => 'required|string|min:1|max:10',
             'numero' => 'required|string|min:1|max:10',
         ]);
-
         DB::beginTransaction();
         try{
             if($request->hasFile('foto')){
@@ -223,18 +211,15 @@ class DatosBasicosController extends Controller
             }else{
                 $nombreImg = $datosbasicos->foto;
             }
-
             $telefono = Telefono::findOrFail($datosbasicos->telefono_id);
                 $telefono->tipo = $request->input('tipo_telefono');
                 $telefono->numero = $request->input('telefono');
             $telefono->save();
-
             $direccion = Direccion::findOrFail($datosbasicos->direccion_id);
                 $direccion->calle = $request->input('calle');
                 $direccion->carrera =  $request->input('carrera');
                 $direccion->numero = $request->input('numero');
             $direccion->save();
-
             $datosbasicos->foto = $nombreImg;
             $datosbasicos->cedula = $request->input('cedula');
             $datosbasicos->primer_nombre = $request->input('primer_nombre');
@@ -265,7 +250,6 @@ class DatosBasicosController extends Controller
             return back()->withInput();
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -279,7 +263,6 @@ class DatosBasicosController extends Controller
         $datosbasicos->delete();
         $datosbasicos->save();
         return redirect(route('datosbasicos.index'))->with('success');
-
         // DatosBasicos::find($id)->delete();
         // return redirect(route('datosbasicos.index'));
     }

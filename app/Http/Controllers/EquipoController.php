@@ -1,17 +1,18 @@
 <?php
-
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-20 14:08:14 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-20 14:08:14 
+ */
 namespace App\Http\Controllers;
-
 use App\Models\Equipo;
-
 use App\Models\Direccion;
 use App\Models\Instituto;
 use App\Models\Colores;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 class EquipoController extends Controller
 {
     /**
@@ -24,7 +25,6 @@ class EquipoController extends Controller
         $equipos = Equipo::all();
         return view('equipo.index', compact('equipos'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +36,6 @@ class EquipoController extends Controller
         $colores = Colores::orderBy('color', 'asc')->get();
         return view('equipo.create', compact('institutos','colores'));
     }
-
     /**
      * Display the specified resource .
      *
@@ -49,7 +48,6 @@ class EquipoController extends Controller
             ->get();
         return response()->json($equipo);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -64,7 +62,6 @@ class EquipoController extends Controller
             'instituto' => 'required|integer|not_in:0|exists:instituto,id',
             'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
-
         DB::beginTransaction();
         try{
             if ($request->hasFile('logo')) {
@@ -76,7 +73,6 @@ class EquipoController extends Controller
             } else {
                 $nombreImg = 'img/equipo/default.png';
             }
-
             $equipo = NEW Equipo();
                 $equipo->nombre = $request->input('nombre');
                 $equipo->logo = $nombreImg;
@@ -103,9 +99,7 @@ class EquipoController extends Controller
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
         }
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -117,7 +111,6 @@ class EquipoController extends Controller
         $equipo = Equipo::findOrFail($id);
         return view('equipo.show', compact('equipo'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -132,7 +125,6 @@ class EquipoController extends Controller
         return view('equipo.edit',compact('equipo','institutos','colores'));
         
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -149,7 +141,6 @@ class EquipoController extends Controller
             'instituto' => 'required|integer|not_in:0|exists:instituto,id',
             'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
-
         DB::beginTransaction();
         try{
             if($request->hasFile('logo')){
@@ -168,7 +159,6 @@ class EquipoController extends Controller
             }else{
                 $nombreImg = $equipo->logo;
             }
-
             $equipo->nombre = $request->input('nombre');
             $equipo->logo = $nombreImg;
             $equipo->instituto_id = $request->input('instituto');
@@ -190,7 +180,6 @@ class EquipoController extends Controller
             return back()->withInput();
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -204,7 +193,6 @@ class EquipoController extends Controller
         $equipo->delete();
         $equipo->save();
         return redirect(route('equipos.index'))->with('success');
-
         // Equipo::find($id)->delete();
         // return redirect(route('equipos.index'));
     }

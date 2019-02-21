@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
-
-// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
-// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +25,9 @@ Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
+
+    //Desactiva la ruta de /register.
+    // Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
@@ -59,10 +58,11 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes temporadas
     Route::resource('/temporadas', 'TemporadaController');
     Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
+});
 
 
     //Routes Calendario
-    Route::resource('/calendarios', 'CalendarioController');
+Route::resource('/calendarios', 'CalendarioController');
 
 
     // Routes inscripciones_equipo equipo
@@ -72,15 +72,19 @@ Route::group(['middleware'=>'auth'], function() {
 
 
 
-
-
-
-
-//    Routes for data delete
-//    Route::resource('/institutos_delete', 'Instituto_deleteController');
-//    Route::resource('/equipos_delete', 'Equipo_deleteController');
-//    Route::resource('/temporadas_delete', 'Temporada_deleteController');
-//    Route::resource('/categorias_delete', 'Categoria_deleteController');
-//    Route::resource('/torneos_delete', 'Torneo_deleteController');
-//    Route::resource('/inscripciones_equipo_delete', 'InscripcionEquipos_deleteController');
+// ruta controlada por voyager para acceder al admin/login y demas
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
+
+// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
+// Social login routes ...
+Route::group(
+    ['prefix' => 'oauth', 'as' => 'oauth.', 'middleware' => ['guest', 'throttle']], function () {
+
+        Route::get('/{provider}', 'Auth\SocialiteController@redirectToProvider')->name('login')->where('provider', 'google|github');
+        Route::get('/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback')->where('provider', 'google|github');
+}); 

@@ -1,9 +1,13 @@
 <?php
-
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-20 13:48:03 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-20 13:48:03 
+ */
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateEquipoTable extends Migration
 {
     /**
@@ -23,7 +27,6 @@ class CreateEquipoTable extends Migration
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
-
             $table->foreign('instituto_id')->references('id')->on('instituto')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('colores_id')->references('id')->on('colores')
@@ -32,7 +35,6 @@ class CreateEquipoTable extends Migration
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -1,9 +1,13 @@
 <?php
-
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-20 14:08:37 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-20 14:08:37 
+ */
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateDatosBasicosTable extends Migration
 {
     /**
@@ -51,7 +55,6 @@ class CreateDatosBasicosTable extends Migration
             ->onUpdate('cascade')->onDelete('restrict');
         });
     }
-
     /**
      * Reverse the migrations.
      *
