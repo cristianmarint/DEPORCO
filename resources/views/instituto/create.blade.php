@@ -9,7 +9,7 @@
             <li class="breadcrumb-item">Crear</li>
         </ul>
     </div>
-//
+    
     @if(Session::has('error'))
         <script>
             setTimeout(function(){
