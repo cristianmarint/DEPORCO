@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
             // 'datos_basicos_id' => '1',
             'name' => 'Correo Personal Cristian',
             'email' => 'cristianmarint@gmail.com',
-            'avatar' => 'storage/img/datosbasicos/default.png',
+            'avatar' => 'img/datosbasicos/default.png',
             'password' => bcrypt('123'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
