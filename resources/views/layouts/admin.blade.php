@@ -153,7 +153,7 @@
                             {{--<li><a href="{{url('/inscripciones_equipo')}}" class="links"><i class="fa fa-shield"></i> Equipos</a></li>--}}
                         {{--</ul>--}}
                     {{--</li>--}}
-                    {{--<li><a class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>--}}
+                    <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>
                 </ul>
             </nav>
 

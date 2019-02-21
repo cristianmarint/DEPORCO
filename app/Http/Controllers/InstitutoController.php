@@ -232,7 +232,7 @@ class InstitutoController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $instituto->nombre);
-            return redirect(route('institutos.index'))->with('success', $success);
+            return redirect(route('institutos.index'));
         }else{
             session()->flash('error', 'error');
             return back()->withInput();

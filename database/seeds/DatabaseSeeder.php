@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'tipo_jugador',
             'inscripcion_equipo',
             'inscripcion_jugador',
-            'calendario_avance',
+            'fase',
             'calendario',
             'arbitro',
             'arbitro_puesto',
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoJugadorTableSeeder::class);
         $this->call(InscripcionEquipoTableSeeder::class);
         $this->call(InscripcionJugadorTableSeeder::class);
-        $this->call(CalendarioAvanceTableSeeder::class);
+        $this->call(FaseTableSeeder::class);
         $this->call(CalendarioTableSeeder::class);
         $this->call(ArbitroTableSeeder::class);
         $this->call(ArbitroPuestoTableSeeder::class);

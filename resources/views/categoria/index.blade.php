@@ -88,7 +88,7 @@
         function function_swal() {
             
             swal({
-                    title: "¿Seguro que desea eliminar a  "+nombreclick+"? ",
+                    title: "¿Seguro que desea eliminar la categoria "+nombreclick+"? ",
                     text: "Se eliminara toda la información",
                     type: "warning",
                     showCancelButton: true,

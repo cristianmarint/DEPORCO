@@ -16,6 +16,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/estadisticasjugador', function () {
+    Route::resource('/estadisticasjugador', 'EstadisticasJugadorController');
+    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador');
+});
+
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
@@ -60,6 +65,17 @@ Route::group(['middleware'=>'auth'], function() {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+    //Routes Calendario
+Route::resource('/calendarios', 'CalendarioController');
+
+
+    // Routes inscripciones_equipo equipo
+//    Route::resource('/inscripciones_equipo', 'InscripcionEquiposController');
+//    Route::get('/inscripciones_equipo/torneo/{id_torneo}', 'InscripcionEquiposController@getEquipo');
+
+
+
+
 
 // Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
 // Route::get('/home', 'HomeController@index')->name('home');
