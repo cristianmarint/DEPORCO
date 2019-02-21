@@ -94,6 +94,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TantosTableSeeder::class);
         $this->call(FaltasTableSeeder::class);
         $this->call(FaltasTarjetaTableSeeder::class);        
+        $this->call(FaseTableSeeder::class);        
     }
 
     public function truncateTables(array $tables)
