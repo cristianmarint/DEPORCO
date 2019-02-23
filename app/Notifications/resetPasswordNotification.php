@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-23 09:38:31 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 09:40:28
+ */
 
 namespace App\Notifications;
 
@@ -8,10 +14,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Carbon;
 
-class sendEmailVerificationNotification extends Notification
+class resetPasswordNotification extends Notification
 {
     use Queueable;
 
@@ -27,9 +31,10 @@ class sendEmailVerificationNotification extends Notification
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $username)
     {
         $this->token = $token;
+        $this->username = $username;
     }
 
     /**
@@ -51,14 +56,12 @@ class sendEmailVerificationNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable);
-        }
+        $link = url(config('app.url').route('password.reset', $this->token, false));
         return (new MailMessage)
-                    ->subject('Verificación de correo')
+                    ->subject('Cambio de contraseña')
                     ->greeting('¡Hola!')
-                    ->line(' `Nombre de usuario` recientemente solicitaste una cuenta en '.config('app.name'))
-                    ->action('Verifica tu cuenta', $this->verificationUrl($notifiable))
+                    ->line(' '.$this->username.' recientemente solicitaste un cambio de contraseña.')
+                    ->action('Cambiar contraseña', $link)
                     ->line('¡Gracias por usar '.config('app.name').'!')
                     ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
     }
@@ -74,19 +77,6 @@ class sendEmailVerificationNotification extends Notification
         return [
             //
         ];
-    }
-
-    /**
-     * Get the verification URL for the given notifiable.
-     *
-     * @param  mixed  $notifiable
-     * @return string
-     */
-    protected function verificationUrl($notifiable)
-    {
-        return URL::temporarySignedRoute(
-            'verification.verify', Carbon::now()->addMinutes(60), ['id' => $notifiable->getKey()]
-        );
     }
 
     /**

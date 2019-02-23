@@ -50,7 +50,7 @@
 @isset($actionText)
 @component('mail::subcopy')
 @lang(
-    "Si tienes problemas con el \":actionText\" boton, copia y pega el enlace que parece acontinuación\n".
+    "Si tienes problemas con el boton \":actionText\" , copia y pega el enlace que parece acontinuación\n".
     'en tu navegador: [:actionURL](:actionURL)',
     [
         'actionText' => $actionText,

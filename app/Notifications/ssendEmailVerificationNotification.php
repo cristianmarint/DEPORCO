@@ -8,8 +8,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Carbon;
 
-class CustomResetPasswordNotification extends Notification
+class ssendEmailVerificationNotification extends Notification
 {
     use Queueable;
 
@@ -21,13 +23,21 @@ class CustomResetPasswordNotification extends Notification
     public $token;
 
     /**
+     * The callback that should be used to build the mail message.
+     *
+     * @var \Closure|null
+     */
+    public static $toMailCallback;
+
+    /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($username)
     {
-        $this->token = $token;
+        // $this->token = $token;
+        $this->username = $username;
     }
 
     /**
@@ -49,29 +59,29 @@ class CustomResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url( config('app.url')."/password/reset/?token=" . $this->token );
-        $link = url(config('app.url').route('password.reset', $this->token, false));
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable);
+        }
         return (new MailMessage)
-                    ->subject('Cambio de contraseña')
+                    ->subject('Verificación de correo')
                     ->greeting('¡Hola!')
-                    ->line(' `Nombre de usuario` recientemente solicitaste un cambio de contraseña.')
-                    ->action('Cambiar contraseña', $link)
+                    ->line(' '.$this->username.' recientemente solicitaste una cuenta en '.config('app.name'))
+                    ->action('Verifica tu cuenta', $this->verificationUrl($notifiable))
                     ->line('¡Gracias por usar '.config('app.name').'!')
-                    ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
-                    // ->line(Lang::getFromJson('-> '.url(config('app.url').route('password.reset', $this->token, false))));
+                    ->line('Si no solicitaste el registro puedes ignorar este mensaje.');
     }
 
     /**
-     * Get the array representation of the notification.
+     * Get the verification URL for the given notifiable.
      *
      * @param  mixed  $notifiable
-     * @return array
+     * @return string
      */
-    public function toArray($notifiable)
+    protected function verificationUrl($notifiable)
     {
-        return [
-            //
-        ];
+        return URL::temporarySignedRoute(
+            'verification.verify', Carbon::now()->addMinutes(60), ['id' => $notifiable->getKey()]
+        );
     }
 
     /**

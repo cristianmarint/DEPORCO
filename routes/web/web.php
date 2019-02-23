@@ -2,8 +2,8 @@
 /*
  * @Author: EdwinLopez12 
  * @Date: 2019-02-23 07:47:41 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-23 07:47:41 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 14:05:01
  */
 
 /*
@@ -16,7 +16,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('welcome');

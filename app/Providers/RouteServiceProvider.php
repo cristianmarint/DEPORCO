@@ -2,8 +2,8 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-02-23 07:44:41 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-23 07:44:41 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 09:30:24
  */
 
 namespace App\Providers;
@@ -89,7 +89,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->prefix('admin')
+            // ->prefix('admin') si se activa la ruta sera app.com/admin/admin/login
             ->group(base_path('routes/web/admin.php'));
     }
     /**

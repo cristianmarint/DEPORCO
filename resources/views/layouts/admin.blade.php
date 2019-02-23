@@ -113,15 +113,14 @@
                     <div class="avatar"><img src="{{url('img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
                         <h1 class="h4">
-                            {{-- {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }} --}}
 
-                            {{-- DONT JUDGEME --}}
-                            {{-- {{ DB::table('users')
-                                        ->join('datos_basicos','datos_basicos.id','=','users.id')
-                                                ->where('users.id',Auth::user()->id)
-                                                ->select('primer_nombre')->get() }}  --}}
+                                @if( Auth::user()->datos_basicos_id )
+                                    {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}
 
-                            {{ Auth::user()->name }} 
+                                @elseif ( Auth::user()->datos_basicos_id == NULL)
+                                    {{ Auth::user()->name }} 
+                                @endif
+
                         </h1>
                         <p>
                             {{ Auth::user()->role->display_name }}
@@ -146,6 +145,7 @@
                     
                     <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-calendar" aria-hidden="true"></i>Temporadas</a></li>
 
+                    <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>
 
 
                     {{--<li><a href="#menu_inscripciones" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Inscripcion</a>--}}
@@ -153,7 +153,6 @@
                             {{--<li><a href="{{url('/inscripciones_equipo')}}" class="links"><i class="fa fa-shield"></i> Equipos</a></li>--}}
                         {{--</ul>--}}
                     {{--</li>--}}
-                    <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>
                 </ul>
             </nav>
 

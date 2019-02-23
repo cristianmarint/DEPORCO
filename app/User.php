@@ -3,25 +3,26 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-19 16:20:32
+ * @Last Modified time: 2019-02-23 14:22:38
  */
 
 namespace App;
 
 use App\Models\DatosBasicos;
 use App\Models\Roles;
-use App\Notifications\CustomResetPasswordNotification;
+
+use App\Notifications\resetPasswordNotification;
+use App\Notifications\sendEmailVerificationNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Notifications\Notifiable;
 
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends \TCG\Voyager\Models\User
+class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use SoftDeletes;
     
@@ -55,33 +56,15 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [ 
         'email_verified_at' => 'datetime', 
         
-        // permite que se pueden personalizar el perfil 
-        // desde voyager
+        // permite que se pueden personalizar el perfil desde voyager
         'settings' => 'json' 
     ];
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new CustomResetPasswordNotification($token));
-    }
 
-    /**
-     * Send the email verification notification.
-     *
-     * @return void
-     */
-    public function sendEmailVerificationNotification()
-    {
-        // $this->notify(new App\Notifications\sendEmailVerificationNotification);
-        $this->notify(new Notifications\VerifyEmail);
-    }
-    
+
+
+
+   
     public function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
     }
@@ -93,5 +76,39 @@ class User extends \TCG\Voyager\Models\User
     public function socialAccounts()
     {
         return $this->hasMany(SocialAccount::class);
+    }
+
+
+
+
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        if($this->datos_basicos_id){
+            $this->notify(new resetPasswordNotification($token,$this->datos_basicos->primer_nombre));
+        }else {
+            $this->notify(new resetPasswordNotification($token,$this->name));
+        }
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        if($this->datos_basicos_id){
+            $this->notify(new Notifications\ssendEmailVerificationNotification($this->datos_basicos->primer_nombre));
+        }else {
+            $this->notify(new Notifications\ssendEmailVerificationNotification($this->name));
+        }
     }
 }
