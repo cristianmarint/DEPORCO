@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 10:22:37
+ * @Last Modified time: 2019-02-23 11:43:53
  */
 
 namespace App;
@@ -22,7 +22,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends \TCG\Voyager\Models\User
+class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use SoftDeletes;
     
@@ -94,14 +94,14 @@ class User extends \TCG\Voyager\Models\User
      *
      * @return void
      */
-    public function sendEmailVerificationNotification()
+    public function ssendEmailVerificationNotification($token)
     {
         // $this->notify(new ssendEmailVerificationNotification);
         
         if($this->datos_basicos_id){
-            $this->notify(new sendEmailVerificationNotification($token,$this->datos_basicos->primer_nombre));
+            $this->notify(new ssendEmailVerificationNotification($token,$this->datos_basicos->primer_nombre));
         }else {
-            $this->notify(new sendEmailVerificationNotification($token,$this->name));
+            $this->notify(new ssendEmailVerificationNotification($token,$this->name));
         }
     }
 }

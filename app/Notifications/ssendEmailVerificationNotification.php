@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
 
-class sendEmailVerificationNotification extends Notification
+class ssendEmailVerificationNotification extends Notification
 {
     use Queueable;
 
@@ -59,20 +59,7 @@ class sendEmailVerificationNotification extends Notification
                     ->line(' '.$this->username.' recientemente solicitaste una cuenta en '.config('app.name'))
                     ->action('Verifica tu cuenta', $this->verificationUrl($notifiable))
                     ->line('¡Gracias por usar '.config('app.name').'!')
-                    ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->line('Si no solicitaste el registro puedes ignorar este mensaje.');
     }
 
     /**
