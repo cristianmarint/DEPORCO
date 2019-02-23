@@ -1,6 +1,26 @@
+{{-- 
+/*
+ * @Author: EdwinLopez12 
+ * @Date: 2019-02-23 07:46:11 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 07:46:32
+ */    
+--}}
 @extends('layouts.admin')
 @section('title','Calendarios')
 @section('content')
+<style>
+    input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+    input[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+    }
+</style>
+
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
@@ -31,7 +51,7 @@
                             <div class="form-group row">
                                 <label for="create_jornada" class="form-control-label col-sm-3">Numero Jornada </label>
                                 <div class="col-sm-9">
-                                    <input id="create_jornada" type="text" name="jornada" class="form-control{{ $errors->has('jornada') ? ' is-invalid' : '' }}" value="{{old('jornada')}}" placeholder="Numero entero">
+                                    <input id="create_jornada" type="number" min="1" max="299" name="jornada" class="form-control{{ $errors->has('jornada') ? ' is-invalid' : '' }}" value="{{old('jornada')}}" placeholder="Ingrese el número de jornada">
                                     @if ($errors->has('jornada'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('jornada') }}</strong>
@@ -71,7 +91,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="create_torneo" class="col-sm-3 form-control-label">Departamento</label>
+                                <label for="create_torneo" class="col-sm-3 form-control-label">Torneo</label>
                                 <div class="col-sm-9">
                                     <select name="torneo" id="create_torneo" class="form-control{{ $errors->has('torneo') ? ' is-invalid' : '' }}">
                                         <option value="0" >Seleccione un Torneo</option>
