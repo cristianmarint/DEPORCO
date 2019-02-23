@@ -2,8 +2,8 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-02-23 09:38:31 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-23 09:38:31 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 09:40:28
  */
 
 namespace App\Notifications;
@@ -64,7 +64,6 @@ class resetPasswordNotification extends Notification
                     ->action('Cambiar contraseña', $link)
                     ->line('¡Gracias por usar '.config('app.name').'!')
                     ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
-                    // ->line(Lang::getFromJson('-> '.url(config('app.url').route('password.reset', $this->token, false))));
     }
 
     /**
