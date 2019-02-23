@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-19 16:20:32
+ * @Last Modified time: 2019-02-23 08:24:17
  */
 
 namespace App;
@@ -68,7 +68,7 @@ class User extends \TCG\Voyager\Models\User
      */
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new CustomResetPasswordNotification($token));
+        $this->notify(new CustomResetPasswordNotification($token,$this->name));
     }
 
     /**

@@ -25,9 +25,10 @@ class CustomResetPasswordNotification extends Notification
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $username)
     {
         $this->token = $token;
+        $this->username = $username;
     }
 
     /**
@@ -49,12 +50,12 @@ class CustomResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url( config('app.url')."/password/reset/?token=" . $this->token );
+        // $link = url( config('app.url')."/password/reset/?token=" . $this->token );
         $link = url(config('app.url').route('password.reset', $this->token, false));
         return (new MailMessage)
                     ->subject('Cambio de contraseña')
                     ->greeting('¡Hola!')
-                    ->line(' `Nombre de usuario` recientemente solicitaste un cambio de contraseña.')
+                    ->line(' '.$this->username.' recientemente solicitaste un cambio de contraseña.')
                     ->action('Cambiar contraseña', $link)
                     ->line('¡Gracias por usar '.config('app.name').'!')
                     ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
