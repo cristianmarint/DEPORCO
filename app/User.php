@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 09:36:21
+ * @Last Modified time: 2019-02-23 10:22:37
  */
 
 namespace App;
@@ -11,6 +11,7 @@ namespace App;
 use App\Models\DatosBasicos;
 use App\Models\Roles;
 use App\Notifications\resetPasswordNotification;
+use App\Notifications\sendEmailVerificationNotification;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -95,7 +96,12 @@ class User extends \TCG\Voyager\Models\User
      */
     public function sendEmailVerificationNotification()
     {
-        // $this->notify(new App\Notifications\sendEmailVerificationNotification);
-        $this->notify(new Notifications\VerifyEmail);
+        // $this->notify(new ssendEmailVerificationNotification);
+        
+        if($this->datos_basicos_id){
+            $this->notify(new sendEmailVerificationNotification($token,$this->datos_basicos->primer_nombre));
+        }else {
+            $this->notify(new sendEmailVerificationNotification($token,$this->name));
+        }
     }
 }

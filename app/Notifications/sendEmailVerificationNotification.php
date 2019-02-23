@@ -27,9 +27,10 @@ class sendEmailVerificationNotification extends Notification
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $username)
     {
         $this->token = $token;
+        $this->username = $username;
     }
 
     /**
@@ -51,13 +52,11 @@ class sendEmailVerificationNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable);
-        }
+        $link = url(config('app.url').route('password.reset', $this->token, false));
         return (new MailMessage)
                     ->subject('Verificación de correo')
                     ->greeting('¡Hola!')
-                    ->line(' `Nombre de usuario` recientemente solicitaste una cuenta en '.config('app.name'))
+                    ->line(' '.$this->username.' recientemente solicitaste una cuenta en '.config('app.name'))
                     ->action('Verifica tu cuenta', $this->verificationUrl($notifiable))
                     ->line('¡Gracias por usar '.config('app.name').'!')
                     ->line('Si no solicitaste el cambio puedes ignorar este mensaje.');
