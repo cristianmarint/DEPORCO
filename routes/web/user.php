@@ -2,8 +2,8 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-02-23 07:47:10 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-23 07:47:10 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 08:38:14
  */
 
 Route::get('/estadisticasjugador', function () {
@@ -18,7 +18,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/home', 'HomeController');
 
     //Desactiva la ruta de /register.
-    // Route::resource('/register', 'Auth\LoginController@showLoginForm');
+    Route::resource('/register', 'Auth\LoginController@showLoginForm');
 
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
