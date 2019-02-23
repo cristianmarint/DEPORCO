@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 08:35:27
+ * @Last Modified time: 2019-02-23 09:22:42
  */
 
 namespace App;
@@ -55,23 +55,11 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [ 
         'email_verified_at' => 'datetime', 
         
-        // permite que se pueden personalizar el perfil 
-        // desde voyager
+        // permite que se pueden personalizar el perfil desde voyager
         'settings' => 'json' 
     ];
 
-
-    /**
-     * Send the email verification notification.
-     *
-     * @return void
-     */
-    public function sendEmailVerificationNotification()
-    {
-        // $this->notify(new App\Notifications\sendEmailVerificationNotification);
-        $this->notify(new Notifications\VerifyEmail);
-    }
-    
+   
     public function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
     }
@@ -98,5 +86,16 @@ class User extends \TCG\Voyager\Models\User
         }else {
             $this->notify(new CustomResetPasswordNotification($token,$this->name));
         }
+    }
+
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        // $this->notify(new App\Notifications\sendEmailVerificationNotification);
+        $this->notify(new Notifications\VerifyEmail);
     }
 }

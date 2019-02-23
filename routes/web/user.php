@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-23 07:47:10 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 08:38:14
+ * @Last Modified time: 2019-02-23 09:28:10
  */
 
 Route::get('/estadisticasjugador', function () {
@@ -12,6 +12,9 @@ Route::get('/estadisticasjugador', function () {
 });
 
 
+// permite el login pero no el acceso a las rutas del grupo
+// Route::group(['middleware'=>'admin.user'], function() {
+    
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
