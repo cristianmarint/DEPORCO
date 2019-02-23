@@ -50,7 +50,6 @@ class CustomResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        // $link = url( config('app.url')."/password/reset/?token=" . $this->token );
         $link = url(config('app.url').route('password.reset', $this->token, false));
         return (new MailMessage)
                     ->subject('Cambio de contraseña')

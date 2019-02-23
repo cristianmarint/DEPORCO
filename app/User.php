@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 08:24:17
+ * @Last Modified time: 2019-02-23 08:35:27
  */
 
 namespace App;
@@ -60,16 +60,6 @@ class User extends \TCG\Voyager\Models\User
         'settings' => 'json' 
     ];
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new CustomResetPasswordNotification($token,$this->name));
-    }
 
     /**
      * Send the email verification notification.
@@ -93,5 +83,20 @@ class User extends \TCG\Voyager\Models\User
     public function socialAccounts()
     {
         return $this->hasMany(SocialAccount::class);
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        if($this->datos_basicos_id){
+            $this->notify(new CustomResetPasswordNotification($token,$this->datos_basicos->primer_nombre));
+        }else {
+            $this->notify(new CustomResetPasswordNotification($token,$this->name));
+        }
     }
 }
