@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row bg-white has-shadow">
                 <p>
-                    Deportes Cotecnova vs. 0.1
+                    {{ config('app.name') }} version. 0.2
                     <br>
                     versi&oacute;n de desarrollo
                 </p>

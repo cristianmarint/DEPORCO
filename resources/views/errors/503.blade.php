@@ -8,4 +8,5 @@
     </div>
 @endsection
 
-@section('message', __($exception->getMessage() ?: 'Sorry, we are doing some maintenance. Please check back soon.'))
+@section('message', __($exception->getMessage() ?: 'Lo sentimos, estamos realizando mantenimiento. 👷 Por favor vuelve pronto.  
+                                                    Volveremos tan pronto como sea posible Soporte '. config('app.name') . '❤️' ))

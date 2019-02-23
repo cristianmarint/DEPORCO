@@ -8,4 +8,4 @@
     </div>
 @endsection
 
-@section('message', __('Whoops, something went wrong on our servers.'))
+@section('message', __('Whoops, algo salio mal en nuestros servidores. Estamos tratando de solucionarlo, soporte '.config('app.name')))

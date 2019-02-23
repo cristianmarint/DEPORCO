@@ -8,4 +8,4 @@
     </div>
 @endsection
 
-@section('message', __('Sorry, you are making too many requests to our servers.'))
+@section('message', __('Lo sentimos, estas realizando demasiadas solicitudes a nuestros servidores.'))
