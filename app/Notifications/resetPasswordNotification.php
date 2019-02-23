@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-23 09:38:31 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-23 09:38:31 
+ */
 
 namespace App\Notifications;
 
