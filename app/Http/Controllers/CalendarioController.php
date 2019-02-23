@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: EdwinLopez12 
+ * @Date: 2019-02-23 07:27:19 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-02-23 07:43:32
+ */
 
 namespace App\Http\Controllers;
 
@@ -43,7 +49,7 @@ class CalendarioController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'jornada' => 'required|integer|not_in:0',
+            'jornada' => 'required|integer|not_in:0|min:0|max:299',
             'fecha' => 'required|date',
             'fase' => 'required|integer|not_in:0',
             'torneo' => 'required|integer|not_in:0'
@@ -112,7 +118,7 @@ class CalendarioController extends Controller
         $calendario = Calendario::findOrFail($id);
 
         $data = $request->validate([
-            'jornada' => 'required|integer|not_in:0',
+            'jornada' => 'required|integer|not_in:0|min:0|max:299',
             'fecha' => 'required|date',
             'fase' => 'required|integer|not_in:0',
             'torneo' => 'required|integer|not_in:0'
