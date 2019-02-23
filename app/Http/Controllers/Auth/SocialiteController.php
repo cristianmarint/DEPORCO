@@ -74,19 +74,18 @@ class SocialiteController extends Controller
      */
     protected function findOrCreateUser($providerName, $providerUser)
     {
-        $social = SocialAccount::firstOrNew([
-            'provider_user_id' => $providerUser->getId(),
-            'provider' => $providerName
-        ]);
+        // returna el user si lo encuentra
+        // de no encontrarlo se returna NULL para ser direccionado.
         $user = User::firstOrNew([
             'email' => $providerUser->getEmail()
         ]);
-        $social->user()->associate($user);
-        $social->save();
-
-        // returna el user si lo encuentra
-        // de no encontrarlo se returna NULL para ser direccionado.
-        if ($social->exists) {
+        if ($user->exists) {
+            $social = SocialAccount::firstOrNew([
+                'provider_user_id' => $providerUser->getId(),
+                'provider' => $providerName
+            ]);
+            $social->user()->associate($user);
+            $social->save();
             return $social->user;
         }
         else{
@@ -94,9 +93,17 @@ class SocialiteController extends Controller
         }
 
 
+
+
         // Si se quiere crear el user.
         // se debe returnar el user.
         // if (!$user->exists) {
+            
+        //     $social = SocialAccount::firstOrNew([
+        //         'provider_user_id' => $providerUser->getId(),
+        //         'provider' => $providerName
+        //     ]);
+
         //     $user->name = $providerUser->getName();
         //     $user->password = bcrypt(str_random(30));
         //     $user->save();
