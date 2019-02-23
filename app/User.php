@@ -10,15 +10,15 @@ namespace App;
 
 use App\Models\DatosBasicos;
 use App\Models\Roles;
+
 use App\Notifications\resetPasswordNotification;
 use App\Notifications\sendEmailVerificationNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Illuminate\Notifications\Notifiable;
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -60,6 +60,10 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
         'settings' => 'json' 
     ];
 
+
+
+
+
    
     public function datos_basicos(){
         return $this->belongsTo(DatosBasicos::class);
@@ -73,6 +77,11 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     {
         return $this->hasMany(SocialAccount::class);
     }
+
+
+
+
+
 
     /**
      * Send the password reset notification.
