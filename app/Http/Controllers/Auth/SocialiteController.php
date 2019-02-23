@@ -78,21 +78,24 @@ class SocialiteController extends Controller
             'provider_user_id' => $providerUser->getId(),
             'provider' => $providerName
         ]);
+        $user = User::firstOrNew([
+            'email' => $providerUser->getEmail()
+        ]);
+        $social->user()->associate($user);
+        $social->save();
+
         // returna el user si lo encuentra
         // de no encontrarlo se returna NULL para ser direccionado.
         if ($social->exists) {
             return $social->user;
-        }else{
+        }
+        else{
             return $user=NULL;
         }
 
 
         // Si se quiere crear el user.
         // se debe returnar el user.
-
-        // $user = User::firstOrNew([
-        //     'email' => $providerUser->getEmail()
-        // ]);
         // if (!$user->exists) {
         //     $user->name = $providerUser->getName();
         //     $user->password = bcrypt(str_random(30));
