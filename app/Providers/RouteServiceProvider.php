@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: CristianMarinT 
+ * @Date: 2019-02-23 07:44:41 
+ * @Last Modified by:   CristianMarinT 
+ * @Last Modified time: 2019-02-23 07:44:41 
+ */
 
 namespace App\Providers;
 
@@ -35,11 +41,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
+        $this->mapApiRoutes();  //for api routes
+        
+        $this->mapWebRoutes();  //for our common web routes
 
-        $this->mapWebRoutes();
+        $this->mapAdminWebRoutes();  //for the admin web routes
 
-        //
+        $this->mapUserWebRoutes();  //for user web routes
     }
 
     /**
@@ -53,7 +61,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
              ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+             ->group(base_path('routes/web/web.php'));
     }
 
     /**
@@ -68,6 +76,33 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+             ->group(base_path('routes/api/api.php'));
+    }
+
+    /**
+    * Define the admin specific "web" routes for the application.
+    * These routes all receive session state, CSRF protection, etc.
+    *
+    * @return void
+    */
+    protected function mapAdminWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->prefix('admin')
+            ->group(base_path('routes/web/admin.php'));
+    }
+    /**
+    * Define the user specific "web" routes for the application.
+    * These routes all receive session state, CSRF protection, etc.
+    *
+    * @return void
+    */
+    protected function mapUserWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            // ->prefix('user') si se activa la ruta será app.com/user/calendario
+            ->group(base_path('routes/web/user.php'));
     }
 }
