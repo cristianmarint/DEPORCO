@@ -3,14 +3,14 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 09:22:42
+ * @Last Modified time: 2019-02-23 09:36:21
  */
 
 namespace App;
 
 use App\Models\DatosBasicos;
 use App\Models\Roles;
-use App\Notifications\CustomResetPasswordNotification;
+use App\Notifications\resetPasswordNotification;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -82,9 +82,9 @@ class User extends \TCG\Voyager\Models\User
     public function sendPasswordResetNotification($token)
     {
         if($this->datos_basicos_id){
-            $this->notify(new CustomResetPasswordNotification($token,$this->datos_basicos->primer_nombre));
+            $this->notify(new resetPasswordNotification($token,$this->datos_basicos->primer_nombre));
         }else {
-            $this->notify(new CustomResetPasswordNotification($token,$this->name));
+            $this->notify(new resetPasswordNotification($token,$this->name));
         }
     }
 

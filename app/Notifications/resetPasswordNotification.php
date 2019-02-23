@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Lang;
 
 
-class CustomResetPasswordNotification extends Notification
+class resetPasswordNotification extends Notification
 {
     use Queueable;
 
