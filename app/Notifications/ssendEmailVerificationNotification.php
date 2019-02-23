@@ -23,13 +23,20 @@ class ssendEmailVerificationNotification extends Notification
     public $token;
 
     /**
+     * The callback that should be used to build the mail message.
+     *
+     * @var \Closure|null
+     */
+    public static $toMailCallback;
+
+    /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token, $username)
+    public function __construct($username)
     {
-        $this->token = $token;
+        // $this->token = $token;
         $this->username = $username;
     }
 
@@ -52,7 +59,9 @@ class ssendEmailVerificationNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url(config('app.url').route('password.reset', $this->token, false));
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable);
+        }
         return (new MailMessage)
                     ->subject('Verificación de correo')
                     ->greeting('¡Hola!')

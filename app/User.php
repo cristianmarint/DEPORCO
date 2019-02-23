@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-17 16:04:07 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 14:04:32
+ * @Last Modified time: 2019-02-23 14:22:38
  */
 
 namespace App;
@@ -94,14 +94,12 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
      *
      * @return void
      */
-    public function ssendEmailVerificationNotification($token)
+    public function sendEmailVerificationNotification()
     {
-        // $this->notify(new ssendEmailVerificationNotification);
-        
         if($this->datos_basicos_id){
-            $this->notify(new ssendEmailVerificationNotification($token,$this->datos_basicos->primer_nombre));
+            $this->notify(new Notifications\ssendEmailVerificationNotification($this->datos_basicos->primer_nombre));
         }else {
-            $this->notify(new ssendEmailVerificationNotification($token,$this->name));
+            $this->notify(new Notifications\ssendEmailVerificationNotification($this->name));
         }
     }
 }
