@@ -85,12 +85,13 @@ class DatosBasicosController extends Controller
         try{
             if ($request->hasFile('foto')) {
                 $archivo = $request->file('foto');
-                $nombreImg = 'img/datosbasicos/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/datosbasicos', $nombreImg)) {
+                $nombreImg = 'storage/storage/img/datosbasicos/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move('storage/storage/img/datosbasicos', $nombreImg)) {
                     echo "guardado";
+                    $success = true;
                 }
             } else {
-                $nombreImg = 'img/datosbasicos/default.png';
+                $nombreImg = 'storage/storage/img/datosbasicos/default.png';
             }
             $telefono = NEW Telefono();
             $telefono->tipo = $request->input('tipo_telefono');
@@ -117,7 +118,6 @@ class DatosBasicosController extends Controller
             $datosbasicos->email = $request->input('email');
             $datosbasicos->user_id = Auth::user()->id;
             $datosbasicos->save();
-            $success = true;
         } catch (\exception $e){
             $success = false;
             $error_save = $e->getMessage();
@@ -129,7 +129,7 @@ class DatosBasicosController extends Controller
             return redirect(route('datosbasicos.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
-                if($nombreImg != 'img/datosbasicos/default.png'){
+                if($nombreImg != 'storage/storage/img/datosbasicos/default.png'){
                     unlink(public_path($nombreImg));
                 }
             }
@@ -197,13 +197,13 @@ class DatosBasicosController extends Controller
         try{
             if($request->hasFile('foto')){
                 $archivo = $request->file('foto');
-                $nombreImg = 'img/datosbasicos/'.time().'-'.$archivo->getClientOriginalName();
+                $nombreImg = 'storage/storage/img/datosbasicos/'.time().'-'.$archivo->getClientOriginalName();
                 if (file_exists(public_path($datosbasicos->foto))) {
-                    if($datosbasicos->foto != 'img/datosbasicos/default.png'){
+                    if($datosbasicos->foto != 'storage/storage/img/datosbasicos/default.png'){
                         unlink(public_path($datosbasicos->foto));
                     }
                 }
-                if($archivo->move(public_path().'/img/datosbasicos',$nombreImg)){
+                if($archivo->move('storage/storage/img/datosbasicos',$nombreImg)){
                     echo "Guardado";
                 }else{
                     echo "error al guardar";
@@ -263,7 +263,5 @@ class DatosBasicosController extends Controller
         $datosbasicos->delete();
         $datosbasicos->save();
         return redirect(route('datosbasicos.index'))->with('success');
-        // DatosBasicos::find($id)->delete();
-        // return redirect(route('datosbasicos.index'));
     }
 }
