@@ -63,7 +63,7 @@ class ssendEmailVerificationNotification extends Notification
             return call_user_func(static::$toMailCallback, $notifiable);
         }
         return (new MailMessage)
-                    ->subject('Verificación de correo')
+                    ->subject('Verificación De Correo')
                     ->greeting('¡Hola!')
                     ->line(' '.$this->username.' recientemente solicitaste una cuenta en '.config('app.name'))
                     ->action('Verifica tu cuenta', $this->verificationUrl($notifiable))
