@@ -4,12 +4,6 @@
 
 * mejorar decoracion de pagina de login
 
-Paquete para desarrollo de la interface de administradr con Voyayeur (https://laravelvoyager.com/)
-lo probé pero dio problemas con argunas migraciones y modelos.
-
-reglas de validacion
-https://laravel.com/docs/4.2/validation#rule-confirmed
-
 posible free hosting 
 https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
 
@@ -27,15 +21,7 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
     *free* https://colorlib.com/wp/template/crossfits/
 
 
-- Admin panel
-    (Parece ser para los procesos que se ejecutan virtualizador) https://laravel.com/docs/5.7/horizon#installation
 
 - Actualizaciones en tiempo regla (Websockets)
     https://laravel.com/docs/5.7/broadcasting#introduction
-
-
-
-⚠️ PROBLEMAS ⚠️
-
-organizar los modelos dentro de app/models ✅
 
