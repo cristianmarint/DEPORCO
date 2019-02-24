@@ -81,7 +81,6 @@ class EquipoController extends Controller
                 $equipo->colores_id = $request->input('colores');
                 $equipo->user_id = Auth::user()->id;
             $equipo->save();
-            // $success = true;
         } catch (\exception $e){
             $success = false;
             $error = $e->getMessage();
@@ -194,7 +193,5 @@ class EquipoController extends Controller
         $equipo->delete();
         $equipo->save();
         return redirect(route('equipos.index'))->with('success');
-        // Equipo::find($id)->delete();
-        // return redirect(route('equipos.index'));
     }
 }
