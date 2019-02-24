@@ -21,7 +21,7 @@ class CreateEquipoTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('nombre', 60);
-            $table->string('logo',150)->default('img/equipo/default.png');
+            $table->string('logo',150)->default('storage/storage/img/equipo/default.png');
             $table->unsignedInteger('instituto_id');
             $table->unsignedInteger('colores_id');
             $table->unsignedInteger('user_id');
