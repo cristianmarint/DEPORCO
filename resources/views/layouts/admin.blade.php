@@ -23,12 +23,12 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
     <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('img/favicon/cotecnova.png')}}">
+    <link rel="icon" type="image/png" href="{{url('storage/storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     {{-- <!-- LOADER --> --}}
     {{-- <div id="preloader">
-           <img class="preloader" src="{{ url('img/Loading-Page/football_loader.gif') }}" alt="">
+           <img class="preloader" src="{{ url('storage/storage/img/Loading-Page/football_loader.gif') }}" alt="">
     </div> --}}
 
     <div class="page">
@@ -110,7 +110,18 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar"><img src="{{url('img/favicon/cotecnova.png')}}" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="avatar"><img src="
+                        @if( Auth::user()->datos_basicos_id )
+                             {{ Auth::user()->datos_basicos->foto }}
+                        @else 
+                                @if ( Auth::user()->avatar != NULL)
+                                        {{ Auth::user()->avatar}}
+                                @else
+                                    {{url('/storage/storage/img/favicon/cotecnova.png')}}
+                                @endif
+                        @endif
+                    " alt="..." class="img-fluid rounded-circle" ></div>
+                    
                     <div class="title">
                         <h1 class="h4">
 

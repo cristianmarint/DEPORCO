@@ -15,7 +15,6 @@ class DatosBasicosTableSeeder extends Seeder
     {
         DatosBasicos::create(array(
             'cedula' => '1112112112',
-            'foto' => 'http://lorempixel.com/800/800/people/',
             'telefono_id' => \App\Models\Telefono::all()->random()->id,
             'primer_nombre' => 'Cristian',
             'segundo_nombre' => 'Alexander',
@@ -32,7 +31,6 @@ class DatosBasicosTableSeeder extends Seeder
         
         DatosBasicos::create(array(
             'cedula' => '222111222',
-            'foto' => 'http://lorempixel.com/800/800/people/',
             'telefono_id' => \App\Models\Telefono::all()->random()->id,
             'primer_nombre' => 'Edwin',
             'primer_apellido' => 'Lopez',
