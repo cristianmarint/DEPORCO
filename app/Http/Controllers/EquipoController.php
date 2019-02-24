@@ -66,12 +66,13 @@ class EquipoController extends Controller
         try{
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/equipo', $nombreImg)) {
+                $nombreImg = 'storage/storage/img/equipo/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move('storage/storage/img/equipo', $nombreImg)) {
                     echo "guardado";
+                    $success = true;
                 }
             } else {
-                $nombreImg = 'img/equipo/default.png';
+                $nombreImg = 'storage/storage/img/equipo/default.png';
             }
             $equipo = NEW Equipo();
                 $equipo->nombre = $request->input('nombre');
@@ -80,7 +81,7 @@ class EquipoController extends Controller
                 $equipo->colores_id = $request->input('colores');
                 $equipo->user_id = Auth::user()->id;
             $equipo->save();
-            $success = true;
+            // $success = true;
         } catch (\exception $e){
             $success = false;
             $error = $e->getMessage();
@@ -92,7 +93,7 @@ class EquipoController extends Controller
             return redirect(route('equipos.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
-                if($nombreImg != 'img/equipo/default.png'){
+                if($nombreImg != 'storage/storage/img/equipo/default.png'){
                     unlink(public_path($nombreImg));
                 }
             }
@@ -145,13 +146,13 @@ class EquipoController extends Controller
         try{
             if($request->hasFile('logo')){
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/equipo/'.time().'-'.$archivo->getClientOriginalName();
+                $nombreImg = 'storage/storage/img/equipo/'.time().'-'.$archivo->getClientOriginalName();
                 if (file_exists(public_path($equipo->logo))) {
-                    if($equipo->logo != 'img/equipo/default.png'){
+                    if($equipo->logo != 'storage/storage/img/equipo/default.png'){
                         unlink(public_path($equipo->logo));
                     }
                 }
-                if($archivo->move(public_path().'/img/equipo',$nombreImg)){
+                if($archivo->move('storage/storage/img/equipo',$nombreImg)){
                     echo "Guardado";
                 }else{
                     echo "error al guardar";
