@@ -1,4 +1,4 @@
-- Devolver / deshacer un commit (Conservando los cambios en commit separado)
+- Devolver / deshacer un commit (Conserva el historial de commits)
 
     git reset  (HASH DEL ULTIMO COMMIT) 
 
@@ -9,7 +9,7 @@
     git push (Generamente necesita  utilizar --force para hacer el push)
     
 
-- otra forma (** No conserva cambios ** )
+- otra forma ( ** No conserva historial de cambios ** )
     
     git reset --hard _hash_
 
