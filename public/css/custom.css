@@ -42,3 +42,15 @@
 	-o-border-radius: 50%;
 	border-radius: 50%;
 }
+
+/*
+* ==========================================================
+*     EVITAR EL OVERFLOW DE CONTENIDO EN TABLAS
+* ==========================================================
+*/
+
+#example th, #example td {
+word-break: break-all; /* IE supports this */
+word-break: break-word; /* IE doesn't support, and will ignore */
+/* http://caniuse.com/#feat=word-break */
+}

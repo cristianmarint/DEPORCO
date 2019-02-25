@@ -32,44 +32,46 @@
                 <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('temporadas.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nueva</button>
                 </div>
-                <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
-                    <thead >
-                        <tr>
-                            <th>Descripción</th>
-                            <th>Fecha de inicio</th>
-                            <th>Fecha de fin</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody >
-                    
-                        @foreach($temporadas as $temporada)
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
+                        <thead >
                             <tr>
-                                <td>{{ $temporada->descripcion }}</td>
-                                <td>{{ $temporada->fecha_inicio }}</td>
-                                <td>{{ $temporada->fecha_fin }}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('temporadas.show', $temporada->id)}}'"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('temporadas.edit', $temporada->id)}}'"><i class='fa fa-edit'></i></button>
-
-
-                                            <button onclick="id_clickeado({{ $temporada->id }},'{{ $temporada->descripcion }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-                                            
-                                            <form action="{{route('temporadas.destroy', $temporada->id)}}" method="POST">
-                                                {{ method_field('DELETE') }}
-                                                @csrf
-                                                <button type="submit" id="delete{{ $temporada->id }}" style="display: none;"></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th>Descripción</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha de fin</th>
+                                <th>Acciones</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+    
+                        <tbody >
+                        
+                            @foreach($temporadas as $temporada)
+                                <tr>
+                                    <td>{{ $temporada->descripcion }}</td>
+                                    <td>{{ $temporada->fecha_inicio }}</td>
+                                    <td>{{ $temporada->fecha_fin }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('temporadas.show', $temporada->id)}}'"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('temporadas.edit', $temporada->id)}}'"><i class='fa fa-edit'></i></button>
+    
+    
+                                                <button onclick="id_clickeado({{ $temporada->id }},'{{ $temporada->descripcion }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                
+                                                <form action="{{route('temporadas.destroy', $temporada->id)}}" method="POST">
+                                                    {{ method_field('DELETE') }}
+                                                    @csrf
+                                                    <button type="submit" id="delete{{ $temporada->id }}" style="display: none;"></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>

@@ -31,7 +31,8 @@
                 <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('calendarios.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
-                <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
                     <thead >
                     <tr>
                         <th>Numero Jornada</th>
@@ -67,6 +68,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </section>

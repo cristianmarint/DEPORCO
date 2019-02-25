@@ -32,47 +32,49 @@
                 <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('lugares.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
-                <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
-                    <thead >
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Municipio</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody >
-                    
-                        @foreach($lugares as $lugar)
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
+                        <thead >
                             <tr>
-                                <td>{{ $lugar->nombre }}</td>
-                                <td>{{$lugar->municipio->nombre}}</td>
-                                <td>Calle {{$lugar->direccion->calle}} Carrera {{$lugar->direccion->carrera}} # {{$lugar->direccion->numero}}</td>
-                                <td>{{$lugar->telefono->tipo}} {{$lugar->telefono->numero}}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $lugar->id)}}'"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
-
-                                                                          {{--  captura la informacion de cada row cuando se le da click al boton   --}}
-                                            <button onclick="id_clickeado({{ $lugar->id }},'{{ $lugar->nombre }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-                                            
-                                            <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
-                                                {{ method_field('DELETE') }}
-                                                @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
-                                                <button type="submit" id="delete_lugar{{ $lugar->id }}" style="display: none;"></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th>Nombre</th>
+                                <th>Municipio</th>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                <th>Acciones</th>
                             </tr>
-                        @endforeach
-                    
-                    </tbody>
-                </table>
+                        </thead>
+    
+                        <tbody >
+                        
+                            @foreach($lugares as $lugar)
+                                <tr>
+                                    <td>{{ $lugar->nombre }}</td>
+                                    <td>{{$lugar->municipio->nombre}}</td>
+                                    <td>Calle {{$lugar->direccion->calle}} Carrera {{$lugar->direccion->carrera}} # {{$lugar->direccion->numero}}</td>
+                                    <td>{{$lugar->telefono->tipo}} {{$lugar->telefono->numero}}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('lugares.show', $lugar->id)}}'"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('lugares.edit', $lugar->id)}}'"><i class='fa fa-edit'></i></button>
+    
+                                                                              {{--  captura la informacion de cada row cuando se le da click al boton   --}}
+                                                <button onclick="id_clickeado({{ $lugar->id }},'{{ $lugar->nombre }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                
+                                                <form action="{{route('lugares.destroy', $lugar->id)}}" method="POST">
+                                                    {{ method_field('DELETE') }}
+                                                    @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
+                                                    <button type="submit" id="delete_lugar{{ $lugar->id }}" style="display: none;"></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>

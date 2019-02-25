@@ -19,7 +19,7 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
     <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('img/favicon/cotecnova.png')}}">
+    <link rel="icon" type="image/png" href="{{url('storage/storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     <div class="page login-page">
@@ -31,10 +31,8 @@
                         <div class="info d-flex align-items-center">
                             <div class="content">
                                 <div class="logo">
-                                    {{--<h1>{{ env('APP_NAME') }}</h1>--}}
-                                    <h1>Deportes Cotecnova</h1>
+                                    <h1>{{ config('app.name') }}</h1>
                                 </div>
-                                {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>--}}
                             </div>
                         </div>
                     </div>

@@ -30,46 +30,48 @@
                 <div class="row col-sm-8 col-sm-offset-2">
                     <button onclick="window.location='{{route('equipos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
-                <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
-                    <thead >
-                        <tr>
-                            <th>Institución</th>
-                            <th>Nombre</th>
-                            <th>Logo</th>
-                            <th>Color</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody >
-                    
-                        @foreach($equipos as $equipo)
+                <div class="table-responsive">
+                    <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
+                        <thead >
                             <tr>
-                                <td>{{$equipo->instituto->nombre}}</td>
-                                <td>{{$equipo->nombre}}</td>
-                                <td> <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
-                                <td>{{$equipo->colores->color}}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
-
-                                            <button onclick="id_clickeado({{ $equipo->id }},'{{ $equipo->nombre }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-                                            
-                                            <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
-                                                {{ method_field('DELETE') }}
-                                                @csrf
-                                                <button type="submit" id="delete_equipo{{ $equipo->id }}" style="display: none;"></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th>Institución</th>
+                                <th>Nombre</th>
+                                <th>Logo</th>
+                                <th>Color</th>
+                                <th>Acciones</th>
                             </tr>
-                        @endforeach
-                    
-                    </tbody>
-                </table>
+                        </thead>
+    
+                        <tbody >
+                        
+                            @foreach($equipos as $equipo)
+                                <tr>
+                                    <td>{{$equipo->instituto->nombre}}</td>
+                                    <td>{{$equipo->nombre}}</td>
+                                    <td> <img src="{{asset($equipo->logo)}}"  class="img-fluid rounded-circle" width="50vh"></td>
+                                    <td>{{$equipo->colores->color}}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('equipos.show', $equipo->id)}}'"><i class="fa fa-eye"></i></button>
+                                                <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('equipos.edit', $equipo->id)}}'"><i class='fa fa-edit'></i></button>
+    
+                                                <button onclick="id_clickeado({{ $equipo->id }},'{{ $equipo->nombre }}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
+                                                
+                                                <form action="{{route('equipos.destroy', $equipo->id)}}" method="POST">
+                                                    {{ method_field('DELETE') }}
+                                                    @csrf
+                                                    <button type="submit" id="delete_equipo{{ $equipo->id }}" style="display: none;"></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
