@@ -26,6 +26,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
+            'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -37,6 +38,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
+            'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -44,10 +46,11 @@ class UsersTableSeeder extends Seeder
             // 'datos_basicos_id' => '1',
             'name' => 'Correo Personal Cristian',
             'email' => 'cristianmarint@gmail.com',
-            'avatar' => 'img/datosbasicos/default.png',
+            'avatar' => 'storage/storage/img/datosbasicos/default.png',
             'password' => bcrypt('123'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
+            'email_verified_at' => date('Y-m-d H:i:s'),
         ]);
     }
 }

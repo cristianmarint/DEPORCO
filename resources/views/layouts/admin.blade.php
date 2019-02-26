@@ -94,6 +94,12 @@
                                         <i class="fa fa-sign-out fa-fw"></i> Cerrar Sesi&oacute;n
                                     </a>
 
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <a class="dropdown-item" href="{{ url('admin') }}">
+                                            <i class="fa fa-user-md fa-fw"></i> Administraci&oacute;n
+                                        </a>
+                                    @endif
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -110,17 +116,7 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar"><img src="
-                        @if( Auth::user()->datos_basicos_id )
-                             {{ Auth::user()->datos_basicos->foto }}
-                        @else 
-                                @if ( Auth::user()->avatar != NULL)
-                                        {{ Auth::user()->avatar}}
-                                @else
-                                    {{url('/storage/storage/img/favicon/cotecnova.png')}}
-                                @endif
-                        @endif
-                    " alt="..." class="img-fluid rounded-circle" ></div>
+                    <div class="avatar"><img src="@if( Auth::user()->datos_basicos_id ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="..." class="img-fluid rounded-circle" ></div>
                     
                     <div class="title">
                         <h1 class="h4">
