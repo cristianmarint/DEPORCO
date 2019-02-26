@@ -22,7 +22,6 @@ class UsersTableSeeder extends Seeder
             'datos_basicos_id' => '1',
             'name' => 'Cristian Marin',
             'email' => 'cristianmarint@cotecnova.edu.co',
-            'avatar' => 'https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/49172795_2032340176848073_3607797267651624960_o.jpg?_nc_cat=111&_nc_ht=scontent.feoh1-1.fna&oh=a7ece5939eec56f6a52b8fe4c6463b81&oe=5CEE3D6C',
             'password' => bcrypt('123'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -42,8 +41,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            // 'role_id' => '1',
-            // 'datos_basicos_id' => '1',
+            // 'role_id' => '13',
+            // 'datos_basicos_id' => '13',
             'name' => 'Correo Personal Cristian',
             'email' => 'cristianmarint@gmail.com',
             'avatar' => 'storage/storage/img/datosbasicos/default.png',

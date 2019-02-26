@@ -15,6 +15,7 @@ class DatosBasicosTableSeeder extends Seeder
     {
         DatosBasicos::create(array(
             'cedula' => '1112112112',
+            'foto'   => 'https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/49172795_2032340176848073_3607797267651624960_o.jpg?_nc_cat=111&_nc_ht=scontent.feoh1-1.fna&oh=a7ece5939eec56f6a52b8fe4c6463b81&oe=5CEE3D6C',
             'telefono_id' => \App\Models\Telefono::all()->random()->id,
             'primer_nombre' => 'Cristian',
             'segundo_nombre' => 'Alexander',

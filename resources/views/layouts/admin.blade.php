@@ -86,7 +86,6 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item"><i class="fa fa-user fa-fw"></i> Cambiar contraseña</a>
                                     <a href="#" id="link_config" class="dropdown-item links"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
-                                    {{--<a href="#" class="dropdown-item"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesi&oacute;n</a>--}}
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -116,7 +115,7 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar"><img src="@if( Auth::user()->datos_basicos_id ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="..." class="img-fluid rounded-circle" ></div>
+                    <div class="avatar"><img src="@if( Auth::user()->datos_basicos->foto){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="..." class="img-fluid rounded-circle" ></div>
                     
                     <div class="title">
                         <h1 class="h4">
