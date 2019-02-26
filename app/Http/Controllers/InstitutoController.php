@@ -153,6 +153,7 @@ class InstitutoController extends Controller
         $tiposEducacion = TipoEducacion::orderBy('tipo', 'asc')->get();
         $departamentos = Departamento::orderBy('nombre', 'asc')->get();
         $instituto = Instituto::findOrFail($id);
+        $tiposTelefono = Telefono::findOrFail($id);
         return view('instituto.edit', compact('instituto', 'departamentos', 'tiposEducacion', 'tiposTelefono'));
     }
 
