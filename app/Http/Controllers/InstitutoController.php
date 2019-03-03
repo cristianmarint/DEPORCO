@@ -70,7 +70,7 @@ class InstitutoController extends Controller
             'carrera' => 'required|string|min:3|max:10',
             'numero' => 'required|string|min:3|max:5',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
-            'telefono' => 'required|integer'
+            'telefono' => 'required|digits_between:7,12|numeric',
         ]);
 
         DB::beginTransaction();
@@ -78,12 +78,12 @@ class InstitutoController extends Controller
         try{
             if ($request->hasFile('logo')) {
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
-                if ($archivo->move(public_path() . '/img/instituto', $nombreImg)) {
+                $nombreImg = 'storage/storage/img/instituto/' . time() . '-' . $archivo->getClientOriginalName();
+                if ($archivo->move('storage/storage/img/instituto', $nombreImg)) {
                     echo "guardado";
                 }
             } else {
-                $nombreImg = 'img/instituto/default.png';
+                $nombreImg = 'storage/storage/img/instituto/default.png';
             }
 
             $telefono = NEW Telefono();
@@ -121,7 +121,7 @@ class InstitutoController extends Controller
             return redirect(route('institutos.index'));
         }else{
             if (file_exists(public_path($nombreImg))) {
-                if($nombreImg != 'img/instituto/default.png'){
+                if($nombreImg != 'storage/storage/img/instituto/default.png'){
                     unlink(public_path($nombreImg));
                 }
             }
@@ -180,7 +180,7 @@ class InstitutoController extends Controller
             'carrera' => 'required|string|min:3|max:10',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'numero' => 'required|string|min:3|max:5',
-            'telefono' => 'required|integer'
+            'telefono' => 'required|digits_between:7,12|numeric',
         ]);
 
         DB::beginTransaction();
@@ -188,14 +188,13 @@ class InstitutoController extends Controller
         try{
             if($request->hasFile('logo')){
                 $archivo = $request->file('logo');
-                $nombreImg = 'img/instituto/'.time().'-'.$archivo->getClientOriginalName();
-
+                $nombreImg = 'storage/storage/img/instituto/'.time().'-'.$archivo->getClientOriginalName();
                 if (file_exists(public_path($instituto->logo))) {
-                    if($instituto->logo != 'img/instituto/default.png'){
+                    if($instituto->logo != 'storage/storage/img/instituto/default.png'){
                         unlink(public_path($instituto->logo));
                     }
                 }
-                if($archivo->move(public_path().'/img/instituto',$nombreImg)){
+                if($archivo->move('storage/storage/img/instituto',$nombreImg)){
                     echo "Guardado";
                 }else{
                     echo "error al guardar";
