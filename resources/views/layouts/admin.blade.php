@@ -115,7 +115,7 @@
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center">
-                    <div class="avatar"><img src="@if( Auth::user()->datos_basicos->foto){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="..." class="img-fluid rounded-circle" ></div>
+                    <div class="avatar"><img src="@if( Auth::user()->datos_basicos->foto != NULL ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="..." class="img-fluid rounded-circle" ></div>
                     
                     <div class="title">
                         <h1 class="h4">
