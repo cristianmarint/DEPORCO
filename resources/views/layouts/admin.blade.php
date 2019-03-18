@@ -179,7 +179,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <p>2017-2019 &copy; <a href="https://www.cotecnova.edu.co/">Cotecnova.</a></p>
+                                <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12">Edwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian Marín</a></p>
                             </div>
                             <div class="col-sm-6 text-right">
                                 <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
