@@ -26,6 +26,10 @@ class Calendario extends Model
     protected function user(){
         return $this->hasOne(User::class);
     }
+
+    public function enfrentamiento(){
+        return $this->hasOne(Enfrentamiento::class);
+    }
     
     protected function torneo(){
         return $this->belongsTo(Torneo::class);
@@ -34,8 +38,5 @@ class Calendario extends Model
     protected function fase(){
         return $this->belongsTo(Fase::class);
     }
-
-    public function enfrentamiento(){
-        return $this->hasOne(Enfrentamiento::class);
-    }
+    
 }
