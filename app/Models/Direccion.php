@@ -21,4 +21,8 @@ class Direccion extends Model
     protected function datosbasicos(){
         return $this->hasOne(Datosbasicos::class);
     }
+
+    protected function lugar(){
+        return $this->hasOne(Lugar::class);
+    }
 }
