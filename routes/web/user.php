@@ -52,6 +52,10 @@ Route::group(['middleware'=>'auth'], function() {
     // Routes temporadas
     Route::resource('/temporadas', 'TemporadaController');
     Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
+
+    // Routes enfrentamientos
+    Route::resource('/enfrentamientos', 'EnfrentamientoController');
+    // Route::get('/enfrentamientos/{id}', 'EnfrentamientoController@getTemporada');
     
     //Routes Calendario
     Route::resource('/calendarios', 'CalendarioController');

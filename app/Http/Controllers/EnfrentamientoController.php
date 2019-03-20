@@ -11,6 +11,7 @@ use App\Models\Equipo;
 use App\Models\Direccion;
 use App\Models\Instituto;
 use App\Models\Colores;
+use App\Models\Enfrentamiento;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,7 @@ class EnfrentamientoController extends Controller
         // $colores = Colores::orderBy('color', 'asc')->get();
         return view('enfrentamiento.create');
     }
+    
     /**
      * Display the specified resource .
      *

@@ -19,9 +19,13 @@ class Lugar extends Model
         'direccion_id',
         'user_id'
     ];
+    
+    protected function user(){
+        return $this->hasOne(User::class);
+    }
 
     protected function municipio(){
-        return $this->belongsTO(Municipio::class);
+        return $this->belongsTo(Municipio::class);
     }
 
     public function telefono(){
@@ -30,5 +34,9 @@ class Lugar extends Model
     
     public function direccion(){
         return $this->belongsTo(Direccion::class);
+    }
+    
+    public function enfrentamiento(){
+        return $this->hasOne(Enfrentamiento::class);
     }
 }

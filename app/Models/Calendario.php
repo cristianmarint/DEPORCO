@@ -15,7 +15,7 @@ class Calendario extends Model
 
 
     protected $fillable = [
-        'numero_jornada',
+        'jornada',
         'fecha',
         'torneo_id',
         'fase_id',
@@ -26,12 +26,16 @@ class Calendario extends Model
     protected function user(){
         return $this->hasOne(User::class);
     }
-
+    
     protected function torneo(){
         return $this->belongsTo(Torneo::class);
     }
-
+    
     protected function fase(){
         return $this->belongsTo(Fase::class);
+    }
+
+    public function enfrentamiento(){
+        return $this->hasOne(Enfrentamiento::class);
     }
 }
