@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title','Instituciones')
+@section('title','Enfrentamientos')
 @section('content')
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('/home')}}">Inicio</a></li>
-            <li class="breadcrumb-item active">Instituciones</li>
+            <li class="breadcrumb-item active">Enfrentamientos</li>
         </ul>
     </div>
 
