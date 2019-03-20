@@ -137,6 +137,8 @@
                 <ul class="list-unstyled">
                     <li class="{{Request::is('home') ? 'active': ''}}"><a href="{{url('/home')}}"> <i class="fa fa-home"></i>Inicio </a></li>
 
+                    <li class="{{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><a href="{{url('/enfrentamientos')}}" class="links"> <i class="fa fa-shield"></i>Enfrentamientos</a></li>
+
                     <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fa fa-university" aria-hidden="true"></i>Instituciones</a></li>
                     
                     <li class="{{Request::is('datosbasicos') ? 'active': ''}} {{ Request::is('datosbasicos/*') ? 'active': ''}}"><a href="{{url('/datosbasicos')}}" class="links"> <i class="fa fa-address-card"></i>Datos Basicos</a></li>
@@ -152,6 +154,7 @@
                     <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-calendar" aria-hidden="true"></i>Temporadas</a></li>
 
                     <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>
+                    
 
 
                     {{--<li><a href="#menu_inscripciones" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Inscripcion</a>--}}
