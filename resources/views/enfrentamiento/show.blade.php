@@ -50,7 +50,7 @@
                         <input id="equipo_local" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}" readonly>
 
                         <div class="text-center">
-                                <img src="{{asset($enfrentamiento->inscripcion_equipo_local->equipo->logo)}}" class="rounded-circle img-responsive center-block" width="80vh">
+                                <img src="{{asset($enfrentamiento->inscripcion_equipo_local->equipo->logo)}}" class="rounded-circle " width="80vh">
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <input id="equipo_local" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}}" readonly>
 
                         <div class="text-center">
-                                <img src="{{asset($enfrentamiento->inscripcion_equipo_visitante->equipo->logo)}}" class="rounded-circle img-responsive center-block" width="80vh">
+                                <img src="{{asset($enfrentamiento->inscripcion_equipo_visitante->equipo->logo)}}" class="rounded-circle " width="80vh">
                         </div>
                     </div>
                 </div>
