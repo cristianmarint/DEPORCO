@@ -35,6 +35,7 @@
                     <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
                         <thead >
                             <tr>
+                                <th>Torneo</th>
                                 <th>Fecha</th>
                                 <th>Número de jornada - Fase</th>
                                 <th>Equipo Local</th>
@@ -48,6 +49,7 @@
                         <tbody >
                             @foreach($enfrentamientos as $enfrentamiento)
                                 <tr>
+                                    <td>{{$enfrentamiento->calendario->torneo->nombre}}</td>
                                     <td>{{$enfrentamiento->calendario->fecha}}</td>
                                     <td>{{$enfrentamiento->calendario->jornada}} - {{$enfrentamiento->calendario->fase->nombre}}</td>
                                     <td>{{$enfrentamiento->inscripcion_equipo_local_id}}</td>

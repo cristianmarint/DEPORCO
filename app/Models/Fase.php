@@ -19,7 +19,7 @@ class Fase extends Model
       'descripcion'
     ];
 
-    protected function calendario(){
-      return $this->hasOne(Calendario::class);
+  protected function calendario(){
+    return $this->hasOne(Calendario::class);
   }
 }

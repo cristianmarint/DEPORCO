@@ -29,4 +29,8 @@ class Torneo extends Model
     protected function temporada(){
         return $this->belongsTo(Temporada::class);
     }
+
+    protected function calendario(){
+        return $this->hasOne(Calendario::class);
+    }
 }

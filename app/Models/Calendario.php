@@ -37,6 +37,5 @@ class Calendario extends Model
     
     protected function fase(){
         return $this->belongsTo(Fase::class);
-    }
-    
+    }    
 }
