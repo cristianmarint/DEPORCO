@@ -52,8 +52,11 @@
                                     <td>{{$enfrentamiento->calendario->torneo->nombre}}</td>
                                     <td>{{$enfrentamiento->calendario->fecha}}</td>
                                     <td>{{$enfrentamiento->calendario->jornada}} - {{$enfrentamiento->calendario->fase->nombre}}</td>
-                                    <td>{{$enfrentamiento->inscripcion_equipo_local_id}}</td>
-                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante_id}}</td>
+
+                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}</td>
+
+                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}}</td>
+
                                     <td>{{$enfrentamiento->lugar->nombre}}</td>
 
                                     <td>

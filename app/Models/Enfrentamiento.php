@@ -26,4 +26,12 @@ class Enfrentamiento extends Model{
     protected function lugar(){
         return $this->belongsTo(Lugar::class);
     }
+
+    protected function inscripcion_equipo_local(){
+        return $this->belongsTo(InscripcionEquipo::class);
+    }
+
+    protected function inscripcion_equipo_visitante(){
+        return $this->belongsTo(InscripcionEquipo::class);
+    }
 }

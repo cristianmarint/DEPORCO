@@ -30,6 +30,10 @@ class Equipo extends model
 
     public function colores(){
       return $this->belongsTo(Colores::class);
-  }
+    }
+
+    public function inscripcionequipo(){
+      return $this->hasOne(InscripcionEquipo::class);
+    }
 
 }
