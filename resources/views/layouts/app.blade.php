@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Deportes Cotecnova</title>
+    <title>{{config('app.name')}}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
-    <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('storage/storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     <div class="page login-page">

@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Deportes Cotecnova @yield('title')</title>
-    <meta name="description" content="">
+    <title>{{ config('app.name') }} @yield('title')</title>
+    <meta name="description" content="Gestionador de torneo,futbol,voleibol,ping pong">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -22,8 +22,6 @@
     <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
-    <!-- Favicon-->
-    <link rel="icon" type="image/png" href="{{url('storage/storage/img/favicon/cotecnova.png')}}">
 </head>
 <body>
     {{-- <!-- LOADER --> --}}
@@ -47,7 +45,10 @@
                         <!-- Navbar Header-->
                         <div class="navbar-header">
                             <!-- Navbar Brand --><a href="{{url('/')}}" class="navbar-brand d-none d-sm-inline-block">
-                                <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong> Cotecnova</strong></div>
+
+                                {{-- <div class="brand-text d-none d-lg-inline-block"><span>Deportes </span><strong> Cotecnova</strong></div> --}}
+                                <div class="brand-text d-none d-lg-inline-block"><span><strong>{{config('app.name')}}</strong></span></div>
+
                                 <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>DC</strong></div></a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                         </div>
@@ -60,21 +61,21 @@
                                 <ul aria-labelledby="notifications" class="dropdown-menu">
                                     <li><a rel="nofollow" href="#" class="dropdown-item">
                                             <div class="notification">
-                                                <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
-                                                <div class="notification-time"><small>4 minutes ago</small></div>
+                                                <div class="notification-content"><i class="fa fa-envelope bg-green"></i>Tienes 6 Mensajes </div>
+                                                <div class="notification-time"><small>Hace 4 minutos</small></div>
                                             </div></a></li>
-                                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
+                                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Ver todas las notificaciones                                            </strong></a></li>
                                 </ul>
                             </li>
                             <!-- Messages                        -->
                             <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">1</span></a>
                                 <ul aria-labelledby="notifications" class="dropdown-menu">
                                     <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                                            <div class="msg-profile"> <img src="#" alt="..." class="img-fluid rounded-circle"></div>
+                                            <div class="msg-profile"> <img src="{{asset('/storage/users/default.png')}}" alt="..." class="img-fluid rounded-circle"></div>
                                             <div class="msg-body">
-                                                <h3 class="h5">Jason Doe</h3><span>Sent You Message</span>
+                                                <h3 class="h5">Jason Doe</h3><span>te envió un mensaje</span>
                                             </div></a></li>
-                                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages   </strong></a></li>
+                                        <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Leer todos los mensajes   </strong></a></li>
                                 </ul>
                             </li>
 
@@ -185,7 +186,7 @@
                                 <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12">Edwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian Marín</a></p>
                             </div>
                             <div class="col-sm-6 text-right">
-                                <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
+                                <p>Design by Bootstrapious</a></p>
                                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                             </div>
                         </div>
