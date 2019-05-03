@@ -51,7 +51,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="code">
-                <a href="{{url('/')}}" style="  color: #636b6f;text-decoration: none;"> @yield('code')</a>
+                <a href="{{url('/')}}" style="  color: #F8554C;text-decoration: none;"> @yield('code')</a>
             </div>
 
             <div class="message" style="padding: 10px;">
