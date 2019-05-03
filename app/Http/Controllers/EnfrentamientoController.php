@@ -48,10 +48,10 @@ class EnfrentamientoController extends Controller
      * @return \Illuminate\Http\Response json
      */
     public function getEnfrentamiento($id){
-        $enfrentamientos = Enfrentamiento::where('equipo_id',$id)
-            ->orderBy('nombre', 'asc')
-            ->get();
-        return response()->json($enfrentamientos);
+        // $enfrentamientos = Enfrentamiento::where('equipo_id',$id)
+        //     ->orderBy('nombre', 'asc')
+        //     ->get();
+        // return response()->json($enfrentamientos);
     }
     /**
      * Store a newly created resource in storage.
@@ -110,10 +110,8 @@ class EnfrentamientoController extends Controller
      */
     public function edit($id)
     {
-        $equipo = Equipo::findOrFail($id);
-        $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        $colores = Colores::orderBy('color', 'asc')->get();
-        return view('equipo.edit',compact('equipo','institutos','colores'));
+        $enfrentamiento = Enfrentamiento::findOrFail($id);
+        return view('enfrentamiento.edit',compact('enfrentamiento'));
         
     }
     /**
