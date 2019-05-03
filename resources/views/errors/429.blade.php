@@ -1,11 +1,5 @@
-@extends('errors::illustrated-layout')
+@extends('errors::minimal')
 
-@section('code', '429')
 @section('title', __('Too Many Requests'))
-
-@section('image')
-    <div style="background-image: url({{ asset('/svg/403.svg') }});" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center">
-    </div>
-@endsection
-
-@section('message', __('Lo sentimos, estas realizando demasiadas solicitudes a nuestros servidores.'))
+@section('code', '429')
+@section('message', __('Lo sentimos, Estamos recibiendo demasiadas solicitudes e nuestros servidores. ' . config('app.name')))

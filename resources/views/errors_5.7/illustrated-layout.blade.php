@@ -235,6 +235,10 @@
             background-color: #64d5ca;
         }
 
+        .bg-cotecnova-light {
+            background-color: #005c2a;
+        }
+
         .bg-blue-dark {
             background-color: #2779bd;
         }
@@ -464,7 +468,7 @@
                         @yield('code', __('Oh no'))
                     </div>
 
-                    <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
+                    <div class="w-16 h-1 bg-cotecnova-light my-3 md:my-6"></div>
 
                     <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
                         @yield('message')
@@ -472,7 +476,7 @@
 
                     <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
                         <button class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
-                            {{ __('Go Home') }}
+                            {{ __('Volver a un lugar seguro') }}
                         </button>
                     </a>
                 </div>
