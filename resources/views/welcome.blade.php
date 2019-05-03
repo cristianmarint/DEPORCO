@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,113 +10,193 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{url('assets/font-awesome/css/font-awesome.min.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{url('assets/font-awesome/css/brands.css')}}"> --}}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/regular.css" integrity="sha384-FKw7x8fCxuvzBwOJmhTJJsKzBl8dnN9e2R4+pXRfYoHivikuHkzWyhKWDSMcGNK8" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
 
 </head>
 <body>
 
-        <!--Navbar -->
-        <nav class="mb-1 navbar navbar-expand-lg navbar-dark secondary-color lighten-1">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg  navbar-light bg-lignt static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{url('/logo_deporco.svg')}}" width="25%" height="auto" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-                </a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">TORNEOS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">LIGAS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="#">BLOG</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">Dropdown
-                </a>
-                <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            </ul>
-            <ul class="navbar-nav ml-auto nav-flex-icons">
+
+
+            @if (Route::has('login'))
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light">1
-                <i class="fas fa-envelope"></i>
-                </a>
+                @auth
+                {{-- <a href="{{ url('/home') }}">{{ Auth::user()->role->name }} - {{ Auth::user()->datos_basicos->primer_nombre }} {{ Auth::user()->datos_basicos->primer_apellido }}</a> --}}
+                <a href="{{ url('/home') }}" class="nav-link" style="text-transform: uppercase;color:#4a85fe;">{{ Auth::user()->datos_basicos->primer_nombre }} </a>
+                @else
+                    <a href="{{ route('login') }}" class="nav-link" style="text-transform: uppercase;">Ingresar</a>
+                    {{-- El registro de usuarios deberia ser llevado por administradores --}}
+                    {{-- <a href="{{ route('register') }}">Registrarse</a> --}}
+                @endauth
             </li>
-            <li class="nav-item avatar dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0"
-                    alt="avatar image">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
-                aria-labelledby="navbarDropdownMenuLink-55">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            </ul>
+            @endif
+
+
+        </ul>
         </div>
-        </nav>
-        <!--/.Navbar -->
+    </div>
+</nav>
 
 
-        <footer id="myFooter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="{{url('/logo.svg')}}" width="150" height="150" alt="">
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row  mt-5 mb-5 mx-auto">
+            <blockquote class="blockquote">
+                    <p class="h3">Universitarios <mark>Saludables<mark></p><br>
+                    <p>Una iniciativa que busca integrar a las comunidades universitarias de la región por medio de el deporte y actividades saludables.</p>
+            </blockquote>
+    </div>
+
+        <div class="row mt-5 mr-4 mx-auto">
+                <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{url('storage/storage/img/torneo/landing_page/f8.jpg')}}" alt="Card image cap">
+                        <div class="card-body">
+                          <p class="card-text"><h5>Torneo Futbol 8 COTECNOVA</h5></p>
                         </div>
-                        <div class="col-sm-2">
-                            <h5>Get started</h5>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Sign up</a></li>
-                                <li><a href="#">Downloads</a></li>
-                            </ul>
+                </div>
+
+                <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{url('storage/storage/img/torneo/landing_page/f11.jpg')}}" alt="Card image cap">
+                        <div class="card-body">
+                          <p class="card-text"><h5>Torneo Futbol 11 COTECNOVA</h5></p>
                         </div>
-                        <div class="col-sm-2">
-                            <h5>About us</h5>
-                            <ul>
-                                <li><a href="#">Company Information</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Reviews</a></li>
-                            </ul>
+                </div>
+
+                <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="{{url('storage/storage/img/torneo/landing_page/v.jpg')}}" alt="Card image cap">
+                        <div class="card-body">
+                          <p class="card-text"><h5>Torneo Voleibol COTECNOVA</h5></p>
                         </div>
-                        <div class="col-sm-2">
-                            <h5>Support</h5>
-                            <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Help desk</a></li>
-                                <li><a href="#">Forums</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="social-networks">
-                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+        </div>
+
+
+        <div  class="container-fluid text-center mt-5">
+                <h2 class="mt-5 mb-5"><i class="fas fa-landmark fa-md"></i>     INSTITUCIONES</h2>
+                <br>
+                <div class="row slideanim slide">
+                  <div class="col-sm-4 mb-5">
+                    <span class="glyphicon glyphicon-off logo-small"></span>
+                    <h4>IE SOR MARIA JULIANA</h4>
+                  </div>
+                  <div class="col-sm-4 mb-5">
+                    <span class="glyphicon glyphicon-heart logo-small"></span>
+                    <h4>COTECNOVA</h4>
+                  </div>
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-lock logo-small"></span>
+                    <h4>INSTITUTO CEIM</h4>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row slideanim slide">
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-leaf logo-small"></span>
+                    <h4>IE GABO</h4>
+                  </div>
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-certificate logo-small"></span>
+                    <h4>UNIVERSIDAD DEL VALLE - CARTAGO</h4>
+                  </div>
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-wrench logo-small"></span>
+                    <h4 >INSTITUTO INEC</h4>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row slideanim slide">
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-leaf logo-small"></span>
+                    <h4>IE ACADEMICO</h4>
+                  </div>
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-certificate logo-small"></span>
+                    <h4>UNIVERSIDAD ANTONIO NARIÑO</h4>
+                  </div>
+                  <div class="col-sm-4  mb-5">
+                    <span class="glyphicon glyphicon-wrench logo-small"></span>
+                    <h4 >INSTITUTO INTEC</h4>
+                  </div>
+                </div>
+              </div>
+
+</div>
+
+<!-- /.container -->
+
+
+<footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="{{url('/logo.svg')}}" style="display: block;margin: auto;" width="50%" height="auto" alt="">
+                </div>
+
+                <div class="col-sm-8 row">
+                    <div class="col-sm-3 col-md-4">
+                        <div class="social-networks" >
+                                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="google"><i class="fab fa-google"></i></a>
                             </div>
-                            <button type="button" class="btn btn-default" style="background-color:#0F94F9;">Contactanos</button>
-                        </div>
+                        <button type="button" class="btn btn-default" style="background-color:#0F94F9;">Contactanos</button>
+                    </div>
+
+                    <div class="col-sm-3 col-md-4">
+                        <h5>Conocenos</h5>
+                        <ul>
+                            <li><a href="#">Company Information</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Reviews</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-3 col-md-4">
+                        <h5>Soporte</h5>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help desk</a></li>
+                        </ul>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </div>
+    </footer>
 
-        <script src="{{url('assets/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('assets/jquery/jquery.min.js')}}"></script>
+    <script src="{{url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
 </html>
