@@ -1,0 +1,226 @@
+#footer {
+  background-color: #3c3d41;
+  color: white;
+  padding-top: 30px;
+}
+
+#footer .footer-copyright {
+  background-color: #333333;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+#footer .row {
+  margin-bottom: 60px;
+}
+
+#footer .navbar-brand {
+  margin-top: 45px;
+  height: 65px;
+}
+
+#footer .footer-copyright p {
+  margin: 10px;
+  color: #ccc;
+}
+
+#footer ul {
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 1.7;
+}
+
+#footer h5 {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+#footer h2 a{
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+#footer a {
+  color: #d2d1d1;
+  text-decoration: none;
+}
+
+#footer a:hover,
+#footer a:focus {
+  text-decoration: none;
+  color: white;
+}
+
+#footer .social-networks {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 16px;
+}
+
+#footer .social-networks a {
+  font-size: 32px;
+  color: #f9f9f9;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+#footer .social-networks a:hover {
+  text-decoration: none;
+}
+
+#footer .facebook:hover {
+  color: #0077e2;
+}
+
+#footer .google:hover {
+  color: #ef1a1a;
+}
+
+#footer .twitter:hover {
+  color: #00aced;
+}
+
+#footer .btn {
+  color: white;
+  background-color: #d84b6b;
+  border-radius: 20px;
+  border: none;
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  line-height: 25px;
+}
+
+@media screen and (max-width: 767px) {
+  #footer {
+      text-align: center;
+  }
+}
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+/* You can remove this. */
+
+html{
+  height: 100%;
+}
+
+body{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  height: 100%;
+}
+
+.content{
+ flex: 1 0 auto;
+ -webkit-flex: 1 0 auto;
+ min-height: 200px;
+}
+
+#footer{
+ flex: 0 0 auto;
+ -webkit-flex: 0 0 auto;
+}
+
+
+
+
+/* TARJETAS PARA TORNEOS */
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.1), -5px -5px 30px 7px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(1, 1);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+.gradient::after {
+  display: block;
+  position: relative;
+  /* background-image: linear-gradient(45deg, #CE2A8C 0%, #079FEE 100%); */
+  background-image: linear-gradient(45deg, rgb(206,42,140,0.4) , rgb(7,159,238,0.4));
+  margin-top: -300px;
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  content: '';
+}
+
+
+.spacer-5 { margin:5rem; padding:0;}
+.spacer-10 { margin:10rem; padding:0;}
+.spacer-20 { margin:20rem; padding:0;}
+.spacer-30 { margin:30rem; padding:0;}
+
+.padd-5  { padding:5rem;}
+.padd-10 { padding:10rem;}
+.padd-20 { padding:20rem;}
+.padd-30 { padding:30rem;}
+
+
+
+
+
+

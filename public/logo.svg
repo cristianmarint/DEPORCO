@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ee4f42"/>
+      <stop offset="1" stop-color="#a2224e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fb584b"/>
+      <stop offset="1" stop-color="#c42d61"/>
+    </linearGradient>
+    <filter id="Rectángulo_2" x="99.228" y="21" width="86.214" height="451.577" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="1.139" y1="0.493" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ee4f42"/>
+      <stop offset="1" stop-color="#ae55e9"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#48f"/>
+      <stop offset="1" stop-color="#f04bfe"/>
+    </linearGradient>
+    <clipPath id="clip-logo">
+      <rect width="500" height="500"/>
+    </clipPath>
+  </defs>
+  <g id="logo" clip-path="url(#clip-logo)">
+    <g id="logo-2" data-name="logo" transform="translate(6.967 22.329)">
+      <rect id="Rectángulo_5" data-name="Rectángulo 5" width="228.556" height="65.41" rx="32.705" transform="matrix(0.669, -0.743, 0.743, 0.669, 91.033, 406.006)" fill="url(#linear-gradient)"/>
+      <g transform="matrix(1, 0, 0, 1, -6.97, -22.33)" filter="url(#Rectángulo_2)">
+        <rect id="Rectángulo_2-2" data-name="Rectángulo 2" width="433.577" height="68.214" rx="34.107" transform="translate(108.23 460.58) rotate(-90)" fill="url(#linear-gradient-2)"/>
+      </g>
+      <rect id="Rectángulo_4" data-name="Rectángulo 4" width="225.198" height="65.41" rx="32.705" transform="translate(345.491 451.438) rotate(-130)" fill="url(#linear-gradient-3)"/>
+      <rect id="Rectángulo_1" data-name="Rectángulo 1" width="263.51" height="68.214" rx="34.107" transform="translate(316.964 438.477) rotate(-90)" fill="url(#linear-gradient-4)"/>
+    </g>
+  </g>
+</svg>
