@@ -22,43 +22,42 @@
 
 </head>
 <body>
- 
 
-<nav class="navbar navbar-expand-lg  navbar-light bg-lignt static-top">
-    <div class="container">
 
-      <div class="row col-md-4 col-sm-12 col-lg-8">
-          <a class="" href="/">
-            <img src="{{url('/logo_deporco.svg')}}" width="50%" height="auto" >
-        </a>
-      </div>
-        
-        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> --}}
 
-        <div class="row col-md-8 col-sm-12 col-lg-4 m-5">
-            <div class=" mr-auto" >
-                <ul class="navbar-nav">
-                    <li class="nav-item ">
-                        <a class="nav-link h4" href="#">TORNEOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link h4" href="#">LIGAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link h4" href="#">BLOG</a>
-                    </li>
-                </ul>
-                </div>
-        </div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-ligh static-top">
+  <div class="container">
+    {{-- <a class="navbar-brand" href="#">Start Bootstrap</a> --}}
+    <img src="{{url('/logo_deporco.svg')}}" width="30%" height="auto" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="color:#F8554B !important;"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">INICIO
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">TORNEOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">LIGAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">BLOG</a>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 
 <div class="container">
     <div class="row">
-      <div class="col-md-8 spacer-2 mx-auto mt-5">
+      <div class="col-md-7 spacer-2 mx-auto mt-5">
         <blockquote class="blockquote">
                 <p class="h3">Universitarios <mark>Saludables<mark></mark></mark></p><br><br>
                 <p>Una iniciativa que busca integrar a las comunidades 
@@ -102,37 +101,37 @@
 
           <div class="row mx-auto col-sm-12 col-xs-12 col-md-12 mb-5">
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>IE SOR MARIA JULIANA</h4>
+              <h4> <strong>IE SOR MARIA JULIANA</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>COTECNOVA</h4>
+              <h4> <strong>COTECNOVA</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>INSTITUTO CEIM</h4>
+              <h4> <strong>INSTITUTO CEIM</strong></h4>
             </div>
           </div>            
           
           <div class="row mx-auto col-sm-12 col-xs-12 col-md-12 mb-5">
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>IE GABO</h4>
+              <h4> <strong>IE GABO</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>UNIVERSIDAD DEL VALLE - CARTAGO</h4>
+              <h4> <strong>UNIVERSIDAD DEL VALLE - CARTAGO</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>INSTITUTO INEC</h4>
+              <h4> <strong>INSTITUTO INEC</strong></h4>
             </div>
           </div>
           
           <div class="row mx-auto col-sm-12 col-xs-12 col-md-12 mb-5">
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>IE ACADEMICO</h4>
+              <h4> <strong>IE ACADEMICO</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>UNIVERSIDAD ANTONIO NARIÑO</h4>
+              <h4> <strong>UNIVERSIDAD ANTONIO NARIÑO</strong></h4>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 mb-5">
-              <h4>INSTITUTO INTEC</h4>
+              <h4> <strong>INSTITUTO INTEC</strong></h4>
             </div>
           </div>
     </div>
