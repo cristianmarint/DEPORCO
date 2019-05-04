@@ -10,7 +10,10 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{url('assets/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/solid.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/brands.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/regular.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/fontawesome.min.css')}}">
     <!-- SweetAlert -->
     <link rel="stylesheet" href="{{url('assets/sweetalert/dist/sweetalert.css')}}">
     <!-- Google fonts - Poppins -->
@@ -55,20 +58,20 @@
                         <!-- Navbar Menu -->
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                             <!-- Search-->
-                            <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="fa fa-search"></i></a></li>
+                            <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="fas fa-search"></i></a></li>
                             <!-- Notifications-->
-                            <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">1</span></a>
+                            <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fas fa-bell"></i><span class="badge bg-red badge-corner">1</span></a>
                                 <ul aria-labelledby="notifications" class="dropdown-menu">
                                     <li><a rel="nofollow" href="#" class="dropdown-item">
                                             <div class="notification">
                                                 <div class="notification-content"><i class="fa fa-envelope bg-green"></i>Tienes 6 Mensajes </div>
                                                 <div class="notification-time"><small>Hace 4 minutos</small></div>
                                             </div></a></li>
-                                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Ver todas las notificaciones                                            </strong></a></li>
+                                    <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Ver todas las notificaciones</strong></a></li>
                                 </ul>
                             </li>
                             <!-- Messages                        -->
-                            <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">1</span></a>
+                            <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fas fa-envelope"></i><span class="badge bg-orange badge-corner">1</span></a>
                                 <ul aria-labelledby="notifications" class="dropdown-menu">
                                     <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
                                             <div class="msg-profile"> <img src="{{asset('/storage/users/default.png')}}" alt="..." class="img-fluid rounded-circle"></div>
@@ -85,18 +88,18 @@
                                     <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item"><i class="fa fa-user fa-fw"></i> Cambiar contraseña</a>
-                                    <a href="#" id="link_config" class="dropdown-item links"><i class="fa fa-gear fa-fw"></i> Configuraciones</a>
+                                    <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item"><i class="fas fa-user fa-fw"></i></i> Cambiar contraseña</a>
+                                    <a href="#" id="link_config" class="dropdown-item links"><i class="fas fa-cogs fa-fw"></i></i> Configuraciones</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-sign-out fa-fw"></i> Cerrar Sesi&oacute;n
+                                        <i class="fas fa-sign-out-alt fa-fw"></i></i> Cerrar Sesi&oacute;n
                                     </a>
 
                                     @if (Auth::user()->hasRole('admin'))
                                         <a class="dropdown-item" href="{{ url('admin') }}">
-                                            <i class="fa fa-user-md fa-fw"></i> Administraci&oacute;n
+                                                <i class="fas fa-toolbox"></i> Administraci&oacute;n
                                         </a>
                                     @endif
 
@@ -138,31 +141,24 @@
                 <ul class="list-unstyled">
                     <li class="{{Request::is('home') ? 'active': ''}}"><a href="{{url('/home')}}"> <i class="fa fa-home"></i>Inicio </a></li>
 
-                    <li class="{{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><a href="{{url('/enfrentamientos')}}" class="links"> <i class="fa fa-shield"></i>Enfrentamientos</a></li>
+                    <li class="{{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><a href="{{url('/enfrentamientos')}}" class="links"> <i class="fas fa-puzzle-piece"></i>Partidos</a></li>
 
-                    <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fa fa-university" aria-hidden="true"></i>Instituciones</a></li>
+                    <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fas fa-landmark fa-md"></i>Instituciones</a></li>
                     
-                    <li class="{{Request::is('datosbasicos') ? 'active': ''}} {{ Request::is('datosbasicos/*') ? 'active': ''}}"><a href="{{url('/datosbasicos')}}" class="links"> <i class="fa fa-address-card"></i>Datos Basicos</a></li>
+                    <li class="{{Request::is('datosbasicos') ? 'active': ''}} {{ Request::is('datosbasicos/*') ? 'active': ''}}"><a href="{{url('/datosbasicos')}}" class="links"> <i class="fas fa-address-card"></i>Datos Basicos</a></li>
 
-                    <li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fa fa-shield" aria-hidden="true"></i>Equipos</a></li>
+                    <li class="{{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><a  href="{{url('/equipos')}}" class="links"> <i class="fas fa-user-friends"></i>Equipos</a></li>
                     
-                    <li class="{{Request::is('lugares') ? 'active': ''}} {{Request::is('lugares/*') ? 'active': ''}}"><a href="{{url('/lugares')}}" class="links"> <i class="fa fa-map-marker"></i>Lugares</a></li>
+                    <li class="{{Request::is('lugares') ? 'active': ''}} {{Request::is('lugares/*') ? 'active': ''}}"><a href="{{url('/lugares')}}" class="links"> <i class="fas fa-map-marked-alt"></i>Lugares</a></li>
                     
-                    <li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fa fa-bars"></i>Categorias</a></li>
+                    <li class="{{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><a href="{{url('/categorias')}}" class="links"> <i class="fas fa-align-left"></i>Categorias</a></li>
                     
-                    <li class="{{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}}"><a href="{{url('/torneos')}}" class="links"> <i class="fa fa-trophy"></i>Torneos</a></li>
+                    <li class="{{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}}"><a href="{{url('/torneos')}}" class="links"> <i class="fas fa-trophy"></i>Torneos</a></li>
                     
-                    <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fa fa-calendar" aria-hidden="true"></i>Temporadas</a></li>
+                    <li class="{{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><a href="{{url('/temporadas')}}" class="links"> <i class="fas fa-calendar-check"></i>Temporadas</a></li>
 
-                    <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fa fa-calendar-plus-o"></i>Calendario</a></li>
+                    <li class="{{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><a href="{{url('/calendarios')}}" class="links"> <i class="fas fa-calendar-week"></i>Calendario</a></li>
                     
-
-
-                    {{--<li><a href="#menu_inscripciones" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Inscripcion</a>--}}
-                        {{--<ul id="menu_inscripciones" class="collapse list-unstyled ">--}}
-                            {{--<li><a href="{{url('/inscripciones_equipo')}}" class="links"><i class="fa fa-shield"></i> Equipos</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
                 </ul>
             </nav>
 
@@ -183,10 +179,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12">Edwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian Marín</a></p>
+                                <p>2017-2019 <i class="far fa-copyright fa-md"></i> <a href="https://github.com/EdwinLopez12">Edwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian Marín</a></p>
+                                {{-- <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12"><img src="{{url('/logo.svg')}}" width="3%" height="auto" style="transform: rotate(90deg);">dwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian <img src="{{url('/logo.svg')}}" width="3%" height="auto" style="transform: rotate(180deg);">arín</a></p> --}}
                             </div>
                             <div class="col-sm-6 text-right">
-                                <p>Design by Bootstrapious</a></p>
+                                <p>Bootstrapious</a></p>
                                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                             </div>
                         </div>
