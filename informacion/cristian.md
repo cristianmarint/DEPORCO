@@ -25,3 +25,6 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
 - Actualizaciones en tiempo regla (Websockets)
     https://laravel.com/docs/5.7/broadcasting#introduction
 
+
+- Versionamiento
+    https://sites.google.com/site/practicadesarrollosoft/temario/scm/versionado-y-staging-de-componentes
