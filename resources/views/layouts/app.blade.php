@@ -20,16 +20,17 @@
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
 </head>
 <body>
-    <div class="page login-page">
+    <div class="page login-page" style="background-color:#E7ECFB !important;">
         <div class="container d-flex align-items-center">
             <div class="form-holder has-shadow">
                 <div class="row">
                     <!-- Logo & Information Panel-->
                     <div class="col-lg-6">
-                        <div class="info d-flex align-items-center">
+                        <div class="info d-flex align-items-center" style="background-color: rgba(230, 232, 233,0.8)  !important;">
                             <div class="content">
                                 <div class="logo">
-                                    <h1>{{ config('app.name') }}</h1>
+                                    {{-- <h1>{{ config('app.name') }}</h1> --}}
+                                    <img src="{{url('/logo_deporco.svg')}}" class="mx-auto" width="100%" height="auto" >
                                 </div>
                             </div>
                         </div>
@@ -45,11 +46,11 @@
                 </div>
             </div>
         </div>
-        <div class="copyrights text-center">
+        {{-- <div class="copyrights text-center">
             <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a>
                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </p>
-        </div>
+        </div> --}}
     </div>
 
     <!-- JavaScript files-->

@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-19 12:42:46 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-19 12:45:55
+ * @Last Modified time: 2019-05-05 12:58:47
  */
 
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +20,14 @@ class AddDefaultRoleTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('role_id')->default('2')->nullable(false)->change();
+            $table->dropForeign(['role_id']);
+  
+            $table->foreign('role_id')
+            ->references('id')
+            ->on('roles')
+            ->default('2')
+            ->nullable(false)
+            ->onDelete('restrict');
         });
     }
 
