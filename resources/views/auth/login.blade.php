@@ -13,7 +13,6 @@
 
                 <div class="signin-content">
                     <div class="signin-image">
-                        {{-- <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/signin-image.jpg')}}"></figure> --}}
                         <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/login.jpg')}}"></figure>
                         <a href="{{ route('register') }}" class="signup-image-link">{{ __('Create an account') }}</a>
                     </div>

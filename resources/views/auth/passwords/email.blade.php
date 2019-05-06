@@ -5,13 +5,6 @@
 <div class="container">
         <section class="sign-in">
             <div class="container">
-                
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/email_reset.png')}}"></figure>
@@ -25,15 +18,23 @@
                             <div class="form-group">
                                 <label ><i class="fas fa-user"></i></label>
                                 <input id="email" type="email"  name="email" placeholder="{{ __('E-Mail Address') }}" required autofocus>
+                
+                                
+                                
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="{{ __('Send Password Reset Link') }}">
                             </div>
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
