@@ -13,44 +13,18 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{{url('assets/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/solid.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/brands.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/regular.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/fontawesome.min.css')}}">
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{url('css/app.blade.css')}}" id="theme-stylesheet">
 </head>
 <body>
-    <div class="page login-page" style="background-color:#E7ECFB !important;">
-        <div class="container d-flex align-items-center">
-            <div class="form-holder has-shadow">
-                <div class="row">
-                    <!-- Logo & Information Panel-->
-                    <div class="col-lg-6">
-                        <div class="info d-flex align-items-center" style="background-color: rgba(230, 232, 233,0.8)  !important;">
-                            <div class="content">
-                                <div class="logo">
-                                    {{-- <h1>{{ config('app.name') }}</h1> --}}
-                                    <img src="{{url('/logo_deporco.svg')}}" class="mx-auto" width="100%" height="auto" >
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Form Panel    -->
-                    <div class="col-lg-6 bg-white">
-                        <div class="form d-flex align-items-center">
-                            <div class="content">
-                               @yield('content')
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="copyrights text-center">
-            <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a>
-                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-            </p>
-        </div> --}}
+    <div class="main">
+        @yield('content')
     </div>
 
     <!-- JavaScript files-->
@@ -59,5 +33,7 @@
     <script src="{{url('assets/sweetalert/dist/sweetalert.min.js')}}"> </script>
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
+
+    <!-- Login & Register saved from url=(0052)https://colorlib.com/etc/regform/colorlib-regform-7/ -->
 </body>
 </html>

@@ -71,21 +71,21 @@
 
     <div class="card-list row spacer-5 mx-auto">
         <div class="card">
-          <div class="card_image gradient"> <img src="{{url('storage/storage/img/landing-page/f8.jpg')}}" /> </div>
+          <div class="card_image gradient"> <img src="{{url('storage/storage/img/app/landing-page/f8.jpg')}}" /> </div>
           <div class="card_title title-white">
             <p>Torneo Futbol 8 COTECNOVA</p>
           </div>
         </div>
 
         <div class="card">
-          <div class="card_image gradient"> <img src="{{url('storage/storage/img/landing-page/f11.jpg')}}" /> </div>
+          <div class="card_image gradient"> <img src="{{url('storage/storage/img/app/landing-page/f11.jpg')}}" /> </div>
           <div class="card_title title-white">
             <p>Torneo Futbol 11 COTECNOVA</p>
           </div>
         </div>
 
         <div class="card">
-          <div class="card_image gradient"> <img src="{{url('storage/storage/img/landing-page/v.jpg')}}" /> </div>
+          <div class="card_image gradient"> <img src="{{url('storage/storage/img/app/landing-page/v.jpg')}}" /> </div>
           <div class="card_title title-white">
             <p>Torneo Voleibol COTECNOVA</p>
           </div>
