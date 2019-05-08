@@ -7,31 +7,33 @@
     <meta name="description" content="Gestionador de torneo,futbol,voleibol,ping pong">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
+
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
+
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/solid.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/brands.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/regular.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/fontawesome.min.css')}}">
+
     <!-- SweetAlert -->
     <link rel="stylesheet" href="{{url('assets/sweetalert/dist/sweetalert.css')}}">
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+
+    <!-- Google fonts - Montserrat -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700">
+
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
+
     <!-- data tables -->
     <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">
+
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
 </head>
 <body>
-    {{-- <!-- LOADER --> --}}
-    {{-- <div id="preloader">
-           <img class="preloader" src="{{ url('storage/storage/img/Loading-Page/football_loader.gif') }}" alt="">
-    </div> --}}
-
     <div class="page">
         <!-- Main Navbar-->
         <header class="header">
@@ -89,7 +91,13 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <a href="#" data-toggle="modal" data-target="#ChangePasswordModal" class="dropdown-item"><i class="fas fa-user fa-fw"></i></i> Cambiar contraseña</a>
-                                    <a href="#" id="link_config" class="dropdown-item links"><i class="fas fa-cogs fa-fw"></i></i> Configuraciones</a>
+                                    <a href="#" id="link_config" class="dropdown-item links btn-warning"><i class="fas fa-cogs fa-fw"></i></i> Configuraciones</a>
+
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <a class="dropdown-item" href="{{ url('admin') }}">
+                                                <i class="fas fa-toolbox"></i> Administraci&oacute;n
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -97,11 +105,6 @@
                                         <i class="fas fa-sign-out-alt fa-fw"></i></i> Cerrar Sesi&oacute;n
                                     </a>
 
-                                    @if (Auth::user()->hasRole('admin'))
-                                        <a class="dropdown-item" href="{{ url('admin') }}">
-                                                <i class="fas fa-toolbox"></i> Administraci&oacute;n
-                                        </a>
-                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -141,7 +144,7 @@
                 <ul class="list-unstyled">
                     <li class="{{Request::is('home') ? 'active': ''}}"><a href="{{url('/home')}}"> <i class="fa fa-home"></i>Inicio </a></li>
 
-                    <li class="{{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><a href="{{url('/enfrentamientos')}}" class="links"> <i class="fas fa-puzzle-piece"></i>Partidos</a></li>
+                    <li class="{{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><a href="{{url('/enfrentamientos')}}" class="links"> <i class="fas fa-puzzle-piece"></i>Enfrentamientos</a></li>
 
                     <li class="{{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><a href="{{url('/institutos')}}" class="links"> <i class="fas fa-landmark fa-md"></i>Instituciones</a></li>
                     
@@ -367,6 +370,8 @@
            }, time);
        }
     </script>
+
+    <!-- Yield para scripts -->
     @yield('scripts')
 </body>
 </html>

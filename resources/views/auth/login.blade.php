@@ -14,11 +14,11 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/login.jpg')}}"></figure>
-                        <a href="{{ route('register') }}" class="signup-image-link">{{ __('Create an account') }}</a>
+                        <a href="{{ route('register') }}" class="signup-image-link">{{ __('Crear una cuenta') }}</a>
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">{{ __('Login') }}</h2>
+                        <h2 class="form-title">{{ __('Ingresar') }}</h2>
                         <form method="POST" class="register-form" action="{{ route('login') }}" id="login-form">
                                 @csrf
                             <div class="form-group">
@@ -41,23 +41,23 @@
                             </div>
                             <div class="form-group">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label for="remember" class="label-agree-term"><span><span></span></span>{{ __('Remember Me') }}</label>
+                                <label for="remember" class="label-agree-term"><span><span></span></span>{{ __('Recuerdame') }}</label>
                             </div>
                             <div class="form-group">
-                                    <label for="agree-term" class="label-agree-term"><a href="#" class="term-service">Terms of service</a></label>
+                                    <label for="agree-term" class="label-agree-term"><a href="#" class="term-service">Condiciones</a></label>
                             </div>
                             <div class="form-group">
                                 @if (Route::has('password.request'))
-                                    <a class="btn-link" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                    <a class="btn-link" href="{{ route('password.request') }}">{{ __('¿Olvido su contraseña?') }}</a>
                                 @endif
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="{{ __('Login') }}">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="{{ __('Ingresar') }}">
                             </div>
                         </form>
 
                         <div class="social-login">
-                            <span class="social-label">Login with</span>
+                            <span class="social-label">Ingresar con</span>
                             <ul class="socials">
                                 {{-- Iconos de login con socialite --}}
                                 <a href="{{route('oauth.login','google')}}" class="btn ">
