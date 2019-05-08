@@ -15,19 +15,19 @@ class ArbitroPuestoTableSeeder extends Seeder
         ArbitroPuesto::create(array(
             'puesto' => 'Arbitro principal',
             'descripcion' => 'Arbitro #1 del encuntro',
-            'user_id' => 2
+            'user_id' => \App\User::all()->random()->id
         ));
 
         ArbitroPuesto::create(array(
             'puesto' => 'Arbitro secundario',
             'descripcion' => 'Ayuda a tomar decisiones al arbitro principal',
-            'user_id' => 2
+            'user_id' => \App\User::all()->random()->id
         ));
 
         ArbitroPuesto::create(array(
             'puesto' => 'Encargado de la planilla',
             'descripcion' => 'Ayuda a plasmar el enfrentamiento en los planillas',
-            'user_id' => 2
+            'user_id' => \App\User::all()->random()->id
         ));
 
 
