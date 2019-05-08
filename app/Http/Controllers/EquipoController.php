@@ -2,8 +2,8 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-02-20 14:08:14 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-20 14:08:14 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-05-07 16:15:17
  */
 namespace App\Http\Controllers;
 use App\Models\Equipo;
@@ -73,6 +73,7 @@ class EquipoController extends Controller
                 }
             } else {
                 $nombreImg = 'storage/storage/img/equipo/default.png';
+                $success = true;
             }
             $equipo = NEW Equipo();
                 $equipo->nombre = $request->input('nombre');
