@@ -2,16 +2,19 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-03-04 16:08:14 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-03-04 16:08:14 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-05-07 21:01:43
  */
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
-use App\Models\Direccion;
 use App\Models\Instituto;
-use App\Models\Colores;
 use App\Models\Enfrentamiento;
+use App\Models\Lugar;
+use App\Models\Torneo;
+use App\Models\InscripcionEquipo;
+use App\Models\Calendario;
+use App\Models\Resultado;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +29,7 @@ class EnfrentamientoController extends Controller
      */
     public function index()
     {
+        // seleccionar los campos que se muestran de enfrentamiento yt de  resultado para enviarlos y mostrarlos
         $enfrentamientos = Enfrentamiento::all();
         return view('enfrentamiento.index', compact('enfrentamientos'));
     }
@@ -36,23 +40,41 @@ class EnfrentamientoController extends Controller
      */
     public function create()
     {
-        // $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        // $colores = Colores::orderBy('color', 'asc')->get();
-        return view('enfrentamiento.create');
+        $lugares = Lugar::orderBy('nombre', 'asc')->get();
+        $torneos = Torneo::orderBy('id','asc')->get(); 
+        return view('enfrentamiento.create',compact('lugares','torneos'));
     }
     
     /**
-     * Display the specified resource .
+     * Retorna los equipos inscritos a un determinado torneo.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getEnfrentamiento($id){
-        // $enfrentamientos = Enfrentamiento::where('equipo_id',$id)
-        //     ->orderBy('nombre', 'asc')
-        //     ->get();
-        // return response()->json($enfrentamientos);
+    public function getEquipos($id){
+        $InscripcionEquipos = InscripcionEquipo::select('equipo_id','torneo_id','nombre')
+                                                ->join('equipo','inscripcion_equipo.equipo_id','equipo.id')
+                                                ->orderBy('torneo_id', 'asc')
+                                                ->where('torneo_id','=',$id)
+                                                ->get();
+        return response()->json($InscripcionEquipos);
     }
+    
+    /**
+     * Retorna los "calendarios" inscritos a un determinado torneo.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response json
+     */
+    public function getCalendario($id){
+        $InscripcionCalendarios = Calendario::select('calendario.id','fecha','jornada','nombre')
+                                                ->join('fase','calendario.fase_id','fase.id')
+                                                ->orderBy('fecha', 'asc')
+                                                ->where('torneo_id','=',$id)
+                                                ->get();
+        return response()->json($InscripcionCalendarios);
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -62,20 +84,30 @@ class EnfrentamientoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'calendario'                    => 'required|integer|not_in:0|exists:calendario,id',
-            'inscripcion_equipo_local'       => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
-            'inscripcion_equipo_visitante'   => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
+            'calendario'                     => 'required|integer|not_in:0|exists:calendario,id',
+            'equipo_local'                   => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
+            'resultado_local'                => 'required|integer|not_in:0|min:0|max:99',
+            'equipo_visitante'               => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
+            'resultado_visitante'            => 'required|integer|not_in:0|min:0|max:99',
+            'lugar'                          => 'required|integer|not_in:0|exists:lugar,id',
             
-            'lugar' => 'required|integer|not_in:0|exists:lugar,id',
         ]);
         DB::beginTransaction();
         try{
             $enfrentamientos = NEW Enfrentamiento();
             $enfrentamientos->calendario_id = $request->input('calendario');
-            $enfrentamientos->inscripcion_equipo_local_id = $request->input('inscripcion_equipo_local');
-            $enfrentamientos->inscripcion_equipo_visitante_id = $request->input('inscripcion_equipo_visitante');
+            $enfrentamientos->inscripcion_equipo_local_id = $request->input('equipo_local');
+            $enfrentamientos->inscripcion_equipo_visitante_id = $request->input('equipo_visitante');
+            $enfrentamientos->lugar_id = $request->input('lugar');
             $enfrentamientos->user_id = Auth::user()->id;
             $enfrentamientos->save();
+            
+            $resultados = NEW Resultado();
+            $resultados->enfrentamiento_id =$enfrentamientos->id;
+            $resultados->resultado_local = $request->input('resultado_local');
+            $resultados->resultado_visitante = $request->input('resultado_visitante');
+            $resultados->save();
+            
             $success = true;
         } catch (\exception $e){
             $success = false;
@@ -85,7 +117,7 @@ class EnfrentamientoController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $enfrentamientos->id);
-            return redirect(route('enfrentamiento.index'))->with('success');
+            return redirect(route('enfrentamientos.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -100,7 +132,9 @@ class EnfrentamientoController extends Controller
     public function show($id)
     {
         $enfrentamiento = Enfrentamiento::findOrFail($id);
-        return view('enfrentamiento.show', compact('enfrentamiento'));
+        $resultados = Resultado::where('enfrentamiento_id','=',$id)->first();
+        // dd($resultados);
+        return view('enfrentamiento.show', compact('enfrentamiento','resultados'));
     }
     /**
      * Show the form for editing the specified resource.

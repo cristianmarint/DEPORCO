@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title','Instituciones')
+@section('title','Enfrentamientos')
 @section('content')
     <!-- Breadcrumb-->
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('/home')}}">Inicio</a></li>
-            <li class="breadcrumb-item active"><a href="{{url('institutos')}}">Instituciones</a></li>
+            <li class="breadcrumb-item active"><a href="{{url('enfrentamientos')}}">Enfrentamientos</a></li>
             <li class="breadcrumb-item">Crear</li>
         </ul>
     </div>
@@ -25,169 +25,109 @@
                 <!-- Form Elements -->
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('institutos.store')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{route('enfrentamientos.store')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                             @csrf
-
-                            <div class="form-group row">
-                                <label for="create_nit" class="form-control-label col-sm-3 ">Nit</label>
-                                <div class="col-sm-9">
-                                    <input id="create_nit" type="text" name="nit" class="form-control {{ $errors->has('nit') ? ' is-invalid' : '' }}" value="{{old('nit')}}">
-                                    @if ($errors->has('nit'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('nit') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                            <div class="row form-group">
+                                <h2>Se debe hacer que el select de los equipos no permita seleccionar al mismo y registrarlo</h2>
                             </div>
-
                             <div class="form-group row">
-                                <label for="create_codigo_dane" class="form-control-label col-sm-3">Codigo Dane      </label>
+                                <label for="create_torneo" class="col-sm-3 form-control-label">Torneo</label>
                                 <div class="col-sm-9">
-                                    <input id="create_codigo_dane" type="text" name="codigo_dane" class="form-control{{ $errors->has('codigo_dane') ? ' is-invalid' : '' }}" value="{{old('codigo_dane')}}">
-                                    @if ($errors->has('codigo_dane'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('codigo_dane') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="create_nombre" class="form-control-label col-sm-3">Nombre Instituci&oacute;n      </label>
-                                <div class="col-sm-9">
-                                    <input id="create_nombre" type="text" name="nombre" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" value="{{old('nombre')}}">
-                                    @if ($errors->has('nombre'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('nombre') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label for="create_logo" class="col-sm-3 form-control-label">Logo/escudo</label>
-                                <div class="col-sm-9">
-                                    <input id="create_logo" type="file" name="logo" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" accept="image/*">
-                                    @if ($errors->has('logo'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('logo') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label for="create_departamento" class="col-sm-3 form-control-label">Departamento</label>
-                                <div class="col-sm-9">
-                                    <select name="departamento" id="create_departamento" class="form-control{{ $errors->has('departamento') ? ' is-invalid' : '' }}">
-                                        <option value="0" >Seleccione un departamento</option>
-                                        @foreach($departamentos as $departamento)
-                                            <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                    <select name="torneo" id="create_torneo" class="form-control{{ $errors->has('torneo') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un torneo</option>
+                                        @foreach($torneos as $torneo)
+                                            <option value="{{$torneo->id}}">{{$torneo->nombre}}</option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('departamento'))
+                                    @if ($errors->has('torneo'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('departamento') }}</strong>
-                                        </span>
+                                                <strong>{{ $errors->first('torneo') }}</strong>
+                                            </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="create_municipio" class="col-sm-3 form-control-label">Municipio / Ciudad</label>
+                                <label for="create_lugar" class="col-sm-3 form-control-label">Lugares</label>
                                 <div class="col-sm-9">
-                                    <select name="municipio" id="create_municipio" class="form-control{{ $errors->has('municipio') ? ' is-invalid' : '' }}">
-                                        <option value="0" >Seleccione un Municipio / Ciudad</option>
-                                    </select>
-                                    @if ($errors->has('municipio'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('municipio') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="create_tipo_educacion" class="col-sm-3 form-control-label">Tipo de Educacion</label>
-                                <div class="col-sm-9">
-                                    <select name="tipo_educacion" id="create_tipo_educacion" class="form-control{{ $errors->has('tipo_educacion') ? ' is-invalid' : '' }}">
-                                        <option value="0" >Seleccione un tipo</option>
-                                        @foreach($tiposEducacion as $tipoEducacion)
-                                            <option value="{{$tipoEducacion->id}}">{{$tipoEducacion->tipo}}</option>
+                                    <select name="lugar" id="create_lugar" class="form-control{{ $errors->has('lugar') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un lugar</option>
+                                        @foreach($lugares as $lugar)
+                                            <option value="{{$lugar->id}}">{{$lugar->nombre}}</option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->has('tipo_educacion'))
+                                    @if ($errors->has('lugar'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('tipo_educacion') }}</strong>
-                                        </span>
+                                                <strong>{{ $errors->first('lugar') }}</strong>
+                                            </span>
                                     @endif
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="create_calendario" class="col-sm-3 form-control-label">Calendario</label>
+                                <div class="col-sm-9">
+                                    <select name="calendario" id="create_calendario" class="form-control{{ $errors->has('calendario') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un calendario</option>
+                                    </select>
+                                    @if ($errors->has('calendario'))
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('calendario') }}</strong>
+                                            </span>
+                                    @endif
+                                </div>
+                            </div>
 
                             <div class="form-group row">
-                                <label for="create_calle" class="form-control-label col-sm-3">Direccion</label>
+                                <label for="create_EquipoLocal" class="form-control-label col-sm-3">Equipo local</label>
                                 <div class="col-sm-4">
-                                    <input id="create_calle" type="text" name="calle" class="form-control{{ $errors->has('calle') ? ' is-invalid' : '' }}" value="{{old('calle')}}" placeholder="Calle">
-                                    @if ($errors->has('calle'))
+                                    <select name="equipo_local" id="create_EquipoLocal" class="form-control{{ $errors->has('equipo_local') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un equipo local</option>
+                                    </select>
+                                    @if ($errors->has('equipo_local'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('calle') }}</strong>
-                                        </span>
+                                                <strong>{{ $errors->first('equipo_local') }}</strong>
+                                            </span>
                                     @endif
                                 </div>
-
+                                <label for="create_resultadoEquipoLocal" class="form-control-label col-sm-2">Resultado</label>
                                 <div class="col-sm-3">
-                                    <input id="create_carrera" type="text" name="carrera" class="form-control{{ $errors->has('carrera') ? ' is-invalid' : '' }}" value="{{old('carrera')}}" placeholder="Carrera">
-                                    @if ($errors->has('carrera'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('carrera') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <div class="col-sm-2">
-                                    <input id="create_numero" type="text" name="numero" class="form-control{{ $errors->has('numero') ? ' is-invalid' : '' }}" value="{{old('numero')}}" placeholder="Número">
-                                    @if ($errors->has('numero'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('numero') }}</strong>
-                                        </span>
+                                    <input id="resultado_local" type="resultado_local" name="resultado_local" class="form-control{{ $errors->has('resultado_local') ? ' is-invalid' : '' }}" value="{{old('resultado_local')}}" placeholder="Equipo Local">
+                                    @if ($errors->has('resultado_local'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('resultado_local') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
-
-
 
                             <div class="form-group row">
-
-                                <label for="create_tipo_telefono" class="col-sm-3 form-control-label">Telefono</label>
-                                <div class="col-sm-3">
-                                    <select name="tipo_telefono" id="create_tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
-                                        <option value="0" >Seleccione un tipo</option>
-                                        <option value="1" >Celular</option>
-                                        <option value="2" >Fijo</option>
+                                <label for="create_EquipoVisitante" class="col-sm-3 form-control-label">Equipo Visitante</label>
+                                <div class="col-sm-4">
+                                    <select name="equipo_visitante" id="create_EquipoVisitante" class="form-control{{ $errors->has('equipo_visitante') ? ' is-invalid' : '' }}">
+                                        <option value="0" >Seleccione un equipo visitante</option>
                                     </select>
-                                    @if ($errors->has('tipo_telefono'))
+                                    @if ($errors->has('equipo_visitante'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('tipo_telefono') }}</strong>
-                                        </span>
+                                                <strong>{{ $errors->first('equipo_visitante') }}</strong>
+                                            </span>
                                     @endif
                                 </div>
-
-                                <div class="col-sm-6">
-                                    <input id="create_telefono" type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{old('telefono')}}" placeholder="Número Telefonico">
-                                    @if ($errors->has('telefono'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('telefono') }}</strong>
-                                        </span>
+                                <label for="create_resultadoEquipoVisitante" class="form-control-label col-sm-2">Resultado</label>
+                                <div class="col-sm-3">
+                                    <input id="resultado_visitante" type="resultado_visitante" name="resultado_visitante" class="form-control{{ $errors->has('resultado_visitante') ? ' is-invalid' : '' }}" value="{{old('resultado_visitante')}}" placeholder="Equipo Visitante">
+                                    @if ($errors->has('resultado_visitante'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('resultado_visitante') }}</strong>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
+
 
                             <div class="form-group row">
                                 <div class="col-sm-12 offset-sm-5">
-                                    <button type="button"  onclick="window.location='{{route('institutos.index')}}'" class="btn btn-secondary">Cancel</button>
+                                    <button type="button"  onclick="window.location='{{route('enfrentamientos.index')}}'" class="btn btn-secondary">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
@@ -205,28 +145,50 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function(){
-            var modelo_departamento = $('#create_departamento');
-            modelo_departamento.change(function(){
-                modelo_departamento.each(function () {
-                    var departamento = modelo_departamento.val();
+            var modelo_torneo = $('#create_torneo');
+            modelo_torneo.change(function(){
+                modelo_torneo.each(function () {
+                    var torneo = modelo_torneo.val();
 
-                    var modelo_municipio = $('#create_municipio');
-                    modelo_municipio.empty();
-                    modelo_municipio.append("<option value='0' >Seleccione un Municipio / Ciudad</option>");
+                    var modelo_equipo_local = $('#create_EquipoLocal');
+                        modelo_equipo_local.empty();
+                        modelo_equipo_local.append("<option value='0' >Seleccione un equipo local</option>");
+
+                    var modelo_equipo_visitante = $('#create_EquipoVisitante');
+                        modelo_equipo_visitante.empty();
+                        modelo_equipo_visitante.append("<option value='0' >Seleccione un equipo visitante</option>");
+
+                    var modelo_calendario = $('#create_calendario');
+                        modelo_calendario.empty();
+                        modelo_calendario.append("<option value='0' >Seleccione un calendario</option>");
+
+                    // Equipos vinculadas a un determinado torneo
                     $.ajax({
-                        url: "/institutos/municipios/"+departamento,
+                        url: "/enfrentamientos/torneo/"+torneo,
                         type: 'GET'
                     }).done(function (data) {
                         $.each(data, function(key, item) {
-                            modelo_municipio.append("<option value='" + item.id + "'>" + item.nombre + "</option>");
+                                modelo_equipo_local.append("<option value='" + item.equipo_id + "'>" + item.nombre + "</option>");
+                            modelo_equipo_visitante.append("<option value='" + item.equipo_id + "'>" + item.nombre + "</option>");
                         });
                     }).fail( function() {
                         console.log('Error');
-                    })
+                    });
+
+                    // Calendario vinculado a un determinado torneo
+                    $.ajax({
+                        url: "/enfrentamientos/calendario/"+torneo,
+                        type: 'GET'
+                    }).done(function (data) {
+                        $.each(data, function(key, item) {
+                            modelo_calendario.append("<option value='" + item.id + "'>" + item.fecha +" Jornada: "+ item.jornada +" "+item.nombre + "</option>");
+                        });
+                    }).fail( function() {
+                        console.log('Error');
+                    });
                 });
             });
+            
         });
-
     </script>
-@endsection
-
+@endsection 

@@ -29,7 +29,7 @@
                     @endif
 
                 <div class="row col-sm-8 col-sm-offset-2">
-                    <button onclick="window.location='{{route('equipos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
+                    <button onclick="window.location='{{route('enfrentamientos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
                 </div>
                 <div class="table-responsive">
                     <table id="example" class="table table-bordered table-striped table-condensed" style="text-align: center;">
