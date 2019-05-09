@@ -69,7 +69,7 @@
                                             <form action="{{route('enfrentamientos.destroy', $enfrentamiento->id)}}" method="POST">
                                                 {{ method_field('DELETE') }}
                                                 @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
-                                                <button type="submit" id="delete_instituto{{ $enfrentamiento->id }}" style="display: none;"></button>
+                                                <button type="submit" id="delete_enfrentamiento{{ $enfrentamiento->id }}" style="display: none;"></button>
                                             </form>
                                         </div>
                                     </td>
@@ -125,10 +125,10 @@
 
             function(isConfirm){
                 if (isConfirm) {
-                    swal("Institucion Eliminada!","procesando cambios","success");
+                    swal("Enfrentamiento Eliminado!","procesando cambios","success");
 
                     setTimeout(function(){
-                        var idfinal="#delete_instituto"+idclick;//se le agrega el id que fue clickeado
+                        var idfinal="#delete_enfrentamiento"+idclick;//se le agrega el id que fue clickeado
                         $(idfinal).click();
                     }, 500);
                 } else {
