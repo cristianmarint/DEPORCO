@@ -97,7 +97,7 @@
                                     </div>
                                     <label for="create_resultadoEquipoLocal" class="form-control-label col-sm-2">Resultado</label>
                                     <div class="col-sm-3">
-                                        <input id="resultado_local" type="resultado_local" name="resultado_local" class="form-control{{ $errors->has('resultado_local') ? ' is-invalid' : '' }} text-center " value="{{old('resultado_local')}}" placeholder="{{$resultados->resultado_local}}">
+                                        <input id="resultado_local" type="resultado_local" name="resultado_local" class="form-control{{ $errors->has('resultado_local') ? ' is-invalid' : '' }} text-center "  placeholder="{{$resultados->resultado_local}}">
                                         @if ($errors->has('resultado_local'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('resultado_local') }}</strong>
@@ -123,7 +123,7 @@
                                     </div>
                                     <label for="edit_resultadoEquipoVisitante" class="form-control-label col-sm-2 ">Resultado</label>
                                     <div class="col-sm-3">
-                                        <input id="resultado_visitante" type="resultado_visitante" name="resultado_visitante" class="form-control{{ $errors->has('resultado_visitante') ? ' is-invalid' : '' }}  text-center" value="{{old('resultado_visitante')}}" placeholder="{{$resultados->resultado_visitante}}">
+                                        <input id="resultado_visitante" type="resultado_visitante" name="resultado_visitante" class="form-control{{ $errors->has('resultado_visitante') ? ' is-invalid' : '' }}  text-center"  placeholder="{{$resultados->resultado_visitante}}">
                                         @if ($errors->has('resultado_visitante'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('resultado_visitante') }}</strong>

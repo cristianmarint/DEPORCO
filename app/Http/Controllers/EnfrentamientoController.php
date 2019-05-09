@@ -31,6 +31,10 @@ class EnfrentamientoController extends Controller
     {
         // seleccionar los campos que se muestran de enfrentamiento yt de  resultado para enviarlos y mostrarlos
         $enfrentamientos = Enfrentamiento::all();
+        // $enfrentamientos = Enfrentamiento::all()
+        //                                 ->join('resultado','resultado.enfrentamiento_id','enfrentamieno.id');
+        // dd($enfrentamientos->resultado);
+                                
         return view('enfrentamiento.index', compact('enfrentamientos'));
     }
     /**
@@ -172,23 +176,18 @@ class EnfrentamientoController extends Controller
     public function update(Request $request, $id)
     {
         $enfrentamiento = Enfrentamiento::findOrFail($id);
-        $resultado = Resultado::findOrFail($id)
-                                ->join('enfrentamiento','enfrentamiento.id','resultado.enfrentamiento_id')
-                                ->where('enfrentamiento.id',$id)
-                                ->get()
+        $resultado = Resultado::where('enfrentamiento_id',$id)
+                                ->first()
                                 ;
-        // dd($resultado);
-        // dd($enfrentamiento);
         $data = $request->validate([
             'torneo'                         => 'required|integer|not_in:0|exists:torneo,id',
             'lugar'                          => 'required|integer|not_in:0|exists:lugar,id',
             'calendario'                     => 'required|integer|not_in:0|exists:calendario,id',
             'equipo_local'                   => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
-            'resultado_local'                => 'required|integer|not_in:0|min:0|max:99',
+            'resultado_local'                => 'min:0|max:99',
             'equipo_visitante'               => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
-            'resultado_visitante'            => 'required|integer|not_in:0|min:0|max:99',
+            'resultado_visitante'            => 'min:0|max:99',
         ]);
-        // dd($data);
         DB::beginTransaction();
         try{
             $enfrentamiento->calendario_id = $request->input('calendario');
@@ -197,22 +196,22 @@ class EnfrentamientoController extends Controller
             $enfrentamiento->lugar_id = $request->input('lugar');
             $enfrentamiento->user_id = Auth::user()->id;
             
-            $resultado->calendario_id= $request->input('calendario');
             $resultado->resultado_local = $request->input('resultado_local');
             $resultado->resultado_visitante = $request->input('resultado_visitante');
             
-            $enfrentamientos->save();
+            $enfrentamiento->save();
             $resultado->save();
-
+            
             $success = true;
         } catch (\exception $e){
             $success = false;
             $error = $e->getMessage();
+            dd($error);
             DB::rollback();
         }
         if ($success){
             DB::commit();
-            session()->flash('update', $enfrentamientos->id);
+            session()->flash('update', $enfrentamiento->id);
             return redirect(route('enfrentamientos.index'))->with('success');
         }else{
             session()->flash('error', 'error');

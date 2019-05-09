@@ -53,7 +53,8 @@
                                     <td>{{$enfrentamiento->calendario->fecha}}</td>
                                     <td>{{$enfrentamiento->calendario->jornada}} - {{$enfrentamiento->calendario->fase->nombre}}</td>
 
-                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}</td>
+                                    {{-- <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}</td> --}}
+                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}  {{$enfrentamiento->resultado->resultado_local}} </td>
 
                                     <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}}</td>
 
