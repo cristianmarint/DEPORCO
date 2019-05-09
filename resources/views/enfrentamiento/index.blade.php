@@ -17,13 +17,13 @@
                 @if(Session::has('create'))
                     <script>
                         setTimeout(function(){
-                                function_swal_confirm('{{Session::get('create')}}', 'creada')
+                                function_swal_confirm('{{Session::get('create')}}', 'creado')
                         }, 500);
                     </script>
                 @elseif(Session::has('update'))
                     <script>
                         setTimeout(function(){
-                            function_swal_confirm('{{Session::get('update')}}', 'editada')
+                            function_swal_confirm('{{Session::get('update')}}', 'editaoa')
                         }, 500);
                     </script>
                     @endif

@@ -133,7 +133,6 @@ class EnfrentamientoController extends Controller
     {
         $enfrentamiento = Enfrentamiento::findOrFail($id);
         $resultados = Resultado::where('enfrentamiento_id','=',$id)->first();
-        // dd($resultados);
         return view('enfrentamiento.show', compact('enfrentamiento','resultados'));
     }
     /**
@@ -145,7 +144,22 @@ class EnfrentamientoController extends Controller
     public function edit($id)
     {
         $enfrentamiento = Enfrentamiento::findOrFail($id);
-        return view('enfrentamiento.edit',compact('enfrentamiento'));
+        $lugares = Lugar::orderBy('nombre', 'asc')->get();
+        $torneoInscritos = InscripcionEquipo::where('equipo_id','=',$id)->first();
+        $calendarios = Calendario::select('calendario.id','fecha','jornada')
+                                    ->join('enfrentamiento','enfrentamiento.calendario_id','calendario.id')
+                                    ->orderBy('fecha', 'asc')
+                                    ->get();
+
+        $InscripcionEquipos = InscripcionEquipo::select('inscripcion_equipo.id','torneo_id','nombre')
+                                ->join('equipo','inscripcion_equipo.equipo_id','equipo.id')
+                                ->orderBy('torneo_id', 'asc')
+                                ->get();
+
+
+        $resultados = Resultado::where('enfrentamiento_id','=',$id)->first();
+        $torneos = Torneo::orderBy('id','asc')->get();
+        return view('enfrentamiento.edit', compact('enfrentamiento','resultados','lugares','torneos','torneoInscritos','calendarios','InscripcionEquipos'));
         
     }
     /**
@@ -157,37 +171,39 @@ class EnfrentamientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $equipo = Equipo::findOrFail($id);
+        $enfrentamiento = Enfrentamiento::findOrFail($id);
+        $resultado = Resultado::findOrFail($id)
+                                ->join('enfrentamiento','enfrentamiento.id','resultado.enfrentamiento_id')
+                                ->where('enfrentamiento.id',$id)
+                                ->get()
+                                ;
+        // dd($resultado);
+        // dd($enfrentamiento);
         $data = $request->validate([
-            'nombre' => 'required|min:3|max:60',
-            'logo'   => 'image',
-            'instituto' => 'required|integer|not_in:0|exists:instituto,id',
-            'colores' => 'required|integer|not_in:0|exists:colores,id'
+            'torneo'                         => 'required|integer|not_in:0|exists:torneo,id',
+            'lugar'                          => 'required|integer|not_in:0|exists:lugar,id',
+            'calendario'                     => 'required|integer|not_in:0|exists:calendario,id',
+            'equipo_local'                   => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
+            'resultado_local'                => 'required|integer|not_in:0|min:0|max:99',
+            'equipo_visitante'               => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
+            'resultado_visitante'            => 'required|integer|not_in:0|min:0|max:99',
         ]);
+        // dd($data);
         DB::beginTransaction();
         try{
-            if($request->hasFile('logo')){
-                $archivo = $request->file('logo');
-                $nombreImg = 'storage/storage/img/equipo/'.time().'-'.$archivo->getClientOriginalName();
-                if (file_exists(public_path($equipo->logo))) {
-                    if($equipo->logo != 'storage/storage/img/equipo/default.png'){
-                        unlink(public_path($equipo->logo));
-                    }
-                }
-                if($archivo->move('storage/storage/img/equipo',$nombreImg)){
-                    echo "Guardado";
-                }else{
-                    echo "error al guardar";
-                }
-            }else{
-                $nombreImg = $equipo->logo;
-            }
-            $equipo->nombre = $request->input('nombre');
-            $equipo->logo = $nombreImg;
-            $equipo->instituto_id = $request->input('instituto');
-            $equipo->colores_id = $request->input('colores');
-            $equipo->user_id = Auth::user()->id;
-            $equipo->save();
+            $enfrentamiento->calendario_id = $request->input('calendario');
+            $enfrentamiento->inscripcion_equipo_local_id = $request->input('equipo_local');
+            $enfrentamiento->inscripcion_equipo_visitante_id = $request->input('equipo_visitante');
+            $enfrentamiento->lugar_id = $request->input('lugar');
+            $enfrentamiento->user_id = Auth::user()->id;
+            
+            $resultado->calendario_id= $request->input('calendario');
+            $resultado->resultado_local = $request->input('resultado_local');
+            $resultado->resultado_visitante = $request->input('resultado_visitante');
+            
+            $enfrentamientos->save();
+            $resultado->save();
+
             $success = true;
         } catch (\exception $e){
             $success = false;
@@ -196,8 +212,8 @@ class EnfrentamientoController extends Controller
         }
         if ($success){
             DB::commit();
-            session()->flash('update', $equipo->nombre);
-            return redirect(route('equipos.index'))->with('success');
+            session()->flash('update', $enfrentamientos->id);
+            return redirect(route('enfrentamientos.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
