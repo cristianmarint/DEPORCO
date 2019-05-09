@@ -31,9 +31,8 @@ class EnfrentamientoController extends Controller
     {
         // seleccionar los campos que se muestran de enfrentamiento yt de  resultado para enviarlos y mostrarlos
         $enfrentamientos = Enfrentamiento::all();
-        // $enfrentamientos = Enfrentamiento::all()
-        //                                 ->join('resultado','resultado.enfrentamiento_id','enfrentamieno.id');
         // dd($enfrentamientos->resultado);
+        
                                 
         return view('enfrentamiento.index', compact('enfrentamientos'));
     }

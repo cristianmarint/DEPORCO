@@ -54,27 +54,28 @@
                                     <td>{{$enfrentamiento->calendario->jornada}} - {{$enfrentamiento->calendario->fase->nombre}}</td>
 
                                     {{-- <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}</td> --}}
-                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}  {{$enfrentamiento->resultado->resultado_local}} </td>
-
-                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}}</td>
-
+                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}  [ {{$enfrentamiento->resultado->resultado_local}} ] </td>
+                                    
+                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}} [ {{$enfrentamiento->resultado->resultado_visitante}} ] </td>
+                                    
                                     <td>{{$enfrentamiento->lugar->nombre}}</td>
-
+                                    
                                     <td>
                                         <div class="btn-group" role="group" id="action_button">
                                             <button type="button" class="btn btn-info btn-sm" onclick="window.location='{{route('enfrentamientos.show', $enfrentamiento->id)}}'"><i class="fa fa-eye"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" onclick="window.location='{{route('enfrentamientos.edit', $enfrentamiento->id)}}'"><i class='fa fa-edit'></i></button>
-    
+                                            
                                             <button onclick="id_clickeado({{$enfrentamiento->id}},'{{$enfrentamiento->nombre}}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
-    
+                                            
                                             <form action="{{route('enfrentamientos.destroy', $enfrentamiento->id)}}" method="POST">
-                                                {{ method_field('DELETE') }}
-                                                @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
-                                                <button type="submit" id="delete_enfrentamiento{{ $enfrentamiento->id }}" style="display: none;"></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                                    {{ method_field('DELETE') }}
+                                                    @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
+                                                    <button type="submit" id="delete_enfrentamiento{{ $enfrentamiento->id }}" style="display: none;"></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {{dd($enfrentamiento)}}
                             @endforeach
                         </tbody>
                     </table>
