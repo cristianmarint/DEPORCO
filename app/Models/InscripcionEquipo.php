@@ -16,6 +16,7 @@ class InscripcionEquipo extends Model{
 
     protected $fillable = [
         'equipo_id',
+        'torneo_id',
         'puntos'
     ];
 

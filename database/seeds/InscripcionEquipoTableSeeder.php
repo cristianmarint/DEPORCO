@@ -12,6 +12,6 @@ class InscripcionEquipoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(InscripcionEquipo::class, 8)->create();
+        factory(InscripcionEquipo::class, 30)->create();
     }
 }

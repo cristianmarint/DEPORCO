@@ -9,6 +9,6 @@ $factory->define(Calendario::class, function (Faker $faker) {
         'fecha' => $faker->date(),
         'torneo_id' => \App\Models\Torneo::all()->random()->id,
         'fase_id' => \App\Models\Fase::all()->random()->id,
-        'user_id' => 2
+        'user_id' => \App\User::all()->random()->id
     ];
 });

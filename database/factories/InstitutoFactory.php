@@ -12,6 +12,6 @@ $factory->define(Instituto::class, function (Faker $faker) {
         'tipo_educacion_id' => \App\Models\TipoEducacion::all()->random()->id,
         'telefono_id' => \App\Models\Telefono::all()->random()->id,
         'direccion_id' => \App\Models\Direccion::all()->random()->id,
-        'user_id' => 2,
+        'user_id' => \App\User::all()->random()->id
     ];
 });

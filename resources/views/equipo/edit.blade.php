@@ -30,7 +30,6 @@
                     @csrf
                     
                     <div class="form-group row">
-                            {{-- <div class="col-sm-4"></div> --}}
                             <label class="col-sm-4 form-control-label">Logo actual</label>
                             <div class="col-sm-4" style="">
                                 <img src="{{asset($equipo->logo)}}"  class="mx-auto d-block" width="150vh">
