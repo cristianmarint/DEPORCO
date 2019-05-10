@@ -30,10 +30,7 @@ class EnfrentamientoController extends Controller
     public function index()
     {
         // seleccionar los campos que se muestran de enfrentamiento yt de  resultado para enviarlos y mostrarlos
-        $enfrentamientos = Enfrentamiento::all();
-        // dd($enfrentamientos->resultado);
-        
-                                
+        $enfrentamientos = Enfrentamiento::all();                       
         return view('enfrentamiento.index', compact('enfrentamientos'));
     }
     /**

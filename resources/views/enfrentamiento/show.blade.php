@@ -50,7 +50,11 @@
                         <input id="equipo_local" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}} " readonly>
                     </div>
                     <div class="col-sm-1">
-                        <button type="button" class="btn btn-{{ $resultados->resultado_local>=$resultados->resultado_visitante ? 'success' : 'danger' }}" disabled>{{$resultados->resultado_local}}</button>
+                        @if($enfrentamiento->resultado) 
+                            <button type="button" class="btn btn-{{ $resultados->resultado_local>=$resultados->resultado_visitante ? 'success' : 'danger' }}" disabled>{{$resultados->resultado_local}}</button>
+                        @else
+                            <strong>Resultado No registrado </strong> 
+                        @endif
                     </div>
                     <div class="col-sm-12">
                         <div class="text-center">
@@ -65,7 +69,11 @@
                         <input id="equipo_local" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}} " readonly>
                     </div>
                     <div class="col-sm-1">
-                        <button type="button" class="btn btn-{{ $resultados->resultado_local<=$resultados->resultado_visitante ? 'success' : 'danger' }}" disabled>{{$resultados->resultado_visitante}}</button>
+                        @if($enfrentamiento->resultado) 
+                            <button type="button" class="btn btn-{{ $resultados->resultado_local<=$resultados->resultado_visitante ? 'success' : 'danger' }}" disabled>{{$resultados->resultado_visitante}}</button>
+                        @else
+                            <strong>Resultado No registrado </strong> 
+                        @endif
                     </div>
                     <div class="col-sm-12">
                         <div class="text-center">

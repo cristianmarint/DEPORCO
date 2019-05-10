@@ -2,7 +2,7 @@
 
   
 
-    [reglas](https://laravel.com/docs/4.2/validation#rule-confirmed)
+    [reglas](https://laravel.com/docs/5.8/validation#form-request-validation)
 
   
 

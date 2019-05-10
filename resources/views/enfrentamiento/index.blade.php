@@ -38,8 +38,8 @@
                                 <th>Torneo</th>
                                 <th>Fecha</th>
                                 <th>Número de jornada - Fase</th>
-                                <th>Equipo Local</th>
-                                <th>Equipo Visitante</th>
+                                <th>Equipo Local [Resultado]</th>
+                                <th>Equipo Visitante [Resultado]</th>
                                 <th>Lugar</th>
                                 
                                 <th>Acciones</th>
@@ -52,11 +52,8 @@
                                     <td>{{$enfrentamiento->calendario->torneo->nombre}}</td>
                                     <td>{{$enfrentamiento->calendario->fecha}}</td>
                                     <td>{{$enfrentamiento->calendario->jornada}} - {{$enfrentamiento->calendario->fase->nombre}}</td>
-
-                                    {{-- <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}</td> --}}
-                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}  [ {{$enfrentamiento->resultado->resultado_local}} ] </td>
-                                    
-                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}} [ {{$enfrentamiento->resultado->resultado_visitante}} ] </td>
+                                    <td>{{$enfrentamiento->inscripcion_equipo_local->equipo->nombre}}  <strong>[ @if($enfrentamiento->resultado) {{$enfrentamiento->resultado->resultado_local}}@else <mark>No registrado</mark> @endif ]</strong> </td>
+                                    <td>{{$enfrentamiento->inscripcion_equipo_visitante->equipo->nombre}}  <strong>[ @if($enfrentamiento->resultado) {{$enfrentamiento->resultado->resultado_visitante}} @else <mark>No registrado</mark> @endif ]</strong> </td>
                                     
                                     <td>{{$enfrentamiento->lugar->nombre}}</td>
                                     
@@ -68,14 +65,13 @@
                                             <button onclick="id_clickeado({{$enfrentamiento->id}},'{{$enfrentamiento->nombre}}');return function_swal();" class="btn btn-danger btn-sm"><i class='fa fa-trash'></i></button>
                                             
                                             <form action="{{route('enfrentamientos.destroy', $enfrentamiento->id)}}" method="POST">
-                                                    {{ method_field('DELETE') }}
-                                                    @csrf                       {{-- se le agrega a cada id el de eloquen  --}}
+                                                    {{ method_field('DELETE') }} @csrf
                                                     <button type="submit" id="delete_enfrentamiento{{ $enfrentamiento->id }}" style="display: none;"></button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    {{dd($enfrentamiento)}}
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{-- {{dd($enfrentamiento)}} --}}
                             @endforeach
                         </tbody>
                     </table>
