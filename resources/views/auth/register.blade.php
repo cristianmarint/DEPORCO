@@ -44,7 +44,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="agree-term" class="label-agree-term"><a href="#" class="term-service">Condiciones</a></label>
+                                        <label for="agree-term" class="label-agree-term"><a href="{{route('deporco.terms')}}" class="term-service">Condiciones</a></label>
                                 </div>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="{{ __('Registrarse') }}">

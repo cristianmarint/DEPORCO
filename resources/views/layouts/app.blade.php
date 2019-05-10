@@ -30,8 +30,7 @@
     <!-- JavaScript files-->
     <script src="{{url('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
-    {{-- <script src="{{url('assets/sweetalert/dist/sweetalert.min.js')}}"> </script> --}}
-    <!-- Main File-->
+
     <script src="{{url('js/front.js')}}"></script>
 
     <!-- Login & Register saved from url=(0052)https://colorlib.com/etc/regform/colorlib-regform-7/ -->

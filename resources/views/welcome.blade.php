@@ -149,22 +149,24 @@
                                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
                                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="google"><i class="fab fa-google"></i></a>
                                 </div>
-                            <button type="button" class="btn btn-default" style="background-color:#0F94F9;"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="color:white;"> Contactanos</a></button>
+                            <button type="button" class="btn btn-default" style="background-color:#0F94F9;"><a href="{{route('deporco.contact')}}" style="color:white;"> Contactanos</a></button>
                         </div>
 
                         <div class="col-sm-3 col-md-4">
                             <h5>Conocenos</h5>
                             <ul>
-                                <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Sobre nosotros</a></li>
-                                <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Prensa</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.about')}}" target="_blank">Sobre nosotros</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.media')}}" target="_blank">Prensa</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.terms')}}#TerminosYCondiciones" target="_blank">Terminos Y Condiciones</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.terms')}}#PoliticaDePrivacidad" target="_blank">Politica de privacidad</a></li>
                             </ul>
                         </div>
 
                         <div class="col-sm-3 col-md-4">
                             <h5>Soporte</h5>
                             <ul>
-                                <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">FAQ</a></li>
-                                <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Reglamento</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.faq')}}"   target="_blank">FAQ</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('deporco.rules')}}" target="_blank">Reglamento</a></li>
 
 
                                 @if (Route::has('login'))
