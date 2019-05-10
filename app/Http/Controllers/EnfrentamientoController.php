@@ -156,10 +156,8 @@ class EnfrentamientoController extends Controller
                                 ->orderBy('torneo_id', 'asc')
                                 ->get();
 
-
-        $resultados = Resultado::where('enfrentamiento_id','=',$id)->first();
         $torneos = Torneo::orderBy('id','asc')->get();
-        return view('enfrentamiento.edit', compact('enfrentamiento','resultados','lugares','torneos','torneoInscritos','calendarios','InscripcionEquipos'));
+        return view('enfrentamiento.edit', compact('enfrentamiento','lugares','torneos','torneoInscritos','calendarios','InscripcionEquipos'));
         
     }
     /**

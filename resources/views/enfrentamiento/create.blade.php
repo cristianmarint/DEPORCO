@@ -92,7 +92,7 @@
                                 </div>
                                 <label for="create_resultadoEquipoLocal" class="form-control-label col-sm-2">Resultado</label>
                                 <div class="col-sm-3">
-                                    <input id="resultado_local" type="resultado_local" name="resultado_local" class="form-control{{ $errors->has('resultado_local') ? ' is-invalid' : '' }}" value="{{old('resultado_local')}}" placeholder="Equipo Local">
+                                    <input id="resultado_local" type="number" name="resultado_local" class="form-control{{ $errors->has('resultado_local') ? ' is-invalid' : '' }}" value="{{old('resultado_local')}}" placeholder="Equipo Local">
                                     @if ($errors->has('resultado_local'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('resultado_local') }}</strong>
@@ -115,7 +115,7 @@
                                 </div>
                                 <label for="create_resultadoEquipoVisitante" class="form-control-label col-sm-2">Resultado</label>
                                 <div class="col-sm-3">
-                                    <input id="resultado_visitante" type="resultado_visitante" name="resultado_visitante" class="form-control{{ $errors->has('resultado_visitante') ? ' is-invalid' : '' }}" value="{{old('resultado_visitante')}}" placeholder="Equipo Visitante">
+                                    <input id="resultado_visitante" type="number" name="resultado_visitante" class="form-control{{ $errors->has('resultado_visitante') ? ' is-invalid' : '' }}" value="{{old('resultado_visitante')}}" placeholder="Equipo Visitante">
                                     @if ($errors->has('resultado_visitante'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('resultado_visitante') }}</strong>

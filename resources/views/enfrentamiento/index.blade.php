@@ -23,7 +23,7 @@
                 @elseif(Session::has('update'))
                     <script>
                         setTimeout(function(){
-                            function_swal_confirm('{{Session::get('update')}}', 'editaoa')
+                            function_swal_confirm('{{Session::get('update')}}', 'editado')
                         }, 500);
                     </script>
                     @endif
