@@ -4,16 +4,9 @@
 <div class="container">
         <section class="sign-in">
             <div class="container">
-                
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-
                 <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/login.jpg')}}"></figure>
+                    <div class="signin-image ">
+                        <figure><img  alt="sing up image" src="{{url('storage/storage/app/login-registro/login.jpg')}}"></figure>
                         <a href="{{ route('register') }}" class="signup-image-link">{{ __('Crear una cuenta') }}</a>
                     </div>
 
@@ -39,12 +32,19 @@
                                     </span>
                                 @endif
                             </div>
+
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+
                             <div class="form-group">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label for="remember" class="label-agree-term"><span><span></span></span>{{ __('Recuerdame') }}</label>
                             </div>
                             <div class="form-group">
-                                    <label for="agree-term" class="label-agree-term"><a href="#" class="term-service">Condiciones</a></label>
+                                    <label for="agree-term" class="label-agree-term"><a href="{{route('deporco.terms')}}" class="term-service">Condiciones</a></label>
                             </div>
                             <div class="form-group">
                                 @if (Route::has('password.request'))

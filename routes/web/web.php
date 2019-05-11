@@ -3,7 +3,7 @@
  * @Author: EdwinLopez12 
  * @Date: 2019-02-23 07:47:41 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-02-23 14:05:01
+ * @Last Modified time: 2019-05-11 12:54:35
  */
 
 /*
@@ -18,19 +18,12 @@
 */
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-
-
-
-
-// Cuando la BD demorá mucho en dar respuesta, redirecciona a esta ruta,la view es innecesaria alparecer D:
-// Route::get('/home', 'HomeController@index')->name('home');
-
+// DEPORCO
+Route::get('/',       'DeporcoController@welcome')->name('deporco.welcome');
+Route::get('/about',  'DeporcoController@about')  ->name('deporco.about');
+Route::get('/contact','DeporcoController@contact')->name('deporco.contact');
+Route::get('/media',  'DeporcoController@media')  ->name('deporco.media');
+Route::get('/terms',  'DeporcoController@terms')  ->name('deporco.terms');
 
 // Social login routes ...
 Route::group(
