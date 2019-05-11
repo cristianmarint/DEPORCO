@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/login-registro/email_reset.png')}}"></figure>
+                        <figure><img  alt="sing up image" src="{{url('storage/storage/app/login-registro/email_reset.png')}}"></figure>
                         <a href="{{ route('login') }}" class="signup-image-link">{{ __('Poseo una cuenta') }}</a>
                     </div>
 

@@ -72,7 +72,7 @@
                             </form>
                         </div>
                         <div class="signup-image">
-                            <img  alt="sing up image" src="{{url('storage/storage/img/app/login-registro/register.jpg')}}"></figure>
+                            <img  alt="sing up image" src="{{url('storage/storage/app/login-registro/register.jpg')}}"></figure>
                             <a href="{{ route('login') }}" class="signup-image-link">{{ __('Ya poseo una cuenta') }}</a>
                         </div>
                     </div>
