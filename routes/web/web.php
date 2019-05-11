@@ -3,7 +3,7 @@
  * @Author: EdwinLopez12 
  * @Date: 2019-02-23 07:47:41 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-10 14:01:57
+ * @Last Modified time: 2019-05-11 12:54:35
  */
 
 /*
@@ -18,12 +18,11 @@
 */
 Auth::routes(['verify' => true]);
 
+// DEPORCO
 Route::get('/',       'DeporcoController@welcome')->name('deporco.welcome');
-Route::get('/contact','DeporcoController@contact')->name('deporco.contact');
 Route::get('/about',  'DeporcoController@about')  ->name('deporco.about');
+Route::get('/contact','DeporcoController@contact')->name('deporco.contact');
 Route::get('/media',  'DeporcoController@media')  ->name('deporco.media');
-Route::get('/faq',    'DeporcoController@faq')    ->name('deporco.faq');
-Route::get('/rules',  'DeporcoController@rules')  ->name('deporco.rules');
 Route::get('/terms',  'DeporcoController@terms')  ->name('deporco.terms');
 
 // Social login routes ...

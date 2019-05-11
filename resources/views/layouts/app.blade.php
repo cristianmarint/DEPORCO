@@ -33,6 +33,5 @@
 
     <script src="{{url('js/front.js')}}"></script>
 
-    <!-- Login & Register saved from url=(0052)https://colorlib.com/etc/regform/colorlib-regform-7/ -->
 </body>
 </html>

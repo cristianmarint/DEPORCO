@@ -5,8 +5,8 @@
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/login.jpg')}}"></figure>
+                    <div class="signin-image ">
+                        <figure><img  alt="sing up image" src="{{url('storage/storage/app/login-registro/login.jpg')}}"></figure>
                         <a href="{{ route('register') }}" class="signup-image-link">{{ __('Crear una cuenta') }}</a>
                     </div>
 

@@ -41,7 +41,7 @@
                               </form>
                           </div>
                           <div class="signup-image">
-                              <img  alt="sing up image" src="{{url('storage/storage/img/app/password_reset.jpg')}}"></figure>
+                              <img  alt="sing up image" src="{{url('storage/storage/img/app/login-registro/password_reset.jpg')}}"></figure>
                               <a href="{{ route('login') }}" class="signup-image-link">{{ __('I am already member') }}</a>
                           </div>
                       </div>

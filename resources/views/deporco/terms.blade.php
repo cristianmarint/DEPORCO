@@ -1,16 +1,15 @@
-@extends('layouts.app')
-
+@extends('layouts.deporco')
+@section('title','Conocenos')
 @section('content')
-<div class="container">
-        <section class="sign-in">
-                <div class="signin-content">                   
-                    <div class="form-group">
+<section id="about" class="mt-5">
+        <div class="container">
+                <div class="row">                   
+                    <div class="about-content">
 
-                        <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6 mx-auto">
-                        <a href="{{route('deporco.welcome')}}"><img src="{{url('/logo_deporco.svg')}}" style="display: block;margin: auto;" width="100%" height="auto" alt=""></a>
+                        <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6 mx-auto mb-2" id="TerminosYCondiciones">
+                            <a href="{{route('deporco.welcome')}}"><img src="{{url('storage/storage/app/terms.svg')}}" style="display: block;margin: auto;" width="100%" height="auto" alt=""></a>
                         </div>
-
-                        <div id="TerminosYCondiciones">
+                        <div >
                             <h2 class="form-title">TÉRMINOS Y CONDICIONES DE USO</h2>
                                 <h3 >INFORMACIÓN RELEVANTE</h3>
                                 <p>
@@ -74,8 +73,10 @@
                                 <br>                                
                             </div>
 
-
-                            <div class="" id="PoliticaDePrivacidad">
+                            <div class="col-xs-12 col-sm-8 col-md-7 col-lg-6 mx-auto mb-2" id="PoliticaDePrivacidad">
+                                    <a href="{{route('deporco.welcome')}}"><img src="{{url('storage/storage/app/privacy.svg')}}" style="display: block;margin: auto;" width="100%" height="auto" alt=""></a>
+                            </div>
+                            <div class="">
                                     <h2 class="form-title" >POLÍTICA DE PRIVACIDAD</h2>                            
                                     <p>El presente Política de Privacidad establece los términos en que DEPORCO usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su sitio web. Esta compañía está comprometida con la seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificado, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.</p>
                                     <br>                            
@@ -115,6 +116,6 @@
                             </div>
 
                 </div>
-        </section>
-</div>
+        </div>
+</section>
 @endsection

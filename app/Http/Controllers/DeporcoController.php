@@ -3,15 +3,16 @@
  * @Author: CristianMarinT 
  * @Date: 2019-05-10 10:40:57 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-10 13:42:49
+ * @Last Modified time: 2019-05-11 14:26:41
  */
 
 
 namespace App\Http\Controllers;
 
-use App\Models\Calendario;
-use App\Models\Fase;
 use App\Models\Torneo;
+use App\Models\DatosBasicos;
+use App\Models\Instituto;
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\DB;
 class DeporcoController extends Controller{
     public function welcome()
     {
-        return view('welcome');
+        $torneos = Torneo::count('id');
+        $datosbasicos = DatosBasicos::count('id');
+        $institutos = Instituto::count('id');
+        $equipos = Equipo::count('id');
+        return view('welcome',compact('torneos','datosbasicos','institutos','equipos'));
     }
 
     public function about()
@@ -32,7 +37,10 @@ class DeporcoController extends Controller{
         return view('deporco.contact');
     }
 
-
+    public function media()
+    {
+        return view('deporco.media');
+    }
 
     public function terms()
     {
