@@ -23,8 +23,9 @@ class DeporcoController extends Controller{
         $torneos = Torneo::count('id');
         $datosbasicos = DatosBasicos::count('id');
         $institutos = Instituto::count('id');
+        $logos = Instituto::select('logo')->orderBy('id','desc')->limit(15)->get();
         $equipos = Equipo::count('id');
-        return view('welcome',compact('torneos','datosbasicos','institutos','equipos'));
+        return view('welcome',compact('torneos','datosbasicos','institutos','equipos','logos'));
     }
 
     public function about()

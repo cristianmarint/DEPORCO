@@ -144,14 +144,17 @@
                 </header>
         
                 <div class="owl-carousel clients-carousel">
-                  <img src="{{url('storage/storage/app/welcome/iesmj.gif')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/iegabo.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/ieacademico.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/ieceim.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/sena.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/ucdc.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/udvalle.png')}}" alt="">
-                  <img src="{{url('storage/storage/app/welcome/comfandi.jpg')}}" alt="">
+                    @foreach($logos as $logo)
+                      <img src="{{asset($logo->logo)}}" alt="">
+                    @endforeach
+                  {{-- <img src="{{url('storage/storage/app/welcome/instituciones/iesmj.gif')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/iegabo.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/ieacademico.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/ieceim.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/sena.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/ucdc.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/udvalle.png')}}" alt="">
+                  <img src="{{url('storage/storage/app/welcome/instituciones/comfandi.jpg')}}" alt=""> --}}
                 </div>
         
               </div>
