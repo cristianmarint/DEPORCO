@@ -62,8 +62,8 @@ class LugarController extends Controller
         $data = $request->validate([
             'nombre' => 'required|min:3|max:50',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
-            'calle' => 'required|string|min:3|max:50',
-            'carrera' => 'required|string|min:3|max:10',
+            'calle' => 'required|string|min:1|max:50',
+            'carrera' => 'required|string|min:1|max:10',
             'numero' => 'required|string|min:1|max:10',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'telefono' => 'required|digits_between:7,13|numeric',
@@ -147,8 +147,8 @@ class LugarController extends Controller
         $data = $request->validate([
             'nombre' => 'required|min:3|max:50',
             'municipio' => 'required|integer|not_in:0|exists:municipio,id',
-            'calle' => 'required|string|min:3|max:50',
-            'carrera' => 'required|string|min:3|max:10',
+            'calle' => 'required|string|min:1|max:50',
+            'carrera' => 'required|string|min:1|max:10',
             'numero' => 'required|string|min:1|max:10',
             'tipo_telefono' => 'required|integer|not_in:0|exists:telefono,id',
             'telefono' => 'required|digits_between:7,13|numeric',
