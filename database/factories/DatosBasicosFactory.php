@@ -11,7 +11,7 @@ $factory->define(DatosBasicos::class, function (Faker $faker) {
     return [
         'cedula' => $faker->unixTime,
         'foto'=> $proveedores[array_rand($proveedores)],
-        'telefono_id' => \App\Models\Telefono::all()->random()->id,
+        'telefono_id' => factory(App\Models\Telefono::class),
         'primer_nombre' => $faker->firstName,
         'segundo_nombre' => $faker->firstName,
         'primer_apellido' => $faker->lastName,

@@ -12,9 +12,6 @@ class DepartamentoTableSeeder extends Seeder
      */
     public function run()
     {
-//        Departamento::create(array(
-//            'departamento' => 'Atlantico'
-//        ));
         factory(Departamento::class, 10)->create();
     }
 }

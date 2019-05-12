@@ -22,7 +22,7 @@ class CreateDatosBasicosTable extends Migration
             $table->increments('id');
             $table->string('cedula', 12);
             $table->string('foto', 250)->default('storage/storage/img/datosbasicos/default.png')->nullable();
-            $table->unsignedInteger('telefono_id');
+            $table->unsignedInteger('telefono_id')->nullable(true);
             $table->string('primer_nombre',50);
             $table->string('segundo_nombre',50)->nullable(true);
             $table->string('primer_apellido',50);

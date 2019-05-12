@@ -55,19 +55,20 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(VoyagerDatabaseSeeder::class);
-        
-        $this->call(DepartamentoTableSeeder::class);
+        // $this->call(DepartamentoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
-        $this->call(TelefonoTableSeeder::class);
+
+        // $this->call(TelefonoTableSeeder::class);
         $this->call(TipoSangreTableSeeder::class);
         $this->call(GeneroTableSeeder::class);
         $this->call(EpsTableSeeder::class);
         $this->call(DireccionTableSeeder::class);
+        
         $this->call(DatosBasicosTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
-        $this->call(InstitutoTableSeeder::class);
-        $this->call(ColoresTableSeeder::class);
+        // $this->call(InstitutoTableSeeder::class);
+        // $this->call(ColoresTableSeeder::class);
         $this->call(EquipoTableSeeder::class);
         $this->call(TarjetasTableSeeder::class);
         $this->call(CategoriaTableSeeder::class);
@@ -76,20 +77,20 @@ class DatabaseSeeder extends Seeder
         $this->call(CriterioTableSeeder::class);
         $this->call(TorneoTableSedeer::class);
         $this->call(CriterioTorneoTableSeeder::class);
-        $this->call(JugadorTableSeeder::class);
+        // $this->call(JugadorTableSeeder::class);
         $this->call(ProgramaTableSeeder::class);
         $this->call(TipoJugadorTableSeeder::class);
         $this->call(InscripcionEquipoTableSeeder::class);
         $this->call(InscripcionJugadorTableSeeder::class);
         $this->call(FaseTableSeeder::class);
         $this->call(CalendarioTableSeeder::class);
-        $this->call(ArbitroTableSeeder::class);
-        $this->call(ArbitroPuestoTableSeeder::class);
+        // $this->call(ArbitroTableSeeder::class);
         $this->call(LugarTableSeeder::class);
-        $this->call(EnfrentamientoTableSeeder::class);
+        // $this->call(EnfrentamientoTableSeeder::class);
+        $this->call(ResultadoTableSeeder::class);
+        $this->call(ArbitroPuestoTableSeeder::class);
         $this->call(EnfrentamientoArbitroTableSeeder::class);
         $this->call(TiempoEnfrentamientoTableSeeder::class);
-        $this->call(ResultadoTableSeeder::class);
         $this->call(EstadisticasTableSeeder::class);
         $this->call(TantosTableSeeder::class);
         $this->call(FaltasTableSeeder::class);
