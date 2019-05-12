@@ -16,8 +16,8 @@ class CreateTelefonoTable extends Migration
         Schema::create('telefono', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('numero', 13);
-            $table->enum('tipo',['Celular','Fijo']);
+            $table->string('numero', 15)->default('0000000000');
+            $table->enum('tipo',['Celular','Fijo'])->defult('Celular');
             $table->softDeletes();
             $table->timestamps();
         });
