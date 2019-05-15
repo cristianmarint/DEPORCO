@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Enfrentamientos')
+@section('title','Editar Enfrentamiento')
 @section('content')
 
     @if(Session::has('error'))

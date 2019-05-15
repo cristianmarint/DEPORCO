@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Enfrentamientos')
+@section('title','Listado De Enfrentamientos')
 @section('content')
 @if(Session::has('create'))
 <script>

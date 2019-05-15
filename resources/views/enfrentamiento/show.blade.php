@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Enfrentamientos visualizar')
+@section('title','Visualizar Enfrentamientos')
 @section('content')
             <div class="card-body">
 
