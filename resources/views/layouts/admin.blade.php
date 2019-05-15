@@ -3,7 +3,7 @@
  * @Author: EdwinLopez12 
  * @Date: 2019-05-15 13:02:03 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-15 13:03:09
+ * @Last Modified time: 2019-05-15 14:49:52
  */ 
  --}}
 <!doctype html>
@@ -29,18 +29,18 @@
     <link rel="stylesheet" href="{{url('assets/sweetalert/dist/sweetalert.css')}}">
 
     <!-- orion icons-->
-    <link rel="stylesheet" href="{{url('css/orionicons.css')}}">
+    <link rel="stylesheet" href="{{url('css/admin/orionicons.css')}}">
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="{{url('css/admin/tema-azul.css')}}">
 
 
     <!-- Google fonts - Montserrat -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700">
 
 
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
-
     <!-- data tables -->
-    <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}"> --}}
     <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">
 
     <!-- Custom stylesheet - for your changes-->
@@ -49,26 +49,26 @@
 <body>
     <div class="page">
         <header class="header">
-        <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a><a href="{{route('welcome')}}" class="navbar-brand font-weight-bold text-uppercase text-base" style="color:#F5534D;">{{config('app.name')}}</a>
+        <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
+            <a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a>
+            <a href="{{route('deporco.welcome')}}" class="navbar-brand font-weight-bold text-uppercase text-base active" ><strong> {{config('app.name')}} </strong> </a>
                 <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
-                    <li class="nav-item">
-
-                        {{-- search form--}}
+                    {{-- <li class="nav-item">
+                        <!-- search form-->
                         <form id="searchForm" class="ml-auto d-none d-lg-block">
                             <div class="form-group position-relative mb-0">
                                 <button type="submit" style="top: -3px; left: 0;" class="position-absolute bg-white border-0 p-0"><i class="o-search-magnify-1 text-gray text-lg"></i></button>
                                 <input type="search" placeholder="¿Qu&eacute; est&aacute;s buscando?" class="form-control form-control-sm border-0 no-shadow pl-4">
                             </div>
                         </form>
-
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown mr-3"><a id="notifications" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-gray-400 px-1"><i class="fa fa-bell"></i><span class="notification-icon"></span></a>
                         <div aria-labelledby="notifications" class="dropdown-menu"><a href="#" class="dropdown-item">
 
                                 <div class="d-flex align-items-center">
                                     <div class="icon icon-sm bg-green text-white"><i class="fas fa-envelope"></i></div>
                                     <div class="text ml-2">
-                                        <p class="mb-0">You have 6 new messages</p>
+                                        <p class="mb-0">Tienes 6 nuevos mensajes</p>
                                     </div>
                                 </div></a><a href="#" class="dropdown-item">
 
@@ -104,7 +104,7 @@
 
         <div class="d-flex align-items-stretch">
             <div id="sidebar" class="sidebar py-3">
-                <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">OPCIONES</div>
+                <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">FUTBOL</div>
                 <ul class="sidebar-menu list-unstyled">
 
                     <li class="sidebar-list-item "><a href="{{url('/home')}}"           class="sidebar-link text-muted {{Request::is('home') ? 'active': ''}}"><i class="fas fa-home mr-3 text-gray"></i><span>Inicio</span></a></li>
@@ -133,7 +133,7 @@
                 <div class="container-fluid px-xl-5">
                     <section class="py-5">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
                                 <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                                     <div class="flex-grow-1 d-flex align-items-center">
                                         <div class="dot mr-3 bg-violet"></div>
@@ -146,7 +146,7 @@
                                     <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
                                 <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                                     <div class="flex-grow-1 d-flex align-items-center">
                                         <div class="dot mr-3 bg-green"></div>
@@ -157,7 +157,7 @@
                                     <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
                                 <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                                     <div class="flex-grow-1 d-flex align-items-center">
                                         <div class="dot mr-3 bg-blue"></div>
@@ -171,26 +171,13 @@
                         </div>
                     </section>
 
-
-                    <div class="content-inner">
-                        <div class="page-holder w-100 d-flex flex-wrap">
-                            <div class="container-fluid">
-                                <div class="row py-5">
-                                    <div class="col-md-12 text-center align-center mx-auto">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                @yield('title')
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="col-md-12 mx-auto">
-                                                    @yield('content')
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-12 mb-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="text-uppercase mb-0 text-center">@yield('title')</h6>
                                 </div>
+                                @yield('content')
                             </div>
-                        </div>
                     </div>
 
                 </div>

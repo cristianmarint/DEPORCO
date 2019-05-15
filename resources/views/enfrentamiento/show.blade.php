@@ -1,20 +1,7 @@
 @extends('layouts.admin')
-@section('title','Enfrentamientos')
+@section('title','Enfrentamientos visualizar')
 @section('content')
-
-    <!-- Breadcrumb-->
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{url('/home')}}">Inicio</a></li>
-            <li class="breadcrumb-item active"><a href="{{url('/enfrentamientos')}}">Enfrentamientos</a></li>
-            <li class="breadcrumb-item">Ver</li>
-        </ul>
-    </div>
-
-    <!-- Dashboard Counts Section-->
-    <section class="dashboard-counts">
-        <div class="container-fluid">
-            <div class="bg-white has-shadow">
+            <div class="card-body">
 
                 <div class="form-group row">
                     <label for="nombre" class="form-control-label col-sm-3 ">Torneo</label>
@@ -85,14 +72,9 @@
                 <div class="form-group row">
                         <label for="nombre" class="form-control-label col-sm-3 ">Lugar</label>
                         <div class="col-sm-4">
-                            <input id="lugar_nombre" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->lugar->nombre}}" readonly>
-                        </div>
-                        <div class="col-sm-4">
-                            <input id="lugar_direccion" type="text" name="Fecha" class="form-control" value="Cll {{$enfrentamiento->lugar->direccion->calle}} Crr {{$enfrentamiento->lugar->direccion->carrera}} # {{$enfrentamiento->lugar->direccion->numero}}" readonly>
+                            <input id="lugar_direccion" type="text" name="Fecha" class="form-control" value="{{$enfrentamiento->lugar->nombre}}  Cll {{$enfrentamiento->lugar->direccion->calle}} Crr {{$enfrentamiento->lugar->direccion->carrera}} # {{$enfrentamiento->lugar->direccion->numero}}" readonly>
                         </div>
                 </div>
 
             </div>
-        </div>
-    </section>
 @endsection
