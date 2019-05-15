@@ -16,6 +16,8 @@
         <div class="container-fluid">
             <div class="bg-white has-shadow">
 
+                {{--
+                --}}
                 <div class="form-group row">
                     <label for="nit" class="form-control-label col-sm-3 ">Logo</label>
                     <div class="col-sm-9">
@@ -42,7 +44,17 @@
                     <div class="col-sm-9">
                         <input id="institucion" type="text" name="institucion" class="form-control" value="{{$equipo->instituto->nombre}}" readonly>
                     </div>
-                </div>
+                </div> 
+
+                
+                {{-- <div class="form-group row">
+                    <label for="jugadores" class="form-control-label col-sm-3">Jugadores</label>
+                    <div class="col-sm-9">
+                        @foreach ($jugadores as $jugador)
+                            <input type="text" name="jugador" class="form-control" value="C.C. {{$jugador->inscripcionjugador->jugador->datos_basicos->cedula}} : {{$jugador->inscripcionjugador->jugador->datos_basicos->primer_nombre}} {{$jugador->inscripcionjugador->jugador->datos_basicos->primer_apellido}}" readonly>
+                        @endforeach 
+                    </div>
+                </div> --}}
 
 
             </div>

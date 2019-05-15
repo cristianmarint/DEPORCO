@@ -27,4 +27,12 @@ class InscripcionEquipo extends Model{
     public function equipo(){
         return $this->belongsTo(Equipo::class);
     }
+
+    public function torneo(){
+        return $this->belongsTo(Torneo::class);
+    }
+
+    public function inscripcionjugador(){
+        return $this->hasOne(InscripcionJugador::class);
+    }
 }

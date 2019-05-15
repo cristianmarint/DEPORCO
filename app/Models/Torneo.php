@@ -33,4 +33,8 @@ class Torneo extends Model
     protected function calendario(){
         return $this->hasOne(Calendario::class);
     }
+
+    protected function inscripcionequipo(){
+        return $this->hasOne(InscripcionEquipo::class);
+    }
 }

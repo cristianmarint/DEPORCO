@@ -25,5 +25,8 @@ class Telefono extends Model
     protected function datosbasicos(){
         return $this->hasOne(DatosBasicos::class);
     }
+    protected function telefono(){
+        return $this->hasOne(Telefono::class);
+    }
 
 }

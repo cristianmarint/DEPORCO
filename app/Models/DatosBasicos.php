@@ -33,7 +33,7 @@ class DatosBasicos extends Model
         return $this->hasOne(User::class);
     }
 
-    protected function arbitro(){
+    public function arbitro(){
         return $this->hasOne(Arbitro::class);
     }
 
@@ -56,5 +56,8 @@ class DatosBasicos extends Model
     }
     public function eps(){
         return $this->belongsTo(Eps::class);
+    }
+    public function jugador(){
+        return $this->hasOne(Jugador::class);
     }
 }
