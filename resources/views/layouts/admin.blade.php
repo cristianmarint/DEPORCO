@@ -15,33 +15,38 @@
     <meta name="description" content="Gestionador de torneo,futbol,voleibol,ping pong">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
+
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
+
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/solid.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/brands.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/regular.css')}}">
     <link rel="stylesheet" href="{{url('assets/fontawesome-5.8.1/css/fontawesome.min.css')}}">
+
     <!-- SweetAlert -->
     <link rel="stylesheet" href="{{url('assets/sweetalert/dist/sweetalert.css')}}">
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+
     <!-- orion icons-->
     <link rel="stylesheet" href="{{url('css/orionicons.css')}}">
+
+
+    <!-- Google fonts - Montserrat -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700">
+
+
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{url('css/style.sea.css')}}" id="theme-stylesheet">
+
     <!-- data tables -->
     <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">
+
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
 </head>
 <body>
-    {{-- <!-- LOADER --> --}}
-    {{-- <div id="preloader">
-           <img class="preloader" src="{{ url('storage/storage/img/Loading-Page/football_loader.gif') }}" alt="">
-    </div> --}}
-
     <div class="page">
         <header class="header">
         <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a><a href="{{route('welcome')}}" class="navbar-brand font-weight-bold text-uppercase text-base" style="color:#F5534D;">{{config('app.name')}}</a>
@@ -75,6 +80,7 @@
                                 </div></a>
                             <div class="dropdown-divider"></div><a href="#" class="dropdown-item text-center"><small class="font-weight-bold headings-font-family text-uppercase">Ver todas las notificaciones</small></a>
                         </div>
+
                     </li>
                     <li class="nav-item dropdown ml-auto"><a id="userInfo" href="userinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="@if( isset(Auth::user()->datos_basicos->foto) ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="{{Auth::user()->datos_basicos->primer_nombre}}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                         <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">{{Auth::user()->datos_basicos->primer_nombre}} {{Auth::user()->datos_basicos->primer_apellido}}</strong><small>{{ Auth::user()->role->display_name }}</small></a>
@@ -91,6 +97,7 @@
                             </form>
                         </div>
                     </li>
+
                 </ul>
             </nav>
         </header>
@@ -307,6 +314,8 @@
            }, time);
        }
     </script>
+
+    <!-- Yield para scripts -->
     @yield('scripts')
 </body>
 </html>

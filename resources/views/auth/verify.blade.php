@@ -20,7 +20,7 @@
 
                         </div>
                         <div class="signup-image">
-                            <img  alt="sing up image" src="{{url('storage/storage/img/app/email_verify.jpg')}}"></figure>
+                            <img  alt="sing up image" src="{{url('storage/storage/app/login-registro/email_verify.jpg')}}"></figure>
                             <a href="{{ route('login') }}" class="signup-image-link">{{ __('I am already member') }}</a>
                         </div>
                     </div>

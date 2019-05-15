@@ -7,8 +7,8 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img  alt="sing up image" src="{{url('storage/storage/img/app/email_reset.png')}}"></figure>
-                        <a href="{{ route('login') }}" class="signup-image-link">{{ __('I am already member') }}</a>
+                        <figure><img  alt="sing up image" src="{{url('storage/storage/app/login-registro/email_reset.png')}}"></figure>
+                        <a href="{{ route('login') }}" class="signup-image-link">{{ __('Poseo una cuenta') }}</a>
                     </div>
 
                     <div class="signin-form">
@@ -17,7 +17,7 @@
                             @csrf
                             <div class="form-group">
                                 <label ><i class="fas fa-user"></i></label>
-                                <input id="email" type="email"  name="email" placeholder="{{ __('E-Mail Address') }}" required autofocus>
+                                <input id="email" type="email"  name="email" placeholder="{{ __('E-Mail') }}" required autofocus>
                 
                                 
                                 
@@ -28,7 +28,7 @@
                                 @endif
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="{{ __('Send Password Reset Link') }}">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="{{ __('Enviar enlace para restablecer contraseña') }}">
                             </div>
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">

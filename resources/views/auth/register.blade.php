@@ -6,7 +6,7 @@
                 <div class="container">
                     <div class="signup-content">
                         <div class="signup-form">
-                            <h2 class="form-title">{{ __('Register') }}</h2>
+                            <h2 class="form-title">{{ __('Registrate') }}</h2>
                             <form method="POST" class="register-form" action="{{ route('register') }}" id="register-form">
                             @csrf
                                 <div class="form-group">
@@ -44,13 +44,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="agree-term" class="label-agree-term"><a href="#" class="term-service">Terms of service</a></label>
+                                        <label for="agree-term" class="label-agree-term"><a href="{{route('deporco.terms')}}" class="term-service">Condiciones</a></label>
                                 </div>
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="{{ __('Register') }}">
+                                    <input type="submit" name="signup" id="signup" class="form-submit" value="{{ __('Registrarse') }}">
                                 </div>
                                 <div class="social-login">
-                                        <span class="social-label">Register with</span>
+                                        <span class="social-label">Registrate con</span>
                                         <ul class="socials">
                                             {{-- Iconos de login con socialite --}}
                                             <a href="{{route('oauth.login','google')}}" class="btn ">
@@ -72,8 +72,8 @@
                             </form>
                         </div>
                         <div class="signup-image">
-                            <img  alt="sing up image" src="{{url('storage/storage/img/app/register.jpg')}}"></figure>
-                            <a href="{{ route('login') }}" class="signup-image-link">{{ __('I am already member') }}</a>
+                            <img  alt="sing up image" src="{{url('storage/storage/app/login-registro/register.jpg')}}"></figure>
+                            <a href="{{ route('login') }}" class="signup-image-link">{{ __('Ya poseo una cuenta') }}</a>
                         </div>
                     </div>
                 </div>

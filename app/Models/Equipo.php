@@ -36,4 +36,7 @@ class Equipo extends model
       return $this->hasOne(InscripcionEquipo::class);
     }
 
+    public function inscripcionjugador(){
+      return $this->hasOne(InscripcionJugador::class);
+    }
 }

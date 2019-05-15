@@ -167,8 +167,13 @@
                             <div class="col-sm-3">
                                 <select name="tipo_telefono" id="create_tipo_telefono" class="form-control{{ $errors->has('tipo_telefono') ? ' is-invalid' : '' }}">
                                     <option value="0" >Seleccione un tipo</option>
-                                    <option value="1" {{$datosbasicos->telefono->tipo == 'Celular' ? 'selected':''}}>Celular</option>
-                                    <option value="2" {{$datosbasicos->telefono->tipo == 'Fijo' ? 'selected':''}}>Fijo</option>
+                                    @if($datosbasicos->telefono->numero)
+                                        <option value="1" {{$datosbasicos->telefono->tipo == 'Celular' ? 'selected=selected':''}}>Celular</option>
+                                        <option value="2" {{$datosbasicos->telefono->tipo == 'Fijo' ? 'selected=selected':''}}>Fijo</option>
+                                    @else
+                                        <option value="1">Celular</option>
+                                        <option value="2">Fijo</option>
+                                    @endif
                                 </select>
                                 @if ($errors->has('tipo_telefono'))
                                     <span class="invalid-feedback" role="alert">
@@ -176,9 +181,8 @@
                                         </span>
                                 @endif
                             </div>
-    
                             <div class="col-sm-6">
-                                <input id="edit_telefono" type="number" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="{{$datosbasicos->telefono->numero}}">
+                                <input id="edit_telefono" type="number" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="@isset($datosbasicos->telefono){{$datosbasicos->telefono->numero}}@endisset">
                                 @if ($errors->has('telefono'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('telefono') }}</strong>

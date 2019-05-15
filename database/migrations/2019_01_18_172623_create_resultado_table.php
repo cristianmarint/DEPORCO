@@ -17,8 +17,8 @@ class CreateResultadoTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('enfrentamiento_id');
-            $table->smallInteger('resultado_local')->default('0');
-            $table->smallInteger('resultado_visitante')->default('0');
+            $table->smallInteger('resultado_local')->default('0')->nullable(true);
+            $table->smallInteger('resultado_visitante')->default('0')->nullable(true);
             $table->softDeletes();
             $table->timestamps();
 

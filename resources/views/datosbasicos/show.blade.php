@@ -59,9 +59,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="telefono" class="form-control-label col-sm-3">Telefono      </label>
+                    <label for="telefono" class="form-control-label col-sm-3">Telefono</label>
                     <div class="col-sm-9">
-                        <input id="telefono" type="text" name="telefono" class="form-control" value="{{$datosbasicos->telefono->tipo}} {{$datosbasicos->telefono->numero}}" readonly>
+                        <input id="telefono" type="text" name="telefono" class="form-control" value="@isset($datos->telefono) {{ $datos->telefono->tipo}} {{ $datos->telefono->numero}} @endisset" readonly>
                     </div>
                 </div>
 

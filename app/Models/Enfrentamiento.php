@@ -12,6 +12,7 @@ class Enfrentamiento extends Model{
     use SoftDeletes;
 
     protected $fillable = [
+        'id',
         'calendario_id',
         'inscripcion_equipo_local_id',
         'inscripcion_equipo_visitante_id',
@@ -33,5 +34,9 @@ class Enfrentamiento extends Model{
 
     protected function inscripcion_equipo_visitante(){
         return $this->belongsTo(InscripcionEquipo::class);
+    }
+
+    protected function resultado(){
+        return $this->hasOne(Resultado::class);
     }
 }

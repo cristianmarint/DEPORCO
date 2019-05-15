@@ -26,7 +26,7 @@ class DatosBasicosController extends Controller
      */
     public function index()
     {
-        $datosbasicos = DatosBasicos::all();
+        $datosbasicos = DatosBasicos::orderBy('created_at','desc')->get();
         return view('datosbasicos.index',compact('datosbasicos'));
     }
     /**

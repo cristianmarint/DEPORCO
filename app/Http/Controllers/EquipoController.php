@@ -2,14 +2,16 @@
 /*
  * @Author: CristianMarinT 
  * @Date: 2019-02-20 14:08:14 
- * @Last Modified by:   CristianMarinT 
- * @Last Modified time: 2019-02-20 14:08:14 
+ * @Last Modified by: CristianMarinT
+ * @Last Modified time: 2019-05-12 16:30:29
  */
 namespace App\Http\Controllers;
 use App\Models\Equipo;
 use App\Models\Direccion;
 use App\Models\Instituto;
 use App\Models\Colores;
+use App\Models\InscripcionEquipo;
+use App\Models\InscripcionJugador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -73,6 +75,7 @@ class EquipoController extends Controller
                 }
             } else {
                 $nombreImg = 'storage/storage/img/equipo/default.png';
+                $success = true;
             }
             $equipo = NEW Equipo();
                 $equipo->nombre = $request->input('nombre');
@@ -109,7 +112,21 @@ class EquipoController extends Controller
     public function show($id)
     {
         $equipo = Equipo::findOrFail($id);
-        return view('equipo.show', compact('equipo'));
+        // esta utilñizando el id en la table de equipos mas no en inscripcion equipo.equipo_id
+        // $jugadores = Equipo::where('equipo_id','=',$id)->get();
+
+
+        $jugadores = InscripcionEquipo::where('equipo_id','=',$id)->get();
+
+
+        // $jugadores = Equipo::select('primer_nombre','primer_apellido')
+        //                     ->join('inscripcion_equipo','equipo_id',$id)
+        //                     ->join('inscripcion_jugador','inscripcion_jugador.inscripcion_equipo_id','inscripcion_equipo.id')
+        //                     ->join('jugador','jugador.id','inscripcion_equipo.jugador_id')
+        //                     ->join('datos_basicos','datos_basicos.id','jugador.datos_basicos_id')
+        //                     ->get();
+        // dd($jugadores);
+        return view('equipo.show', compact('equipo','jugadores'));
     }
     /**
      * Show the form for editing the specified resource.

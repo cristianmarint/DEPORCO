@@ -2,7 +2,7 @@
 
   
 
-    [reglas](https://laravel.com/docs/4.2/validation#rule-confirmed)
+    [reglas](https://laravel.com/docs/5.8/validation#form-request-validation)
 
   
 
@@ -36,13 +36,8 @@ php artisan config:cache
 
 4. Permitir acceso a otro dispositivo en la misma network
 
-  
-
-  
 
 * Generación del servidor
-
-  
 
 ``` php artisan serve --host 192.168.1.10 --port 80 ```
 
@@ -99,4 +94,11 @@ ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
 
   
 
+```
+
+
+5. Ejecutar un seeder
+
+```
+    php artisan db:seed --class=DatosBasicosTableSeeder
 ```
