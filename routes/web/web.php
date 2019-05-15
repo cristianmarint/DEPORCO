@@ -18,6 +18,7 @@
 */
 Auth::routes(['verify' => true]);
 
+
 // DEPORCO
 Route::get('/',       'DeporcoController@welcome')->name('deporco.welcome');
 Route::get('/about',  'DeporcoController@about')  ->name('deporco.about');
