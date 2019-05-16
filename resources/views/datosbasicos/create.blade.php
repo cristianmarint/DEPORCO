@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Datos basicos')
+@section('title','Crear Datos basicos')
 @section('content')
 
 @if(Session::has('error'))

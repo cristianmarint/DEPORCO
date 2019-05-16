@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Datos Basicos')
+@section('title','Listado De Datos Basicos')
 @section('content')
 @if(Session::has('create'))
     <script>

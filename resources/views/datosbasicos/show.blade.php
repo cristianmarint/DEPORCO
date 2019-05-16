@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Datos Basicos')
+@section('title','Visualizar Datos Basicos')
 @section('content')
 <div class="card-body">
     

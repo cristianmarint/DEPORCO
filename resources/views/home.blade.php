@@ -6,9 +6,9 @@
     <div class="page-holder w-100 d-flex flex-wrap">
         <img src="{{url('/logo_deporco.svg')}}"  style="display: block;margin: auto;" width="40%" height="auto" alt="">
     </div>
+@endsection
 
-
-
+@section('cambios')
     {{--messages--}}
     <section class="py-5">
         <div class="row">
@@ -26,6 +26,4 @@
             </div>
         </div>
     </section>
-
-
 @endsection

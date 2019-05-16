@@ -178,6 +178,8 @@
                                 </div>
                                 @yield('content')
                             </div>
+
+                            @yield('cambios')
                     </div>
 
                 </div>
