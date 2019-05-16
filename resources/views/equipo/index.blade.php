@@ -18,7 +18,7 @@
     <button onclick="window.location='{{route('equipos.create')}}'" type="button" class="btn btn-info"><span class="fa fa-plus"></span> Nuevo</button>
 </div>
 <div class="card-body table-responsive">
-    <table id="equipos" class="table table-striped table-hover card-text" style="text-align: left;">
+    <table id="equipos" class="table table-striped table-hover card-text" style="text-align: center;">
         <thead >
             <tr>
                 <th>Institución</th>

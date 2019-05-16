@@ -20,7 +20,7 @@
 </div>
 
 <div class="card-body table-responsive">
-    <table id="enfrentamientos" class="table table-striped table-hover card-text" style="text-align: left;">
+    <table id="enfrentamientos" class="table table-striped table-hover card-text" style="text-align: center;">
         <thead >
             <tr>
                 <th>Torneo</th>
