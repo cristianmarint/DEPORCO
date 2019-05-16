@@ -20,7 +20,7 @@
 </div>
 
 <div class="card-body table-responsive">
-    <table id="example" class="table table-striped table-hover card-text" style="text-align: left;">
+    <table id="enfrentamientos" class="table table-striped table-hover card-text" style="text-align: left;">
         <thead >
             <tr>
                 <th>Torneo</th>
@@ -67,7 +67,7 @@
 @section('scripts')
     <script type="text/javascript">
         $(function () {
-            $('#example').DataTable( {
+            $('#enfrentamientos').DataTable( {
                 "language": {
                     "url": "{{url('assets/dataTables/Spanish.json')}}"
                 }

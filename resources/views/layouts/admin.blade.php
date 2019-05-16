@@ -40,8 +40,8 @@
 
 
     <!-- data tables -->
-    {{-- <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}"> --}}
-    <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}"> <!-- Sin aparente funcionalidad --> --}}
+    {{-- <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">  <!-- Sin aparente funcionalidad -->  --}}
 
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
