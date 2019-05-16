@@ -4,17 +4,18 @@
 @section('content')
 
     <div class="page-holder w-100 d-flex flex-wrap">
-        <img src="{{url('/logo_deporco.svg')}}"  style="display: block;margin: auto;" width="50%" height="auto" alt="">
+        <img src="{{url('/logo_deporco.svg')}}"  style="display: block;margin: auto;" width="40%" height="auto" alt="">
     </div>
+@endsection
 
-
-
+@section('cambios')
     {{--messages--}}
     <section class="py-5">
         <div class="row">
             <div class="col-lg-12"><a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
                     <div class="row">
-                        <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><strong class="h5 mb-0">DIA<sup class="smaller text-gray font-weight-normal">MES</sup></strong><img src="{{Auth::user()->datos_basicos->foto}}" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
+                        <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><strong class="h5 mb-0">DIA<sup class="smaller text-gray font-weight-normal">MES</sup></strong>
+                                <img src="@if( isset(Auth::user()->datos_basicos->foto) ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="{{Auth::user()->datos_basicos->primer_nombre}}" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
                             <h6 class="mb-0">{{Auth::user()->datos_basicos->primer_nombre}} {{Auth::user()->datos_basicos->primer_apellido}}</h6>
                         </div>
                         <div class="col-lg-9 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
@@ -25,6 +26,4 @@
             </div>
         </div>
     </section>
-
-
 @endsection

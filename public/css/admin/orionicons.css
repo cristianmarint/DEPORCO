@@ -2,7 +2,7 @@
     Icon Font orion-font generated from orioniconlibrary.com
   */
 
-  @font-face {
+  /* @font-face {
   font-family: "orion-font";
   src: url("../fonts/orion-font.eot");
   src: url("../fonts/orion-font.eot?#iefix") format("embedded-opentype"),
@@ -12,7 +12,7 @@
        url("../fonts/orion-font.svg#orion-font") format("svg");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
