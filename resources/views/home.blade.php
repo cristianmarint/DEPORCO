@@ -8,6 +8,53 @@
     </div>
 @endsection
 
+@section('bracket_futbol')
+
+
+    <section class="py-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h6 text-uppercase mb-0">Bracket De Futbol</h2>
+                </div>
+            <div class="card-body">
+            {{-- <p class="mb-5 text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> --}}
+            
+            <div class="chart-holder mt-5 mb-5">
+                <div class="bracket_futbol" id="bracket_futbol"></div>
+            </div>
+            
+        </div>
+        </div>
+    </section>
+@endsection
+
+@section('scripts')
+<script>
+    var minimalData = {
+        teams : [
+            ["Team 1", "Team 2"],
+            ["Team 3", null],
+            ["Team 4", null],
+            ["Team 5", null]
+        ],
+        results: [
+            [
+                [
+                    [1, 0], [null, null], [null, null], [null, null]],
+                [[null, null], [1, 4]],
+                [[null, null], [null, null]]
+            ]
+        ]
+    }
+
+    $(function() {
+    $('#bracket_futbol').bracket({
+        init: minimalData /* data to initialize the bracket with */ 
+        })
+    })
+</script>    
+@endsection
+
 @section('cambios')
     {{--messages--}}
     <section class="py-5">

@@ -3,7 +3,7 @@
  * @Author: CristianMarinT 
  * @Date: 2019-02-23 07:47:10 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-07 18:09:40
+ * @Last Modified time: 2019-05-16 22:53:41
  */
 
 Route::get('/estadisticasjugador', function () {
@@ -19,6 +19,7 @@ Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
+    Route::get('/home/torneo_futbol/{id}','HomeController@getTorneofutbol');
 
     //Desactiva la ruta de /register.
     // Route::resource('/register', 'Auth\LoginController@showLoginForm');

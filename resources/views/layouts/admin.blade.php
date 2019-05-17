@@ -3,7 +3,7 @@
  * @Author: EdwinLopez12 
  * @Date: 2019-05-15 13:02:03 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-15 14:49:52
+ * @Last Modified time: 2019-05-16 22:39:50
  */ 
  --}}
 <!doctype html>
@@ -43,7 +43,7 @@
     {{-- <link rel="stylesheet" href="{{url('assets/dataTables/jquery.dataTables.min.css')}}"> <!-- Sin aparente funcionalidad --> --}}
     {{-- <link rel="stylesheet" href="{{url('assets/dataTables/dataTables.bootstrap4.min.css')}}">  <!-- Sin aparente funcionalidad -->  --}}
 
-    <!-- Custom stylesheet - for your changes-->
+    <!-- CSS Personalizado-->
     <link rel="stylesheet" href="{{url('css/custom.css')}}">
 </head>
 <body>
@@ -54,7 +54,7 @@
             <a href="{{route('deporco.welcome')}}" class="navbar-brand font-weight-bold text-uppercase text-base active" ><strong> {{config('app.name')}} </strong> </a>
                 <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
                     {{-- <li class="nav-item">
-                        <!-- search form-->
+                        <!-- Busqueda form-->
                         <form id="searchForm" class="ml-auto d-none d-lg-block">
                             <div class="form-group position-relative mb-0">
                                 <button type="submit" style="top: -3px; left: 0;" class="position-absolute bg-white border-0 p-0"><i class="o-search-magnify-1 text-gray text-lg"></i></button>
@@ -109,23 +109,23 @@
 
                     <li class="sidebar-list-item "><a href="{{url('/home')}}"           class="sidebar-link text-muted {{Request::is('home') ? 'active': ''}}"><i class="fas fa-home mr-3 text-gray"></i><span>Inicio</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/enfrentamientos')}}"class="sidebar-link text-muted {{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}}"><i class="fas fa-puzzle-piece mr-3 text-gray"></i><span>Enfrentamientos</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/enfrentamientos')}}"class="sidebar-link text-muted {{Request::is('enfrentamientos') ? 'active': ''}} {{Request::is('enfrentamientos/*') ? 'active': ''}} no-overflow"><i class="fas fa-puzzle-piece mr-3 text-gray"></i><span>Enfrentamientos </span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/institutos')}}"     class="sidebar-link text-muted {{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}}"><i class="fas fa-landmark fa-md mr-3 text-gray"></i><span>Instituciones</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/institutos')}}"     class="sidebar-link text-muted {{Request::is('institutos') ? 'active': ''}} {{Request::is('institutos/*') ? 'active': ''}} no-overflow"><i class="fas fa-landmark fa-md mr-3 text-gray"></i><span>Instituciones</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/datosbasicos')}}"   class="sidebar-link text-muted {{Request::is('datosbasicos') ? 'active': ''}} {{ Request::is('datosbasicos/*') ? 'active': ''}}"><i class="fas fa-address-card mr-3 text-gray"></i><span>Datos Basicos</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/datosbasicos')}}"   class="sidebar-link text-muted {{Request::is('datosbasicos') ? 'active': ''}} {{ Request::is('datosbasicos/*') ? 'active': ''}} no-overflow"><i class="fas fa-address-card mr-3 text-gray"></i><span>Datos Basicos</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/equipos')}}"        class="sidebar-link text-muted {{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}}"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Equipos</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/equipos')}}"        class="sidebar-link text-muted {{Request::is('equipos') ? 'active': ''}} {{Request::is('equipos/*') ? 'active': ''}} no-overflow"><i class="fas fa-user-friends mr-3 text-gray"></i><span>Equipos</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/lugares')}}"        class="sidebar-link text-muted {{Request::is('lugares') ? 'active': ''}} {{Request::is('lugares/*') ? 'active': ''}}"><i class="fas fa-map-marked-alt mr-3 text-gray"></i><span>Lugares</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/lugares')}}"        class="sidebar-link text-muted {{Request::is('lugares') ? 'active': ''}} {{Request::is('lugares/*') ? 'active': ''}} no-overflow"><i class="fas fa-map-marked-alt mr-3 text-gray"></i><span>Lugares</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/categorias')}}"     class="sidebar-link text-muted {{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}}"><i class="fas fa-sort-amount-up mr-3 text-gray"></i><span>Categorias</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/categorias')}}"     class="sidebar-link text-muted {{Request::is('categorias') ? 'active': ''}} {{Request::is('categorias/*') ? 'active': ''}} no-overflow"><i class="fas fa-sort-amount-up mr-3 text-gray"></i><span>Categorias</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/torneos')}}"        class="sidebar-link text-muted {{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}}"><i class="fas fa-trophy mr-3 text-gray"></i><span>Torneos</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/torneos')}}"        class="sidebar-link text-muted {{Request::is('torneos') ? 'active': ''}} {{Request::is('torneos/*') ? 'active': ''}} no-overflow"><i class="fas fa-trophy mr-3 text-gray"></i><span>Torneos</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/temporadas')}}"     class="sidebar-link text-muted {{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}}"><i class="fas fa-calendar-check mr-3 text-gray"></i><span>Temporadas</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/temporadas')}}"     class="sidebar-link text-muted {{Request::is('temporadas') ? 'active': ''}} {{Request::is('temporadas/*') ? 'active': ''}} no-overflow"><i class="fas fa-calendar-check mr-3 text-gray"></i><span>Temporadas</span></a></li>
 
-                    <li class="sidebar-list-item "><a href="{{url('/calendarios')}}"    class="sidebar-link text-muted {{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}}"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Calendario</span></a></li>
+                    <li class="sidebar-list-item "><a href="{{url('/calendarios')}}"    class="sidebar-link text-muted {{Request::is('calendarios') ? 'active': ''}} {{Request::is('calendarios/*') ? 'active': ''}} no-overflow"><i class="fas fa-calendar-week mr-3 text-gray"></i><span>Calendario</span></a></li>
 
                 </ul>
             </div>
@@ -179,6 +179,8 @@
                                 @yield('content')
                             </div>
 
+                            @yield('bracket_futbol')
+
                             @yield('cambios')
                     </div>
 
@@ -214,7 +216,9 @@
     <script src="{{url('assets/dataTables/jquery.dataTables.min.js')}}"></script>
     <script src="{{url('assets/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
-    {{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
+    {{-- Libreria para graficar torneos --}}
+    <link rel="stylesheet" href="{{url('assets/jquery.bracket/jquery.bracket.min.css')}}">
+    <script src="{{url('assets/jquery.bracket/jquery.bracket.min.js')}}"></script>
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>

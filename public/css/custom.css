@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+/* Previene el over-flow de texto */
+.no-overflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 /*
 * ==========================================================
 *     GENERAL STYLING OF
