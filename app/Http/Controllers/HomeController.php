@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Torneo;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -33,9 +35,28 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response json
      */
     public function getTorneofutbol($id){
-        $torneos = Torneo::where('id',$id)
-            // ->orderBy('nombre', 'asc')
-            ->get();
+
+        $torneos = DB::select('select 
+                                f.nombre AS nombre_local,
+                                c.resultado_local , 
+                                c.resultado_visitante, 
+                                h.nombre AS nombre_visitante
+                                  
+                                from torneo 
+
+                                INNER JOIN inscripcion_equipo AS a ON torneo.id=a.torneo_id 
+                                INNER JOIN enfrentamiento AS b ON a.equipo_id = b.inscripcion_equipo_local_id 
+                                INNER JOIN resultado AS c ON b.id = c.enfrentamiento_id 
+                                
+                                RIGHT JOIN inscripcion_equipo AS e ON b.inscripcion_equipo_local_id = e.equipo_id AND e.torneo_id = a.torneo_id 
+                                RIGHT JOIN equipo AS f ON e.equipo_id = f.id 
+                                
+                                LEFT JOIN inscripcion_equipo AS g ON b.inscripcion_equipo_visitante_id = g.equipo_id AND e.torneo_id = a.torneo_id 
+                                LEFT JOIN equipo AS h ON g.equipo_id = h.id 
+
+                                WHERE torneo.id ='.$id
+                             );
+                                
         return response()->json($torneos);
     }
 }
