@@ -191,7 +191,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-left text-primary">
-                                <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12"><img src="{{url('/logo_inicial.svg')}}" width="2%" height="auto" style="transform: rotate(90deg);">dwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian <img src="{{url('/logo_inicial.svg')}}" width="2%" height="auto" style="transform: rotate(180deg);">arín</a></p>
+                                <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12">Edwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian Marín</a></p>
                             </div>
                             <div class="col-md-6 text-center text-md-right text-gray-400">
                                 <p class="mb-0">Bootstrapious</a></p>
