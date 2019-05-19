@@ -17,12 +17,10 @@
                     <h2 class="h6 text-uppercase mb-0">Bracket De Futbol</h2>
                 </div>
             <div class="card-body">
-            {{-- <p class="mb-5 text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p> --}}
-            
+            <p class="mb-5 text-gray">Para el torneo { { Nombre del torno } }</p>          
             <div class="chart-holder mt-5 mb-5">
-                <div class="bracket_futbol" id="bracket_futbol"></div>
-            </div>
-            
+                <div class="" id="bracket_futbol_test"></div>
+            </div>            
         </div>
         </div>
     </section>
@@ -32,24 +30,23 @@
 <script>
     var minimalData = {
         teams : [
-            ["Team 1", "Team 2"],
-            ["Team 3", null],
-            ["Team 4", null],
-            ["Team 5", null]
+            ["Team 1", "Team Z"],
+            ["Team 3", "Team X"],
+            ["Team 4", "Team C"],
+            ["Team 5", "Team V"]
         ],
         results: [
             [
-                [
-                    [1, 0], [null, null], [null, null], [null, null]],
-                [[null, null], [1, 4]],
-                [[null, null], [null, null]]
+                [[1, 0], [2, 1], [3, 2], [4, 3]],
+                [[1, 0], [2, 1]],
+                [[2, 0], [0, 3]]
             ]
         ]
     }
 
     $(function() {
-    $('#bracket_futbol').bracket({
-        init: minimalData /* data to initialize the bracket with */ 
+    $('#bracket_futbol_test').bracket({
+        init: minimalData 
         })
     })
 </script>    

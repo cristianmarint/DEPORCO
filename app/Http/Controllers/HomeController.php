@@ -36,27 +36,33 @@ class HomeController extends Controller
      */
     public function getTorneofutbol($id){
 
-        $torneos = DB::select('select 
+        $torneos = DB::select('SELECT 
+                                -- b.id,
                                 f.nombre AS nombre_local,
                                 c.resultado_local , 
-                                c.resultado_visitante, 
-                                h.nombre AS nombre_visitante
-                                  
-                                from torneo 
+                                h.nombre AS nombre_visitante,
+                                c.resultado_visitante,
 
-                                INNER JOIN inscripcion_equipo AS a ON torneo.id=a.torneo_id 
-                                INNER JOIN enfrentamiento AS b ON a.equipo_id = b.inscripcion_equipo_local_id 
+                                fa.nombre AS fase
+                                  
+                                FROM torneo 
+
+                                INNER JOIN inscripcion_equipo AS a ON torneo.id = a.torneo_id 
+                                
+                                INNER JOIN enfrentamiento AS b ON a.equipo_id   = b.inscripcion_equipo_local_id 
+                                RIGHT JOIN calendario AS ca ON b.calendario_id  = ca.id
+                                INNER JOIN fase AS fa ON ca.fase_id = fa.id    
+                                
                                 INNER JOIN resultado AS c ON b.id = c.enfrentamiento_id 
                                 
                                 RIGHT JOIN inscripcion_equipo AS e ON b.inscripcion_equipo_local_id = e.equipo_id AND e.torneo_id = a.torneo_id 
                                 RIGHT JOIN equipo AS f ON e.equipo_id = f.id 
                                 
                                 LEFT JOIN inscripcion_equipo AS g ON b.inscripcion_equipo_visitante_id = g.equipo_id AND e.torneo_id = a.torneo_id 
-                                LEFT JOIN equipo AS h ON g.equipo_id = h.id 
+                                LEFT JOIN equipo AS h ON g.equipo_id  = h.id 
 
                                 WHERE torneo.id ='.$id
                              );
-                                
         return response()->json($torneos);
     }
 }
