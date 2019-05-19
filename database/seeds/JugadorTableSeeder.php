@@ -12,6 +12,6 @@ class JugadorTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Jugador::class, 80)->create();
+        factory(Jugador::class, 160)->create();
     }
 }

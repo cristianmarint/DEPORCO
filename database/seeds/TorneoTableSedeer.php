@@ -13,21 +13,21 @@ class TorneoTableSedeer extends Seeder
     public function run()
     {
         Torneo::create(array(
-            'nombre' => 'Torneo uno',
+            'nombre' => 'Mundial 2010',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id
         ));
 
         Torneo::create(array(
-            'nombre' => 'Torneo dos',
+            'nombre' => 'Torneo Uno',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id
         ));
 
         Torneo::create(array(
-            'nombre' => 'Torneo Tres',
+            'nombre' => 'Torneo Dos',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id
