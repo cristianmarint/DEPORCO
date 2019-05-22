@@ -55,10 +55,10 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(VoyagerDatabaseSeeder::class);
-        // $this->call(DepartamentoTableSeeder::class);
+        // $this->call(DepartamentoTableSeeder::class); //Se comentó ya que se llama en otro seeder 1
         $this->call(MunicipioTableSeeder::class);
 
-        // $this->call(TelefonoTableSeeder::class);
+        // $this->call(TelefonoTableSeeder::class); //Se comentó ya que se llama en otro seeder 0
         $this->call(TipoSangreTableSeeder::class);
         $this->call(GeneroTableSeeder::class);
         $this->call(EpsTableSeeder::class);
@@ -67,9 +67,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DatosBasicosTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TipoEducacionTableSeeder::class);
-        // $this->call(InstitutoTableSeeder::class);
-        // $this->call(ColoresTableSeeder::class);
-        $this->call(EquipoTableSeeder::class);
+        $this->call(InstitutoTableSeeder::class);
+        $this->call(ColoresTableSeeder::class);
+        // $this->call(EquipoTableSeeder::class); // Se comentó para test Mundial FIFA 1
         $this->call(TarjetasTableSeeder::class);
         $this->call(CategoriaTableSeeder::class);
         $this->call(TarjetasCategoriaTableSeeder::class);
@@ -77,24 +77,23 @@ class DatabaseSeeder extends Seeder
         $this->call(CriterioTableSeeder::class);
         $this->call(TorneoTableSedeer::class);
         $this->call(CriterioTorneoTableSeeder::class);
-        // $this->call(JugadorTableSeeder::class);
+        $this->call(JugadorTableSeeder::class); 
         $this->call(ProgramaTableSeeder::class);
         $this->call(TipoJugadorTableSeeder::class);
-        $this->call(InscripcionEquipoTableSeeder::class);
-        $this->call(InscripcionJugadorTableSeeder::class);
-        $this->call(FaseTableSeeder::class);
-        $this->call(CalendarioTableSeeder::class);
-        // $this->call(ArbitroTableSeeder::class);
+        // $this->call(InscripcionEquipoTableSeeder::class); // Se comentó para test Mundial FIFA 1
+        // $this->call(InscripcionJugadorTableSeeder::class); // Se comentó para test Mundial FIFA 1
+        // $this->call(CalendarioTableSeeder::class);
+        // $this->call(ArbitroTableSeeder::class); //Se comentó ya que se llama en otro seeder 0
         $this->call(LugarTableSeeder::class);
-        // $this->call(EnfrentamientoTableSeeder::class);
-        $this->call(ResultadoTableSeeder::class);
+        // $this->call(EnfrentamientoTableSeeder::class); //Se comentó ya que se llama en otro seeder 0
+        // $this->call(ResultadoTableSeeder::class); // Se comentó para test Mundial FIFA 1
         $this->call(ArbitroPuestoTableSeeder::class);
-        $this->call(EnfrentamientoArbitroTableSeeder::class);
-        $this->call(TiempoEnfrentamientoTableSeeder::class);
-        $this->call(EstadisticasTableSeeder::class);
-        $this->call(TantosTableSeeder::class);
-        $this->call(FaltasTableSeeder::class);
-        $this->call(FaltasTarjetaTableSeeder::class);        
+        // $this->call(EnfrentamientoArbitroTableSeeder::class);  // Se comentó para test Mundial FIFA 1
+        // $this->call(TiempoEnfrentamientoTableSeeder::class); // Se comentó para test Mundial FIFA 1
+        // $this->call(EstadisticasTableSeeder::class); // Se comentó para test Mundial FIFA 1
+        // $this->call(TantosTableSeeder::class);  // Se comentó para test Mundial FIFA 1
+        // $this->call(FaltasTableSeeder::class); // Se comentó para test Mundial FIFA 1
+        // $this->call(FaltasTarjetaTableSeeder::class); // Se comentó para test Mundial FIFA 1
         $this->call(FaseTableSeeder::class);        
     }
 

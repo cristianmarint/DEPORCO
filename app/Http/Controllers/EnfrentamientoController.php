@@ -54,7 +54,7 @@ class EnfrentamientoController extends Controller
     public function getEquipos($id){
         $InscripcionEquipos = InscripcionEquipo::select('equipo_id','torneo_id','nombre')
                                                 ->join('equipo','inscripcion_equipo.equipo_id','equipo.id')
-                                                ->orderBy('torneo_id', 'asc')
+                                                ->orderBy('nombre', 'asc')
                                                 ->where('torneo_id','=',$id)
                                                 ->get();
         return response()->json($InscripcionEquipos);
@@ -69,7 +69,7 @@ class EnfrentamientoController extends Controller
     public function getCalendario($id){
         $InscripcionCalendarios = Calendario::select('calendario.id','fecha','jornada','nombre')
                                                 ->join('fase','calendario.fase_id','fase.id')
-                                                ->orderBy('fecha', 'asc')
+                                                ->orderBy('calendario.id', 'asc')
                                                 ->where('torneo_id','=',$id)
                                                 ->get();
         return response()->json($InscripcionCalendarios);
@@ -86,9 +86,9 @@ class EnfrentamientoController extends Controller
         $data = $request->validate([
             'calendario'                     => 'required|integer|not_in:0|exists:calendario,id',
             'equipo_local'                   => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
-            'resultado_local'                => 'required|integer|not_in:0|min:0|max:99',
+            'resultado_local'                => 'required|integer|min:0|max:99',
             'equipo_visitante'               => 'required|integer|not_in:0|exists:inscripcion_equipo,id',
-            'resultado_visitante'            => 'required|integer|not_in:0|min:0|max:99',
+            'resultado_visitante'            => 'required|integer|min:0|max:99',
             'lugar'                          => 'required|integer|not_in:0|exists:lugar,id',
             
         ]);

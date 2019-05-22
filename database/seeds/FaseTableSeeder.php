@@ -28,13 +28,18 @@ class FaseTableSeeder extends Seeder
         ));
 
         Fase::create(array(
-            'nombre' => 'Semifinales',
+            'nombre' => 'Semi-finales',
             'descripcion' => 'Ultimos 4 equipos'
         ));
 
         Fase::create(array(
+            'nombre' => 'Pre-Final',
+            'descripcion' => 'Tercero Y Cuarto Puesto'
+        ));
+
+        Fase::create(array(
             'nombre' => 'Final',
-            'descripcion' => 'Ultimo enfrentamiento'
+            'descripcion' => 'Primero Y Segundo Puesto'
         ));
 
     }

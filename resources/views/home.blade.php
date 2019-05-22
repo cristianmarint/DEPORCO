@@ -8,6 +8,102 @@
     </div>
 @endsection
 
+@section('bracket_futbol')
+    <section class="py-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h6 text-uppercase mb-0">EJEMPLO</h2>
+                </div>
+            <div class="card-body">     
+            <div class="chart-holder mt-5 mb-5">
+                <div class="" id="bracket_origin"></div>
+            </div>            
+        </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h6 text-uppercase mb-0">Bracket De Futbol</h2>
+                </div>
+            <div class="card-body">
+            <p class="mb-5 text-gray">Para el torneo { { Nombre del torno } }</p>          
+            <div class="chart-holder mt-5 mb-5">
+                <div class="" id="bracket_futbol"></div>
+            </div>            
+        </div>
+        </div>
+    </section>
+@endsection
+
+@section('scripts')
+<script>
+    // // ============EJEMPLO=============
+    var minimalData = {
+        teams : [
+            ["Team 1", "Team Z"],
+            ["Team 3", "Team X"],
+            ["Team 4", "Team C"],
+            ["Team 5", "Team V"]
+        ],
+        results: [
+            [
+                [[1, 0], [2, 1], [3, 2], [4, 3]],
+                [[1, 0], [2, 1]],
+                [[2, 0], [0, 3]]
+            ]
+        ]
+    }
+    $(function() {
+        $('#bracket_origin').bracket({
+            init: minimalData 
+            })
+        });
+    console.log("ejemplo===============");
+    console.log(minimalData);
+    console.log("======================");
+
+
+
+
+    var torneoData = { teams: Array(),results: Array( Array()) };
+    $.ajax({
+        url: "/home/torneo_futbol/1",
+        type: 'GET'
+    }).done(function (data) {
+        console.log("data======================");
+        console.log(data);
+        console.log("======================");
+        $.each(data['equiposOctavos'], function(key, item) {
+            torneoData.teams[key]=Object.keys(item).map(function (key) { return Object.values(item[key]); });
+        });
+        $.each(data['resultados'], function(key, item) {
+                // console.log(torneoData);
+                // console.log(key);
+                // console.log(Object.values(data['resultados'][key]));
+                torneoData.results[0][key]=Object.values(data['resultados'][key]);
+        });
+        console.log("TorneoData======================");
+        console.log(torneoData);
+        console.log("======================");
+        $(function() {
+        $('#bracket_futbol').bracket({
+            init: torneoData 
+            })
+        });
+    }).fail( function() {
+        console.log('Error in request');
+    })
+
+
+
+
+
+
+</script>    
+@endsection
+
 @section('cambios')
     {{--messages--}}
     <section class="py-5">
