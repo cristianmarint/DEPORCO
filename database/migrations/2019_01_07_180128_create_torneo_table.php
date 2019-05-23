@@ -17,6 +17,7 @@ class CreateTorneoTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('nombre', 60);
+            $table->smallInteger('cantidad');
             $table->unsignedInteger('temporada_id');
             $table->unsignedInteger('categoria_id');
             $table->unsignedInteger('user_id');

@@ -12,6 +12,7 @@ use App\Models\Instituto;
 use App\Models\Colores;
 use App\Models\InscripcionEquipo;
 use App\Models\InscripcionJugador;
+use App\Models\Jugador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,7 @@ class EquipoController extends Controller
     {
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
         $colores = Colores::orderBy('color', 'asc')->get();
+
         return view('equipo.create', compact('institutos','colores'));
     }
     /**
@@ -103,6 +105,7 @@ class EquipoController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
     /**
      * Display the specified resource.
      *
@@ -111,22 +114,18 @@ class EquipoController extends Controller
      */
     public function show($id)
     {
-        $equipo = Equipo::findOrFail($id);
-        // esta utilñizando el id en la table de equipos mas no en inscripcion equipo.equipo_id
-        // $jugadores = Equipo::where('equipo_id','=',$id)->get();
+        $idtorneo = 1; //el id del torneo llega por el get
+        $equipo = Equipo::findOrFail($id);  //se halla primero el equipo
 
+        $idInscripcionEquipo = InscripcionEquipo::where('torneo_id',$idtorneo) //se selecciona el id de la inscripcion del equipo con respecto al torneo y equipo
+            ->where('equipo_id', $id)
+            ->select('id')
+            ->firstOrFail();
 
-        $jugadores = InscripcionEquipo::where('equipo_id','=',$id)->get();
+        $jugadores = InscripcionJugador::where('inscripcion_equipo_id','=',$idInscripcionEquipo->id)->get(); //una vez obtenido el id de inscripcion se buscan los jugadores
 
-
-        // $jugadores = Equipo::select('primer_nombre','primer_apellido')
-        //                     ->join('inscripcion_equipo','equipo_id',$id)
-        //                     ->join('inscripcion_jugador','inscripcion_jugador.inscripcion_equipo_id','inscripcion_equipo.id')
-        //                     ->join('jugador','jugador.id','inscripcion_equipo.jugador_id')
-        //                     ->join('datos_basicos','datos_basicos.id','jugador.datos_basicos_id')
-        //                     ->get();
-        // dd($jugadores);
         return view('equipo.show', compact('equipo','jugadores'));
+
     }
     /**
      * Show the form for editing the specified resource.

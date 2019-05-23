@@ -59,6 +59,7 @@ class TorneoController extends Controller
     {
         $data = $request->validate([
             'nombre'    => 'required|min:3|max:60',
+            'cantidad' => 'required|integer|not_in:0',
             'categoria' => 'required|integer|not_in:0|exists:categoria,id',
             'temporada' => 'required|integer|not_in:0|exists:temporada,id',
         ]);
@@ -67,6 +68,7 @@ class TorneoController extends Controller
         try{
             $torneo = NEW Torneo();
             $torneo->nombre = $request->input('nombre');
+            $torneo->cantidad = $request->input('cantidad');
             $torneo->categoria_id = $request->input('categoria');
             $torneo->temporada_id = $request->input('temporada');
             $torneo->user_id = Auth::user()->id;
@@ -126,6 +128,7 @@ class TorneoController extends Controller
         $torneo = Torneo::findOrFail($id);
         $data = $request->validate([
             'nombre'    => 'required|min:3|max:60',
+            'cantidad' => 'required|integer|not_in:0',
             'categoria' => 'required|integer|not_in:0|exists:categoria,id',
             'temporada' => 'required|integer|not_in:0|exists:temporada,id',
         ]);
@@ -133,6 +136,7 @@ class TorneoController extends Controller
         DB::beginTransaction();
         try{
             $torneo->nombre = $request->input('nombre');
+            $torneo->cantidad = $request->input('cantidad');
             $torneo->categoria_id = $request->input('categoria');
             $torneo->temporada_id = $request->input('temporada');
             $torneo->save();

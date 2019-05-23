@@ -17,9 +17,6 @@
   campo numero_jornada de la tabla calendario a jornada
 
 
-- Agregar
-  boton remenber me
-
 
 - Configuraciones
   crear departamentos
@@ -28,10 +25,11 @@
   crear criterios
   crear tarjetas
 
+Preguntas
+   1) Id en las rutas
 
-- Corregir
-  agregar columa criterio a torneos
-
-
+Problemas
+   1) Asincrono
+   
 
 

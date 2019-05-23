@@ -90,7 +90,7 @@
                  },
                 function(isConfirm){
                     if (isConfirm) {
-                        swal("Lugar Eliminado!","procesando cambios","success");
+                        swal("Equipo Eliminado!","procesando cambios","success");
 
                         setTimeout(function(){
                             var idfinal="#delete_equipo"+idclick; 

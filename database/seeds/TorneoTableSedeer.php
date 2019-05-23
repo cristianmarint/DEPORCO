@@ -14,6 +14,7 @@ class TorneoTableSedeer extends Seeder
     {
         Torneo::create(array(
             'nombre' => 'Torneo uno',
+            'cantidad' => '10',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id
@@ -21,6 +22,7 @@ class TorneoTableSedeer extends Seeder
 
         Torneo::create(array(
             'nombre' => 'Torneo dos',
+            'cantidad' => '10',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id
@@ -28,6 +30,7 @@ class TorneoTableSedeer extends Seeder
 
         Torneo::create(array(
             'nombre' => 'Torneo Tres',
+            'cantidad' => '10',
             'temporada_id' => \App\Models\Temporada::all()->random()->id,
             'categoria_id' => \App\Models\Categoria::all()->random()->id,
             'user_id' => \App\User::all()->random()->id

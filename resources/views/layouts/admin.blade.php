@@ -182,6 +182,15 @@
                             @yield('cambios')
                     </div>
 
+                    <div class="col-lg-12 mb-4 @yield('additional_car', 'd-none')">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="text-uppercase mb-0 text-center">@yield('additional_title')</h6>
+                            </div>
+                            @yield('additional_content')
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -192,7 +201,7 @@
                                 <p>2017-2019 &copy; <a href="https://github.com/EdwinLopez12"><img src="{{url('/logo_inicial.svg')}}" width="2%" height="auto" style="transform: rotate(90deg);">dwin Lopez</a> & <a href="https://github.com/CristianMarinT">Cristian <img src="{{url('/logo_inicial.svg')}}" width="2%" height="auto" style="transform: rotate(180deg);">arín</a></p>
                             </div>
                             <div class="col-md-6 text-center text-md-right text-gray-400">
-                                <p class="mb-0">Bootstrapious</a></p>
+                                <p class="mb-0">Bootstrapious</p>
                             </div>
                         </div>
                     </div>
@@ -214,7 +223,7 @@
     <script src="{{url('assets/dataTables/jquery.dataTables.min.js')}}"></script>
     <script src="{{url('assets/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
-    {{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>
