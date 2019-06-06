@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="837.237" height="916.509" viewBox="0 0 837.237 916.509">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ee4f42"/>
+      <stop offset="1" stop-color="#a2224e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fb584b"/>
+      <stop offset="1" stop-color="#c42d61"/>
+    </linearGradient>
+    <filter id="Rectángulo_2" x="0" y="0" width="219.964" height="916.072" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-opacity="0.322"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="1.139" y1="0.493" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ee4f42"/>
+      <stop offset="1" stop-color="#ae55e9"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.972" y1="0.5" x2="0" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#48f"/>
+      <stop offset="1" stop-color="#f04bfe"/>
+    </linearGradient>
+    <filter id="Rectángulo_1" x="410.968" y="324.457" width="219.964" height="592.052" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur-2"/>
+      <feFlood flood-opacity="0.322"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="DEPORCO" x="219.237" y="193.15" width="618" height="163" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-3"/>
+      <feFlood flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="logo" transform="translate(-65.52 37.329)">
+    <rect id="Rectángulo_5" data-name="Rectángulo 5" width="435.455" height="124.623" rx="62.311" transform="matrix(0.669, -0.743, 0.743, 0.669, 91.033, 769.315)" fill="url(#linear-gradient)"/>
+    <g transform="matrix(1, 0, 0, 1, 65.52, -37.33)" filter="url(#Rectángulo_2)">
+      <rect id="Rectángulo_2-2" data-name="Rectángulo 2" width="826.072" height="129.964" rx="64.982" transform="translate(45 868.07) rotate(-90)" fill="url(#linear-gradient-2)"/>
+    </g>
+    <rect id="Rectángulo_4" data-name="Rectángulo 4" width="429.059" height="124.623" rx="62.311" transform="translate(575.839 855.874) rotate(-130)" fill="url(#linear-gradient-3)"/>
+    <g transform="matrix(1, 0, 0, 1, 65.52, -37.33)" filter="url(#Rectángulo_1)">
+      <rect id="Rectángulo_1-2" data-name="Rectángulo 1" width="502.052" height="129.964" rx="64.982" transform="translate(455.97 868.51) rotate(-90)" fill="url(#linear-gradient-4)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 65.52, -37.33)" filter="url(#DEPORCO)">
+      <text id="DEPORCO-2" data-name="DEPORCO" transform="translate(234.24 311.15)" fill="#4a85fe" font-size="109" font-family="Montserrat-ExtraBold, Montserrat" font-weight="800"><tspan x="0" y="0">DEPORCO</tspan></text>
+    </g>
+  </g>
+</svg>
