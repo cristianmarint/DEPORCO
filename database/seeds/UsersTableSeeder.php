@@ -41,17 +41,6 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'role_id' => '1',
-            'name' => 'Andres Gaviria',
-            'email' => 'andresgaviria2310@gmail.com',
-            'avatar' => 'https://scontent.feoh3-1.fna.fbcdn.net/v/t1.0-9/56965599_2254403868004519_4069063543922622464_n.jpg?_nc_cat=109&_nc_ht=scontent.feoh3-1.fna&oh=586429e433681660367cb917ee52687c&oe=5D6BFA3D',
-            'password' => bcrypt('123'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-            'email_verified_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('users')->insert([
             'name' => 'Correo Personal Cristian',
             'email' => 'cristianmarint@gmail.com',
             'avatar' => 'storage/img/datosbasicos/default.png',
