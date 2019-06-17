@@ -3,7 +3,7 @@
  * @Author: EdwinLopez12 
  * @Date: 2019-05-15 13:02:03 
  * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-16 22:39:50
+ * @Last Modified time: 2019-06-17 09:43:13
  */ 
  --}}
 <!doctype html>
@@ -11,8 +11,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ config('app.name') }} @yield('title')</title>
-    <meta name="description" content="Gestionador de torneo,futbol,voleibol,ping pong">
+    <title>{{ setting('site.title') }} @yield('title')</title>
+    <meta name="description" content="{{setting('site.description')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
 
@@ -82,7 +82,9 @@
                         </div>
 
                     </li>
-                    <li class="nav-item dropdown ml-auto"><a id="userInfo" href="userinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="@if( isset(Auth::user()->datos_basicos->foto) ){{ Auth::user()->datos_basicos->foto }}@else @if ( Auth::user()->avatar) {{ Auth::user()->avatar}} @else {{ asset('/storage/storage/img/favicon/cotecnova.png') }} @endif @endif" alt="{{Auth::user()->datos_basicos->primer_nombre}}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                    <li class="nav-item dropdown ml-auto">
+                        <a id="userInfo" href="userinfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                        <img src="@if(Auth::user()->datos_basicos->foto ){{ Auth::user()->datos_basicos->foto }} @elseif (Auth::user()->avatar){{ asset(Auth::user()->avatar)}}@else {{ asset('/storage/storage/img/favicon/deporco.png') }}@endif" alt="{{Auth::user()->datos_basicos->primer_nombre}}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                         <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">{{Auth::user()->datos_basicos->primer_nombre}} {{Auth::user()->datos_basicos->primer_apellido}}</strong><small>{{ Auth::user()->role->display_name }}</small></a>
                             <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item">Settings</a>

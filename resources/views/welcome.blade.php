@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{ config('app.name') }}</title>
+  <title>{{ setting('site.title') }}</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -172,7 +172,7 @@
                     <p>
                       Calle 10 Carrera 3 - 4 #8888<br>
                       Cartago, Valle del Cauca<br>
-                      United States <br>
+                      Colombia<br>
                       <strong>Telefono:</strong> 211 11 11<br>
                       <strong>Email:</strong> contacto@deporco.co<br>
                     </p>
