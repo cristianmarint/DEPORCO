@@ -32,14 +32,14 @@
         </div> 
 
         
-        {{-- <div class="form-group row">
+        <div class="form-group row">
             <label for="jugadores" class="form-control-label col-sm-3">Jugadores</label>
             <div class="col-sm-9">
                 @foreach ($jugadores as $jugador)
-                    <input type="text" name="jugador" class="form-control" value="C.C. {{$jugador->inscripcionjugador->jugador->datos_basicos->cedula}} : {{$jugador->inscripcionjugador->jugador->datos_basicos->primer_nombre}} {{$jugador->inscripcionjugador->jugador->datos_basicos->primer_apellido}}" readonly>
+                    <input type="text" name="jugador" class="form-control" value="C.C. {{$jugador->cedula}}  :  {{$jugador->primer_nombre}} {{$jugador->primer_apellido}}" readonly><br>
                 @endforeach 
             </div>
-        </div> --}}
+        </div>
 
 </div>
 @endsection

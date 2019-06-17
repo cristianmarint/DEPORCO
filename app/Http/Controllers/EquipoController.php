@@ -112,20 +112,14 @@ class EquipoController extends Controller
     public function show($id)
     {
         $equipo = Equipo::findOrFail($id);
-        // esta utilñizando el id en la table de equipos mas no en inscripcion equipo.equipo_id
-        // $jugadores = Equipo::where('equipo_id','=',$id)->get();
-
-
-        $jugadores = InscripcionEquipo::where('equipo_id','=',$id)->get();
-
-
-        // $jugadores = Equipo::select('primer_nombre','primer_apellido')
-        //                     ->join('inscripcion_equipo','equipo_id',$id)
-        //                     ->join('inscripcion_jugador','inscripcion_jugador.inscripcion_equipo_id','inscripcion_equipo.id')
-        //                     ->join('jugador','jugador.id','inscripcion_equipo.jugador_id')
-        //                     ->join('datos_basicos','datos_basicos.id','jugador.datos_basicos_id')
-        //                     ->get();
-        // dd($jugadores);
+        $jugadores = Equipo::select('datos_basicos.cedula','datos_basicos.primer_nombre','datos_basicos.primer_apellido')
+                            ->join('inscripcion_equipo','equipo.id','=','inscripcion_equipo.equipo_id')
+                            ->join('inscripcion_jugador','inscripcion_jugador.inscripcion_equipo_id','inscripcion_equipo.id')
+                            
+                            ->join('jugador','jugador.id','inscripcion_jugador.jugador_id')
+                            ->join('datos_basicos','datos_basicos.id','jugador.datos_basicos_id')
+                            ->where('inscripcion_equipo.equipo_id','=',$id)
+                            ->get();
         return view('equipo.show', compact('equipo','jugadores'));
     }
     /**
