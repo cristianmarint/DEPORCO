@@ -4,13 +4,14 @@ use App\Models\DatosBasicos;
 use Faker\Generator as Faker;
 
 $factory->define(DatosBasicos::class, function (Faker $faker) {
-    $proveedores = ['https://loremflickr.com/400/400/face,woman','https://loremflickr.com/400/400/face,man','https://loremflickr.com/400/400/player,man',
-                    'https://loremflickr.com/400/400/player,soccer','https://loremflickr.com/400/400/player,football','https://loremflickr.com/400/400/player,sport',
-                    'https://loremflickr.com/400/400/player,tennis','https://loremflickr.com/400/400/person'
-                   ];
+    // $proveedores = ['https://loremflickr.com/400/400/face,woman','https://loremflickr.com/400/400/face,man','https://loremflickr.com/400/400/player,man',
+    //                 'https://loremflickr.com/400/400/player,soccer','https://loremflickr.com/400/400/player,football','https://loremflickr.com/400/400/player,sport',
+    //                 'https://loremflickr.com/400/400/player,tennis','https://loremflickr.com/400/400/person'
+    //                ];
+    // 'foto'=> $proveedores[array_rand($proveedores)],
     return [
         'cedula' => $faker->unixTime,
-        'foto'=> $proveedores[array_rand($proveedores)],
+        'foto'=> random_pic('public/storage/storage/img/datosbasicos/test'),
         'telefono_id' => factory(App\Models\Telefono::class),
         'primer_nombre' => $faker->firstName,
         'segundo_nombre' => $faker->firstName,
