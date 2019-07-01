@@ -42,7 +42,7 @@ class DatosBasicosTableSeeder extends Seeder
             // 'user_id' => 2
         ));
         
-        // factory(DatosBasicos::class, 100)->create();
+        factory(DatosBasicos::class, 100)->create();
         
     }
 }
