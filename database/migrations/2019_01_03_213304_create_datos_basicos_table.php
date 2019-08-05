@@ -21,6 +21,7 @@ class CreateDatosBasicosTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('cedula', 12);
+            $table->date('fecha_nacimiento')->nullable();
             $table->string('foto', 250)->default('storage/storage/img/datosbasicos/default.png')->nullable();
             $table->unsignedInteger('telefono_id')->nullable(true);
             $table->string('primer_nombre',50);
