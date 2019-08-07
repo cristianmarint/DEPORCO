@@ -16,10 +16,10 @@ class CreateEnfrentamientoTable extends Migration
         Schema::create('enfrentamiento', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('calendario_id');
-            $table->unsignedInteger('inscripcion_equipo_visitante_id');
-            $table->unsignedInteger('inscripcion_equipo_local_id');
-            $table->unsignedInteger('lugar_id');
+            $table->unsignedInteger('calendario_id')->nullable(false);
+            $table->unsignedInteger('inscripcion_equipo_visitante_id')->nullable(false);
+            $table->unsignedInteger('inscripcion_equipo_local_id')->nullable(false);
+            $table->unsignedInteger('lugar_id')->nullable()->default(null);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArbitroTable extends Migration
+class CreateAsistenteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateArbitroTable extends Migration
      */
     public function up()
     {
-        Schema::create('arbitro', function (Blueprint $table) {
-            $table->engine = "InnoDB";
-            $table->increments('id');
+        Schema::create('asistente', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('puesto',50)->nullable(false);
             $table->unsignedInteger('datos_basicos_id')->nullable(false);;
-            $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('datos_basicos_id')->references('id')->on('datos_basicos')
-                ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -35,6 +32,6 @@ class CreateArbitroTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arbitro');
+        Schema::dropIfExists('asistente');
     }
 }

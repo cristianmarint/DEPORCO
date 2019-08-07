@@ -20,23 +20,21 @@ class CreateDatosBasicosTable extends Migration
         Schema::create('datos_basicos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('cedula', 12);
+            $table->string('cedula', 12)->nullable(false);
             $table->date('fecha_nacimiento')->nullable();
             $table->string('foto', 250)->default('storage/storage/img/datosbasicos/default.png')->nullable();
-            $table->unsignedInteger('telefono_id')->nullable(true);
-            $table->string('primer_nombre',50);
-            $table->string('segundo_nombre',50)->nullable(true);
-            $table->string('primer_apellido',50);
-            $table->string('segundo_apellido',50)->nullable(true);
-            $table->unsignedInteger('tipo_sangre_id');
-            $table->unsignedInteger('municipio_id');
-            $table->unsignedInteger('genero_id');
-            $table->unsignedInteger('direccion_id');
-            $table->unsignedInteger('eps_id');
-            $table->string('email')->nullable(true)->unique();
-            //default null ya que en el momento de ejecutar los seeders, 
-            //UsesTableSeeder pide datos basicos, y si se cambia datos basicos pide a users cuando uno o el otra no contienen datos
-            $table->unsignedInteger('user_id')->nullable(true)->default(NULL);
+            $table->unsignedInteger('telefono_id')->nullable()->default(NULL);
+            $table->string('primer_nombre',50)->nullable()->default(NULL);;
+            $table->string('segundo_nombre',50)->nullable()->default(NULL);
+            $table->string('primer_apellido',50)->nullable()->default(NULL);
+            $table->string('segundo_apellido',50)->nullable()->default(NULL);
+            $table->unsignedInteger('tipo_sangre_id')->nullable()->default(NULL);
+            $table->unsignedInteger('municipio_id')->nullable()->default(NULL);
+            $table->unsignedInteger('genero_id')->nullable()->default(NULL);
+            $table->unsignedInteger('direccion_id')->nullable()->default(NULL);
+            $table->unsignedInteger('eps_id')->nullable()->default(NULL);
+            $table->string('email')->nullable()->unique();
+            $table->unsignedInteger('user_id')->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
             

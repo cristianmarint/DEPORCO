@@ -16,7 +16,7 @@ class CreateTipoEducacionTable extends Migration
         Schema::create('tipo_educacion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('tipo', 10);
+            $table->string('tipo', 10)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

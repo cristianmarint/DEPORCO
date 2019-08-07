@@ -16,8 +16,8 @@ class CreateFaseTable extends Migration
         Schema::create('fase', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('nombre', 20);
-            $table->string('descripcion', 60);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
         });

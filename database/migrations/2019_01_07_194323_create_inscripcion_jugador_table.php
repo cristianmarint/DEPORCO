@@ -17,10 +17,14 @@ class CreateInscripcionJugadorTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->boolean('capitan')->default(false);
-            $table->unsignedInteger('jugador_id');
-            $table->unsignedInteger('inscripcion_equipo_id');
-            $table->unsignedInteger('programa_id');
-            $table->unsignedInteger('tipo_jugador_id');
+            $table->char('talla',5)->nullable()->default(null);
+            $table->tinyInteger('peso')->nullable()->default(null);
+            $table->tinyInteger('numero_dorsal')->nullable()->default(null);
+
+            $table->unsignedInteger('jugador_id')->nullable(false);
+            $table->unsignedInteger('inscripcion_equipo_id')->nullable(false);
+            $table->unsignedInteger('programa_id')->nullable()->default(NULL);;
+            $table->unsignedInteger('tipo_jugador_id')->nullable(false);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

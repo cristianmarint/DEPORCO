@@ -16,7 +16,7 @@ class CreateResultadoTable extends Migration
         Schema::create('resultado', function (Blueprint $table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('enfrentamiento_id');
+            $table->unsignedInteger('enfrentamiento_id')->nullable(false);
             $table->smallInteger('resultado_local')->default('0')->nullable(true);
             $table->smallInteger('resultado_visitante')->default('0')->nullable(true);
             $table->softDeletes();

@@ -16,7 +16,7 @@ class CreateGeneroTable extends Migration
         Schema::create('genero', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('genero',10);
+            $table->string('nombre',50)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

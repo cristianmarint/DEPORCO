@@ -16,7 +16,8 @@ class CreateLugarTable extends Migration
         Schema::create('lugar', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->unsignedInteger('municipio_id');
             $table->unsignedInteger('direccion_id');
             $table->unsignedInteger('telefono_id');

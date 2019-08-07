@@ -16,7 +16,8 @@ class CreateTemporadaTable extends Migration
         Schema::create('temporada', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('descripcion', 60);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->softDeletes();

@@ -16,14 +16,14 @@ class CreateInstitutoTable extends Migration
         Schema::create('instituto', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('codigo_dane', 20)->unique();
-            $table->string('nit', 20)->unique();
-            $table->string('nombre', 150);
-            $table->string('logo', 250)->default('storage/storage/img/instituto/default.png');
-            $table->unsignedInteger('municipio_id');
-            $table->unsignedInteger('tipo_educacion_id');
-            $table->unsignedInteger('telefono_id');
-            $table->unsignedInteger('direccion_id');
+            $table->string('codigo_dane', 20)->unique()->nullable(false);
+            $table->string('nit', 20)->unique()->nullable(false);
+            $table->string('nombre', 150)->nullable(false);
+            $table->string('logo', 250)->default('storage/storage/img/instituto/default.png')->nullable();
+            $table->unsignedInteger('municipio_id')->nullable()->default(NULL);
+            $table->unsignedInteger('tipo_educacion_id')->nullable()->default(NULL);
+            $table->unsignedInteger('telefono_id')->nullable()->default(NULL);
+            $table->unsignedInteger('direccion_id')->nullable()->default(NULL);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

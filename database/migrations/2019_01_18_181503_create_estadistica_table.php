@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTantosTable extends Migration
+class CreateEstadisticaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,21 @@ class CreateTantosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tantos', function (Blueprint $table) {
+        Schema::create('estadistica', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
-            $table->unsignedInteger('estadisticas_id');
-            $table->unsignedInteger('tiempo_enfrentamiento_id');
+            $table->unsignedInteger('inscripcion_equipo_id')->nullable(false);
+            $table->unsignedInteger('inscripcion_jugador_id')->nullable(false);
+            $table->unsignedInteger('enfrentamiento_id')->nullable(false);
             $table->unsignedInteger('user_id');
-            $table->time('minuto');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('estadisticas_id')->references('id')->on('estadisticas')
+            $table->foreign('inscripcion_equipo_id')->references('id')->on('inscripcion_equipo')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('tiempo_enfrentamiento_id')->references('id')->on('tiempo_enfrentamiento')
+            $table->foreign('inscripcion_jugador_id')->references('id')->on('inscripcion_jugador')
+                ->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('enfrentamiento_id')->references('id')->on('enfrentamiento')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');
@@ -38,6 +41,6 @@ class CreateTantosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tantos');
+        Schema::dropIfExists('estadistica');
     }
 }

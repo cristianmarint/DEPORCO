@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaltasTarjetaTable extends Migration
+class CreateFaltaTarjetaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateFaltasTarjetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('faltas_tarjeta', function (Blueprint $table) {
+        Schema::create('falta_tarjeta', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('faltas_id');
-            $table->unsignedInteger('tarjetas_id');
+            $table->unsignedInteger('falta_id')->nullable(false);;
+            $table->unsignedInteger('tarjeta_id')->nullable(false);;
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('faltas_id')->references('id')->on('faltas')
+            $table->foreign('falta_id')->references('id')->on('falta')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('tarjetas_id')->references('id')->on('tarjetas')
+            $table->foreign('tarjeta_id')->references('id')->on('tarjeta')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -34,6 +34,6 @@ class CreateFaltasTarjetaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faltas_tarjeta');
+        Schema::dropIfExists('falta_tarjeta');
     }
 }
