@@ -223,7 +223,7 @@
     <script src="{{url('assets/dataTables/jquery.dataTables.min.js')}}"></script>
     <script src="{{url('assets/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    {{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
     <!-- Main File-->
     <script src="{{url('js/front.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>

@@ -73,30 +73,7 @@
         </div>
             
         <div id="jugadores" class="row d-none">
-            <table id="PlayersTable" class="table table-striped table-hover card-text" width="100%">
-                <tbody>
-                    <tr>
-                        <th width="10%">N&uacute;mero de Documento</th>
-                        <th width="10%">Nombre</th>
-                        <th width="10%">Tipo</th>
-                        <th width="10%">Programa</th>
-                        <th width="10%">Capitan</th>
-                        <th width="10%">Acudiente</th>
-                        <th width="10%">Telefono</th>
 
-
-                        {{--<th width="10%">Email</th>--}}
-                        {{--<th width="10%">Semestre</th>--}}
-                        {{--<th width="10%">Cod Programa</th>--}}
-                        {{--<th width="10%">Programa</th>--}}
-                        <th width="10%" align="center">Eliminar</th>
-
-                        <!--<th width="10%">Ejecutada</th> -->
-
-                    </tr>
-
-                </tbody>
-            </table>
         </div>
     
         <div class="form-group row">
@@ -105,7 +82,7 @@
                     <button type="button" id="changes_to_team" onclick="change_to_team()" class="btn btn-success d-none">Editar equipo</button>
                     <button type="button" id="changes_to_players" onclick="change_to_players()" class="btn btn-success">Jugadores</button>
                     <button type="button"  onclick="window.location='{{route('equipos.index')}}'" class="btn btn-secondary">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" id="save" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
 
@@ -120,6 +97,7 @@
         $changes_to_players = $('#changes_to_players');
         $changes_to_team = $('#changes_to_team');
         $add_player = $('#add_player');
+        $button_save = $('#save');
 
         function change_to_team() {
             $equipo.show();
@@ -131,6 +109,7 @@
 
         }
         function change_to_players() {
+            $button_save.addClass('disable');
             $equipo.hide();
             $jugadores.show();
             $jugadores.removeClass('d-none');
@@ -141,56 +120,125 @@
 
         var position = 1;
         function add_form_player() {
-            // console.log("click");
-            NewRow = document.getElementById('PlayersTable').insertRow(-1);
-            NewRow.id = position;
+            $("#jugadores").append(
+                "<fieldset style='margin-bottom: 2%;'>"+
+                "<div class='form-row'>" +
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='document["+position+"]' class='form-control-label col-sm-3' class='document'>Documento</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<input id='document["+position+"]' type='text' name='document["+position+"]' class='form-control BuscarDoc' value='' placeholder='Documento' onBlur='buscar("+position+");'>" +
+                        "</div>" +
+                    "</div>" +
 
-            NewCell = NewRow.insertCell(-1);
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='namePlayer["+position+"]' class='form-control-label col-sm-3'>Nombre</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<input id='namePlayer["+position+"]' type='text' name='namePlayer["+position+"]' class='form-control' value='' placeholder='Nombre' readonly>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
 
-            NewCell.innerHTML = "<td width='10%'><input type='text' size='20' class='form-control SearchDoc doc" + position + "'' name='numberdoc[" + position + "]' id='numberdoc[" + position + "]' data-pos=[" + position + "] autocomplete='off' placeholder='Cedula'></td>";
 
-            NewCell = NewRow.insertCell(-1);
+                "<div class='form-row'>" +
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='typePlayer["+position+"]' class='form-control-label col-sm-3'>Tipo</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<select id='typePlayer["+position+"]' name='typePlayer["+position+"]' class='form-control'>" +
+                                "<option value='0'>Seleccione el tipo</option>" +
+                                     "@foreach($tipo_jugador as $tipoJugador)"+
+                                        "<option value='{{$tipoJugador->id}}'>{{$tipoJugador->cargo}}</option>" +
+                                     "@endforeach" +
+                            "</select>"+
+                        "</div>" +
+                    "</div>" +
 
-            NewCell.innerHTML = "<td width='10%'><input type='text' size='20' class='form-control playerName" + position + "' name='playerName[" + position + "]' id='playerName[" + position + "]' autocomplete='off' style='text-align:center'></td>";
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='programStudent["+position+"]' class='form-control-label col-sm-3' >Programa</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<input id='programStudent["+position+"]' name='programStudent["+position+"]' class='form-control' disabled='' placeholder='Programa'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
 
-            NewCell = NewRow.insertCell(-1);
 
-            NewCell.innerHTML = "<td width='10%'><select class='form-control typePlayer" + position + "'' name='typePlayer[" + position + "]' id='typePlayer[" + position + "]' style='width:100%;'><option value=''>Choose</option></select></td>";
+                "<div class='form-row'>" +
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='attendantName["+position+"]' class='form-control-label col-sm-3'>Nombre Acudiente</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<input id='attendantName["+position+"]' type='text' name='attendantName["+position+"]' class='form-control' value='' placeholder='Nombre Completo'>" +
+                        "</div>" +
+                    "</div>" +
 
-            NewCell = NewRow.insertCell(-1);
+                    "<div class='form-group row col-sm-6'>" +
+                        "<label for='attendantNumber["+position+"]' class='form-control-label col-sm-3'>Numero Acudiente</label>" +
+                        "<div class='col-sm-9'>" +
+                            "<input id='attendantNumber["+position+"]' type='number' name='attendantNumber["+position+"]' class='form-control' value='' placeholder='Telefono'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
 
-            NewCell.innerHTML = "<td width='10%'><select class='form-control programPlayer" + position + "'' name='programPlayer[" + position + "]' id='programPlayer[" + position + "]' style='width:100%;'><option value=''>Choose</option></select></td>";
 
-            NewCell = NewRow.insertCell(-1);
+                "<div class='form-row'>" +
+                   "<div class='form-group row col-sm-6'>" +
+                        "<label class='col-md-3 form-control-label'>¿Es capitan?</label>"+
+                       " <div class='col-md-9'>"+
+                            "<div class='custom-control custom-radio custom-control-inline'>"+
+                                "<input id='radioConfirm["+position+"]' type='radio' name='customRadioInline1' class='custom-control-input' value='1'>"+
+                                "<label for='radioConfirm["+position+"]' class='custom-control-label'>Si</label>"+
+                            "</div>"+
+                        "</div>"+
+                  "</div>" +
 
-            NewCell.innerHTML = "<td width='10%'><select class='form-control captain" + position + "'' name='captain[" + position + "]' id='captain[" + position + "]' style='width:100%;'><option value=''>Choose</option></select></td>";
+                   "<div class='form-group row col-sm-6'>" +
+                     "<button type='button' id='remove' onclick='eliminarUsuarioMod(this)' class='btn btn-danger offset-sm-4'>Eliminar</button>"+
+                    "</div>" +
+                "</div>" +
 
-            NewCell = NewRow.insertCell(-1);
-
-            NewCell.innerHTML = "<td width='10%'><input type='text' size='20' class='form-control est" + position + "' name='estudiante[" + position + "]' id='estudiante[" + position + "]' autocomplete='off' readonly style='text-align:center'></td>";
-
-            NewCell = NewRow.insertCell(-1);
-
-            NewCell.innerHTML = "<td width='10%'><input type='text' size='20' class='form-control est" + position + "' name='estudiante[" + position + "]' id='estudiante[" + position + "]' autocomplete='off' readonly style='text-align:center'></td>";
-
-            NewCell = NewRow.insertCell(-1);
-
-            NewCell.innerHTML = "<td align='center'><input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminarUsuarioMod(this)'></td>";
-
+                "</fieldset>"
+            );
             position++;
-
         }
+
+        // $("body").on("click", "#remove", function (e) {
+        //     $(this).parent("div").remove();
+        // });
 
         function eliminarUsuarioMod(obj) {
             var oTr = obj;
-            while(oTr.nodeName.toLowerCase() != 'tr') {
+            while(oTr.nodeName.toLowerCase() != 'fieldset') {
                 oTr=oTr.parentNode;
             }
             var root = oTr.parentNode;
             root.removeChild(oTr);
         }
 
+        // $(document).on("keypress",".BuscarDoc",function(event) {
+        //     var keycode = (event.keyCode ? event.keyCode : event.which);
+        //     if(keycode == '13'){
+        //
+        //     }
+        // });
+
+        function buscar(position) {
+            console.log('buscando ' + position);
+
+            var doc = $('#document\\['+position+'\\]').val();
+            console.log(doc);
+
+
+            $.ajax({
+                url: "/equipos/jugadores/"+doc,
+                type: 'GET'
+            }).done(function (data) {
+                $.each(data, function(key, item) {
+                   console.log(item);
+                    $('#namePlayer\\['+position+'\\]').val("Funciona");
+                    // $('#namePlayer\\['+position+'\\]').val(item.primer_nombre);
+                });
+            }).fail( function() {
+                console.log('Error');
+                $('#namePlayer\\['+position+'\\]').val("Error de busqueda");
+            });
+        }
     </script>
 @endsection
-
-

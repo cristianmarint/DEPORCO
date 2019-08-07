@@ -33,6 +33,9 @@ Route::group(['middleware'=>'auth'], function() {
     Route::resource('/equipos', 'EquipoController');
     Route::get('/equipos/{id}', 'EquipoController@getEquipo');
 
+    //Route for search people
+    Route::get('/equipos/jugadores/{id}', 'EquipoController@getPerson');
+
     // Routes equipos
     Route::resource('/lugares', 'LugarController');
     Route::get('/lugares/{id}', 'LugarController@getLugar');

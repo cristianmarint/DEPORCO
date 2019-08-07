@@ -13,6 +13,7 @@ use App\Models\Colores;
 use App\Models\InscripcionEquipo;
 use App\Models\InscripcionJugador;
 use App\Models\Jugador;
+use App\Models\TipoJugador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,8 +38,9 @@ class EquipoController extends Controller
     {
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
         $colores = Colores::orderBy('color', 'asc')->get();
+        $tipo_jugador = TipoJugador::orderBy('cargo','asc')->get();
 
-        return view('equipo.create', compact('institutos','colores'));
+        return view('equipo.create', compact('institutos','colores', 'tipo_jugador'));
     }
     /**
      * Display the specified resource .
@@ -58,6 +60,18 @@ class EquipoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function getPerson($id){
+        $DatosBasicos = DatosBasicos::all();
+        return response()->json($DatosBasicos);
+    }
+    /**
+     * Search a informaction from Datos Basicos table.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return json response
+     */
+
     public function store(Request $request)
     {
         $data = $request->validate([
