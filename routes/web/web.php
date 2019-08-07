@@ -17,7 +17,8 @@
 |
 */
 Auth::routes(['verify' => true]);
-
+Auth::routes(['register' => false]);
+Route::redirect('/login', '/admin/login');
 
 // DEPORCO
 Route::get('/',       'DeporcoController@welcome')->name('deporco.welcome');
@@ -29,7 +30,6 @@ Route::get('/terms',  'DeporcoController@terms')  ->name('deporco.terms');
 // Social login routes ...
 Route::group(
     ['prefix' => 'oauth', 'as' => 'oauth.', 'middleware' => ['guest', 'throttle']], function () {
-
         Route::get('/{provider}', 'Auth\SocialiteController@redirectToProvider')->name('login')->where('provider', 'google|github');
         Route::get('/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback')->where('provider', 'google|github');
 }); 

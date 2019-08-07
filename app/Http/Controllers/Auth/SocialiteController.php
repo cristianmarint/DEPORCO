@@ -132,7 +132,7 @@ class SocialiteController extends Controller
     protected function redirectTo()
     {
         if(\Auth::user()->hasRole('user') || \Auth::user()->hasRole('admin')){
-            return '/home';
+            return '/admin';
         }
     }
 }
