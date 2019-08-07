@@ -18,11 +18,11 @@ class Arbitro extends Model
         'user_id'
     ];
 
-    protected function datos_basicos(){
-        return $this->belongsTo(DatosBasicos::class);
+    protected function EnfrentamientoArbitro(){
+        return $this->hasOne(EnfrentamientoArbitro::class);
     }
 
-    protected function enfretamiento_arbitro(){
-        return $this->hasOne(EnfrentamientoArbitro::class);
+    protected function DatosBasicos(){
+        return $this->belongsTo(DatosBasicos::class);
     }
 }

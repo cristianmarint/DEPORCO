@@ -5,9 +5,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FaltasTarjeta extends Model
+class Estadistica extends Model
 {
-    protected $table = "faltas_tarjeta";
+    protected $table = "estadistica";
 
     protected $fillable = [];
 }
