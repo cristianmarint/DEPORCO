@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTantoTable extends Migration
+class CreateAnotacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTantoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tanto', function (Blueprint $table) {
+        Schema::create('anotacion', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('estadistica_id')->nullable(false);
             $table->unsignedInteger('tiempo_enfrentamiento_id')->nullable(false);
             $table->unsignedInteger('user_id');
-            $table->time('minuto')->nullable(false);;
+            $table->time('minuto')->nullable(false);
+            $table->tinyInteger('anotacion')->default('1')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
@@ -38,6 +39,6 @@ class CreateTantoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tanto');
+        Schema::dropIfExists('anotacion');
     }
 }

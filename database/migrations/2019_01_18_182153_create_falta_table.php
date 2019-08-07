@@ -16,8 +16,8 @@ class CreateFaltaTable extends Migration
         Schema::create('falta', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('estadistica_id')->nullable(false);;
-            $table->smallInteger('total')->nullable(false);;
+            $table->unsignedInteger('estadistica_id')->nullable(false);
+            $table->time('minuto')->nullable(false);
             $table->softDeletes();
             $table->timestamps();
 
