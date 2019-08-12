@@ -18,7 +18,7 @@ class CreateInstitutoTable extends Migration
             $table->increments('id');
             $table->string('codigo_dane', 20)->unique()->nullable(false);
             $table->string('nit', 20)->unique()->nullable(false);
-            $table->string('nombre', 150)->nullable(false);
+            $table->string('nombre', 100)->nullable(false);
             $table->string('logo', 250)->default('storage/storage/img/instituto/default.png')->nullable();
             $table->unsignedInteger('municipio_id')->nullable()->default(NULL);
             $table->unsignedInteger('tipo_educacion_id')->nullable()->default(NULL);

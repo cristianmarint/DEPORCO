@@ -16,7 +16,7 @@ class Equipo extends model
       'nombre',
       'logo',
       'instituto_id',
-      'colores_id',
+      'color_id',
       'user_id'
     ];
 
@@ -28,8 +28,8 @@ class Equipo extends model
       return $this->belongsTo(Instituto::class);
     }
 
-    public function colores(){
-      return $this->belongsTo(Colores::class);
+    public function color(){
+      return $this->belongsTo(Color::class);
     }
 
     public function inscripcionequipo(){
