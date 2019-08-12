@@ -13,7 +13,7 @@ class Color extends Model
     protected $table = "color";
 
     protected $fillable = [
-      'color'
+      'nombre'
     ];
 
     protected function equipo(){
