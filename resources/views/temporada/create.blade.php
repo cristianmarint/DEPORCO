@@ -19,18 +19,6 @@
         @csrf
         
         <div class="form-group row">
-            <label for="create_nombre" class="form-control-label col-sm-3">Nombre </label>
-            <div class="col-sm-9">
-                <input id="create_nombre" type="text" name="nombre" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" value="{{old('nombre')}}" placeholder="Nombre la temporada">
-                @if ($errors->has('nombre'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('nombre') }}</strong>
-                </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group row">
             <label for="create_descripcion" class="form-control-label col-sm-3">Descripcion </label>
             <div class="col-sm-9">
                 <input id="create_descripcion" type="text" name="descripcion" class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" value="{{old('descripcion')}}" placeholder="Describa la temporada">

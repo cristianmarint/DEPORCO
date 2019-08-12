@@ -53,8 +53,7 @@ class TemporadaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nombre' => 'required|min:3|max:100|not_in:0|unique:temporada,nombre',
-            'descripcion' => '',
+            'descripcion' => 'required|min:3|max:60|not_in:0|unique:temporada,descripcion',
             'fecha_inicio' => 'required|date',
             'fecha_fin'    => 'required|date',
         ]);
@@ -118,8 +117,7 @@ class TemporadaController extends Controller
     {
         $temporada = Temporada::findOrFail($id);
         $data = $request->validate([
-            'nombre' => 'required|min:3|max:100|not_in:0|unique:temporada,nombre',
-            'descripcion' => '',
+            'descripcion' => 'required|min:3|max:60|not_in:0|unique:temporada,descripcion,'.$id,
             'fecha_inicio' => 'required|date',
             'fecha_fin'    => 'required|date',
         ]);

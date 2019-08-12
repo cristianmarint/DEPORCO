@@ -13,18 +13,15 @@ class CategoriaTableSeeder extends Seeder
     public function run()
     {
         Categoria::create(array(
-           'nombre' => 'Futbol-5',
-           'descripcion' => 'Descripcion de Futbol-5'
+           'descripcion' => 'Futbol-5'
         ));
 
         Categoria::create(array(
-            'nombre' => 'Futbol-8',
-            'descripcion' => 'Descripcion de Futbol-8'
+            'descripcion' => 'Futbol-8'
         ));
 
         Categoria::create(array(
-            'nombre' => 'Futbol-11',
-            'descripcion' => 'Descripcion de Futbol-11'
+            'descripcion' => 'Futbol-11'
         ));
     }
 }

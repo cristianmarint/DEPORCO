@@ -13,17 +13,17 @@ class ProgramaTableSeeder extends Seeder
     public function run()
     {
         Programa::create(array(
-            'nombre' => 'Ingenieria en Sistemas',
+            'programa' => 'Ingenieria en Sistemas',
             'descripcion' => 'Ingeniera'
         ));
 
         Programa::create(array(
-            'nombre' => 'Contabilidad',
+            'programa' => 'Contabilidad',
             'descripcion' => 'Profesional'
         ));
 
         Programa::create(array(
-            'nombre' => 'Turismo',
+            'programa' => 'Turismo',
             'descripcion' => 'Profesional'
         ));
     }

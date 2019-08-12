@@ -37,17 +37,17 @@
         </div>
 
         <div class="form-group row">
-                <label for="create_color" class="col-sm-3 form-control-label">Color de uniforme</label>
+                <label for="create_colores" class="col-sm-3 form-control-label">Color de uniforme</label>
                 <div class="col-sm-9">
-                    <select name="color" id="create_color" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}">
+                    <select name="colores" id="create_colores" class="form-control{{ $errors->has('colores') ? ' is-invalid' : '' }}">
                         <option value="0" >Seleccione un color</option>
                         @foreach($colores as $colors)
-                            <option value="{{$colors->id}}">{{$colors->nombre}}</option>
+                            <option value="{{$colors->id}}">{{$colors->color}}</option>
                         @endforeach
                     </select>
-                    @if ($errors->has('color'))
+                    @if ($errors->has('colores'))
                         <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('color') }}</strong>
+                                <strong>{{ $errors->first('colores') }}</strong>
                             </span>
                     @endif
                 </div>

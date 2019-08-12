@@ -18,9 +18,9 @@
         </div>
         
         <div class="form-group row">
-            <label for="color" class="col-sm-3 form-control-label">color</label>
+            <label for="colores" class="col-sm-3 form-control-label">Colores</label>
             <div class="col-sm-9">
-                <input id="color" type="text" name="color" class="form-control" value="{{$equipo->color->nombre}}" readonly>
+                <input id="colores" type="text" name="colores" class="form-control" value="{{$equipo->colores->color}}" readonly>
             </div>
         </div>
 

@@ -20,7 +20,7 @@ class CreateEquipoTable extends Migration
         Schema::create('equipo', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('nombre', 100)->nullable(false);
+            $table->string('nombre', 60)->nullable(false);
             $table->string('logo',150)->default('storage/storage/img/equipo/default.png')->nullable();
             $table->unsignedInteger('instituto_id')->nullable()->default(NULL);
             $table->unsignedInteger('color_id')->nullable()->default(NULL);

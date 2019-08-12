@@ -21,22 +21,10 @@
                     @csrf
                         
                     <div class="form-group row">
-                        <label for="edit_nombre" class="form-control-label col-sm-3">Nombre</label>
-                        <div class="col-sm-9">
-                            <input id="edit_nombre" type="text" name="nombre" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" value="{{$categoria->nombre}}">
-                            @if ($errors->has('nombre'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('nombre') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="edit_descripcion" class="form-control-label col-sm-3">Descripción</label>
+                        <label for="edit_descripcion" class="form-control-label col-sm-3">Descipción</label>
                         <div class="col-sm-9">
                             <input id="edit_descripcion" type="text" name="descripcion" class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" value="{{$categoria->descripcion}}">
-                            @if ($errors->has('descripcion'))
+                            @if ($errors->has('primer_nombre'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('descripcion') }}</strong>
                                 </span>

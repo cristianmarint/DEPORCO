@@ -9,7 +9,7 @@ namespace App\Http\Controllers;
 use App\Models\Equipo;
 use App\Models\Direccion;
 use App\Models\Instituto;
-use App\Models\Color;
+use App\Models\Colores;
 use App\Models\InscripcionEquipo;
 use App\Models\InscripcionJugador;
 use Illuminate\Http\Request;
@@ -35,7 +35,7 @@ class EquipoController extends Controller
     public function create()
     {
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        $colores = Color::orderBy('nombre', 'asc')->get();
+        $colores = Colores::orderBy('color', 'asc')->get();
         return view('equipo.create', compact('institutos','colores'));
     }
     /**
@@ -62,7 +62,7 @@ class EquipoController extends Controller
             'nombre' => 'required|min:3|max:60',
             'logo'   => 'image',
             'instituto' => 'required|integer|not_in:0|exists:instituto,id',
-            'color' => 'required|integer|not_in:0|exists:color,id'
+            'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
         DB::beginTransaction();
         try{
@@ -81,7 +81,7 @@ class EquipoController extends Controller
                 $equipo->nombre = $request->input('nombre');
                 $equipo->logo = $nombreImg;
                 $equipo->instituto_id = $request->input('instituto');
-                $equipo->color_id = $request->input('color');
+                $equipo->colores_id = $request->input('colores');
                 $equipo->user_id = Auth::user()->id;
             $equipo->save();
         } catch (\exception $e){
@@ -132,7 +132,7 @@ class EquipoController extends Controller
     {
         $equipo = Equipo::findOrFail($id);
         $institutos = Instituto::orderBy('nombre', 'asc')->get();
-        $colores = Color::orderBy('nombre', 'asc')->get();
+        $colores = Colores::orderBy('color', 'asc')->get();
         return view('equipo.edit',compact('equipo','institutos','colores'));
         
     }
@@ -150,7 +150,7 @@ class EquipoController extends Controller
             'nombre' => 'required|min:3|max:60',
             'logo'   => 'image',
             'instituto' => 'required|integer|not_in:0|exists:instituto,id',
-            'color' => 'required|integer|not_in:0|exists:color,id'
+            'colores' => 'required|integer|not_in:0|exists:colores,id'
         ]);
         DB::beginTransaction();
         try{
@@ -173,7 +173,7 @@ class EquipoController extends Controller
             $equipo->nombre = $request->input('nombre');
             $equipo->logo = $nombreImg;
             $equipo->instituto_id = $request->input('instituto');
-            $equipo->color_id = $request->input('color');
+            $equipo->colores_id = $request->input('colores');
             $equipo->user_id = Auth::user()->id;
             $equipo->save();
             $success = true;

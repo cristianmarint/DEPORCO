@@ -13,13 +13,11 @@ class CriterioTableSeeder extends Seeder
     public function run()
     {
         Criterio::create(array(
-           'nombre' => 'Puntos por victoria',
-           'descripcion' => 'Otorga Puntos por victoria'
+           'descripcion' => 'Puntos victoria'
         ));
 
         Criterio::create(array(
-            'nombre' => 'Juego limpio',
-            'descripcion' => 'Valora el Juego limpio'
+            'descripcion' => 'Juego limpio'
         ));
     }
 }
