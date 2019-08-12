@@ -22,6 +22,7 @@
     <table id="temporadas" class="table table-striped table-hover card-text" style="text-align: center;">
         <thead >
             <tr>
+                <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Fecha de inicio</th>
                 <th>Fecha de fin</th>
@@ -33,6 +34,7 @@
         
             @foreach($temporadas as $temporada)
                 <tr>
+                    <td>{{ $temporada->nombre }}</td>
                     <td>{{ $temporada->descripcion }}</td>
                     <td>{{ $temporada->fecha_inicio }}</td>
                     <td>{{ $temporada->fecha_fin }}</td>

@@ -53,12 +53,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'descripcion' => 'required|min:3|max:60|not_in:0|unique:categoria,descripcion',
+            'nombre' => 'required|min:3|max:100|not_in:0|unique:categoria,nombre',
+            'descripcion' => '',
         ]);
 
         DB::beginTransaction();
         try{
             $categoria = NEW Categoria();
+            $categoria->nombre = $request->input('nombre');
             $categoria->descripcion = $request->input('descripcion');
             $categoria->save();
             $success = true;
@@ -113,11 +115,13 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::findOrFail($id);
         $data = $request->validate([
-            'descripcion' => 'required|min:3|max:60|not_in:0|unique:categoria,descripcion',
+            'nombre' => 'required|min:3|max:100|not_in:0|unique:categoria,nombre',
+            'descripcion' => '',
         ]);
 
         DB::beginTransaction();
         try{
+            $categoria->nombre = $request->input('nombre');
             $categoria->descripcion = $request->input('descripcion');
             $categoria->save();
             $success = true;
