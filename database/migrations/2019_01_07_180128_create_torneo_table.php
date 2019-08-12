@@ -16,7 +16,9 @@ class CreateTorneoTable extends Migration
         Schema::create('torneo', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('nombre', 60);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
+            $table->decimal('costo_inscripcion', 8, 2)->default(0)->nullable();
             $table->unsignedInteger('temporada_id');
             $table->unsignedInteger('categoria_id');
             $table->unsignedInteger('user_id');

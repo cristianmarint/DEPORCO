@@ -16,8 +16,8 @@ class CreateArbitroPuestoTable extends Migration
         Schema::create('arbitro_puesto', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('puesto', 50);
-            $table->string('descripcion', 60);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

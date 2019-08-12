@@ -16,10 +16,10 @@ class CreateEpsTable extends Migration
         Schema::create('eps', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nit', 12);
-            $table->string('nombre', 60);
-            $table->string('administradora',100);
-            $table->enum('tipo', ['ARL', 'AFP', 'EPS', 'PARAFISCAL']);
+            $table->string('nit', 12)->unique()->nullable(false);
+            $table->string('nombre', 60)->unique()->nullable(false);
+            $table->string('administradora',100)->nullable()->default(NULL);
+            $table->string('tipo',10)->nullable(false);
             $table->string('codigo', 10);
             $table->softDeletes();
             $table->timestamps();

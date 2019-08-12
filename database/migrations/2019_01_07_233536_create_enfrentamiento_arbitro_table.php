@@ -16,9 +16,9 @@ class CreateEnfrentamientoArbitroTable extends Migration
         Schema::create('enfrentamiento_arbitro', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('arbitro_id');
-            $table->unsignedInteger('arbitro_puesto_id');
-            $table->unsignedInteger('enfrentamiento_id');
+            $table->unsignedInteger('arbitro_id')->nullable(false);
+            $table->unsignedInteger('arbitro_puesto_id')->nullable(false);
+            $table->unsignedInteger('enfrentamiento_id')->nullable(false);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

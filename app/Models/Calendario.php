@@ -22,20 +22,19 @@ class Calendario extends Model
         'user_id'
     ];
 
-
-    protected function user(){
-        return $this->hasOne(User::class);
+    public function enfrentamiento(){
+        return $this->hasMany('Enfrentamiento');
     }
 
-    public function enfrentamiento(){
-        return $this->hasOne(Enfrentamiento::class);
+    protected function user(){
+        return $this->belongsTo(User::class);
     }
     
     protected function torneo(){
-        return $this->belongsTo(Torneo::class);
+        return $this->belongsTo('Torneo');
     }
     
     protected function fase(){
-        return $this->belongsTo(Fase::class);
+        return $this->belongsTo('Fase');
     }    
 }

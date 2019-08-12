@@ -16,8 +16,8 @@ class CreateProgramaTable extends Migration
         Schema::create('programa', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('programa', 60);
-            $table->string('descripcion', 100);
+            $table->string('nombre', 50)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
         });
