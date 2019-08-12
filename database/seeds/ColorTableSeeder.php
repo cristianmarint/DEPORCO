@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Colores;
+use App\Models\Color;
 use Illuminate\Database\Seeder;
 
-class ColoresTableSeeder extends Seeder
+class ColorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ColoresTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Colores::class, 50)->create();
+        factory(Color::class, 50)->create();
     }
 }

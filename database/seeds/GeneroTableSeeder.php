@@ -13,15 +13,15 @@ class GeneroTableSeeder extends Seeder
     public function run()
     {
         Genero::create(array(
-            'genero' => 'Masculino'
+            'nombre' => 'Masculino'
         ));
 
         Genero::create(array(
-            'genero' => 'Femenino'
+            'nombre' => 'Femenino'
         ));
 
         Genero::create(array(
-            'genero' => 'Indefinido'
+            'nombre' => 'Indefinido'
         ));
     }
 }

@@ -22,6 +22,7 @@
     <table id="categorias" class="table table-striped table-hover card-text" style="text-align: center;">
         <thead>
             <tr>
+                <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
@@ -31,6 +32,7 @@
         
             @foreach($categorias as $categoria)
                 <tr>
+                    <td>{{ $categoria->nombre }}</td>
                     <td>{{ $categoria->descripcion }}</td>
                     <td>
                         <div class="btn-group" role="group">

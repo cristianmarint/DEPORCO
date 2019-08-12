@@ -16,7 +16,7 @@ class CreateColorTable extends Migration
         Schema::create('color', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('color', 60)->nullable(false);
+            $table->string('nombre', 100)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });
