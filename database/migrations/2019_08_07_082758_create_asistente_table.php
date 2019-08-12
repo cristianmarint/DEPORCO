@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaltasTable extends Migration
+class CreateAsistenteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateFaltasTable extends Migration
      */
     public function up()
     {
-        Schema::create('faltas', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->unsignedInteger('estadisticas_id');
-            $table->smallInteger('total');
+        Schema::create('asistente', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('puesto',100)->nullable(false);
+            $table->unsignedInteger('datos_basicos_id')->nullable(false);;
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('estadisticas_id')->references('id')->on('estadisticas')
+            $table->foreign('datos_basicos_id')->references('id')->on('datos_basicos')
                 ->onUpdate('cascade')->onDelete('restrict');
         });
     }
@@ -33,6 +32,6 @@ class CreateFaltasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faltas');
+        Schema::dropIfExists('asistente');
     }
 }

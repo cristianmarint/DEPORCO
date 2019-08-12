@@ -5,11 +5,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TarjetasCategoria extends Model
+class Tarjeta extends Model
 {
-    protected $table = "tarjetas_categoria";
+    protected $table = "tarjeta";
 
     protected $fillable = [
-
+        'nombre',
+        'descripcion'
     ];
 }

@@ -16,10 +16,10 @@ class CreateCalendarioTable extends Migration
         Schema::create('calendario', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->smallInteger('jornada');
-            $table->date('fecha');
-            $table->unsignedInteger('torneo_id');
-            $table->unsignedInteger('fase_id');
+            $table->smallInteger('jornada')->nullable(false);
+            $table->date('fecha')->nullable(false);
+            $table->unsignedInteger('torneo_id')->nullable(false);
+            $table->unsignedInteger('fase_id')->nullable(false);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

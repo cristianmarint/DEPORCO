@@ -16,7 +16,7 @@ class CreateTipoJugadorTable extends Migration
         Schema::create('tipo_jugador', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('cargo', 30);
+            $table->string('cargo', 50)->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });

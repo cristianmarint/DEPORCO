@@ -16,9 +16,9 @@ class CreateInscripcionEquipoTable extends Migration
         Schema::create('inscripcion_equipo', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->unsignedInteger('equipo_id');
-            $table->unsignedInteger('torneo_id');
-            $table->smallInteger('puntos')->default(0);
+            $table->unsignedInteger('equipo_id')->nullable(false);
+            $table->unsignedInteger('torneo_id')->nullable(false);
+            $table->smallInteger('puntos')->nullable()->default(0);
             $table->softDeletes();
             $table->timestamps();
 

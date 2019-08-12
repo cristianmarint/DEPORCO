@@ -14,10 +14,15 @@ class Categoria extends Model
     protected $table = "categoria";
 
     protected $fillable = [
+        'nombre',
         'descripcion'
     ];
 
+    public function TarjetaCategoria(){
+        return $this->hasMany('TarjetaCategoria');
+    }
+
     public function torneo(){
-        return $this->hasMany(Torneo::class);
+        return $this->hasMany('Torneo');
     }
 }

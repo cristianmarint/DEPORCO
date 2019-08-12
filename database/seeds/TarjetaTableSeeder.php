@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Tarjetas;
+use App\Models\Tarjeta;
 use Illuminate\Database\Seeder;
 
-class TarjetasTableSeeder extends Seeder
+class TarjetaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,17 +12,17 @@ class TarjetasTableSeeder extends Seeder
      */
     public function run()
     {
-        Tarjetas::create(array(
+        Tarjeta::create(array(
             'nombre' => 'Amarilla',
             'descripcion' => 'Tarjeta Amarilla'
         ));
 
-        Tarjetas::create(array(
+        Tarjeta::create(array(
             'nombre' => 'Roja',
             'descripcion' => 'Tarjeta Roja'
         ));
 
-        Tarjetas::create(array(
+        Tarjeta::create(array(
             'nombre' => 'Azul',
             'descripcion' => 'Tarjeta Azul'
         ));

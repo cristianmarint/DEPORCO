@@ -4,15 +4,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArbitroPuesto extends Model
 {
+    use SoftDeletes;
+
     protected $table = "arbitro_puesto";
 
-
     protected $fillable = [
-        'puesto',
+        'nombre',
         'descripcion',
-        'user_id'
     ];
+
+    public function EnfrentamientoArbitro()
+    {
+        return $this->hasOne('EnfrentamientoArbitro');
+    }
 }

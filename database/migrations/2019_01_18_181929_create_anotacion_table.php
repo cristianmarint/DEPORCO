@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstadisticasTable extends Migration
+class CreateAnotacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreateEstadisticasTable extends Migration
      */
     public function up()
     {
-        Schema::create('estadisticas', function (Blueprint $table) {
-            $table->engine = "InnoDB";
+        Schema::create('anotacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('inscripcion_equipo_id');
-            $table->unsignedInteger('inscripcion_jugador_id');
-            $table->unsignedInteger('enfrentamiento_id');
+            $table->unsignedInteger('estadistica_id')->nullable(false);
+            $table->unsignedInteger('tiempo_enfrentamiento_id')->nullable(false);
             $table->unsignedInteger('user_id');
+            $table->time('minuto')->nullable(false);
+            $table->tinyInteger('anotacion')->default('1')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('inscripcion_equipo_id')->references('id')->on('inscripcion_equipo')
+            $table->foreign('estadistica_id')->references('id')->on('estadistica')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('inscripcion_jugador_id')->references('id')->on('inscripcion_jugador')
-                ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('enfrentamiento_id')->references('id')->on('enfrentamiento')
+            $table->foreign('tiempo_enfrentamiento_id')->references('id')->on('tiempo_enfrentamiento')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');
@@ -41,6 +39,6 @@ class CreateEstadisticasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estadisticas');
+        Schema::dropIfExists('anotacion');
     }
 }

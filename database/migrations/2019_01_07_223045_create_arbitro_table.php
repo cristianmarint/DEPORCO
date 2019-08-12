@@ -16,7 +16,7 @@ class CreateArbitroTable extends Migration
         Schema::create('arbitro', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->unsignedInteger('datos_basicos_id');
+            $table->unsignedInteger('datos_basicos_id')->nullable(false);;
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

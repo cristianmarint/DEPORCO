@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTarjetasCategoriaTable extends Migration
+class CreateTarjetaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTarjetasCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarjetas_categoria', function (Blueprint $table) {
+        Schema::create('tarjeta', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
-            $table->unsignedInteger('tarjeta_id');
-            $table->unsignedInteger('categoria_id');
+            $table->string('nombre', 100)->nullable(false);
+            $table->text('descripcion')->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class CreateTarjetasCategoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarjetas_categoria');
+        Schema::dropIfExists('tarjetas');
     }
 }

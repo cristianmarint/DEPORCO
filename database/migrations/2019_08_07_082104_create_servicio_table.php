@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFaseTable extends Migration
+class CreateServicioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFaseTable extends Migration
      */
     public function up()
     {
-        Schema::create('fase', function (Blueprint $table) {
-            $table->engine = "InnoDB";
-            $table->increments('id');
+        Schema::create('servicio', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nombre', 100)->nullable(false);
             $table->text('descripcion')->nullable()->default(NULL);
+            $table->decimal('precio', 8, 2)->default(0)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateFaseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fase');
+        Schema::dropIfExists('servicio');
     }
 }

@@ -16,9 +16,9 @@ class CreateJugadorTable extends Migration
         Schema::create('jugador', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('nombre_acudiente', 100);
-            $table->unsignedInteger('datos_basicos_id');
-            $table->unsignedInteger('telefono_acudiente_id');
+            $table->string('nombre_acudiente', 100)->nullable(false);
+            $table->unsignedInteger('datos_basicos_id')->nullable(false);;
+            $table->unsignedInteger('telefono_acudiente_id')->nullable()->default(NULL);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

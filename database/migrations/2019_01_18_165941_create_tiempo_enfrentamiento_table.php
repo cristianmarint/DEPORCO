@@ -16,7 +16,8 @@ class CreateTiempoEnfrentamientoTable extends Migration
         Schema::create('tiempo_enfrentamiento', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('tiempo', 30);
+            $table->string('nombre', 100)->nullable(false);
+            $table->string('descripcion', 1000)->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -6,17 +6,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Colores extends Model
+class Color extends Model
 {
     use SoftDeletes;
 
-    protected $table = "colores";
+    protected $table = "color";
 
     protected $fillable = [
-      'color'
+      'nombre'
     ];
 
     protected function equipo(){
-      return $this->hasOne(Equipo::class);
+      return $this->hasOne('Equipo');
   }
 }

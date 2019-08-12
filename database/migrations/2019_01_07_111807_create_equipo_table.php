@@ -20,16 +20,16 @@ class CreateEquipoTable extends Migration
         Schema::create('equipo', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('nombre', 60);
-            $table->string('logo',150)->default('storage/storage/img/equipo/default.png');
-            $table->unsignedInteger('instituto_id');
-            $table->unsignedInteger('colores_id');
-            $table->unsignedInteger('user_id');
+            $table->string('nombre', 100)->nullable(false);
+            $table->string('logo',150)->default('storage/storage/img/equipo/default.png')->nullable();
+            $table->unsignedInteger('instituto_id')->nullable()->default(NULL);
+            $table->unsignedInteger('color_id')->nullable()->default(NULL);
+            $table->unsignedInteger('user_id')->nullable()->default(NULL);
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('instituto_id')->references('id')->on('instituto')
                 ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('colores_id')->references('id')->on('colores')
+            $table->foreign('color_id')->references('id')->on('color')
                 ->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('restrict');
