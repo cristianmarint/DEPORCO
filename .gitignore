@@ -2,6 +2,7 @@
 /public/hot
 /storage/*.key
 /storage/.deporco-migrated
+__pycache__/
 /storage/debugbar
 /vendor
 /.idea
