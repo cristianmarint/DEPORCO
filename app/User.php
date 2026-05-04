@@ -8,8 +8,8 @@
 
 namespace App;
 
-use App\Models\DatosBasicos;
-use App\Models\Roles;
+use App\Models\Profile;
+use App\Models\Role;
 
 use App\Notifications\resetPasswordNotification;
 use App\Notifications\sendEmailVerificationNotification;
@@ -66,11 +66,11 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 
    
     public function datos_basicos(){
-        return $this->belongsTo(DatosBasicos::class);
+        return $this->belongsTo(Profile::class);
     }
 
     public function roles(){
-        return $this->belongsTo(Roles::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function socialAccounts()

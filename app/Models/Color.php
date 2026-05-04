@@ -17,6 +17,6 @@ class Color extends Model
     ];
 
     public function equipo(){
-      return $this->hasOne(Equipo::class);
+      return $this->hasOne(Team::class);
   }
 }

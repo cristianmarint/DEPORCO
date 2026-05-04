@@ -16,8 +16,8 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/home/torneo_futbol/{id}','HomeController@getTorneofutbol');
 
     // Estadisticas por jugador
-    Route::get('/estadisticasjugador', 'EstadisticasJugadorController@index')->name('estadisticasjugador.index');
-    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador')->name('estadisticasjugador.detalle');
+    Route::get('/estadisticasjugador', 'PlayerStatsController@index')->name('estadisticasjugador.index');
+    Route::get('/estadisticasjugador/{id}', 'PlayerStatsController@getJugador')->name('estadisticasjugador.detalle');
 
     //Desactiva la ruta de /register.
     // Route::resource('/register', 'Auth\LoginController@showLoginForm');
@@ -25,38 +25,38 @@ Route::group(['middleware'=>'auth'], function() {
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
     // Routes Institution
-    Route::resource('/institutos', 'InstitutoController');
-    Route::get('/institutos/municipios/{id}', 'InstitutoController@getMunicipio');
+    Route::resource('/institutos', 'InstitutionController');
+    Route::get('/institutos/municipios/{id}', 'InstitutionController@getMunicipio');
     
     // Routes equipos
-    Route::resource('/equipos', 'EquipoController');
-    Route::get('/equipos/{id}', 'EquipoController@getEquipo');
+    Route::resource('/equipos', 'TeamController');
+    Route::get('/equipos/{id}', 'TeamController@getEquipo');
 
     // Routes equipos
-    Route::resource('/lugares', 'LugarController');
-    Route::get('/lugares/{id}', 'LugarController@getLugar');
+    Route::resource('/lugares', 'VenueController');
+    Route::get('/lugares/{id}', 'VenueController@getLugar');
 
     // Routes datos basicos
-    Route::resource('/datosbasicos', 'DatosBasicosController');
-    Route::get('/datosbasicos/{id}', 'DatosBasicosController@getDatosBasicos');
+    Route::resource('/datosbasicos', 'ProfileController');
+    Route::get('/datosbasicos/{id}', 'ProfileController@getDatosBasicos');
     
     // Routes categorias
-    Route::resource('/categorias', 'CategoriaController');
-    Route::get('/categorias/{id}', 'CategoriaController@getCategoria');
+    Route::resource('/categorias', 'CategoryController');
+    Route::get('/categorias/{id}', 'CategoryController@getCategoria');
     
     // Routes torneo
-    Route::resource('/torneos', 'TorneoController');
-    Route::get('/torneos/{id}', 'TorneoController@getTorneo');
+    Route::resource('/torneos', 'TournamentController');
+    Route::get('/torneos/{id}', 'TournamentController@getTorneo');
     
     // Routes temporadas
-    Route::resource('/temporadas', 'TemporadaController');
-    Route::get('/temporadas/{id}', 'TemporadaController@getTemporada');
+    Route::resource('/temporadas', 'SeasonController');
+    Route::get('/temporadas/{id}', 'SeasonController@getTemporada');
 
     // Routes enfrentamientos
-    Route::resource('/enfrentamientos', 'EnfrentamientoController');
-    Route::get('/enfrentamientos/torneo/{id}', 'EnfrentamientoController@getEquipos');
-    Route::get('/enfrentamientos/calendario/{id}', 'EnfrentamientoController@getCalendario');
+    Route::resource('/enfrentamientos', 'GameMatchController');
+    Route::get('/enfrentamientos/torneo/{id}', 'GameMatchController@getEquipos');
+    Route::get('/enfrentamientos/calendario/{id}', 'GameMatchController@getCalendario');
     
     //Routes Calendario
-    Route::resource('/calendarios', 'CalendarioController');
+    Route::resource('/calendarios', 'ScheduleController');
 });

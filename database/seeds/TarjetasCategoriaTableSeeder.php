@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\TarjetaCategoria;
+use App\Models\CardCategory;
 use Illuminate\Database\Seeder;
 
 class TarjetaCategoriaTableSeeder extends Seeder
@@ -12,47 +12,47 @@ class TarjetaCategoriaTableSeeder extends Seeder
      */
     public function run()
     {
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
            'tarjeta_id' => 1,
             'categoria_id' => 1
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 2,
             'categoria_id' => 1
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 3,
             'categoria_id' => 1
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 1,
             'categoria_id' => 2
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 2,
             'categoria_id' => 2
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 3,
             'categoria_id' => 2
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 1,
             'categoria_id' => 3
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 2,
             'categoria_id' => 3
         ));
 
-        TarjetaCategoria::create(array(
+        CardCategory::create(array(
             'tarjeta_id' => 3,
             'categoria_id' => 3
         ));

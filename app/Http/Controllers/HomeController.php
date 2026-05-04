@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Torneo;
+use App\Models\Tournament;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

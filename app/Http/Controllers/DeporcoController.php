@@ -9,10 +9,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torneo;
-use App\Models\DatosBasicos;
-use App\Models\Instituto;
-use App\Models\Equipo;
+use App\Models\Tournament;
+use App\Models\Profile;
+use App\Models\Institution;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\DB;
 class DeporcoController extends Controller{
     public function welcome()
     {
-        $torneos = Torneo::count('id');
-        $datosbasicos = DatosBasicos::count('id');
-        $institutos = Instituto::count('id');
-        $logos = Instituto::select('logo')->orderBy('id','desc')->limit(15)->get();
-        $equipos = Equipo::count('id');
+        $torneos = Tournament::count('id');
+        $datosbasicos = Profile::count('id');
+        $institutos = Institution::count('id');
+        $logos = Institution::select('logo')->orderBy('id','desc')->limit(15)->get();
+        $equipos = Team::count('id');
         return view('welcome',compact('torneos','datosbasicos','institutos','equipos','logos'));
     }
 
