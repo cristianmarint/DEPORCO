@@ -18,11 +18,11 @@ class Anotacion extends Model
 
     public function TiempoEnfrentamiento()
     {
-        return $this->belongsTo('TiempoEnfrentamiento');
+        return $this->belongsTo(TiempoEnfrentamiento::class);
     }
 
     public function estadistica()
     {
-        return $this->belongsTo('estadistica');
+        return $this->belongsTo(Estadistica::class);
     }
 }

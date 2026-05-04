@@ -16,8 +16,8 @@ class AsistenteLicencia extends Model
         'numero',
     ];
 
-    public function Asistente()
+    public function asistente()
     {
-        return $this->belongsTo('Asistente');
+        return $this->belongsTo(Asistente::class);
     }
 }

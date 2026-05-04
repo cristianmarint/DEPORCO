@@ -13,13 +13,13 @@ class AsistenteInscripcionEquipo extends Model
 
     protected $fillable = [];
 
-    public function Asistente()
+    public function asistente()
     {
-        return $this->belongsTo('Asistente');
+        return $this->belongsTo(Asistente::class);
     }
 
-    public function AsistenteLicencia()
+    public function inscripcionEquipo()
     {
-        return $this->belongsTo('InscripcionEquipo');
+        return $this->belongsTo(InscripcionEquipo::class);
     }
 }

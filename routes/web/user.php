@@ -6,20 +6,18 @@
  * @Last Modified time: 2019-05-16 22:53:41
  */
 
-Route::get('/estadisticasjugador', function () {
-    Route::resource('/estadisticasjugador', 'EstadisticasJugadorController');
-    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador');
-});
-
-
 // permite el login pero no el acceso a las rutas del grupo
 // Route::group(['middleware'=>'admin.user'], function() {
-    
+
 Route::group(['middleware'=>'auth'], function() {
 
     //retorna la view index desde el controlador
     Route::resource('/home', 'HomeController');
     Route::get('/home/torneo_futbol/{id}','HomeController@getTorneofutbol');
+
+    // Estadisticas por jugador
+    Route::get('/estadisticasjugador', 'EstadisticasJugadorController@index')->name('estadisticasjugador.index');
+    Route::get('/estadisticasjugador/{id}', 'EstadisticasJugadorController@getJugador')->name('estadisticasjugador.detalle');
 
     //Desactiva la ruta de /register.
     // Route::resource('/register', 'Auth\LoginController@showLoginForm');

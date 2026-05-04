@@ -74,44 +74,29 @@ class SocialiteController extends Controller
      */
     protected function findOrCreateUser($providerName, $providerUser)
     {
-        // returna el user si lo encuentra
-        // de no encontrarlo se returna NULL para ser direccionado.
-        $user = User::firstOrNew([
-            'email' => $providerUser->getEmail()
+        $email = $providerUser->getEmail();
+        if (empty($email)) {
+            return null;
+        }
+
+        $user = User::firstOrNew(['email' => $email]);
+
+        if (!$user->exists) {
+            $user->name = $providerUser->getName() ?: $email;
+            $user->password = bcrypt(str_random(30));
+            $user->email_verified_at = now();
+            $user->save();
+            event(new RegisteredEvent($user));
+        }
+
+        $social = SocialAccount::firstOrNew([
+            'provider_user_id' => $providerUser->getId(),
+            'provider'         => $providerName,
         ]);
-        if ($user->exists) {
-            $social = SocialAccount::firstOrNew([
-                'provider_user_id' => $providerUser->getId(),
-                'provider' => $providerName
-            ]);
-            $social->user()->associate($user);
-            $social->save();
-            return $social->user;
-        }
-        else{
-            return $user=NULL;
-        }
+        $social->user()->associate($user);
+        $social->save();
 
-
-
-
-        // Si se quiere crear el user.
-        // se debe returnar el user.
-        // if (!$user->exists) {
-            
-        //     $social = SocialAccount::firstOrNew([
-        //         'provider_user_id' => $providerUser->getId(),
-        //         'provider' => $providerName
-        //     ]);
-
-        //     $user->name = $providerUser->getName();
-        //     $user->password = bcrypt(str_random(30));
-        //     $user->save();
-        //     event(new RegisteredEvent($user));
-        // }
-        // $social->user()->associate($user);
-        // $social->save();
-        // return $user;
+        return $user;
     }
 
 

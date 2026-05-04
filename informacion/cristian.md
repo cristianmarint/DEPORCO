@@ -28,3 +28,14 @@ https://www.quora.com/Is-there-is-any-free-hosting-for-Laravel
 
 - Versionamiento
     https://sites.google.com/site/practicadesarrollosoft/temario/scm/versionado-y-staging-de-componentes
+
+
+migra para que el codigo este escrito en ingles pero documentado en español
+
+crear seeders al final 
+actualizar readme.md despues
+
+retira de los commits a claude, no quiero que sepan que use IA
+
+actualiza github-pages deployments
+https://cristianmarint.github.io/DEPORCO/

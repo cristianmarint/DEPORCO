@@ -19,6 +19,6 @@ class ArbitroPuesto extends Model
 
     public function EnfrentamientoArbitro()
     {
-        return $this->hasOne('EnfrentamientoArbitro');
+        return $this->hasOne(EnfrentamientoArbitro::class);
     }
 }

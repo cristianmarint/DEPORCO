@@ -16,13 +16,13 @@ class Asistente extends Model
         'puesto',
     ];
 
-    public function AsistenteEquipo()
+    public function asistenteInscripcionEquipo()
     {
-        return $this->hasOne('AsistenteEquipo');
+        return $this->hasOne(AsistenteInscripcionEquipo::class);
     }
 
-    public function AsistenteLicencia()
+    public function asistenteLicencia()
     {
-        return $this->hasMany('AsistenteLicencia');
+        return $this->hasMany(AsistenteLicencia::class);
     }
 }

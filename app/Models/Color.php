@@ -16,7 +16,7 @@ class Color extends Model
       'nombre'
     ];
 
-    protected function equipo(){
-      return $this->hasOne('Equipo');
+    public function equipo(){
+      return $this->hasOne(Equipo::class);
   }
 }

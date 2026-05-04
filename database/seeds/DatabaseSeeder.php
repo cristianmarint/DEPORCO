@@ -71,12 +71,15 @@ class DatabaseSeeder extends Seeder
         $this->call(CriterioTableSeeder::class);
         $this->call(TorneoTableSedeer::class);
         $this->call(CriterioTorneoTableSeeder::class);
-        $this->call(JugadorTableSeeder::class); 
+        $this->call(JugadorTableSeeder::class);
         $this->call(ProgramaTableSeeder::class);
         $this->call(TipoJugadorTableSeeder::class);
+        $this->call(EquipoTableSeeder::class);
+        $this->call(InscripcionEquipoTableSeeder::class);
         $this->call(LugarTableSeeder::class);
         $this->call(ArbitroPuestoTableSeeder::class);
-        $this->call(FaseTableSeeder::class);        
+        $this->call(FaseTableSeeder::class);
+        $this->call(CalendarioTableSeeder::class);
     }
 
     public function truncateTables(array $tables)
