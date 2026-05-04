@@ -20,6 +20,6 @@ class Phase extends Model
     ];
 
   protected function calendario(){
-    return $this->hasOne(Schedule::class);
+    return $this->hasOne(Schedule::class, 'fase_id');
   }
 }

@@ -30,23 +30,23 @@ class Institution extends Model
     }
 
     protected function municipio(){
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'municipio_id');
     }
 
     public function tipo_educacion(){
-        return $this->belongsTo(EducationType::class);
+        return $this->belongsTo(EducationType::class, 'tipo_educacion_id');
     }
 
     public function telefono(){
-        return $this->belongsTo(Phone::class);
+        return $this->belongsTo(Phone::class, 'telefono_id');
     }
 
     public function direccion(){
-        return $this->belongsTo(Address::class);
+        return $this->belongsTo(Address::class, 'direccion_id');
     }
 
     public function instituto(){
-        return $this->hasMany(Institution::class);
+        return $this->hasMany(Institution::class, 'instituto_id');
     }
 
 }

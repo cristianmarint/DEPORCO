@@ -3,7 +3,7 @@
 use App\Models\Season;
 use Illuminate\Database\Seeder;
 
-class TemporadaTableSeeder extends Seeder
+class SeasonTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

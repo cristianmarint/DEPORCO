@@ -3,7 +3,7 @@
 use App\Models\Phone;
 use Illuminate\Database\Seeder;
 
-class TelefonoTableSeeder extends Seeder
+class PhoneTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

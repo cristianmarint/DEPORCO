@@ -3,7 +3,7 @@
 use App\Models\Gender;
 use Illuminate\Database\Seeder;
 
-class GeneroTableSeeder extends Seeder
+class GenderTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

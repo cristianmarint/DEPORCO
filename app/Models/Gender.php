@@ -17,6 +17,6 @@ class Gender extends Model
     ];
 
     protected function datosbasicos(){
-      return $this->hasMany(Profile::class);
+      return $this->hasMany(Profile::class, 'genero_id');
   }
 }

@@ -16,13 +16,13 @@ class Address extends Model
     ];
 
     protected function instituto(){
-        return $this->hasOne(Institution::class);
+        return $this->hasOne(Institution::class, 'direccion_id');
     }
     protected function datosbasicos(){
-        return $this->hasOne(Datosbasicos::class);
+        return $this->hasOne(Datosbasicos::class, 'direccion_id');
     }
 
     protected function lugar(){
-        return $this->hasOne(Venue::class);
+        return $this->hasOne(Venue::class, 'direccion_id');
     }
 }

@@ -14,6 +14,6 @@ class State extends Model
     ];
 
     protected function municipios(){
-        return $this->hasMany(City::class);
+        return $this->hasMany(City::class, 'departamento_id');
     }
 }

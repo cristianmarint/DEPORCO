@@ -3,7 +3,7 @@
 use App\Models\Venue;
 use Illuminate\Database\Seeder;
 
-class LugarTableSeeder extends Seeder
+class VenueTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

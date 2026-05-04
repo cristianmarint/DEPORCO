@@ -19,6 +19,6 @@ class RefereePosition extends Model
 
     public function EnfrentamientoArbitro()
     {
-        return $this->hasOne(MatchReferee::class);
+        return $this->hasOne(MatchReferee::class, 'arbitro_puesto_id');
     }
 }

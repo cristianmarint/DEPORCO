@@ -21,22 +21,22 @@ class GameMatch extends Model{
     ];
 
     public function calendario(){
-        return $this->belongsTo(Schedule::class);
+        return $this->belongsTo(Schedule::class, 'calendario_id');
     }
 
-    protected function lugar(){
-        return $this->belongsTo(Venue::class);
+    public function lugar(){
+        return $this->belongsTo(Venue::class, 'lugar_id');
     }
 
-    protected function inscripcion_equipo_local(){
-        return $this->belongsTo(TeamRegistration::class);
+    public function inscripcion_equipo_local(){
+        return $this->belongsTo(TeamRegistration::class, 'inscripcion_equipo_local_id');
     }
 
-    protected function inscripcion_equipo_visitante(){
-        return $this->belongsTo(TeamRegistration::class);
+    public function inscripcion_equipo_visitante(){
+        return $this->belongsTo(TeamRegistration::class, 'inscripcion_equipo_visitante_id');
     }
 
-    protected function resultado(){
-        return $this->hasOne(MatchResult::class);
+    public function resultado(){
+        return $this->hasOne(MatchResult::class, 'enfrentamiento_id');
     }
 }

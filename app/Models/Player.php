@@ -19,14 +19,14 @@ class Player extends Model{
     ];
  
     public function inscripcionjugador(){
-        return $this->hasOne(PlayerRegistration::class);
+        return $this->hasOne(PlayerRegistration::class, 'jugador_id');
     }
 
     public function datos_basicos(){
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(Profile::class, 'datos_basicos_id');
     }
 
     public function telefono(){
-        return $this->belongsTo(Phone::class);
+        return $this->belongsTo(Phone::class, 'telefono_id');
     }
 }

@@ -20,6 +20,6 @@ class Season extends Model
     ];
 
     public function torneo(){
-      return $this->hasMany(Tournament::class);
+      return $this->hasMany(Tournament::class, 'temporada_id');
   }
 }

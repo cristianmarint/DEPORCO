@@ -1,11 +1,12 @@
 <?php
 
-use App\Models\Faltas;
+use App\Models\Foul;
 use Faker\Generator as Faker;
 
 $factory->define(Foul::class, function (Faker $faker) {
     return [
-        'estadisticas_id' => \App\Models\Estadisticas::all()->random()->id,
-        'total' => rand(0, 5)
+        'estadistica_id'           => \App\Models\PlayerMatchStat::all()->random()->id,
+        'tiempo_enfrentamiento_id' => \App\Models\MatchPeriod::all()->random()->id,
+        'minuto'                   => $faker->time('H:i:s', '01:30:00'),
     ];
 });

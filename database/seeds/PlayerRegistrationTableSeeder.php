@@ -3,7 +3,7 @@
 use App\Models\PlayerRegistration;
 use Illuminate\Database\Seeder;
 
-class InscripcionJugadorTableSeeder extends Seeder
+class PlayerRegistrationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

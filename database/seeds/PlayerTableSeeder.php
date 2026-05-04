@@ -3,7 +3,7 @@
 use App\Models\Player;
 use Illuminate\Database\Seeder;
 
-class JugadorTableSeeder extends Seeder
+class PlayerTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

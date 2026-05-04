@@ -18,11 +18,11 @@ class Goal extends Model
 
     public function TiempoEnfrentamiento()
     {
-        return $this->belongsTo(MatchPeriod::class);
+        return $this->belongsTo(MatchPeriod::class, 'tiempo_enfrentamiento_id');
     }
 
     public function estadistica()
     {
-        return $this->belongsTo(PlayerMatchStat::class);
+        return $this->belongsTo(PlayerMatchStat::class, 'estadistica_id');
     }
 }

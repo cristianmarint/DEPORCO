@@ -3,41 +3,25 @@
 use App\Models\MatchPeriod;
 use Illuminate\Database\Seeder;
 
-class TiempoEnfrentamientoTableSeeder extends Seeder
+class MatchPeriodTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Crea los periodos de tiempo de un partido (futbol/baloncesto).
      */
     public function run()
     {
-        MatchPeriod::create(array(
-            'tiempo' => 'Primer tiempo'
-        ));
+        $periodos = [
+            ['nombre' => 'Primer tiempo'],
+            ['nombre' => 'Segundo tiempo'],
+            ['nombre' => 'Tercer tiempo'],
+            ['nombre' => 'Cuarto tiempo'],
+            ['nombre' => 'Primer tiempo extra'],
+            ['nombre' => 'Segundo tiempo extra'],
+            ['nombre' => 'Penales'],
+        ];
 
-        MatchPeriod::create(array(
-            'tiempo' => 'Segundo tiempo'
-        ));
-
-        MatchPeriod::create(array(
-            'tiempo' => 'Tercer tiempo'
-        ));
-
-        MatchPeriod::create(array(
-            'tiempo' => 'Cuerto tiempo'
-        ));
-
-        MatchPeriod::create(array(
-            'tiempo' => 'Primer tiempo extra'
-        ));
-
-        MatchPeriod::create(array(
-            'tiempo' => 'Segundo tiempo extra'
-        ));
-
-        MatchPeriod::create(array(
-            'tiempo' => 'Penales'
-        ));
+        foreach ($periodos as $p) {
+            MatchPeriod::create($p);
+        }
     }
 }

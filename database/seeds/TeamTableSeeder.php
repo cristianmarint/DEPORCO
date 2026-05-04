@@ -3,7 +3,7 @@
 use App\Models\Team;
 use Illuminate\Database\Seeder;
 
-class EquipoTableSeeder extends Seeder
+class TeamTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -25,6 +25,6 @@ class PlayerRegistration extends Model
     }
 
     public function inscripcionequipo(){
-      return $this->belongsTo(TeamRegistration::class);
+      return $this->belongsTo(TeamRegistration::class, 'inscripcion_equipo_id');
     }
 }

@@ -17,16 +17,16 @@ class Phone extends Model
     ];
 
     protected function instituto(){
-        return $this->hasOne(Institution::class);
+        return $this->hasOne(Institution::class, 'telefono_id');
     }
     protected function lugar(){
-        return $this->hasOne(Venue::class);
+        return $this->hasOne(Venue::class, 'telefono_id');
     }
     protected function datosbasicos(){
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class, 'telefono_id');
     }
     protected function telefono(){
-        return $this->hasOne(Phone::class);
+        return $this->hasOne(Phone::class, 'telefono_id');
     }
 
 }

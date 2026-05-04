@@ -3,7 +3,7 @@
 use App\Models\EducationType;
 use Illuminate\Database\Seeder;
 
-class TipoEducacionTableSeeder extends Seeder
+class EducationTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

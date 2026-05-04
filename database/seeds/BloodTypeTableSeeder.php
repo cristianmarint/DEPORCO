@@ -3,7 +3,7 @@
 use App\Models\BloodType;
 use Illuminate\Database\Seeder;
 
-class TipoSangreTableSeeder extends Seeder
+class BloodTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

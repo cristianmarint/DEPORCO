@@ -3,7 +3,7 @@
 use App\Models\Program;
 use Illuminate\Database\Seeder;
 
-class ProgramaTableSeeder extends Seeder
+class ProgramTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

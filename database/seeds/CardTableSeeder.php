@@ -3,7 +3,7 @@
 use App\Models\Card;
 use Illuminate\Database\Seeder;
 
-class TarjetaTableSeeder extends Seeder
+class CardTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

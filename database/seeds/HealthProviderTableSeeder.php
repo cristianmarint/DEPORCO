@@ -3,7 +3,7 @@
 use App\Models\HealthProvider;
 use Illuminate\Database\Seeder;
 
-class EpsTableSeeder extends Seeder
+class HealthProviderTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

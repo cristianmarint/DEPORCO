@@ -18,11 +18,11 @@ class Staff extends Model
 
     public function asistenteInscripcionEquipo()
     {
-        return $this->hasOne(StaffTeamRegistration::class);
+        return $this->hasOne(StaffTeamRegistration::class, 'asistente_id');
     }
 
     public function asistenteLicencia()
     {
-        return $this->hasMany(StaffLicense::class);
+        return $this->hasMany(StaffLicense::class, 'asistente_id');
     }
 }

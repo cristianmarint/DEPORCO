@@ -23,7 +23,7 @@ class Schedule extends Model
     ];
 
     public function enfrentamiento(){
-        return $this->hasMany(GameMatch::class);
+        return $this->hasMany(GameMatch::class, 'calendario_id');
     }
 
     public function user(){
@@ -31,10 +31,10 @@ class Schedule extends Model
     }
 
     public function torneo(){
-        return $this->belongsTo(Tournament::class);
+        return $this->belongsTo(Tournament::class, 'torneo_id');
     }
 
     public function fase(){
-        return $this->belongsTo(Phase::class);
+        return $this->belongsTo(Phase::class, 'fase_id');
     }
 }

@@ -14,18 +14,18 @@ class City extends Model
     ];
 
     protected function departamento(){
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(State::class, 'departamento_id');
     }
 
     protected function instituto(){
-        return $this->hasMany(Institution::class);
+        return $this->hasMany(Institution::class, 'municipio_id');
     }
 
     protected function lugar(){
-        return $this->hasMany(Venue::class);
+        return $this->hasMany(Venue::class, 'municipio_id');
     }
 
     protected function datosbasicos(){
-        return $this->hasMany(Profile::class);
+        return $this->hasMany(Profile::class, 'municipio_id');
     }
 }

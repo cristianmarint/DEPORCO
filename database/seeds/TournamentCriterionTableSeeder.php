@@ -3,7 +3,7 @@
 use App\Models\TournamentCriterion;
 use Illuminate\Database\Seeder;
 
-class CriterioTorneoTableSeeder extends Seeder
+class TournamentCriterionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

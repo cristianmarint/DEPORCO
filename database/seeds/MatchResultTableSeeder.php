@@ -1,17 +1,22 @@
 <?php
 
+use App\Models\GameMatch;
 use App\Models\MatchResult;
 use Illuminate\Database\Seeder;
 
-class ResultadoTableSeeder extends Seeder
+class MatchResultTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Crea un resultado por cada enfrentamiento existente.
      */
     public function run()
     {
-        factory(MatchResult::class, 20)->create();
+        foreach (GameMatch::all() as $match) {
+            MatchResult::create([
+                'enfrentamiento_id'  => $match->id,
+                'resultado_local'    => random_int(0, 5),
+                'resultado_visitante'=> random_int(0, 5),
+            ]);
+        }
     }
 }

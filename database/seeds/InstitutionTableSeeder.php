@@ -3,7 +3,7 @@
 use App\Models\Institution;
 use Illuminate\Database\Seeder;
 
-class InstitutoTableSeeder extends Seeder
+class InstitutionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -20,6 +20,6 @@ class HealthProvider extends Model
     ];
 
     protected function datosbasicos(){
-      return $this->hasMany(Profile::class);
+      return $this->hasMany(Profile::class, 'eps_id');
   }
 }

@@ -19,10 +19,10 @@ class Referee extends Model
     ];
 
     protected function EnfrentamientoArbitro(){
-        return $this->hasOne(MatchReferee::class);
+        return $this->hasOne(MatchReferee::class, 'arbitro_id');
     }
 
     protected function DatosBasicos(){
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(Profile::class, 'datos_basicos_id');
     }
 }

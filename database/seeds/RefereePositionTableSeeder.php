@@ -3,7 +3,7 @@
 use App\Models\RefereePosition;
 use Illuminate\Database\Seeder;
 
-class ArbitroPuestoTableSeeder extends Seeder
+class RefereePositionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

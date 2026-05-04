@@ -3,7 +3,7 @@
 use App\Models\Phase;
 use Illuminate\Database\Seeder;
 
-class FaseTableSeeder extends Seeder
+class PhaseTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

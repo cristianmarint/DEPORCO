@@ -15,11 +15,11 @@ class StaffTeamRegistration extends Model
 
     public function asistente()
     {
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(Staff::class, 'asistente_id');
     }
 
     public function inscripcionEquipo()
     {
-        return $this->belongsTo(TeamRegistration::class);
+        return $this->belongsTo(TeamRegistration::class, 'inscripcion_equipo_id');
     }
 }

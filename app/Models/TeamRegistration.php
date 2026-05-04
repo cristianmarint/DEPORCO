@@ -21,18 +21,18 @@ class TeamRegistration extends Model{
     ];
 
     public function enfrentamiento(){
-        return $this->hasOne(GameMatch::class);
+        return $this->hasOne(GameMatch::class, 'inscripcion_equipo_id');
     }
 
     public function equipo(){
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'equipo_id');
     }
 
     public function torneo(){
-        return $this->belongsTo(Tournament::class);
+        return $this->belongsTo(Tournament::class, 'torneo_id');
     }
 
     public function inscripcionjugador(){
-        return $this->hasOne(PlayerRegistration::class);
+        return $this->hasOne(PlayerRegistration::class, 'inscripcion_equipo_id');
     }
 }

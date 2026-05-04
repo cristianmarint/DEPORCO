@@ -17,6 +17,6 @@ class BloodType extends Model
     ];
 
     protected function datosbasicos(){
-        return $this->hasMany(Profile::class);
+        return $this->hasMany(Profile::class, 'tipo_sangre_id');
     }
 }

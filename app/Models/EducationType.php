@@ -14,6 +14,6 @@ class EducationType extends Model
     ];
 
 //    protected function instituto(){
-//        return $this->hasMany(Institution::class);
+//        return $this->hasMany(Institution::class, 'tipo_educacion_id');
 //    }
 }

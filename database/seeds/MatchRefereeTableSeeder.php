@@ -3,7 +3,7 @@
 use App\Models\MatchReferee;
 use Illuminate\Database\Seeder;
 
-class EnfrentamientoArbitroTableSeeder extends Seeder
+class MatchRefereeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

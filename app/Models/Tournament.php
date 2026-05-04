@@ -23,18 +23,18 @@ class Tournament extends Model
     }
   
     protected function categoria(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'categoria_id');
     }
 
     protected function temporada(){
-        return $this->belongsTo(Season::class);
+        return $this->belongsTo(Season::class, 'temporada_id');
     }
 
     protected function calendario(){
-        return $this->hasOne(Schedule::class);
+        return $this->hasOne(Schedule::class, 'torneo_id');
     }
 
     protected function inscripcionequipo(){
-        return $this->hasOne(TeamRegistration::class);
+        return $this->hasOne(TeamRegistration::class, 'torneo_id');
     }
 }

@@ -10,7 +10,8 @@ class MatchPeriod extends Model
     protected $table = "tiempo_enfrentamiento";
 
     protected $fillable = [
-      'tiempo'
+      'nombre',
+      'descripcion',
     ];
 
 

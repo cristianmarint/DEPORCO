@@ -25,18 +25,18 @@ class Team extends model
     }
 
     protected function instituto(){
-      return $this->belongsTo(Institution::class);
+      return $this->belongsTo(Institution::class, 'instituto_id');
     }
 
     public function color(){
-      return $this->belongsTo(Color::class);
+      return $this->belongsTo(Color::class, 'color_id');
     }
 
     public function inscripcionequipo(){
-      return $this->hasOne(TeamRegistration::class);
+      return $this->hasOne(TeamRegistration::class, 'equipo_id');
     }
 
     public function inscripcionjugador(){
-      return $this->hasOne(PlayerRegistration::class);
+      return $this->hasOne(PlayerRegistration::class, 'equipo_id');
     }
 }

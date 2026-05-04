@@ -3,7 +3,7 @@
 use App\Models\Criterion;
 use Illuminate\Database\Seeder;
 
-class CriterioTableSeeder extends Seeder
+class CriterionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

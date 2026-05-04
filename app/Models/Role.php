@@ -24,6 +24,6 @@ class Role extends Model
     ];
 
     protected function user(){
-      return $this->hasOne(User::class);
+      return $this->hasOne(User::class, 'role_id');
   }
 }

@@ -19,6 +19,6 @@ class MatchResult extends Model
     ];
 
     protected function enfrentamiento(){
-        return $this->belongsTo(GameMatch::class);
+        return $this->belongsTo(GameMatch::class, 'enfrentamiento_id');
     }
 }

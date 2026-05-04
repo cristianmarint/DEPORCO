@@ -19,6 +19,6 @@ class MatchReferee extends Model
     ];
 
     protected function arbitro(){
-        return $this->belongsTo(Referee::class);
+        return $this->belongsTo(Referee::class, 'arbitro_id');
     }
 }

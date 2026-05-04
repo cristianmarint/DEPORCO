@@ -5,13 +5,11 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
-     * @return void
+     * Orquesta el sembrado completo de la base de datos.
+     * Las tablas estan en espanol (BD legada) pero los seeders/clases en ingles.
      */
     public function run()
     {
-  
         $this->truncateTables([
             'users',
             'departamento',
@@ -52,34 +50,57 @@ class DatabaseSeeder extends Seeder
             'falta',
         ]);
 
-
+        // Voyager + tablas base de admin
         $this->call(VoyagerDatabaseSeeder::class);
-        $this->call(MunicipioTableSeeder::class);
-        $this->call(TipoSangreTableSeeder::class);
-        $this->call(GeneroTableSeeder::class);
-        $this->call(EpsTableSeeder::class);
-        $this->call(DireccionTableSeeder::class);        
-        $this->call(DatosBasicosTableSeeder::class);
+
+        // Catalogos basicos
+        $this->call(CityTableSeeder::class);
+        $this->call(BloodTypeTableSeeder::class);
+        $this->call(GenderTableSeeder::class);
+        $this->call(HealthProviderTableSeeder::class);
+        $this->call(AddressTableSeeder::class);
+
+        // Personas + usuarios (debe ir antes de cualquier seeder que dependa de user_id)
+        $this->call(ProfileTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(TipoEducacionTableSeeder::class);
-        $this->call(InstitutoTableSeeder::class);
+
+        // Catalogos secundarios
+        $this->call(EducationTypeTableSeeder::class);
+        $this->call(InstitutionTableSeeder::class);
         $this->call(ColorTableSeeder::class);
-        $this->call(TarjetaTableSeeder::class);
-        $this->call(CategoriaTableSeeder::class);
-        $this->call(TarjetaCategoriaTableSeeder::class);
-        $this->call(TemporadaTableSeeder::class);
-        $this->call(CriterioTableSeeder::class);
-        $this->call(TorneoTableSedeer::class);
-        $this->call(CriterioTorneoTableSeeder::class);
-        $this->call(JugadorTableSeeder::class);
-        $this->call(ProgramaTableSeeder::class);
-        $this->call(TipoJugadorTableSeeder::class);
-        $this->call(EquipoTableSeeder::class);
-        $this->call(InscripcionEquipoTableSeeder::class);
-        $this->call(LugarTableSeeder::class);
-        $this->call(ArbitroPuestoTableSeeder::class);
-        $this->call(FaseTableSeeder::class);
-        $this->call(CalendarioTableSeeder::class);
+        $this->call(CardTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
+        $this->call(CardCategoryTableSeeder::class);
+        $this->call(SeasonTableSeeder::class);
+        $this->call(CriterionTableSeeder::class);
+
+        // Torneos + criterios + jugadores
+        $this->call(TournamentTableSeeder::class);
+        $this->call(TournamentCriterionTableSeeder::class);
+        $this->call(PlayerTableSeeder::class);
+        $this->call(ProgramTableSeeder::class);
+        $this->call(PlayerTypeTableSeeder::class);
+
+        // Equipos e inscripciones (este orden importa para FK)
+        $this->call(TeamTableSeeder::class);
+        $this->call(TeamRegistrationTableSeeder::class);
+        $this->call(PlayerRegistrationTableSeeder::class);
+
+        // Lugares, arbitros, fases, calendarios
+        $this->call(VenueTableSeeder::class);
+        $this->call(RefereePositionTableSeeder::class);
+        $this->call(PhaseTableSeeder::class);
+        $this->call(ScheduleTableSeeder::class);
+
+        // Partidos y resultados (chain coherente con FKs reales)
+        $this->call(MatchPeriodTableSeeder::class);
+        $this->call(GameMatchTableSeeder::class);
+        $this->call(MatchResultTableSeeder::class);
+
+        // Estadisticas + anotaciones + faltas (lo que alimenta /playerstats)
+        $this->call(PlayerMatchStatTableSeeder::class);
+        $this->call(GoalTableSeeder::class);
+        $this->call(FoulTableSeeder::class);
     }
 
     public function truncateTables(array $tables)

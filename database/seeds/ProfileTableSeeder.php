@@ -4,7 +4,7 @@ use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
-class DatosBasicosTableSeeder extends Seeder
+class ProfileTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

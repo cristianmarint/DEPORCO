@@ -19,10 +19,10 @@ class Category extends Model
     ];
 
     public function TarjetaCategoria(){
-        return $this->hasMany(CardCategory::class);
+        return $this->hasMany(CardCategory::class, 'categoria_id');
     }
 
     public function torneo(){
-        return $this->hasMany(Tournament::class);
+        return $this->hasMany(Tournament::class, 'categoria_id');
     }
 }

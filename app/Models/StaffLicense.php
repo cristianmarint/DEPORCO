@@ -18,6 +18,6 @@ class StaffLicense extends Model
 
     public function asistente()
     {
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(Staff::class, 'asistente_id');
     }
 }

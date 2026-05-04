@@ -3,7 +3,7 @@
 use App\Models\Referee;
 use Illuminate\Database\Seeder;
 
-class ArbitroTableSeeder extends Seeder
+class RefereeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

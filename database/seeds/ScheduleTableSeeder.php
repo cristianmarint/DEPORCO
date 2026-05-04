@@ -3,7 +3,7 @@
 use App\Models\Schedule;
 use Illuminate\Database\Seeder;
 
-class CalendarioTableSeeder extends Seeder
+class ScheduleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
