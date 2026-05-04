@@ -25,7 +25,7 @@ class TeamController extends Controller
     public function index()
     {
         $equipos = Team::all();
-        return view('equipo.index', compact('equipos'));
+        return view('team.index', compact('equipos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +36,7 @@ class TeamController extends Controller
     {
         $institutos = Institution::orderBy('nombre', 'asc')->get();
         $colores = Color::orderBy('nombre', 'asc')->get();
-        return view('equipo.create', compact('institutos','colores'));
+        return view('team.create', compact('institutos','colores'));
     }
     /**
      * Display the specified resource .
@@ -44,7 +44,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getEquipo($id){
+    public function getTeam($id){
         $equipo = Team::where('equipo_id',$id)
             ->orderBy('nombre', 'asc')
             ->get();
@@ -77,7 +77,7 @@ class TeamController extends Controller
                 $nombreImg = 'storage/storage/img/equipo/default.png';
                 $success = true;
             }
-            $equipo = NEW Equipo();
+            $equipo = NEW Team();
                 $equipo->nombre = $request->input('nombre');
                 $equipo->logo = $nombreImg;
                 $equipo->instituto_id = $request->input('instituto');
@@ -92,7 +92,7 @@ class TeamController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $equipo->nombre);
-            return redirect(route('equipos.index'))->with('success');
+            return redirect(route('teams.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
                 if($nombreImg != 'storage/storage/img/equipo/default.png'){
@@ -120,7 +120,7 @@ class TeamController extends Controller
                             ->join('datos_basicos','datos_basicos.id','jugador.datos_basicos_id')
                             ->where('inscripcion_equipo.equipo_id','=',$id)
                             ->get();
-        return view('equipo.show', compact('equipo','jugadores'));
+        return view('team.show', compact('equipo','jugadores'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -133,7 +133,7 @@ class TeamController extends Controller
         $equipo = Team::findOrFail($id);
         $institutos = Institution::orderBy('nombre', 'asc')->get();
         $colores = Color::orderBy('nombre', 'asc')->get();
-        return view('equipo.edit',compact('equipo','institutos','colores'));
+        return view('team.edit',compact('equipo','institutos','colores'));
         
     }
     /**
@@ -185,7 +185,7 @@ class TeamController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $equipo->nombre);
-            return redirect(route('equipos.index'))->with('success');
+            return redirect(route('teams.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -203,6 +203,6 @@ class TeamController extends Controller
         $equipo->user_id = Auth::user()->id;
         $equipo->delete();
         $equipo->save();
-        return redirect(route('equipos.index'))->with('success');
+        return redirect(route('teams.index'))->with('success');
     }
 }

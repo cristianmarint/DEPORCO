@@ -1,62 +1,55 @@
 <?php
 /*
- * @Author: CristianMarinT 
- * @Date: 2019-02-23 07:47:10 
- * @Last Modified by: CristianMarinT
- * @Last Modified time: 2019-05-16 22:53:41
+ * Rutas autenticadas del lado de usuario.
+ * Todos los identificadores y URLs en ingles; las tablas BD permanecen en espanol.
  */
 
-// permite el login pero no el acceso a las rutas del grupo
-// Route::group(['middleware'=>'admin.user'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
-Route::group(['middleware'=>'auth'], function() {
-
-    //retorna la view index desde el controlador
+    // Dashboard principal
     Route::resource('/home', 'HomeController');
-    Route::get('/home/torneo_futbol/{id}','HomeController@getTorneofutbol');
+    Route::get('/home/tournament-soccer/{id}', 'HomeController@getTournamentSoccer');
 
-    // Estadisticas por jugador
-    Route::get('/estadisticasjugador', 'PlayerStatsController@index')->name('estadisticasjugador.index');
-    Route::get('/estadisticasjugador/{id}', 'PlayerStatsController@getJugador')->name('estadisticasjugador.detalle');
+    // Estadisticas agregadas por jugador
+    Route::get('/playerstats', 'PlayerStatsController@index')->name('playerstats.index');
+    Route::get('/playerstats/{id}', 'PlayerStatsController@getPlayer')->name('playerstats.detail');
 
-    //Desactiva la ruta de /register.
-    // Route::resource('/register', 'Auth\LoginController@showLoginForm');
-
+    // Cambio de contrasena
     Route::post('/changePassword/{id}', 'ChangePasswordController@update');
 
-    // Routes Institution
-    Route::resource('/institutos', 'InstitutionController');
-    Route::get('/institutos/municipios/{id}', 'InstitutionController@getMunicipio');
-    
-    // Routes equipos
-    Route::resource('/equipos', 'TeamController');
-    Route::get('/equipos/{id}', 'TeamController@getEquipo');
+    // Instituciones (centros educativos)
+    Route::resource('/institutions', 'InstitutionController');
+    Route::get('/institutions/cities/{id}', 'InstitutionController@getCity');
 
-    // Routes equipos
-    Route::resource('/lugares', 'VenueController');
-    Route::get('/lugares/{id}', 'VenueController@getLugar');
+    // Equipos
+    Route::resource('/teams', 'TeamController');
+    Route::get('/teams/json/{id}', 'TeamController@getTeam');
 
-    // Routes datos basicos
-    Route::resource('/datosbasicos', 'ProfileController');
-    Route::get('/datosbasicos/{id}', 'ProfileController@getDatosBasicos');
-    
-    // Routes categorias
-    Route::resource('/categorias', 'CategoryController');
-    Route::get('/categorias/{id}', 'CategoryController@getCategoria');
-    
-    // Routes torneo
-    Route::resource('/torneos', 'TournamentController');
-    Route::get('/torneos/{id}', 'TournamentController@getTorneo');
-    
-    // Routes temporadas
-    Route::resource('/temporadas', 'SeasonController');
-    Route::get('/temporadas/{id}', 'SeasonController@getTemporada');
+    // Lugares / sedes
+    Route::resource('/venues', 'VenueController');
+    Route::get('/venues/json/{id}', 'VenueController@getVenue');
 
-    // Routes enfrentamientos
-    Route::resource('/enfrentamientos', 'GameMatchController');
-    Route::get('/enfrentamientos/torneo/{id}', 'GameMatchController@getEquipos');
-    Route::get('/enfrentamientos/calendario/{id}', 'GameMatchController@getCalendario');
-    
-    //Routes Calendario
-    Route::resource('/calendarios', 'ScheduleController');
+    // Perfil de datos basicos de personas
+    Route::resource('/profiles', 'ProfileController');
+    Route::get('/profiles/json/{id}', 'ProfileController@getProfile');
+
+    // Categorias
+    Route::resource('/categories', 'CategoryController');
+    Route::get('/categories/json/{id}', 'CategoryController@getCategory');
+
+    // Torneos
+    Route::resource('/tournaments', 'TournamentController');
+    Route::get('/tournaments/json/{id}', 'TournamentController@getTournament');
+
+    // Temporadas
+    Route::resource('/seasons', 'SeasonController');
+    Route::get('/seasons/json/{id}', 'SeasonController@getSeason');
+
+    // Enfrentamientos / partidos
+    Route::resource('/matches', 'GameMatchController');
+    Route::get('/matches/tournament/{id}', 'GameMatchController@getTeams');
+    Route::get('/matches/schedule/{id}', 'GameMatchController@getSchedule');
+
+    // Calendarios
+    Route::resource('/schedules', 'ScheduleController');
 });

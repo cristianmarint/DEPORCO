@@ -21,7 +21,7 @@ class TournamentController extends Controller
     public function index()
     {
         $torneos = Tournament::all();
-        return view('torneo.index',compact('torneos'));
+        return view('tournament.index',compact('torneos'));
     }
 
     /**
@@ -33,7 +33,7 @@ class TournamentController extends Controller
     {
         $categorias = Category::orderBy('descripcion', 'asc')->get();
         $temporadas = Season::orderBy('descripcion', 'asc')->get();
-        return view('torneo.create',compact('categorias','temporadas'));
+        return view('tournament.create',compact('categorias','temporadas'));
     }
 
     /**
@@ -42,7 +42,7 @@ class TournamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getTorneo($id){
+    public function getTournament($id){
         $torneos = Tournament::where('id',$id)
             ->orderBy('descripcion', 'asc')
             ->get();
@@ -65,7 +65,7 @@ class TournamentController extends Controller
 
         DB::beginTransaction();
         try{
-            $torneo = NEW Torneo();
+            $torneo = NEW Tournament();
             $torneo->nombre = $request->input('nombre');
             $torneo->categoria_id = $request->input('categoria');
             $torneo->temporada_id = $request->input('temporada');
@@ -80,7 +80,7 @@ class TournamentController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $torneo->nombre);
-            return redirect(route('torneos.index'))->with('success');
+            return redirect(route('tournaments.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -96,7 +96,7 @@ class TournamentController extends Controller
     public function show($id)
     {
         $torneos = Tournament::findOrFail($id);
-        return view('torneo.show', compact('torneos'));
+        return view('tournament.show', compact('torneos'));
     }
 
     /**
@@ -111,7 +111,7 @@ class TournamentController extends Controller
         $categorias = Category::orderBy('descripcion', 'asc')->get();
         $temporadas = Season::orderBy('descripcion', 'asc')->get();
 
-        return view('torneo.edit', compact('torneo','categorias','temporadas'));
+        return view('tournament.edit', compact('torneo','categorias','temporadas'));
     }
 
     /**
@@ -145,7 +145,7 @@ class TournamentController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $torneo->nombre);
-            return redirect(route('torneos.index'))->with('success');
+            return redirect(route('tournaments.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -162,6 +162,6 @@ class TournamentController extends Controller
     {
         $torneo = Tournament::find($id);   
         $torneo->delete();
-        return redirect(route('torneos.index'))->with('success');
+        return redirect(route('tournaments.index'))->with('success');
     }
 }

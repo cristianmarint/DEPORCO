@@ -18,7 +18,7 @@ class SeasonController extends Controller
     public function index()
     {
         $temporadas = Season::all();
-        return view('temporada.index',compact('temporadas'));
+        return view('season.index',compact('temporadas'));
     }
 
     /**
@@ -28,7 +28,7 @@ class SeasonController extends Controller
      */
     public function create()
     {
-        return view('temporada.create');
+        return view('season.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class SeasonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getCategoria($id){
+    public function getCategory($id){
         $temporadas = Season::where('id',$id)
             ->orderBy('descripcion', 'asc')
             ->get();
@@ -61,7 +61,7 @@ class SeasonController extends Controller
 
         DB::beginTransaction();
         try{
-            $temporada = NEW Temporada();
+            $temporada = NEW Season();
             $temporada->descripcion = $request->input('descripcion');
             $temporada->fecha_inicio = $request->input('fecha_inicio');
             $temporada->fecha_fin = $request->input('fecha_fin');
@@ -75,7 +75,7 @@ class SeasonController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $temporada->descripcion);
-            return redirect(route('temporadas.index'))->with('success');
+            return redirect(route('seasons.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -91,7 +91,7 @@ class SeasonController extends Controller
     public function show($id)
     {
         $temporadas = Season::findOrFail($id);
-        return view('temporada.show', compact('temporadas'));
+        return view('season.show', compact('temporadas'));
     }
 
     /**
@@ -104,7 +104,7 @@ class SeasonController extends Controller
     {
         $temporada = Season::findOrFail($id);
 
-        return view('temporada.edit', compact('temporada'));
+        return view('season.edit', compact('temporada'));
     }
 
     /**
@@ -139,7 +139,7 @@ class SeasonController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $temporada->descripcion);
-            return redirect(route('temporadas.index'))->with('success');
+            return redirect(route('seasons.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -156,6 +156,6 @@ class SeasonController extends Controller
     {
         $temporada = Season::find($id);   
         $temporada->delete();
-        return redirect(route('temporadas.index'))->with('success');
+        return redirect(route('seasons.index'))->with('success');
     }
 }

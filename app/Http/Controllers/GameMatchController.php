@@ -31,7 +31,7 @@ class GameMatchController extends Controller
     {
         // seleccionar los campos que se muestran de enfrentamiento yt de  resultado para enviarlos y mostrarlos
         $enfrentamientos = GameMatch::all();                       
-        return view('enfrentamiento.index', compact('enfrentamientos'));
+        return view('match.index', compact('enfrentamientos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -42,7 +42,7 @@ class GameMatchController extends Controller
     {
         $lugares = Venue::orderBy('nombre', 'asc')->get();
         $torneos = Tournament::orderBy('id','asc')->get(); 
-        return view('enfrentamiento.create',compact('lugares','torneos'));
+        return view('match.create',compact('lugares','torneos'));
     }
     
     /**
@@ -51,7 +51,7 @@ class GameMatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getEquipos($id){
+    public function getTeams($id){
         $InscripcionEquipos = TeamRegistration::select('equipo_id','torneo_id','nombre')
                                                 ->join('equipo','inscripcion_equipo.equipo_id','equipo.id')
                                                 ->orderBy('nombre', 'asc')
@@ -66,7 +66,7 @@ class GameMatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getCalendario($id){
+    public function getSchedule($id){
         $InscripcionCalendarios = Schedule::select('calendario.id','fecha','jornada','nombre')
                                                 ->join('fase','calendario.fase_id','fase.id')
                                                 ->orderBy('calendario.id', 'asc')
@@ -94,7 +94,7 @@ class GameMatchController extends Controller
         ]);
         DB::beginTransaction();
         try{
-            $enfrentamientos = NEW Enfrentamiento();
+            $enfrentamientos = NEW GameMatch();
             $enfrentamientos->calendario_id = $request->input('calendario');
             $enfrentamientos->inscripcion_equipo_local_id = $request->input('equipo_local');
             $enfrentamientos->inscripcion_equipo_visitante_id = $request->input('equipo_visitante');
@@ -102,7 +102,7 @@ class GameMatchController extends Controller
             $enfrentamientos->user_id = Auth::user()->id;
             $enfrentamientos->save();
             
-            $resultados = NEW Resultado();
+            $resultados = NEW MatchResult();
             $resultados->enfrentamiento_id =$enfrentamientos->id;
             $resultados->resultado_local = $request->input('resultado_local');
             $resultados->resultado_visitante = $request->input('resultado_visitante');
@@ -117,7 +117,7 @@ class GameMatchController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $enfrentamientos->id);
-            return redirect(route('enfrentamientos.index'))->with('success');
+            return redirect(route('matches.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -133,7 +133,7 @@ class GameMatchController extends Controller
     {
         $enfrentamiento = GameMatch::findOrFail($id);
         $resultados = MatchResult::where('enfrentamiento_id','=',$id)->first();
-        return view('enfrentamiento.show', compact('enfrentamiento','resultados'));
+        return view('match.show', compact('enfrentamiento','resultados'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -157,7 +157,7 @@ class GameMatchController extends Controller
                                 ->get();
 
         $torneos = Tournament::orderBy('id','asc')->get();
-        return view('enfrentamiento.edit', compact('enfrentamiento','lugares','torneos','torneoInscritos','calendarios','InscripcionEquipos'));
+        return view('match.edit', compact('enfrentamiento','lugares','torneos','torneoInscritos','calendarios','InscripcionEquipos'));
         
     }
     /**
@@ -206,7 +206,7 @@ class GameMatchController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $enfrentamiento->id);
-            return redirect(route('enfrentamientos.index'))->with('success');
+            return redirect(route('matches.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -225,6 +225,6 @@ class GameMatchController extends Controller
         $enfrentamiento->user_id = Auth::user()->id;
         $enfrentamiento->delete();
         $enfrentamiento->save();
-        return redirect(route('enfrentamientos.index'))->with('success');
+        return redirect(route('matches.index'))->with('success');
     }
 }

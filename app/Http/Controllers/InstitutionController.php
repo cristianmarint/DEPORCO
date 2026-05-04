@@ -22,7 +22,7 @@ class InstitutionController extends Controller
     public function index()
     {
         $institutos = Institution::all();
-        return view('instituto.index', compact('institutos'));
+        return view('institution.index', compact('institutos'));
     }
 
     /**
@@ -34,7 +34,7 @@ class InstitutionController extends Controller
     {
         $tiposEducacion = EducationType::orderBy('tipo', 'asc')->get();
         $departamentos = State::orderBy('nombre', 'asc')->get();
-        return view('instituto.create', compact('departamentos', 'tiposEducacion'));
+        return view('institution.create', compact('departamentos', 'tiposEducacion'));
     }
 
     /**
@@ -43,7 +43,7 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getMunicipio($id){
+    public function getCity($id){
         $municipios = City::where('departamento_id',$id)
             ->orderBy('nombre', 'asc')
             ->get();
@@ -86,18 +86,18 @@ class InstitutionController extends Controller
                 $nombreImg = 'storage/storage/img/instituto/default.png';
             }
 
-            $telefono = NEW Telefono();
+            $telefono = NEW Phone();
             $telefono->tipo = $request->input('tipo_telefono');
             $telefono->numero = $request->input('telefono');
             $telefono->save();
 
-            $direccion = NEW Direccion();
+            $direccion = NEW Address();
             $direccion->calle = $request->input('calle');
             $direccion->carrera =  $request->input('carrera');
             $direccion->numero = $request->input('numero');
             $direccion->save();
 
-            $instituto = NEW Instituto();
+            $instituto = NEW Institution();
             $instituto->codigo_dane = $request->input('codigo_dane');
             $instituto->nit = $request->input('nit');
             $instituto->nombre = $request->input('nombre');
@@ -118,7 +118,7 @@ class InstitutionController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $instituto->nombre);
-            return redirect(route('institutos.index'));
+            return redirect(route('institutions.index'));
         }else{
             if (file_exists(public_path($nombreImg))) {
                 if($nombreImg != 'storage/storage/img/instituto/default.png'){
@@ -139,7 +139,7 @@ class InstitutionController extends Controller
     public function show($id)
     {
         $instituto = Institution::findOrFail($id);
-        return view('instituto.show', compact('instituto'));
+        return view('institution.show', compact('instituto'));
     }
 
     /**
@@ -154,7 +154,7 @@ class InstitutionController extends Controller
         $departamentos = State::orderBy('nombre', 'asc')->get();
         $instituto = Institution::findOrFail($id);
         $tiposTelefono = Phone::findOrFail($id);
-        return view('instituto.edit', compact('instituto', 'departamentos', 'tiposEducacion', 'tiposTelefono'));
+        return view('institution.edit', compact('instituto', 'departamentos', 'tiposEducacion', 'tiposTelefono'));
     }
 
     /**
@@ -232,7 +232,7 @@ class InstitutionController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $instituto->nombre);
-            return redirect(route('institutos.index'));
+            return redirect(route('institutions.index'));
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -249,6 +249,6 @@ class InstitutionController extends Controller
     public function destroy($id)
     {
         Institution::findOrFail($id)->delete();
-        return redirect(route('institutos.index'));
+        return redirect(route('institutions.index'));
     }
 }

@@ -25,7 +25,7 @@ class ScheduleController extends Controller
     public function index()
     {
         $calendarios = Schedule::all();
-        return view('calendario.index', compact('calendarios'));
+        return view('schedule.index', compact('calendarios'));
     }
 
     /**
@@ -37,7 +37,7 @@ class ScheduleController extends Controller
     {
         $fases = Phase::all();
         $torneos = Tournament::all();
-        return view('calendario.create', compact('fases', 'torneos'));
+        return view('schedule.create', compact('fases', 'torneos'));
     }
 
     /**
@@ -57,7 +57,7 @@ class ScheduleController extends Controller
 
         DB::beginTransaction();
         try{
-            $calendario = NEW Calendario();
+            $calendario = NEW Schedule();
             $calendario->jornada = $request->input('jornada');
             $calendario->fecha = $request->input('fecha');
             $calendario->torneo_id = $request->input('torneo');
@@ -73,7 +73,7 @@ class ScheduleController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $calendario->jornada);
-            return redirect(route('calendarios.index'));
+            return redirect(route('schedules.index'));
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -89,7 +89,7 @@ class ScheduleController extends Controller
     public function show($id)
     {
         $calendario = Schedule::findOrfail($id);
-        return view('calendario.show', compact('calendario'));
+        return view('schedule.show', compact('calendario'));
     }
 
     /**
@@ -103,7 +103,7 @@ class ScheduleController extends Controller
         $torneos = Tournament::all();
         $fases = Phase::all();
         $calendario = Schedule::findOrfail($id);
-        return view('calendario.edit', compact('calendario', 'fases', 'torneos'));
+        return view('schedule.edit', compact('calendario', 'fases', 'torneos'));
     }
 
     /**
@@ -143,7 +143,7 @@ class ScheduleController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $calendario->jornada);
-            return redirect(route('calendarios.index'));
+            return redirect(route('schedules.index'));
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -159,6 +159,6 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         Schedule::findOrFail($id)->delete();
-        return redirect(route('calendarios.index'));
+        return redirect(route('schedules.index'));
     }
 }

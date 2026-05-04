@@ -24,7 +24,7 @@ class VenueController extends Controller
     public function index()
     {
         $lugares = Venue::all();
-        return view('lugar.index', compact('lugares'));
+        return view('venue.index', compact('lugares'));
     }
 
     /**
@@ -35,7 +35,7 @@ class VenueController extends Controller
     public function create()
     {
         $departamentos = State::orderBy('nombre', 'asc')->get();
-        return view('lugar.create', compact('departamentos'));
+        return view('venue.create', compact('departamentos'));
     }
 
     /**
@@ -44,7 +44,7 @@ class VenueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getLugar($id){
+    public function getVenue($id){
         $lugar = Venue::where('lugar_id',$id)
             ->orderBy('nombre', 'asc')
             ->get();
@@ -71,18 +71,18 @@ class VenueController extends Controller
 
         DB::beginTransaction();
         try{
-            $telefono = NEW Telefono();
+            $telefono = NEW Phone();
                 $telefono->tipo = $request->input('tipo_telefono');
                 $telefono->numero = $request->input('telefono');
             $telefono->save();
 
-            $direccion = NEW Direccion();
+            $direccion = NEW Address();
                 $direccion->calle = $request->input('calle');
                 $direccion->carrera =  $request->input('carrera');
                 $direccion->numero = $request->input('numero');
             $direccion->save();
 
-            $lugar = NEW Lugar();
+            $lugar = NEW Venue();
                 $lugar->nombre = $request->input('nombre');
                 $lugar->municipio_id = $request->input('municipio');
                 $lugar->telefono_id = $telefono->id;
@@ -99,7 +99,7 @@ class VenueController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $lugar->nombre);
-            return redirect(route('lugares.index'))->with('success');
+            return redirect(route('venues.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -115,7 +115,7 @@ class VenueController extends Controller
     public function show($id)
     {
         $lugar = Venue::findOrFail($id);
-        return view('lugar.show', compact('lugar'));
+        return view('venue.show', compact('lugar'));
     }
 
     /**
@@ -130,7 +130,7 @@ class VenueController extends Controller
         $departamentos = State::orderBy('nombre', 'asc')->get();
         $telefono = Phone::orderBy('numero', 'asc')->get();
 
-        return view('lugar.edit',compact('lugar','departamentos','telefono'));
+        return view('venue.edit',compact('lugar','departamentos','telefono'));
         
     }
 
@@ -183,7 +183,7 @@ class VenueController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $lugar->nombre);
-            return redirect(route('lugares.index'))->with('success');
+            return redirect(route('venues.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -202,9 +202,9 @@ class VenueController extends Controller
         $lugar->user_id = Auth::user()->id;
         $lugar->delete();
         $lugar->save();
-        return redirect(route('lugares.index'))->with('success');
+        return redirect(route('venues.index'))->with('success');
 
         // Venue::find($id)->delete();
-        // return redirect(route('lugares.index'));
+        // return redirect(route('venues.index'));
     }
 }

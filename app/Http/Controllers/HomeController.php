@@ -35,7 +35,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getTorneofutbol($id){
+    public function getTournamentSoccer($id){
         $torneoId = (int) $id;
 
         $baseSql = 'SELECT

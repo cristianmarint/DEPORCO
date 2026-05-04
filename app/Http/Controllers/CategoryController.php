@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categorias = Category::all();
-        return view('categoria.index',compact('categorias'));
+        return view('category.index',compact('categorias'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        return view('category.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getCategoria($id){
+    public function getCategory($id){
         $categorias = Category::where('id',$id)
             ->orderBy('descripcion', 'asc')
             ->get();
@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
         DB::beginTransaction();
         try{
-            $categoria = NEW Categoria();
+            $categoria = NEW Category();
             $categoria->nombre = $request->input('nombre');
             $categoria->descripcion = $request->input('descripcion');
             $categoria->save();
@@ -72,7 +72,7 @@ class CategoryController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $categoria->descripcion);
-            return redirect(route('categorias.index'))->with('success');
+            return redirect(route('categories.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return redirect()->back()->withInput();
@@ -88,7 +88,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $categorias = Category::findOrFail($id);
-        return view('categoria.show', compact('categorias'));
+        return view('category.show', compact('categorias'));
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     {
         $categoria = Category::findOrFail($id);
 
-        return view('categoria.edit', compact('categoria'));
+        return view('category.edit', compact('categoria'));
     }
 
     /**
@@ -133,7 +133,7 @@ class CategoryController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $categoria->descripcion);
-            return redirect(route('categorias.index'))->with('success');
+            return redirect(route('categories.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -150,6 +150,6 @@ class CategoryController extends Controller
     {
         $categoria = Category::find($id);   
         $categoria->delete();
-        return redirect(route('categorias.index'))->with('success');
+        return redirect(route('categories.index'))->with('success');
     }
 }

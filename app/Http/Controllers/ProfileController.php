@@ -27,7 +27,7 @@ class ProfileController extends Controller
     public function index()
     {
         $datosbasicos = Profile::orderBy('created_at','desc')->get();
-        return view('datosbasicos.index',compact('datosbasicos'));
+        return view('profile.index',compact('datosbasicos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $tiposangres = BloodType::orderBy('tipo', 'asc')->get();
         $generos = Gender::orderBy('id', 'asc')->get();
         $epss = HealthProvider::orderBy('nombre', 'asc')->get();
-        return view('datosbasicos.create', compact('departamentos','tiposangres','generos','epss'));
+        return view('profile.create', compact('departamentos','tiposangres','generos','epss'));
     }
     /**
      * Display the specified resource .
@@ -48,7 +48,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response json
      */
-    public function getDatosBasicos($id){
+    public function getProfile($id){
         $datosbasicos = Profile::where('id',$id)
             ->orderBy('nombre', 'asc')
             ->get();
@@ -93,16 +93,16 @@ class ProfileController extends Controller
             } else {
                 $nombreImg = 'storage/storage/img/datosbasicos/default.png';
             }
-            $telefono = NEW Telefono();
+            $telefono = NEW Phone();
             $telefono->tipo = $request->input('tipo_telefono');
             $telefono->numero = $request->input('telefono');
             $telefono->save();
-            $direccion = NEW Direccion();
+            $direccion = NEW Address();
             $direccion->calle = $request->input('calle');
             $direccion->carrera =  $request->input('carrera');
             $direccion->numero = $request->input('numero');
             $direccion->save();
-            $datosbasicos = NEW DatosBasicos();
+            $datosbasicos = NEW Profile();
             $datosbasicos->cedula = $request->input('cedula');
             $datosbasicos->foto = $nombreImg;
             $datosbasicos->telefono_id = $telefono->id;
@@ -126,7 +126,7 @@ class ProfileController extends Controller
         if ($success){
             DB::commit();
             session()->flash('create', $datosbasicos->primer_nombre . " " . $datosbasicos->primer_apellido );
-            return redirect(route('datosbasicos.index'))->with('success');
+            return redirect(route('profiles.index'))->with('success');
         }else{
             if (file_exists(public_path($nombreImg))) {
                 if($nombreImg != 'storage/storage/img/datosbasicos/default.png'){
@@ -146,7 +146,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $datosbasicos = Profile::findOrFail($id);
-        return view('datosbasicos.show', compact('datosbasicos'));
+        return view('profile.show', compact('datosbasicos'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -162,7 +162,7 @@ class ProfileController extends Controller
         $generos = Gender::orderBy('id', 'asc')->get();
         $epss = HealthProvider::orderBy('nombre', 'asc')->get();
         $telefonos = Phone::all();
-        return view('datosbasicos.edit', compact('departamentos','datosbasicos','telefonos','tiposangres','generos','epss'));
+        return view('profile.edit', compact('departamentos','datosbasicos','telefonos','tiposangres','generos','epss'));
     }
     /**
      * Update the specified resource in storage.
@@ -244,7 +244,7 @@ class ProfileController extends Controller
         if ($success){
             DB::commit();
             session()->flash('update', $datosbasicos->primer_nombre . " " . $datosbasicos->primer_apellido );
-            return redirect(route('datosbasicos.index'))->with('success');
+            return redirect(route('profiles.index'))->with('success');
         }else{
             session()->flash('error', 'error');
             return back()->withInput();
@@ -262,6 +262,6 @@ class ProfileController extends Controller
         $datosbasicos->user_id = Auth::user()->id;
         $datosbasicos->delete();
         $datosbasicos->save();
-        return redirect(route('datosbasicos.index'))->with('success');
+        return redirect(route('profiles.index'))->with('success');
     }
 }
